@@ -1,16 +1,24 @@
-# EA Block Scheduling
+# README
 
-Welcome to the **EA Block Scheduling Project** for **CSCE 606** at Texas A&M University. 
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-## Team Members
-- **Adithi Srinath**
-- **Ryann Lu**
-- **Junhyuk Lee**
-- **Chengyan Tsai**
-- **Mahima Bhatt**
-- **William-David Vanderpuye**
-- **Aaron Jones**
+Things you may want to cover:
 
+* Ruby version
 
+* System dependencies
 
+* Configuration
 
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
