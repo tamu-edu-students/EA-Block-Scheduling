@@ -84,4 +84,4 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean    # Clean the database after each test
   end
-
+end
