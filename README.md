@@ -1,4 +1,8 @@
 # Engineering Academy Block Schedule Generator
+## Important Links
++ Sprint 1 MVP Documentations:https://github.com/tamu-edu-students/EA-Block-Scheduling/tree/main/documentation/Sprint%201%20MVP
++ Team Working Agreements: https://github.com/tamu-edu-students/EA-Block-Scheduling/blob/main/documentation/Team%20Working%20Agreement.md
+
 ## Overview
 This project provides a software solution to generate possible block schedules for the Engineering Academies (EA) across the state, starting with the Austin EA. The program creates block schedules for math, science, and engineering courses for the spring and fall semesters, ensuring that no class overlaps and prerequisites are met. The output is provided in visual formats, replacing the current manual process that relies on spreadsheets, calendars, and Google Forms.
 
@@ -18,7 +22,3 @@ The intended users of this solution are EA staff and students.
 + **Data Handling:** ActiveRecord (for database operations in Rails)
 + **Spreadsheet Output:** Ruby Gems like axlsx or rubyXL (for generating Excel files)
 + **Deployment:** Heroku (for deployment and hosting)
-
-## Important Links
-+ Sprint 1 MVP Documentations:https://github.com/tamu-edu-students/EA-Block-Scheduling/tree/main/documentation/Sprint%201%20MVP
-+ Team Working Agreements: https://github.com/tamu-edu-students/EA-Block-Scheduling/blob/main/documentation/Team%20Working%20Agreement.md
