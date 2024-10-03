@@ -1,3 +1,4 @@
+# Team Working Agreement
 
 1. Frequent Progress Updates, allowing transparency and early detection.
 2. Work Aligned with Passion and Strengths
