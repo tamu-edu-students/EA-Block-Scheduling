@@ -1,5 +1,5 @@
 ---
-title: ' Sprint 1 MVP Design Document'
+title: Sprint 1 MVP Design Document
 
 ---
 
@@ -16,7 +16,7 @@ title: ' Sprint 1 MVP Design Document'
     + Each developer should write unit tests for their features.
     + Use `simplecov`  to check your test coverage (like PA3)
     + Run `rubocop` and `rubycritic` to check your code -quality (like PA3)
-+ **Convention:** In user stories, we use`student` instead of `user`; use `admin` instead of `prof` or `developer`
++ **Convention:** In user stories, we use three roles: `user`, `admin`, and `developer`
 + Feel free to discuss the document with Scrum Master.
 + If you cannot deliver the feature on time, **PLEASE INFORM YOUR TEAM IN ADVANCE**. We understand that unexpected issues can arise, but it's important to keep us informed.
     
@@ -39,8 +39,8 @@ title: ' Sprint 1 MVP Design Document'
 ### User Stories
 |     | Step1 | Step2 | Step3 | Step4 | Step5 |
 | --- | ----- | ----- | ----- | ----- | ----- |
-|  1  | As a student | When I open the login page | I see the button for sign up |       |       |
-|  2  | As a student | When I open the login page | I see the button for sign in |       |       |
+|  1  | As a user | When I open the login page | I see the button for sign up |       |       |
+|  2  | As a user | When I open the login page | I see the button for sign in |       |       |
 
 ### Backlog
 2. Use 3rd-party authetication
@@ -68,12 +68,11 @@ title: ' Sprint 1 MVP Design Document'
 ### Sprint 1 MVP
 1. Generate schedule algorithm as list - ex: (MWF 10a. MWF 10:30 <- these shouldn't overlap) 
 	- When I input mock class data, I should see a list of possible schedules with a simple algorithm, such as separating overlap
-2. You don't need to write user stories at this time, as the functionality hasn't been integrated with the rest of the system. However, please proceed with writing unit tests to validate the feature.
 
 ### User Stories
 |     | Step1 | Step2 | Step3 | Step4 | Step5 |
 | --- | ----- | ----- | ----- | ----- | ----- |
-|  1  |       |       |       |       |       |
+|  1  | As a developer | I add a class on MWF 10am-11am | I add a class on MWF 10:30am-11:30am | When I generate the schedule | Then I see two possible schedules |
 |  2  |       |       |       |       |       |
 
 ### Backlog
@@ -97,33 +96,32 @@ Design the database schema based on client's requirement.
     + Classes already taken (For prerequisites)
     + .....
 3. Implement the data structure using sqlite3
-4. You don't need to write user stories at this time, as the functionality hasn't been integrated with the rest of the system. However, please proceed with writing unit tests to validate the feature.
 
 ### User Stories 
 |     | Step1 | Step2 | Step3 | Step4 | Step5 |
 | --- | ----- | ----- | ----- | ----- | ----- |
-|  1  |       |       |       |       |       |
+|  1  | As a developer | I create a student named Bob | When I retrieve Bob's data from database | I can see the name 'Bob' |       |
 |  2  |       |       |       |       |       |
 
 ### Backlog
 
 ---
 
-## Schedule Builder (Show Block) - Ryann
+## V. Schedule Builder (Show Block) - Ryann
 ### Sprint 1 MVP
 1. Show example schedule chart (time, days of week)
 
 ### User Stories
 |     | Step1 | Step2 | Step3 | Step4 | Step5 |
 | --- | ----- | ----- | ----- | ----- | ----- |
-|  1  | As a student | I want to see my schedule chart | So I open the schedule viewer page |  Then I can see time blocks on chart (Unit Block: 15 min) | And I can see class blocks shown correctly |
+|  1  | As a user | I want to see my schedule chart | So I open the schedule viewer page |  Then I can see time blocks on chart (Unit Block: 15 min) | And I can see class blocks shown correctly |
 |  2  |       |       |       |       |       |
 
 ### Backlog
 2. The chart can show different classes with differen colors
 3. You can check the class detail by moving cursor on the class block
 
-## Schedule Builder (Choose Block) - Adithi
+## VI. Schedule Builder (Choose Block) - Adithi
 ### Sprint 1 MVP
 1. Build basic UI page like Aggie Schedule Builder
     + It will show the selected classes
@@ -134,7 +132,7 @@ Design the database schema based on client's requirement.
 ### User Stories
 |     | Step1 | Step2 | Step3 | Step4 | Step5 |
 | --- | ----- | ----- | ----- | ----- | ----- |
-|  1  | As a student | When I open the UI schedule builder page | I can see the classes I selected |       |       |
+|  1  | As a user | When I open the UI schedule builder page | I can see the classes I selected |       |       |
 |  2  |       |       |       |       |       |
 
 ### Backlog
