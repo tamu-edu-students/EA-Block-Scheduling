@@ -8,6 +8,18 @@ This project provides a software solution to generate possible block schedules f
 
 The intended users of this solution are EA staff and students.
 
+### The Issue
+Professor Shana Shaw has requested an application that would automate the process of creating block schedules for academy students to pick from when enrollment is in process. There are many classes that are often taken together, and often, classes that should be taken together have conflicting meeting times. This requires Professor Shaw to manually create a list of classes that can be taken together without conflict.
+
+### The process
+Before each semester's enrollment period opens, a partner college sends a list of classes to Professor Shaw in a spreadsheet format. Professor Shaw adds these classes to a form that creates a calendar with colorful blocks to show students what classes to take in order to not have time conflicts. The student chooses a block of classes, and the form is submitted to Professor Shaw who then enrolls the students into their chosen classes.
+
+### Goal
+1. The application will be accessible to currently accepted academy students.
+2. The application will have a page for an admin user to upload a spreadsheet of available classes.
+3. The application will be able to parse the spreadsheet uploaded by admins in order to differentiate between classes.
+4. The application will provide clear block schedule charts based on the classes selected by students.
+
 ## Features
 + **Automatic Block Generation:** Generates non-overlapping block schedules for math, science, and engineering sections.
 + **Prerequisite Management:** Ensures that all class prerequisites are considered when generating schedules.
