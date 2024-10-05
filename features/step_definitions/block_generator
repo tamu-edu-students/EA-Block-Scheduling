@@ -1,0 +1,129 @@
+require 'time'
+
+# Class to represent a class block
+class Class
+  attr_accessor :course, :start_time, :end_time, :days
+
+  def initialize(course, start_time, end_time, days)
+    @course = course
+    @start_time = Time.parse(start_time)
+    @end_time = Time.parse(end_time)
+    @days = days.split(',')  # Days given as 'MW', 'TTh', etc.
+  end
+end
+
+# Method to display a block
+def generate_block(id, classes)
+  puts "Block #{id}:"
+  classes.each do |block_class|
+    puts "#{block_class.course}: #{block_class.start_time.strftime('%I:%M %p')} - #{block_class.end_time.strftime('%I:%M %p')} on #{block_class.days.join(', ')}"
+  end
+  puts "\n"
+end
+
+# Creating objects for all classes
+engr_102_535 = Class.new('ENGR-102-535', '1:30 PM', '3:20 PM', 'MW')
+engr_102_559 = Class.new('ENGR-102-559', '10:30 AM', '12:20 PM', 'MW')
+clen_181_1 = Class.new('CLEN-181-1', '12:30 PM', '1:20 PM', 'M')
+clen_181_2 = Class.new('CLEN-181-2', '12:00 PM', '12:50 PM', 'T')
+clen_181_3 = Class.new('CLEN-181-3', '1:00 PM', '1:50 PM', 'T')
+clen_181_4 = Class.new('CLEN-181-4', '2:00 PM', '2:50 PM', 'T')
+clen_181_5 = Class.new('CLEN-181-5', '12:30 PM', '1:20 PM', 'W')
+clen_181_6 = Class.new('CLEN-181-6', '12:00 PM', '12:50 PM', 'Th')
+clen_181_7 = Class.new('CLEN-181-7', '1:00 PM', '1:50 PM', 'Th')
+
+math_2412_017 = Class.new('MATH-2412-017', '4:30 PM', '6:15 PM', 'MW')
+math_2412_018 = Class.new('MATH-2412-018', '4:00 PM', '5:45 PM', 'TTh')
+math_2412_029 = Class.new('MATH-2412-029', '1:30 PM', '3:15 PM', 'TTh')
+math_2413_004 = Class.new('MATH-2413-004', '9:00 AM', '10:45 AM', 'TTh')
+math_2413_008 = Class.new('MATH-2413-008', '8:35 AM', '10:20 AM', 'MW')
+math_2413_011 = Class.new('MATH-2413-011', '10:55 AM', '12:40 PM', 'TTh')
+math_2414_002 = Class.new('MATH-2414-002', '12:50 PM', '2:35 PM', 'TTh')
+math_2414_004 = Class.new('MATH-2414-004', '9:00 AM', '10:45 AM', 'TTh')
+math_2415_003 = Class.new('MATH-2415-003', '6:00 PM', '7:45 PM', 'MW')
+math_2415_004 = Class.new('MATH-2415-004', '8:10 AM', '9:55 AM', 'MW')
+math_2420_001 = Class.new('MATH-2420-001', '10:05 AM', '11:50 AM', 'MW')
+
+chem_1309_001 = Class.new('CHEM-1309-001', '9:00 AM', '10:20 AM', 'MW')
+chem_1309_002 = Class.new('CHEM-1309-002', '11:00 AM', '12:20 PM', 'TTh')
+chem_1309_003 = Class.new('CHEM-1309-003', '12:30 PM', '1:50 PM', 'MW')
+chem_1309_007 = Class.new('CHEM-1309-007', '5:00 PM', '6:20 PM', 'TTh')
+chem_1312_006 = Class.new('CHEM-1312-006', '2:00 PM', '3:20 PM', 'TTh')
+
+chem_1109_001 = Class.new('CHEM-1109-001', '8:00 AM', '10:50 AM', 'T')
+chem_1109_002 = Class.new('CHEM-1109-002', '2:00 PM', '4:50 PM', 'M')
+chem_1109_003 = Class.new('CHEM-1109-003', '8:00 AM', '10:50 AM', 'Th')
+chem_1109_004 = Class.new('CHEM-1109-004', '2:00 PM', '4:50 PM', 'W')
+chem_1109_005 = Class.new('CHEM-1109-005', '10:30 AM', '1:20 PM', 'M')
+chem_1109_006 = Class.new('CHEM-1109-006', '10:30 AM', '1:20 PM', 'W')
+chem_1109_011 = Class.new('CHEM-1109-011', '2:00 PM', '4:50 PM', 'T')
+chem_1109_012 = Class.new('CHEM-1109-012', '2:00 PM', '4:50 PM', 'Th')
+chem_1112_005 = Class.new('CHEM-1112-005', '11:00 AM', '1:50 PM', 'Th')
+chem_1112_008 = Class.new('CHEM-1112-008', '11:00 AM', '1:50 PM', 'T')
+
+phys_2425_013 = Class.new('PHYS-2425-013', '12:00 PM', '1:30 PM', 'MW')
+phys_2425_014 = Class.new('PHYS-2425-014', '3:00 PM', '4:30 PM', 'MW')
+phys_2426_005 = Class.new('PHYS-2426-005', '1:30 PM', '3:00 PM', 'MW')
+phys_2426_009 = Class.new('PHYS-2426-009', '12:00 PM', '1:30 PM', 'TTh')
+
+# Create blocks by combining class objects
+blocks = [
+  # Block 1 - Yellow
+  [engr_102_535, clen_181_2, math_2412_029, chem_1309_001, chem_1109_005],
+  
+  # Block 2 - Orange1
+  [engr_102_535, clen_181_2, math_2412_018, chem_1309_001, chem_1109_006],
+  
+  # Block 3 - Purple1
+  [engr_102_559, clen_181_6, math_2412_017, chem_1309_007, chem_1109_012],
+  
+  # Block 4 - Lavendar1
+  [engr_102_559, clen_181_7, math_2412_017, chem_1309_007, chem_1109_011],
+  
+  # Block 5 - Brown
+  [engr_102_535, clen_181_1, math_2413_004, chem_1312_006, chem_1112_008],
+  
+  # Block 6 - Red1
+  [engr_102_535, clen_181_5, math_2414_004, chem_1312_006, chem_1112_005],
+  
+  # Block 7 - Orange2
+  [engr_102_559, clen_181_3, math_2413_004, chem_1309_002, chem_1109_002],
+  
+  # Block 8 - Light Blue1
+  [engr_102_559, clen_181_4, math_2413_008, chem_1309_002, chem_1109_004],
+  
+  # Block 9 - Salmon
+  [engr_102_559, clen_181_6, math_2413_008, chem_1309_003, chem_1109_001],
+  
+  # Block 10 - Red2
+  [engr_102_559, clen_181_4, math_2413_011, chem_1309_003, chem_1109_003],
+  
+  # Block 11 - Dark Gray
+  [engr_102_559, clen_181_1, math_2414_004, chem_1309_002, chem_1109_002],
+  
+  # Block 12 - Blue
+  [engr_102_559, clen_181_1, math_2414_004, chem_1309_002, chem_1109_004],
+  
+  # Block 13 - Light Gray
+  [engr_102_559, clen_181_5, math_2414_002, phys_2425_014],
+  
+  # Block 14 - Dark Blue
+  [engr_102_559, clen_181_1, math_2415_003, phys_2426_009],
+  
+  # Block 15 - Lavendar2
+  [engr_102_559, math_2414_004, phys_2425_013],
+  
+  # Block 16 - Purple2
+  [engr_102_559, math_2414_004, phys_2426_005],
+  
+  # Block 17 - Green
+  [engr_102_559, math_2415_004, phys_2426_005],
+  
+  # Block 18 - Dark Green
+  [engr_102_559, math_2420_001, phys_2426_009]
+]
+
+# Display the blocks
+blocks.each_with_index do |block, index|
+  generate_block(index + 1, block)
+end
