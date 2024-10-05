@@ -45,9 +45,20 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 end
 
-group :development do
+group :development, :test do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "byebug"
+  gem "launchy"
+  gem "rubocop", require: false
+  gem "rubocop-performance", require: false
+  gem "rubocop-rails", require: false
+  gem "rubocop-rspec", require: false
+  gem "rubycritic", require: false
+end
+
+group :production do
+  gem "pg"
 end
 
 group :test do
