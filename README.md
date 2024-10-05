@@ -1,11 +1,7 @@
 # Engineering Academy Block Schedule Generator
 ## Important Links
-<<<<<<< Updated upstream
-+ Sprint 1 MVP Documentations:https://github.com/tamu-edu-students/EA-Block-Scheduling/tree/main/documentation/Sprint%201%20MVP
-=======
 + Deployed App: https://ea-block-scheduler-4fecd886e389.herokuapp.com/generate-schedule
 + Sprint 1 MVP Report: https://github.com/tamu-edu-students/EA-Block-Scheduling/blob/main/documentation/Sprint%201%20MVP/Sprint%201%20MVP%20Report.md
->>>>>>> Stashed changes
 + Team Working Agreements: https://github.com/tamu-edu-students/EA-Block-Scheduling/blob/main/documentation/Team%20Working%20Agreement.md
 
 ## Overview
