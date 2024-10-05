@@ -1,0 +1,114 @@
+{
+  "Cucumber Features": {
+    "coverage": {
+      "/Users/adithisrinath/EA-Block-Scheduling/app/controllers/schedules_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          4,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/adithisrinath/EA-Block-Scheduling/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null
+        ]
+      },
+      "/Users/adithisrinath/EA-Block-Scheduling/app/helpers/application_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/adithisrinath/EA-Block-Scheduling/app/channels/application_cable/channel.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/adithisrinath/EA-Block-Scheduling/app/channels/application_cable/connection.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/adithisrinath/EA-Block-Scheduling/app/jobs/application_job.rb": {
+        "lines": [
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/adithisrinath/EA-Block-Scheduling/app/mailers/application_mailer.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/adithisrinath/EA-Block-Scheduling/app/models/application_record.rb": {
+        "lines": [
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      }
+    },
+    "timestamp": 1728086593
+  },
+  "RSpec": {
+    "coverage": {
+      "/Users/adithisrinath/EA-Block-Scheduling/app/controllers/schedules_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          3,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/adithisrinath/EA-Block-Scheduling/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null
+        ]
+      }
+    },
+    "timestamp": 1728093843
+  }
+}
