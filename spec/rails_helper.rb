@@ -1,6 +1,22 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'simplecov'
-SimpleCov.start 'rails' # or 'rails', test_framework: 'rspec' if you're using RSpec
+
+SimpleCov.start do
+  add_filter '/spec/'  # Exclude spec files
+  add_filter '/config/'  # Exclude config files
+  add_filter '/app/channels/'  # Exclude channels directory
+  add_filter '/app/jobs/'      # Exclude jobs directory
+  add_filter '/app/mailers/'   # Exclude mailers directory
+  add_filter '/app/models/'    # Exclude models directory
+  add_filter 'app/channels/application_cable/channel.rb'  # Exclude specific files
+  add_filter 'app/channels/application_cable/connection.rb'
+  add_filter 'app/jobs/application_job.rb'
+  add_filter 'app/mailers/application_mailer.rb'
+  add_filter 'app/models/application_record.rb'
+end
+
+
+# SimpleCov.start 'rails' # or 'rails', test_framework: 'rspec' if you're using RSpec
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
