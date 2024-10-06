@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# require 'rspec'
 require 'rails_helper'
 
 RSpec.describe 'User' do
