@@ -4,7 +4,7 @@ let driver;
 
 Given('I am on the main page', async function() {
   driver = await new Builder().forBrowser('chrome').build();
-  await driver.get('file:///C:/Users/theki/Documents/CSCE%20606/EA-Block-Scheduling/LoginSystem.html');  // Replace path with your actual file location
+  await driver.get('LoginSystem.html');
 });
 
 When('I click the {string} button', async function(buttonText) {
