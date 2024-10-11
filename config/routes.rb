@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "sessions/index"
+  get "sessions/show"
+  get "sessions/create"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get "generate-schedule", to: "schedules#generate_schedule"
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
