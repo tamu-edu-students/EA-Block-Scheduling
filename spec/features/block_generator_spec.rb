@@ -37,7 +37,7 @@ RSpec.describe 'CourseClass' do
       class1 = CourseClass.new('ENGR-102-535', '1:30 PM', '3:20 PM', 'M,W')
       class2 = CourseClass.new('MATH-101', '10:00 AM', '11:30 AM', 'T,Th')
       block_output = generate_block(1, [class1, class2])
-      
+
       expected_output = <<~OUTPUT
         Block 1:
         ENGR-102-535: 01:30 PM - 03:20 PM on M, W
