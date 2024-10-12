@@ -33,14 +33,14 @@ Team Working Agreements: https://github.com/tamu-edu-students/EA-Block-Schedulin
 
 
 ### 6. Sprint Backlog Items and Status
-1. **Show schedule timetable**
+1. **+ Show schedule timetable**
     - This change was made as this task was not completed, so this task was backlogged for the next sprint. It will be reassigned and splitted into smaller tasks.
-2. **Implement the basic database**
+2. **\* Implement the basic database**
     - The database hasn't been finished yet due to some migaration problems. It will be fixed in sprint 2.
-3. **Upload the excel spreadsheet**
+3. **+ Upload the excel spreadsheet**
     - Feature was developed successfully but the cucumber scenarios were not successfully passing so the testing is pending. Hence, pulling the story in next sprint and will be completing the story end to end.
     - Will be working on this story in sprint2
-4. **Block Generation Algorithm**
+4. **\* Block Generation Algorithm**
     - Class objects were finished but the algorithm should be redesigned. Prof.Shanna provided additional information about block generating conditions and typical blocks in the meeting.
     
 ### 7. Burndown
