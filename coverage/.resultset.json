@@ -34,7 +34,13 @@
   },
   "RSpec": {
     "coverage": {
-      "/Users/adithisrinath/EA-Block-Scheduling/app/controllers/schedules_controller.rb": {
+      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/EA-Block-Scheduling/EA-Block-Scheduling-2/app/helpers/application_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/EA-Block-Scheduling/EA-Block-Scheduling-2/app/controllers/schedules_controller.rb": {
         "lines": [
           1,
           1,
@@ -48,7 +54,7 @@
           null
         ]
       },
-      "/Users/adithisrinath/EA-Block-Scheduling/app/controllers/application_controller.rb": {
+      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/EA-Block-Scheduling/EA-Block-Scheduling-2/app/controllers/application_controller.rb": {
         "lines": [
           1,
           null,
@@ -57,6 +63,6 @@
         ]
       }
     },
-    "timestamp": 1728100488
+    "timestamp": 1728790278
   }
 }
