@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get "course_classes/index"
+  get "course_classes/show"
+  get "course_classes/new"
+  get "course_classes/create"
+  get "course_classes/edit"
+  get "course_classes/update"
+  get "course_classes/destroy"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -11,4 +18,19 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  # typical blocks generation routes
+  resources :blocks, only: [:index] do
+    collection do
+      post 'create_typical_block'
+      get 'get_typical_blocks'
+      get 'new_typical_block'  # Add this line
+    end
+    member do
+      delete 'delete_typical_block'
+      put 'update_typical_block'
+    end
+  end
+
+  resources :course_classes
 end

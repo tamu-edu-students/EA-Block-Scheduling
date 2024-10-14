@@ -1,7 +1,7 @@
 require 'time'
 
 # Class to represent a class block
-class Class
+class CourseClass
   attr_accessor :course, :start_time, :end_time, :days
 
   def initialize(course, start_time, end_time, days)
@@ -66,64 +66,4 @@ phys_2425_014 = Class.new('PHYS-2425-014', '3:00 PM', '4:30 PM', 'MW')
 phys_2426_005 = Class.new('PHYS-2426-005', '1:30 PM', '3:00 PM', 'MW')
 phys_2426_009 = Class.new('PHYS-2426-009', '12:00 PM', '1:30 PM', 'TTh')
 
-# Create blocks by combining class objects
-blocks = [
-  # Block 1 - Yellow
-  [engr_102_535, clen_181_2, math_2412_029, chem_1309_001, chem_1109_005],
-  
-  # Block 2 - Orange1
-  [engr_102_535, clen_181_2, math_2412_018, chem_1309_001, chem_1109_006],
-  
-  # Block 3 - Purple1
-  [engr_102_559, clen_181_6, math_2412_017, chem_1309_007, chem_1109_012],
-  
-  # Block 4 - Lavendar1
-  [engr_102_559, clen_181_7, math_2412_017, chem_1309_007, chem_1109_011],
-  
-  # Block 5 - Brown
-  [engr_102_535, clen_181_1, math_2413_004, chem_1312_006, chem_1112_008],
-  
-  # Block 6 - Red1
-  [engr_102_535, clen_181_5, math_2414_004, chem_1312_006, chem_1112_005],
-  
-  # Block 7 - Orange2
-  [engr_102_559, clen_181_3, math_2413_004, chem_1309_002, chem_1109_002],
-  
-  # Block 8 - Light Blue1
-  [engr_102_559, clen_181_4, math_2413_008, chem_1309_002, chem_1109_004],
-  
-  # Block 9 - Salmon
-  [engr_102_559, clen_181_6, math_2413_008, chem_1309_003, chem_1109_001],
-  
-  # Block 10 - Red2
-  [engr_102_559, clen_181_4, math_2413_011, chem_1309_003, chem_1109_003],
-  
-  # Block 11 - Dark Gray
-  [engr_102_559, clen_181_1, math_2414_004, chem_1309_002, chem_1109_002],
-  
-  # Block 12 - Blue
-  [engr_102_559, clen_181_1, math_2414_004, chem_1309_002, chem_1109_004],
-  
-  # Block 13 - Light Gray
-  [engr_102_559, clen_181_5, math_2414_002, phys_2425_014],
-  
-  # Block 14 - Dark Blue
-  [engr_102_559, clen_181_1, math_2415_003, phys_2426_009],
-  
-  # Block 15 - Lavendar2
-  [engr_102_559, math_2414_004, phys_2425_013],
-  
-  # Block 16 - Purple2
-  [engr_102_559, math_2414_004, phys_2426_005],
-  
-  # Block 17 - Green
-  [engr_102_559, math_2415_004, phys_2426_005],
-  
-  # Block 18 - Dark Green
-  [engr_102_559, math_2420_001, phys_2426_009]
-]
-
-# Display the blocks
-blocks.each_with_index do |block, index|
-  generate_block(index + 1, block)
 end
