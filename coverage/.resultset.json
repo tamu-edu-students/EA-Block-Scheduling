@@ -46,6 +46,76 @@
           null
         ]
       },
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/courses_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null
+        ]
+      },
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null
+        ]
+      },
       "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/schedules_controller.rb": {
         "lines": [
           1,
@@ -59,16 +129,8 @@
           null,
           null
         ]
-      },
-      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/application_controller.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          null
-        ]
       }
     },
-    "timestamp": 1728844244
+    "timestamp": 1728867653
   }
 }

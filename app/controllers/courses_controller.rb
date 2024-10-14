@@ -8,6 +8,8 @@ class CoursesController < ApplicationController
 
   # GET /courses/1 or /courses/1.json
   def show
+    id = params[:id]
+    @course = Course.find(id)
   end
 
   # GET /courses/new
@@ -17,44 +19,30 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
+    @course = Course.find params[:id]
   end
 
   # POST /courses or /courses.json
   def create
-    @course = Course.new(course_params)
-
-    respond_to do |format|
-      if @course.save
-        format.html { redirect_to @course, notice: "Course was successfully created." }
-        format.json { render :show, status: :created, location: @course }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
-      end
-    end
+    @course = Course.create!(course_params)
+    flash[:notice] = "#{@course.short_title} was successfully created."
+    redirect_to courses_path
   end
 
   # PATCH/PUT /courses/1 or /courses/1.json
   def update
-    respond_to do |format|
-      if @course.update(course_params)
-        format.html { redirect_to @course, notice: "Course was successfully updated." }
-        format.json { render :show, status: :ok, location: @course }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
-      end
-    end
+    @course = Course.find params[:id]
+    @course.update!(course_params)
+    flash[:notice] = "#{@course.short_title} was successfully updated."
+    redirect_to course_path(@course)
   end
 
   # DELETE /courses/1 or /courses/1.json
   def destroy
-    @course.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to courses_path, status: :see_other, notice: "Course was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    @course = Course.find(params[:id])
+    @course.destroy
+    flash[:notice] = "Course '#{@course.short_title}' deleted."
+    redirect_to courses_path
   end
 
   private
