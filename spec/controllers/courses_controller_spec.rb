@@ -9,6 +9,13 @@ RSpec.describe CoursesController, type: :controller do
     @course2 = Course.create(term: '224F000', dept_code: 'CHEM', course_id: '517301', sec_coreq_secs: '517519', syn: '66857', sec_name: 'CHEM-1109-006', short_title: 'Gen Chem Engr Lb', im: 2, building: 'HLC1', room: '2109.00', days: 'W', start_time: ' 10:30 AM', end_time: ' 1:20 PM', fac_id: '', faculty_name: '', crs_capacity: 18, sec_cap: 0, student_count: 0, notes: '')
   end
 
+  describe 'See all courses' do
+    it 'fetches all courses' do
+      get :index, params: {}
+      expect(assigns(:courses)).to include(@course0, @course1, @course2)
+    end
+  end
+
   describe 'Create course' do
     it 'course with valid parameters' do
       get :create, params: { course: { term: '224F000',
@@ -61,11 +68,33 @@ RSpec.describe CoursesController, type: :controller do
     end
   end
 
+  describe 'Edit course' do
+    it 'Assigns the requested course' do
+      course = Course.create(term: '224F000', dept_code: 'TEST', course_id: '123456')
+      get :edit, params: { id: course.id }
+      expect(assigns(:course)).to eq course
+    end
+  end
+
+  describe 'Show course' do
+    it 'assigns the requested course as @course0' do
+      course = Course.create! term: '224F000', dept_code: 'TEST', course_id: '123456'
+      get :show, params: { id: course.id }
+      expect(assigns(:course)).to eq course
+    end
+  end
+
   describe 'Destroy course' do
     it 'destroys the course' do
-      @course0.destroy
+      Course.destroy(@course0.id)
       courses = Course.all
       expect(courses).to include(@course1, @course2)
+    end
+
+    it 'redirects to the courses list' do
+      course = Course.create!(term: '224F000', dept_code: 'TEST', course_id: '123456')
+      delete :destroy, params: { id: course.id }
+      expect(response).to redirect_to courses_path
     end
   end
 end

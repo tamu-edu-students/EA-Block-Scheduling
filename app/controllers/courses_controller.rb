@@ -12,11 +12,6 @@ class CoursesController < ApplicationController
     @course = Course.find(id)
   end
 
-  # GET /courses/new
-  def new
-    @course = Course.new
-  end
-
   # GET /courses/1/edit
   def edit
     @course = Course.find params[:id]
@@ -41,7 +36,7 @@ class CoursesController < ApplicationController
   def destroy
     @course = Course.find(params[:id])
     @course.destroy
-    flash[:notice] = "Course '#{@course.short_title}' deleted."
+    flash[:notice] = "#{@course.short_title} was successfully deleted."
     redirect_to courses_path
   end
 
