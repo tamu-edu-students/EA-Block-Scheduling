@@ -1,4 +1,4 @@
-require 'rspec'
+require 'rails_helper'
 require 'time'
 
 # CourseClass to represent a class block
