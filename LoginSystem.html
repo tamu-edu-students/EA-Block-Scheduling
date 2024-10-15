@@ -90,10 +90,10 @@
         <!-- Button Container to control layout -->
         <div class="button-container">
             <a href="Login_Screen.html">
-                <button class="login-btn">Login</button>
+                <button class="login-btn" id="loginButton"> </style>Login</button>
             </a>
             <a href="Signup.html">
-                <button class="sign-up-btn">Sign Up</button>
+                <button class="sign-up-btn" id="signupButton"></style>Sign Up</button>
             </a>
             <button class="sso-btn" id="ssoButton">SSO Sign In</button>
         </div>
@@ -113,7 +113,7 @@
                 }
             );
 
-            $("#signUpButton").hover(
+            $("#signupButton").hover(
                 function() {
                     $(this).css("background-color", "maroon");
                 }, 
