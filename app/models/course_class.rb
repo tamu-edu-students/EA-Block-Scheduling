@@ -1,16 +1,14 @@
 class CourseClass < ApplicationRecord
-  has_and_belongs_to_many :blocks
+  validates :course, :start_time, :end_time, :days, presence: true
 
-  def initialize(attributes = {})
-    super
-    self.days = attributes[:days].split(',') if attributes[:days].is_a?(String)
-  end
+  # Remove the custom initialize method
+  # Instead, use before_validation callback to parse times
+  before_validation :parse_times
 
-  def formatted_time_range
-    "#{start_time.strftime('%I:%M %p')} - #{end_time.strftime('%I:%M %p')}"
-  end
+  private
 
-  def formatted_days
-    days.join(', ')
+  def parse_times
+    self.start_time = Time.parse(start_time.to_s) if start_time.is_a?(String)
+    self.end_time = Time.parse(end_time.to_s) if end_time.is_a?(String)
   end
 end

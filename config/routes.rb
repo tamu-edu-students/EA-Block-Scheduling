@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
-  get "course_classes/index"
-  get "course_classes/show"
-  get "course_classes/new"
-  get "course_classes/create"
-  get "course_classes/edit"
-  get "course_classes/update"
-  get "course_classes/destroy"
+
+  # showing classes to choose
+  resources :course_classes, only: [:index]
+  resources :schedules, only: [:index, :show]
+  get '/course_classes', to: 'course_classes#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get "generate-schedule", to: "schedules#generate_schedule"
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -18,19 +16,4 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-
-  # typical blocks generation routes
-  resources :blocks, only: [:index] do
-    collection do
-      post 'create_typical_block'
-      get 'get_typical_blocks'
-      get 'new_typical_block'  # Add this line
-    end
-    member do
-      delete 'delete_typical_block'
-      put 'update_typical_block'
-    end
-  end
-
-  resources :course_classes
 end
