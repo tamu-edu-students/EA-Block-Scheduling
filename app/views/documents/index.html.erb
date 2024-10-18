@@ -1,0 +1,13 @@
+<!-- app/views/documents/index.html.erb -->
+<h1>Upload file area</h1>
+
+<div id="drop-area">
+  <form id="file-form">
+    <input type="file" id="file-input" name="document[file]" style="display:none;">
+    <label for="file-input" id="file-label">Choose a file</label>
+  </form>
+  <div id="drop-message">Drop file here</div>
+  <progress id="progress-bar" max="100" value="0"></progress>
+</div>
+
+<p id="status"></p>
