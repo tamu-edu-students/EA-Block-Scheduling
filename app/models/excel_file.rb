@@ -7,7 +7,7 @@ class ExcelFile < ApplicationRecord
 
   def process_file
     return unless file.attached?
-    
+
     begin
       spreadsheet = if Rails.env.test?
         file_path = ActiveStorage::Blob.service.path_for(file.key)
@@ -31,8 +31,8 @@ class ExcelFile < ApplicationRecord
   private
 
   def correct_file_type
-    if file.attached? && !file.content_type.in?(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel'])
-      errors.add(:file, 'must be an Excel file')
+    if file.attached? && !file.content_type.in?(["application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.ms-excel"])
+      errors.add(:file, "must be an Excel file")
     end
   end
 end

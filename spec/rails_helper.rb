@@ -88,7 +88,6 @@ RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers
   config.include ActionView::Helpers::UrlHelper
   config.include ActionView::Helpers::AssetTagHelper
-
 end
 RSpec.configure do |config|
   # Start Database Cleaner before each test

@@ -30,7 +30,7 @@ RSpec.describe ExcelFile, type: :model do
     it "processes the uploaded Excel file" do
       excel_file = ExcelFile.create(name: "Test File")
       excel_file.file.attach(io: File.open(Rails.root.join('spec', 'fixtures', 'files', 'test.xlsx')), filename: 'test.xlsx', content_type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-      
+
       expect { excel_file.process_file }.not_to raise_error
       # Add more specific expectations based on your processing logic
     end
@@ -42,11 +42,9 @@ RSpec.describe ExcelFile, type: :model do
       file_path = Rails.root.join('spec', 'fixtures', 'files', 'test.xlsx')
       excel_file.file.attach(io: File.open(file_path), filename: 'test.xlsx', content_type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
       excel_file.save!
-      
+
       expect(excel_file.file).to be_attached
       expect { excel_file.process_file }.not_to raise_error
     end
   end
-
-  
 end

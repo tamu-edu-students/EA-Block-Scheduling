@@ -80,14 +80,14 @@ class ExcelFilesController < ApplicationController
     begin
       spreadsheet = if file.blob.attachable?
                       Roo::Spreadsheet.open(file.blob.service.path_for(file.key), extension: :xlsx)
-                    else
+      else
                       Roo::Spreadsheet.open(file.download, extension: :xlsx)
-                    end
-      
+      end
+
       header = spreadsheet.row(1)
       # Add your processing logic here
       # For example, you might want to read data from the spreadsheet and save it to your database
-      
+
       true # Return true if processing was successful
     rescue ArgumentError => e
       errors.add(:file, "could not be processed: #{e.message}")
