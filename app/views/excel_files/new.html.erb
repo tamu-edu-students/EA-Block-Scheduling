@@ -1,0 +1,11 @@
+<% content_for :title, "New excel file" %>
+
+<h1>New excel file</h1>
+
+<%= render "form", excel_file: @excel_file %>
+
+<br>
+
+<div>
+  <%= link_to "Back to excel files", excel_files_path %>
+</div>

@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Excel files" %>
+
+<h1>Excel files</h1>
+
+<div id="excel_files">
+  <% @excel_files.each do |excel_file| %>
+    <%= render excel_file %>
+    <p>
+      <%= link_to "Show this excel file", excel_file %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New excel file", new_excel_file_path %>

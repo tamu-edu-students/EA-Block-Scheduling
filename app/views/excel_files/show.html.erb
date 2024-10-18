@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @excel_file %>
+
+<div>
+  <%= link_to "Edit this excel file", edit_excel_file_path(@excel_file) %> |
+  <%= link_to "Back to excel files", excel_files_path %>
+
+  <%= button_to "Destroy this excel file", @excel_file, method: :delete %>
+</div>

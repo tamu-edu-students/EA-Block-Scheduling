@@ -63,3 +63,17 @@ group :test do
   gem "ZenTest"
   gem "selenium-webdriver"
 end
+
+gem 'roo'  # For parsing Excel files
+gem 'simple_form'  # For easier form handling
+gem 'csv'
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'webdrivers'
+  gem 'rails-controller-testing'
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
+  gem 'activestorage', '~> 7.2.1'
+end

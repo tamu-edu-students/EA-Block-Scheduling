@@ -1,0 +1,14 @@
+
+<div id="<%= dom_id excel_file %>">
+  <p>
+    <strong>Name:</strong>
+    <%= excel_file.name %>
+  </p>
+
+  <% if excel_file.file.attached? %>
+    <p>
+      <strong>File:</strong>
+      <%= link_to excel_file.file.filename, attachment_url(excel_file.file) %>
+    </p>
+  <% end %>
+</div>
