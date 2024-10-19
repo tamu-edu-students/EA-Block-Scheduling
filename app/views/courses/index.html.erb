@@ -4,13 +4,47 @@
 
 <h1>Courses</h1>
 
-<div id="courses">
-  <% @courses.each do |course| %>
-    <%= render course %>
-    <p>
-      <%= link_to "Show this course", course %>
-    </p>
-  <% end %>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Term</th>
+      <th>Dept Code</th>
+      <th>Course ID</th>
+      <th>Section Name</th>
+      <th>Short Title</th>
+      <th>Building</th>
+      <th>Room</th>
+      <th>Days</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Faculty Name</th>
+      <th>Capacity</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.term %></td>
+        <td><%= course.dept_code %></td>
+        <td><%= course.course_id %></td>
+        <td><%= course.sec_name %></td>
+        <td><%= course.short_title %></td>
+        <td><%= course.building %></td>
+        <td><%= course.room %></td>
+        <td><%= course.days %></td>
+        <td><%= course.start_time %></td>
+        <td><%= course.end_time %></td>
+        <td><%= course.faculty_name %></td>
+        <td><%= course.crs_capacity %></td>
+        <td>
+          <%= link_to "Show", course_path(course) %>
+          <%= link_to "Edit", edit_course_path(course) %>
+          <%= link_to "Delete", course_path(course), method: :delete, data: { confirm: "Are you sure?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to "New course", new_course_path %>
