@@ -7,20 +7,4 @@ class SchedulesController < ApplicationController
       { name: "Operating Systems", instructor: "Prof. Emily Johnson", course_code: "CS301" }
     ]
   end
-
-  def index
-    @schedules = Schedule.all
-  end
-
-  def create
-    @schedule = Schedule.new(schedule_params)
-    
-    # TODO: scheduling algortithm
-    
-    if @schedule.save
-      redirect_to @schedule, notice: 'Schedule was successfully created.'
-    else
-      render :new
-    end
-  end
 end

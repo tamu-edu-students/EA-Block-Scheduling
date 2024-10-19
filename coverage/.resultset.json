@@ -230,7 +230,7 @@
   },
   "RSpec": {
     "coverage": {
-      "/home/mahima/EA-Block-Scheduling/app/helpers/application_helper.rb": {
+      "/mnt/c/Users/lurya/Desktop/School/CSCE_606/block-scheduling/EA-Block-Scheduling/app/helpers/application_helper.rb": {
         "lines": [
           1,
           1,
@@ -256,13 +256,13 @@
           null
         ]
       },
-      "/home/mahima/EA-Block-Scheduling/app/helpers/courses_helper.rb": {
+      "/mnt/c/Users/lurya/Desktop/School/CSCE_606/block-scheduling/EA-Block-Scheduling/app/helpers/courses_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/mahima/EA-Block-Scheduling/app/controllers/courses_controller.rb": {
+      "/mnt/c/Users/lurya/Desktop/School/CSCE_606/block-scheduling/EA-Block-Scheduling/app/controllers/courses_controller.rb": {
         "lines": [
           1,
           1,
@@ -319,7 +319,7 @@
           null
         ]
       },
-      "/home/mahima/EA-Block-Scheduling/app/controllers/application_controller.rb": {
+      "/mnt/c/Users/lurya/Desktop/School/CSCE_606/block-scheduling/EA-Block-Scheduling/app/controllers/application_controller.rb": {
         "lines": [
           1,
           null,
@@ -327,7 +327,7 @@
           null
         ]
       },
-      "/home/mahima/EA-Block-Scheduling/app/controllers/excel_files_controller.rb": {
+      "/mnt/c/Users/lurya/Desktop/School/CSCE_606/block-scheduling/EA-Block-Scheduling/app/controllers/excel_files_controller.rb": {
         "lines": [
           1,
           1,
@@ -438,7 +438,7 @@
           null
         ]
       },
-      "/home/mahima/EA-Block-Scheduling/app/controllers/schedules_controller.rb": {
+      "/mnt/c/Users/lurya/Desktop/School/CSCE_606/block-scheduling/EA-Block-Scheduling/app/controllers/schedules_controller.rb": {
         "lines": [
           1,
           1,
@@ -449,10 +449,26 @@
           null,
           null,
           null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
           null
         ]
       }
     },
-    "timestamp": 1729288412
+    "timestamp": 1729303671
   }
 }
