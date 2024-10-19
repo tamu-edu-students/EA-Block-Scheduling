@@ -2,4 +2,4 @@
 development:
   auth0_domain: dev-8vwo818rcrs4kaf7.us.auth0.com
   auth0_client_id: 0NKroCjFlzLm7DDgOKAkb0dZTmCHLeOI
-  auth0_client_secret: <YOUR AUTH0 CLIENT SECRET> # maybe not needed?
+  auth0_client_secret: n27w-N66Rwnk65AhePn2QIXR3fFuM9dV4NIFyaJ3QSuP0c1h4t6apRo7-adT8Elf # maybe not needed?
