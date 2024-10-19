@@ -1,0 +1,25 @@
+<h1>Uploaded Documents</h1>
+<div id="drop-area">
+  <form id="file-form">
+    <input type="file" id="file-input" name="document[file]" style="display:none;">
+    <label for="file-input" id="file-label">Choose a file</label>
+  </form>
+  <div id="drop-message">Drag and drop a file here or click to upload</div>
+  <progress id="progress-bar" max="100" value="0" style="display:none;"></progress>
+</div>
+
+<p id="status"></p>
+
+<%= form_with model: @document, url: documents_path, local: true, id: 'document-upload-form' do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description, rows: 4 %>
+  </div>
+
+  <%= form.submit 'Upload Document', class: 'btn btn-primary' %>
+<% end %>

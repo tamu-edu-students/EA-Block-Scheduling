@@ -1,20 +1,14 @@
-<h1>Uploaded Documents</h1>
-
+<h1>Upload history</h1>
 <table>
   <thead>
   <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>File</th>
+    <th>Document</th>
     <th>Actions</th>
   </tr>
   </thead>
   <tbody>
-  <% @documents.each do |document| %>
+  <% @documents.each do |d| %>
     <tr>
-      <td><%= document.title %></td>
-      <td><%= document.description %></td>
-
       <td>
         <% if document.file.attached? %>
           <%= link_to 'Download', url_for(document.file), target: '_blank', rel: 'noopener' %>
@@ -31,5 +25,3 @@
   <% end %>
   </tbody>
 </table>
-
-<%= link_to 'Upload New Document', new_document_path, class: 'btn btn-primary' %>
