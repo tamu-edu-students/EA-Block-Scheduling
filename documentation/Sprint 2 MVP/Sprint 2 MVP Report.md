@@ -1,4 +1,4 @@
-# Sprint 1 MVP Report
+# Sprint 2 MVP Report
 
 ### 1. Deployed App
 Link: https://ea-block-scheduler-4fecd886e389.herokuapp.com/generate-schedule 
@@ -22,7 +22,9 @@ controllers to allow users the ability to login using single sign on.
 
 #20 Retrieve data from database
 - [ ] Create session model, controller, and helper 
+  - Partially completed
 - [ ] Create user model, controller, and helper
+  - Partially completed
 - [x] Create class model, controller, and helper 
 - [ ] Create block_schedule model, controller, and helper 
 
