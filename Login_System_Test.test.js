@@ -2,21 +2,35 @@ const fs = require('fs');
 const path = require('path');
 const { JSDOM } = require('jsdom');
 const html = fs.readFileSync(path.resolve('./LoginSystem.html'), 'utf8');
+let document, window, $;
 
+// Utility function to initialize JSDOM and jQuery
+const initializeDom = () => {
+    const dom = new JSDOM(html);
+    window = dom.window;
+    document = window.document;
+    $ = require('jquery')(window);
+};
 
-
-describe('Page load tests', () => {
-    let document;
-
+describe('Page load and accessibility tests', () => {
     beforeEach(() => {
-        document = new JSDOM(html).window.document;
+        initializeDom();
     });
 
-    test('Header image is loaded correctly', () => {
-        const headerImage = document.querySelector('img[alt="Header"]');
-        expect(headerImage).not.toBeNull();
-        expect(headerImage.getAttribute('src')).toBe('assets/Header.png');
-    });
+
+    const elements = [
+        { selector: 'img[alt="Header"]', attribute: 'src', value: 'assets/Header.png' },
+        { selector: 'img[alt="Header"]', attribute: 'alt', value: 'Header' }
+    ];
+
+    test.each(elements)(
+        'Element $selector should have $attribute set to $value',
+        ({ selector, attribute, value }) => {
+            const element = document.querySelector(selector);
+            expect(element).not.toBeNull();
+            expect(element.getAttribute(attribute)).toBe(value);
+        }
+    );
 
     test('Background image is set correctly in body', () => {
         const bodyStyle = document.querySelector('body').getAttribute('style');
@@ -24,64 +38,44 @@ describe('Page load tests', () => {
     });
 });
 
-describe('Button hover tests', () => {
-    let document, window, $;
-
+describe('Button hover and tab navigation tests', () => {
     beforeEach(() => {
-        // Create a JSDOM instance from the HTML file
-        const dom = new JSDOM(html);
-        window = dom.window;
-        document = window.document;
-        // Attach jQuery to the JSDOM window
-        $ = require('jquery')(window);
+        initializeDom();
     });
 
-    test('Login button changes color on hover', () => {
-        const loginButton = document.getElementById('loginButton');
-        expect(loginButton).not.toBeNull();  
+ 
+    const buttons = [
+        { id: 'loginButton', expectedColor: 'rgb(54, 18, 18)' },
+        { id: 'signupButton', expectedColor: 'rgb(54, 18, 18)' }
+    ];
 
-        // Simulate mouseenter event (hover)
-        $(loginButton).trigger('mouseenter');
+    test.each(buttons)(
+        'Button $id changes color on hover and is focusable via tab navigation',
+        ({ id, expectedColor }) => {
+            const button = document.getElementById(id);
+            expect(button).not.toBeNull();
 
-        // Use JSDOM's window object to get the computed style
-        const computedStyle = window.getComputedStyle(loginButton);
-        expect(computedStyle.backgroundColor).toBe('rgb(54, 18, 18)');  
+         
+            $(button).trigger('mouseenter');
+            const computedStyleHover = window.getComputedStyle(button);
+            expect(computedStyleHover.backgroundColor).toBe(expectedColor);
 
-        // Simulate mouseleave event (hover end)
-        $(loginButton).trigger('mouseleave');
+        
+            $(button).trigger('mouseleave');
+            const computedStyleLeave = window.getComputedStyle(button);
+            expect(computedStyleLeave.backgroundColor).toBe(expectedColor);
 
-        // Check the computed style after mouseleave
-        const computedStyleAfterLeave = window.getComputedStyle(loginButton);
-        expect(computedStyleAfterLeave.backgroundColor).toBe('rgb(54, 18, 18)'); 
-    });
-    
-
-    test('Signup button changes color on hover', () => {
-        const signupButton = document.getElementById('loginButton');
-        expect(signupButton).not.toBeNull(); 
-
-        // Simulate mouseenter event (hover)
-        $(signupButton).trigger('mouseenter');
-
-        // Use JSDOM's window object to get the computed style
-        const computedStyle = window.getComputedStyle(signupButton);
-        expect(computedStyle.backgroundColor).toBe('rgb(54, 18, 18)');  
-
-        // Simulate mouseleave event (hover end)
-        $(signupButton).trigger('mouseleave');
-
-        // Check the computed style after mouseleave
-        const computedStyleAfterLeave = window.getComputedStyle(signupButton);
-        expect(computedStyleAfterLeave.backgroundColor).toBe('rgb(54, 18, 18)');  
-    });
-    
+         
+            jest.spyOn(button, 'focus');
+            button.focus();
+            expect(button.focus).toHaveBeenCalled();
+        }
+    );
 });
 
-describe('Text visibility test', () => {
-    let document;
-
+describe('Text visibility and responsive design tests', () => {
     beforeEach(() => {
-        document = new JSDOM(html).window.document;
+        initializeDom();
     });
 
     test('Text content exists and is visible', () => {
@@ -89,66 +83,11 @@ describe('Text visibility test', () => {
         expect(mainText).not.toBeNull();
         expect(mainText.textContent).toBe('Howdy! Please log in, sign up, or use SSO to continue.');
     });
-});
-
-
-describe('Responsive design test', () => {
-    let window, document;
-
-    beforeEach(() => {
-        window = new JSDOM(html).window;
-        document = window.document;
-    });
 
     test('Background image remains responsive', () => {
         const body = document.querySelector('body');
         window.innerWidth = 1280;
-
-        expect(body.getAttribute('style')).toContain("background-size: cover");
-        expect(body.getAttribute('style')).toContain("background-position: center");
-    });
-});
-
-describe('Tab navigation tests', () => {
-    let document;
-
-    beforeEach(() => {
-        document = new JSDOM(html).window.document;
-    });
-
-    test('Login button is focusable via tab navigation', () => {
-        const loginButton = document.getElementById('loginButton');
-        expect(loginButton).not.toBeNull(); 
-    
-        if (loginButton) {
-            jest.spyOn(loginButton, 'focus'); 
-            loginButton.focus();
-            expect(loginButton.focus).toHaveBeenCalled();  
-        }
-    });
-
-    test('Signup button is focusable via tab navigation', () => {
-        const signupButton = document.getElementById('signupButton');
-        expect(signupButton).not.toBeNull();  
-    
-        if (signupButton) {
-            jest.spyOn(signupButton, 'focus');  
-            signupButton.focus();
-            expect(signupButton.focus).toHaveBeenCalled();  
-        }
-    });
-});
-
-describe('Accessibility tests', () => {
-    let document;
-
-    beforeEach(() => {
-        document = new JSDOM(html).window.document;
-    });
-
-    test('Header image has an alt attribute for accessibility', () => {
-        const headerImage = document.querySelector('img[alt="Header"]');
-        expect(headerImage).not.toBeNull();
-        expect(headerImage.getAttribute('alt')).toBe('Header');
+        expect(body.getAttribute('style')).toContain('background-size: cover');
+        expect(body.getAttribute('style')).toContain('background-position: center');
     });
 });
