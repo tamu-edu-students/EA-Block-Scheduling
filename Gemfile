@@ -77,3 +77,6 @@ group :development, :test do
   gem "database_cleaner"
   gem "activestorage", "~> 7.2.1"
 end
+
+gem 'omniauth-auth0', '~> 3.0' # For third-party SSO
+gem 'omniauth-rails_csrf_protection', '~> 1.0' # prevents forged authentication requests
