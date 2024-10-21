@@ -1,5 +1,5 @@
 {
-  "Cucumber Features": {
+  "RSpec": {
     "coverage": {
       "/home/mahima/EA-Block-Scheduling/app/controllers/excel_files_controller.rb": {
         "lines": [
@@ -154,17 +154,13 @@
       },
       "/home/mahima/EA-Block-Scheduling/app/controllers/schedules_controller.rb": {
         "lines": [
-          1,
-          1,
-          null,
-          null,
-          4,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
       },
       "/home/mahima/EA-Block-Scheduling/app/controllers/courses_controller.rb": {
         "lines": [
@@ -321,11 +317,13 @@
       },
       "/home/mahima/EA-Block-Scheduling/app/controllers/application_controller.rb": {
         "lines": [
-          1,
+          0,
           null,
-          1,
-          null
-        ]
+          0,
+          0
+        ],
+        "branches": {
+        }
       },
       "/home/mahima/EA-Block-Scheduling/app/controllers/excel_files_controller.rb": {
         "lines": [
@@ -440,11 +438,9 @@
       },
       "/home/mahima/EA-Block-Scheduling/app/controllers/schedules_controller.rb": {
         "lines": [
-          1,
-          1,
+          0,
           null,
           null,
-          3,
           null,
           null,
           null,

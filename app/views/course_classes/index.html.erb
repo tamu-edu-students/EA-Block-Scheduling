@@ -1,0 +1,22 @@
+<h1>Course Classes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Course</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Days</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @classes.each do |course_class| %>
+      <tr>
+        <td><%= course_class.course %></td>
+        <td><%= course_class.start_time.strftime('%I:%M %p') %></td>
+        <td><%= course_class.end_time.strftime('%I:%M %p') %></td>
+        <td><%= course_class.days %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
