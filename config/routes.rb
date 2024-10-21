@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
-
   # showing classes to choose
   resources :course_classes, only: [:index]
   resources :schedules, only: [:index, :show]
-  get '/course_classes', to: 'course_classes#index'
+  get "/course_classes", to: "course_classes#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  
+
   # Set the root path
-  root 'courses#index'
+  root "courses#index"
 
   # Courses routes
   resources :courses
