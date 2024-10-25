@@ -78,5 +78,4 @@ Rails.application.configure do
   Rails.application.routes.default_url_options[:host] = "localhost:3000"
   # Configure default URL options
   routes.default_url_options[:host] = "test.host"
-
 end
