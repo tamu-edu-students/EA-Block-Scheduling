@@ -12,9 +12,15 @@ class FileParser
 
   def initialize(file)
     @f = file
-    @file_name = file.respond_to?(:blob) ? file.blob.filename.to_s : File.basename(file.path)
-    file_content = file.respond_to?(:blob) ? file.blob.download : File.read(file.path)
-    @file_stream = file.respond_to?(:blob) ? StringIO.new(file_content, encoding: "ISO-8859-1") : StringIO.new(file_content)
+    if file.respond_to?(:blob)
+      @file_name = file.blob.filename.to_s
+      file_content = file.blob.download
+      @file_stream = StringIO.new(file_content, encoding: "ISO-8859-1")
+    else
+      @file_name = File.basename(file.path)
+      file_content = File.read(file.path)
+      @file_stream = StringIO.new(file_content)
+    end
   end
 
   def parse
@@ -24,8 +30,13 @@ class FileParser
 
       xlsx.each_with_index do |row, row_index|
         next if row_index == 0 || row[0].nil?
-        start_t = row[7].split("-")[0].gsub(/[[:space:]]/, "") unless row[7].nil?
-        end_t = row[7].split("-")[1].gsub(/[[:space:]]/, "") unless row[7].nil?
+        if row[7].nil?
+          start_t = ""
+          end_t = ""
+        else
+          start_t = row[7].split("-")[0].gsub(/[[:space:]]/, "")
+          end_t = row[7].split("-")[1].gsub(/[[:space:]]/, "")
+        end
 
         data << {
           course: row[0],
