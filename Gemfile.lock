@@ -393,7 +393,6 @@ DEPENDENCIES
   tzinfo-data
   web-console
   webdrivers
-  zip
 
 BUNDLED WITH
    2.5.18
