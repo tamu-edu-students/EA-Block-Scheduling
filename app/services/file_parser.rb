@@ -27,7 +27,6 @@ class FileParser
     begin
       xlsx = Roo::Spreadsheet.open(@f)
       data = []
-
       xlsx.each_with_index do |row, row_index|
         next if row_index == 0 || row[0].nil?
         if row[7].nil?
@@ -37,7 +36,6 @@ class FileParser
           start_t = row[7].split("-")[0].gsub(/[[:space:]]/, "")
           end_t = row[7].split("-")[1].gsub(/[[:space:]]/, "")
         end
-
         data << {
           course: row[0],
           syn: row[1],
@@ -49,7 +47,6 @@ class FileParser
           end_time: end_t
         }
       end
-
       Result.new(true, data, nil)
     rescue Exception => e
       Result.new(false, [], "Invalid file format")
