@@ -94,7 +94,6 @@ RSpec.configure do |config|
   end
   # Set host for URL helpers
   Rails.application.routes.default_url_options[:host] = 'test.host'
-
 end
 RSpec.configure do |config|
   # Start Database Cleaner before each test
@@ -110,5 +109,4 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean    # Clean the database after each test
   end
-
 end
