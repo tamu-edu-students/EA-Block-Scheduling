@@ -73,4 +73,10 @@ Rails.application.configure do
   # Raise error when a before_action's only/except options reference missing actions.
   config.action_controller.raise_on_missing_callback_actions = true
   config.active_storage.service = :test
+
+  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+  Rails.application.routes.default_url_options[:host] = "localhost:3000"
+  # Configure default URL options
+  routes.default_url_options[:host] = "test.host"
+
 end

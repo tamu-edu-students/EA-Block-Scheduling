@@ -74,26 +74,26 @@ class ExcelFilesController < ApplicationController
     end
   end
 
-  def process_file
-    return false unless file.attached?
+  # def process_file
+  #   return false unless file.attached?
 
-    begin
-      spreadsheet = if file.blob.attachable?
-                      Roo::Spreadsheet.open(file.blob.service.path_for(file.key), extension: :xlsx)
-      else
-                      Roo::Spreadsheet.open(file.download, extension: :xlsx)
-      end
+  #   begin
+  #     spreadsheet = if file.blob.attachable?
+  #                     Roo::Spreadsheet.open(file.blob.service.path_for(file.key), extension: :xlsx)
+  #     else
+  #                     Roo::Spreadsheet.open(file.download, extension: :xlsx)
+  #     end
 
-      header = spreadsheet.row(1)
-      # Add your processing logic here
-      # For example, you might want to read data from the spreadsheet and save it to your database
+  #     header = spreadsheet.row(1)
+  #     # Add your processing logic here
+  #     # For example, you might want to read data from the spreadsheet and save it to your database
 
-      true # Return true if processing was successful
-    rescue ArgumentError => e
-      errors.add(:file, "could not be processed: #{e.message}")
-      false # Return false if there was an error
-    end
-  end
+  #     true # Return true if processing was successful
+  #   rescue ArgumentError => e
+  #     errors.add(:file, "could not be processed: #{e.message}")
+  #     false # Return false if there was an error
+  #   end
+  # end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_excel_file
