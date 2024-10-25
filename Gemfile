@@ -47,7 +47,6 @@ group :development, :test do
 
   # Setting Rspec to dev
   gem "rspec"
-  #  gem "zip"
 end
 
 group :development do
