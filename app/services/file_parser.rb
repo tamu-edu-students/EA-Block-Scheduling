@@ -29,13 +29,8 @@ class FileParser
       data = []
       xlsx.each_with_index do |row, row_index|
         next if row_index == 0 || row[0].nil?
-        if row[7].nil?
-          start_t = ""
-          end_t = ""
-        else
-          start_t = row[7].split("-")[0].gsub(/[[:space:]]/, "")
-          end_t = row[7].split("-")[1].gsub(/[[:space:]]/, "")
-        end
+        start_t, end_t = get_start_end(row[7])
+
         data << {
           course: row[0],
           syn: row[1],
@@ -51,5 +46,16 @@ class FileParser
     rescue Exception => e
       Result.new(false, [], "Invalid file format")
     end
+  end
+
+  def get_start_end(time)
+    if time.nil?
+      start_t = ""
+      end_t = ""
+    else
+      start_t = time.split("-")[0].gsub(/[[:space:]]/, "")
+      end_t = time.split("-")[1].gsub(/[[:space:]]/, "")
+    end
+    [start_t, end_t]
   end
 end
