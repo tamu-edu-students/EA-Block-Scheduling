@@ -2,8 +2,8 @@
 
 ### 1. Deployed App
 Taiga (project page): https://tree.taiga.io/project/aaronjones05-block-scheduler/wiki/home <br>
+Github Repo: https://github.com/tamu-edu-students/EA-Block-Scheduling <br>
 Deployed App: https://ea-block-scheduler-4fecd886e389.herokuapp.com/generate-schedule<br>
-Team Working Agreements: https://github.com/tamu-edu-students/EA-Block-Scheduling/blob/main/documentation/Team%20Working%20Agreement.md
 
 ### 2. Dates of the Sprint
 25 Oct 2024 to 08 Oct 2024
