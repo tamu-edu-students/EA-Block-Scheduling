@@ -76,4 +76,10 @@ group :development, :test do
   gem "cucumber-rails", require: false
   gem "database_cleaner"
   gem "activestorage", "~> 7.2.1"
+
+# OAuth for authentication
+gem "omniauth"
+gem "omniauth-google-oauth2"
+gem "omniauth-microsoft_graph"
+
 end
