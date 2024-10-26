@@ -55,11 +55,6 @@ group :development do
 end
 
 group :test do
-  gem "capybara"
-  gem "cucumber-rails", require: false
-  gem "database_cleaner"
-  gem "rails-controller-testing"
-  gem "rspec-rails"
   gem "simplecov", require: false
   gem "ZenTest"
   gem "selenium-webdriver"
