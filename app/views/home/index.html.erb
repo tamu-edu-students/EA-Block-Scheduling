@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login System</title>
+  <%= javascript_include_tag 'https://code.jquery.com/jquery-3.6.0.min.js' %>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      flex-grow: 0.1;
+      background-image: url('<%= asset_path "Header.png" %>');
+      background-size: cover;
+      background-position: center;
+      height: 100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      color: white;
+    }
+
+    main {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      margin-top: 20px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .login-btn, .sign-up-btn, .sso-btn {
+      background-color: #361212;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    main p {
+      font-size: 24px;
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      background-color: #361212;
+      text-align: center;
+      padding: 10px 0;
+      width: 100%;
+      position: relative;
+      bottom: 0;
+    }
+
+    footer img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body style="background-image: url('<%= asset_path "LoginBackground.png" %>'); background-size: cover; background-position: center; background-attachment: fixed;">
+  <header>
+    <%= image_tag 'Header.png', alt: 'Header', width: '1920', height: '100' %>
+  </header>
+
+  <main>
+    <p><strong>Howdy! Please log in, sign up, or use SSO to continue.</strong></p>
+    <div class="button-container">
+      <%= link_to 'Login', login_path, class: 'login-btn', id: 'loginButton' %>
+      <%= link_to 'Sign Up', signup_path, class: 'sign-up-btn', id: 'signupButton' %>
+      <%= link_to 'SSO Sign In', sso_login_path, class: 'sso-btn', id: 'ssoButton' %>
+    </div>
+  </main>
+
+  <script>
+    $(document).ready(function() {
+      $("#loginButton").hover(
+        function() {
+          $(this).css("background-color", "maroon");
+        },
+        function() {
+          $(this).css("background-color", "#361212");
+        }
+      );
+
+      $("#signupButton").hover(
+        function() {
+          $(this).css("background-color", "maroon");
+        },
+        function() {
+          $(this).css("background-color", "#361212");
+        }
+      );
+
+      $("#ssoButton").hover(
+        function() {
+          $(this).css("background-color", "maroon");
+        },
+        function() {
+          $(this).css("background-color", "#361212");
+        }
+      );
+    });
+  </script>
+
+  <footer>
+    <%= image_tag 'ComplianceFooter.png', alt: 'Footer Image' %>
+  </footer>
+</body>
+</html>

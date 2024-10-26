@@ -1,3 +1,5 @@
+require_relative "../services/file_parser"
+
 class ExcelFilesController < ApplicationController
   include Rails.application.routes.url_helpers
   before_action :set_excel_file, only: %i[ show edit update destroy ]
@@ -28,12 +30,24 @@ class ExcelFilesController < ApplicationController
       if @excel_file.save
         format.html { redirect_to @excel_file, notice: "Excel file was successfully uploaded and saved." }
         format.json { render :show, status: :created, location: @excel_file }
+        parsing = FileParser.new(@excel_file.file)
+        parsing.parse
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @excel_file.errors, status: :unprocessable_entity }
       end
     end
   end
+
+  def show_excel_data
+    id = params[:id]
+    @excel_file = ExcelFile.find(id)
+    @courses = Course.where(created_at: @excel_file.created_at.strftime("%Y-%m-%d"))
+  end
+
+  # def import_data(xlsx_path)
+  #   parse_excel(xlsx_path)
+  # end
 
   # def create
   #   @excel_file = ExcelFile.new(excel_file_params)
@@ -74,26 +88,26 @@ class ExcelFilesController < ApplicationController
     end
   end
 
-  def process_file
-    return false unless file.attached?
+  # def process_file
+  #   return false unless file.attached?
 
-    begin
-      spreadsheet = if file.blob.attachable?
-                      Roo::Spreadsheet.open(file.blob.service.path_for(file.key), extension: :xlsx)
-      else
-                      Roo::Spreadsheet.open(file.download, extension: :xlsx)
-      end
+  #   begin
+  #     spreadsheet = if file.blob.attachable?
+  #                     Roo::Spreadsheet.open(file.blob.service.path_for(file.key), extension: :xlsx)
+  #     else
+  #                     Roo::Spreadsheet.open(file.download, extension: :xlsx)
+  #     end
 
-      header = spreadsheet.row(1)
-      # Add your processing logic here
-      # For example, you might want to read data from the spreadsheet and save it to your database
+  #     header = spreadsheet.row(1)
+  #     # Add your processing logic here
+  #     # For example, you might want to read data from the spreadsheet and save it to your database
 
-      true # Return true if processing was successful
-    rescue ArgumentError => e
-      errors.add(:file, "could not be processed: #{e.message}")
-      false # Return false if there was an error
-    end
-  end
+  #     true # Return true if processing was successful
+  #   rescue ArgumentError => e
+  #     errors.add(:file, "could not be processed: #{e.message}")
+  #     false # Return false if there was an error
+  #   end
+  # end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_excel_file
