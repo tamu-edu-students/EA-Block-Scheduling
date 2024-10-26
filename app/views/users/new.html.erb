@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('<%= asset_path "LoginBackground.png" %>');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    header {
+      background-image: url('<%= asset_path "Header.png" %>');
+      background-size: cover;
+      background-position: center;
+      width: 100%;
+      height: 100px;
+    }
+
+    .signup-form {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      width: 300px;
+    }
+
+    .signup-form h2 {
+      margin-bottom: 20px;
+    }
+
+    .signup-form input[type="text"],
+    .signup-form input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .signup-form input[type="submit"] {
+      background-color: #361212;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .signup-form input[type="submit"]:hover {
+      background-color: maroon;
+    }
+
+    footer {
+      background-color: #361212;
+      text-align: center;
+      padding: 10px 0;
+      width: 100%;
+      position: relative;
+      bottom: 0;
+    }
+
+    footer img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <%= image_tag 'Header.png', alt: 'Header', width: '100%', height: '100' %>
+  </header>
+
+  <div class="signup-form">
+    <h2>Sign Up</h2>
+    <%= form_with url: signup_path, method: :post, id: 'signupForm' do %>
+      <%= text_field_tag :first_name, nil, placeholder: 'First Name', required: true %>
+      <%= text_field_tag :last_name, nil, placeholder: 'Last Name', required: true %>
+      <%= text_field_tag :net_id, nil, placeholder: 'Net ID', required: true %>
+      <%= text_field_tag :uin, nil, placeholder: 'UIN', required: true %>
+      <%= password_field_tag :password, nil, placeholder: 'Create Password', required: true %>
+      <%= password_field_tag :confirm_password, nil, placeholder: 'Confirm Password', required: true %>
+      <%= submit_tag 'Sign Up' %>
+      <div id="errorMessages" class="error"></div>
+    <% end %>
+  </div>
+
+  <footer>
+    <%= image_tag 'ComplianceFooter.png', alt: 'Footer Image' %>
+  </footer>
+
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', function(event) {
+      // Get form fields
+      var firstName = document.getElementsByName('first_name')[0].value;
+      var lastName = document.getElementsByName('last_name')[0].value;
+      var netId = document.getElementsByName('net_id')[0].value;
+      var uin = document.getElementsByName('uin')[0].value;
+      var password = document.getElementsByName('password')[0].value;
+      var confirmPassword = document.getElementsByName('confirm_password')[0].value;
+
+      // Validate password
+      var errors = [];
+
+      // Check that password and confirm password match
+      if (password !== confirmPassword) {
+        errors.push("Passwords do not match.");
+      }
+
+      // Check length between 8 and 128 characters
+      if (password.length < 8 || password.length > 128) {
+        errors.push("Password must be between 8 and 128 characters.");
+      }
+
+      // Check for at least one uppercase letter
+      if (!/[A-Z]/.test(password)) {
+        errors.push("Password must contain at least one uppercase letter.");
+      }
+
+      // Check for at least one lowercase letter
+      if (!/[a-z]/.test(password)) {
+        errors.push("Password must contain at least one lowercase letter.");
+      }
+
+      // Check for at least one non-alphabetic character (number or special character, including space)
+      if (!/[^A-Za-z]/.test(password)) {
+        errors.push("Password must contain at least one non-alphabetic character (number or special character).");
+      }
+
+      // Check that password does not contain commas or backslashes
+      if (password.includes(',') || password.includes('/')) {
+        errors.push("Password cannot contain commas or backslashes.");
+      }
+
+      // Check that password does not contain NetID or UIN
+      if (password.toLowerCase().includes(netId.toLowerCase()) || password.includes(uin)) {
+        errors.push("Password cannot contain your NetID or UIN.");
+      }
+
+      // Check that password does not contain words connected to Texas A&M culture
+      var forbiddenWords = ["aggie", "whoop", "hullabaloo", "bonfire", "reveille"];
+      var lowerPassword = password.toLowerCase();
+      forbiddenWords.forEach(function(word) {
+        if (lowerPassword.includes(word)) {
+          errors.push("Password cannot contain words connected to Texas A&M culture (e.g., \"" + word + "\").");
+        }
+      });
+
+      // Check that password is not a single dictionary word
+      var commonDictionaryWords = ["password", "qwerty", "abc123", "iloveyou", "monkey", "dragon", "sunshine", "princess", "welcome", "football"];
+      if (/^[A-Za-z]+$/.test(password) && commonDictionaryWords.includes(lowerPassword)) {
+        errors.push("Password cannot be a single dictionary word.");
+      }
+
+      // Display errors if any
+      if (errors.length > 0) {
+        event.preventDefault(); // Prevent form submission
+        document.getElementById('errorMessages').innerHTML = errors.join("<br>");
+      }
+    });
+  </script>
+</body>
+</html>
