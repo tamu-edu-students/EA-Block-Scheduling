@@ -38,6 +38,6 @@ end
 
 group :test do
   gem "simplecov", require: false
-  gem "ZenTest"
   gem "selenium-webdriver"
+  gem "ZenTest"
 end
