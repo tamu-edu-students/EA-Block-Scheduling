@@ -23,9 +23,9 @@ module ApplicationHelper
 
       def get_prerequisite_names(prerequisites)
         return "None" if prerequisites.blank?
-        
-        prerequisites.split(',').map do |prereq|
+
+        prerequisites.split(",").map do |prereq|
           prereq.strip
-        end.uniq.join(', ')
+        end.uniq.join(", ")
       end
 end
