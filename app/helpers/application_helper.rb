@@ -19,4 +19,12 @@ module ApplicationHelper
       def real_attachment_url(attachment)
         # Code to get the actual attachment URL for non-test environments
       end
+
+      def get_prerequisite_names(prerequisites)
+        return "None" if prerequisites.blank?
+        
+        prerequisites.split(',').map do |prereq|
+          prereq.strip
+        end.uniq.join(', ')
+      end
 end

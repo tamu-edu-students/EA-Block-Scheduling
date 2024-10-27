@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Course Selection</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+  <h1>Course Selection</h1>
+  <h2>Completed Courses</h2>
+  <ul id="completed-courses"></ul>
+  <h2>Available Courses</h2>
+  <ul id="available-courses"></ul>
+
+  <%= javascript_tag do %>
+    let completedCourses = [];
+
+    function updateAvailableCourses() {
+      $.ajax({
+        url: '<%= courses_available_path %>',
+        method: 'POST',
+        data: { completed_courses: completedCourses },
+        success: function(response) {
+          $('#available-courses').empty();
+          response.forEach(function(course) {
+            $('#available-courses').append(
+              `<li onclick="addCourse('${course.syn}')">${course.sec_name} - ${course.short_title}</li>`
+            );
+          });
+        }
+      });
+    }
+
+    function addCourse(syn) {
+      completedCourses.push(syn);
+      $('#completed-courses').append(`<li>${syn}</li>`);
+      updateAvailableCourses();
+    }
+
+    $(document).ready(function() {
+      updateAvailableCourses();
+    });
+  <% end %>
+</body>
+</html>

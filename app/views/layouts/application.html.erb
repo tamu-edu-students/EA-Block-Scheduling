@@ -15,9 +15,18 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <!-- TAMU AUX stylesheets -->
+    <link rel="stylesheet" href="https://aux.tamu.edu/v1.7.0/styles/aux-styles.css">
+    <link rel="stylesheet" href="https://aux.tamu.edu/v1.7.0/styles/aux-styles.min.css">
   </head>
 
   <body>
     <%= yield %>
+    <!-- TAMU AUX JavaScript files -->
+    <script src="https://aux.tamu.edu/v1.7.0/js/aux-accordion.js"></script>
+    <script src="https://aux.tamu.edu/v1.7.0/js/aux-in-page-navigation.js"></script>
+    <script src="https://aux.tamu.edu/v1.7.0/js/aux-main-nav.js"></script>
+    <script src="https://aux.tamu.edu/v1.7.0/js/aux-mobile-nav.js"></script>
+    <script src="https://aux.tamu.edu/v1.7.0/js/jquery-3.7.1.min.js"></script>
   </body>
 </html>

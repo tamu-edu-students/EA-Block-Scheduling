@@ -8,3 +8,8 @@
 
   <%= button_to "Destroy this course", @course, method: :delete %>
 </div>
+
+<p>
+  <strong>Prerequisites:</strong>
+  <%= get_prerequisite_names(@course.prerequisites) %>
+</p>
