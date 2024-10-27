@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # showing classes to choose
-  resources :course_classes, only: [:index]
+  resources :course_classes
   resources :schedules, only: [:index, :show]
   # shows all courses
   get "/courses", to: "courses#index"

@@ -22,7 +22,9 @@ class CourseClassesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get edit" do
-    get course_classes_edit_url
+    # Create a course_class instead of using a fixture
+    course_class = CourseClass.create!(name: "Test Class")
+    get edit_course_class_url(course_class)
     assert_response :success
   end
 
