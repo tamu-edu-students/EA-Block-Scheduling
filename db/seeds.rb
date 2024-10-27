@@ -117,3 +117,4 @@ courses.each do |course|
   #     notes: course[:notes]
   # ).first_or_create()
 end
+  
