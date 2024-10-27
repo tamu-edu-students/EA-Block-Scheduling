@@ -18,11 +18,6 @@ Rails.application.routes.draw do
   # Landing page (main page)
   get "/home", to: "home#index", as: "home"
 
-  # showing classes to choose
-  resources :course_classes, only: [:index]
-  resources :schedules, only: [:index, :show]
-  resources :courses
-
   get "upload/courses/:id", to: "excel_files#show_excel_data", as: :courses_by_upload_date
 
   # Sign-up routes
