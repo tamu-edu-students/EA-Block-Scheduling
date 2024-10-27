@@ -88,6 +88,12 @@ RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers
   config.include ActionView::Helpers::UrlHelper
   config.include ActionView::Helpers::AssetTagHelper
+  config.include ActionDispatch::TestProcess
+  config.before(:each, type: :helper) do
+    helper.default_url_options = { host: 'localhost:3000' }
+  end
+  # Set host for URL helpers
+  Rails.application.routes.default_url_options[:host] = 'test.host'
 end
 RSpec.configure do |config|
   # Start Database Cleaner before each test

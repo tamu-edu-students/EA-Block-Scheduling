@@ -16,6 +16,7 @@ gem "turbo-rails"
 gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
@@ -76,4 +77,10 @@ group :development, :test do
   gem "cucumber-rails", require: false
   gem "database_cleaner"
   gem "activestorage", "~> 7.2.1"
+
+# OAuth for authentication
+gem "omniauth"
+gem "omniauth-google-oauth2"
+gem "omniauth-microsoft_graph"
+
 end

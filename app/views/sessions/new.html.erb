@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;  
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh; /* Ensure the body takes the full height of the viewport */
+    }
+
+    header {
+      flex-grow: 0.1;
+      background-image: url('<%= asset_path "Header.png" %>'); 
+      background-size: cover;        
+      background-position: center;     
+      height: 75px;                 
+      display: flex;
+      justify-content: space-between;  
+      align-items: center;             
+      padding: 0 20px;               
+      color: white;                 
+    }
+
+    .login-form {
+      background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      width: 300px;
+      margin: 20px auto; /* Center the form horizontally */
+    }
+
+    .login-form h2 {
+      margin-bottom: 20px;
+    }
+
+    .login-form input[type="text"], 
+    .login-form input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .login-form input[type="submit"] {
+      background-color: #361212;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .login-form input[type="submit"]:hover {
+      background-color: maroon;
+    }
+
+    footer {
+      background-color: #361212;
+      text-align: center;
+      padding: 10px 0;
+      width: 100%;
+      position: relative;
+      bottom: 0;
+    }
+
+    footer img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <%= image_tag 'Header.png', alt: 'Header', width: '100%', height: '100' %>
+  </header>
+
+  <div class="login-form">
+    <h2>Login</h2>
+    <%= form_with url: login_path, method: :post do %>
+      <%= text_field_tag :username, nil, placeholder: 'Username', required: true %>
+      <%= password_field_tag :password, nil, placeholder: 'Password', required: true %>
+      <%= submit_tag 'Submit' %>
+    <% end %>
+  </div>
+
+  <footer>
+    <%= image_tag 'ComplianceFooter.png', alt: 'Footer Image' %>
+  </footer>
+</body>
+</html>
