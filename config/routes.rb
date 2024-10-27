@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
   # showing classes to choose
   resources :course_classes, only: [:index]
   resources :schedules, only: [:index, :show]
@@ -9,8 +8,6 @@ Rails.application.routes.draw do
   get 'courses/selection', to: 'courses#selection'
   # shows available courses
   post 'courses/available', to: 'courses#available'
-=======
->>>>>>> dc529cbd8425c606c637667af89bcef4ec01d329
   get "sessions/new"
   get "sessions/create"
   get "sessions/sso_new"
