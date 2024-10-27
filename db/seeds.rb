@@ -111,8 +111,8 @@ courses = [
 
 
 def find_course_by_name(courses, course_name)
-  courses.find do |c| 
-    c[:sec_name].start_with?(course_name) || 
+  courses.find do |c|
+    c[:sec_name].start_with?(course_name) ||
     c[:sec_name].split('-')[0..1].join('-') == course_name
   end
 end

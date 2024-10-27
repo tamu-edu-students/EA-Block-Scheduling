@@ -49,12 +49,12 @@ class CoursesController < ApplicationController
   def available
     completed_courses = params[:completed_courses] || []
     available_courses = Course.available_courses(completed_courses)
-    render json: available_courses.map { |course| 
-      { 
-        syn: course.syn, 
-        sec_name: course.sec_name, 
-        short_title: course.short_title 
-      } 
+    render json: available_courses.map { |course|
+      {
+        syn: course.syn,
+        sec_name: course.sec_name,
+        short_title: course.short_title
+      }
     }
   end
 
@@ -71,13 +71,13 @@ class CoursesController < ApplicationController
 
     def get_prerequisite_names(sec_coreq_secs)
       return [] if sec_coreq_secs.blank?
-      
-      sec_coreq_secs.split(',').map do |prereq|
+
+      sec_coreq_secs.split(",").map do |prereq|
         if prereq.match?(/^\d+$/) # if it's a syn number
           course = Course.find_by(syn: prereq)
-          course ? course.sec_name.split('-')[0..1].join('-') : prereq
+          course ? course.sec_name.split("-")[0..1].join("-") : prereq
         else
-          prereq.split('-')[0..1].join('-') # if it's already a course name
+          prereq.split("-")[0..1].join("-") # if it's already a course name
         end
       end.uniq
     end

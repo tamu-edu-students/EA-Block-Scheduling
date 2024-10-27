@@ -41,4 +41,3 @@ group :test do
   gem "ZenTest"
   gem "selenium-webdriver"
 end
-

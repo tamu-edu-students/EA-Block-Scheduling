@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   # shows all courses
   get "/courses", to: "courses#index"
   # shows courses to choose from
-  get 'courses/selection', to: 'courses#selection'
+  get "courses/selection", to: "courses#selection"
   # shows available courses
-  post 'courses/available', to: 'courses#available'
+  post "courses/available", to: "courses#available"
   get "sessions/new"
   get "sessions/create"
   get "sessions/sso_new"
@@ -33,28 +33,28 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new", as: "login"
   post "/login", to: "sessions#create"
 
+  get "sessions/sso_new"
+  get "sessions/sso_create"
+
   # For SSO (if applicable)
-<<<<<<< HEAD
-  get '/sso_login', to: 'sessions#sso_new', as: 'sso_login'
-  post '/sso_login', to: 'sessions#sso_create'
+  get "/sso_login", to: "sessions#sso_new", as: "sso_login"
+  post "/sso_login", to: "sessions#sso_create"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
 
   # Courses routes
   resources :courses do
     collection do
-      get 'selection'
-      post 'available'
+      get "selection"
+      post "available"
     end
   end
-=======
   get "/sso_login", to: "sessions#sso_new", as: "sso_login"
   post "/sso_login", to: "sessions#sso_create"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Set the root path
-  root "/"
->>>>>>> dc529cbd8425c606c637667af89bcef4ec01d329
+
 
   # Schedule generation route
   get "generate-schedule", to: "schedules#generate_schedule"
