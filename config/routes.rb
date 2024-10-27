@@ -33,8 +33,6 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new", as: "login"
   post "/login", to: "sessions#create"
 
-  get "sessions/sso_new"
-  get "sessions/sso_create"
 
   # For SSO (if applicable)
   get "/sso_login", to: "sessions#sso_new", as: "sso_login"
@@ -42,15 +40,6 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
 
-  # Courses routes
-  resources :courses do
-    collection do
-      get "selection"
-      post "available"
-    end
-  end
-  get "/sso_login", to: "sessions#sso_new", as: "sso_login"
-  post "/sso_login", to: "sessions#sso_create"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Set the root path
