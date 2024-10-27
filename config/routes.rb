@@ -7,19 +7,19 @@ Rails.application.routes.draw do
   get "users/create"
   get "home/index"
   # Landing page (main page)
-  get '/home', to: 'home#index', as: 'home'
+  get "/home", to: "home#index", as: "home"
 
   # Sign-up routes
-  get '/signup', to: 'users#new', as: 'signup'
-  post '/signup', to: 'users#create'
+  get "/signup", to: "users#new", as: "signup"
+  post "/signup", to: "users#create"
 
   # Login routes
-  get '/login', to: 'sessions#new', as: 'login'
-  post '/login', to: 'sessions#create'
+  get "/login", to: "sessions#new", as: "login"
+  post "/login", to: "sessions#create"
 
   # For SSO (if applicable)
-  get '/sso_login', to: 'sessions#sso_new', as: 'sso_login'
-  post '/sso_login', to: 'sessions#sso_create'
+  get "/sso_login", to: "sessions#sso_new", as: "sso_login"
+  post "/sso_login", to: "sessions#sso_create"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get "generate-schedule", to: "schedules#generate_schedule"
 

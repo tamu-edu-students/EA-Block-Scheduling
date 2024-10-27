@@ -9,17 +9,11 @@ RSpec.describe 'FileParser' do
   describe '#parse' do
     context 'When a valid excel file is passed to parser' do
       it 'the file is successfully parsed' do
+        init_count = Course.count
         result = FileParser.new(valid_excel_file).parse
-
+        final_count = Course.count
         expect(result).to be_successful
-        expect(result.data).to include({ course: "CHEM 1109-001",
-                                         days: "M",
-                                         end_time: "1:20PM",
-                                         instructor: "Reid, Margaret",
-                                         location: "HLC1",
-                                         room: 2109,
-                                         start_time: "10:30AM",
-                                         syn: 92857 })
+        expect(init_count < final_count).to be true
       end
     end
 

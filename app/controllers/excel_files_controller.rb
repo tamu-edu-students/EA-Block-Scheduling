@@ -28,11 +28,11 @@ class ExcelFilesController < ApplicationController
 
     respond_to do |format|
       if @excel_file.save
+        flash[:notice] = "Courses added successfully." if FileParser.new(@excel_file.file).parse.successful?
         format.html { redirect_to @excel_file, notice: "Excel file was successfully uploaded and saved." }
         format.json { render :show, status: :created, location: @excel_file }
-        parsing = FileParser.new(@excel_file.file)
-        parsing.parse
       else
+        flash[:notice] = "Courses not added to database."
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @excel_file.errors, status: :unprocessable_entity }
       end
