@@ -1,21 +1,10 @@
 require 'cucumber/rails'
 
 include Rails.application.routes.url_helpers
-World(Rails.application.routes.url_helpers)
-
-Before do
-  visit new_excel_file_path
-  attach_file("File", Rails.root.join('spec', 'fixtures', 'files', "valid_excel_file_Spring_2025.xlsx"))
-  @e_file = ExcelFile.last
-end
+# World(Rails.application.routes.url_helpers)
 
 Given("I am on the new excel file page") do
   visit new_excel_file_path
-end
-
-Given("I am on the show excel file page") do
-  p "------------------------------------------------#{@e_file}------------------------------------------------"
-  visit excel_file_path(@e_file)
 end
 
 When("I fill in {string} with {string}") do |field, value|
@@ -38,20 +27,21 @@ When('I am redirected to a page for the newly uploaded file') do
   expect(page).to have_current_path(excel_file_path)
 end
 
-When("I click the excel file link") do
-  click_link @e_file.file.filename
+When('I fill in the {string} field with {string}') do |field, value|
+  fill_in field, with: value
 end
 
-Then("I should see the table of added courses") do
-  expect(page).to have_content("CHEM")
+When('I attach the {string} field with {string}') do |field, file|
+  attach_file(field, Rails.root.join('spec', 'fixtures', 'files', file))
 end
 
-When("I click on the newly added excel file name link") do
-  upload_file_id = ExcelFile.last.id
-  file_name = ExcelFile.where(id: upload_file_id).file_name
-  click_link file_name
+When("I click {string} button") do |button|
+  click_button(button)
+  # find("input[type='submit']").click
 end
 
-Then('I should see {string} classes in a table') do |string|
-  pending # Write code here that turns the phrase above into concrete actions
+Then('The active storage db should have a record of the file') do
+  ex_file = ExcelFile.last
+  expect(ex_file.file.attached?).to be_truthy
+  expect(ex_file.file.blob.filename.to_s).to eq("valid_excel_file_Spring_2025.xlsx")
 end

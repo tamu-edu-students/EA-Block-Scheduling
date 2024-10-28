@@ -7,22 +7,26 @@ require_relative "../models/course"
 
 # File parser class. Takes in excel file of college classes to be put in database.
 class FileParser
-  attr_reader :file_name, :term, :file
+  attr_reader :file_name, :term, :file, :as_id
   Result = Struct.new(:successful?, :errors)
 
-  def initialize(file)
-    @file = file
+  def initialize(file, as_id)
+
+    @as_id = as_id
     if file.respond_to?(:blob)
+      @file = file.blob
       @file_name = file.blob.filename.to_s
     else
+      @file = File.read(file)
       @file_name = File.basename(file.path)
     end
     @term = generate_term
   end
 
   def parse
+    @as_id = 1 if @as_id.nil?
     if file.respond_to?(:blob)
-      stream = StringIO.new(@file.blob.download, encoding: "ISO-8859-1")
+      stream = StringIO.new(@file.download, encoding: "ISO-8859-1")
     else
       stream = @file
     end
@@ -34,7 +38,7 @@ class FileParser
         next if row_index == 0 || row[0].to_s.nil?
         start_t, end_t, dept_code, course_id = get_parsed_values(row[0].to_s, row[7].to_s)
         data << { term: t, dept_code: dept_code, course_id: course_id, course: row[0], syn: row[1], instructor: row[2],
-                  location: row[3], room: row[4], days: row[6], start_time: start_t, end_time: end_t }
+                  location: row[3], room: row[4], days: row[6], start_time: start_t, end_time: end_t, as_id: @as_id }
       end
       add_courses(data)
       Result.new(true, nil)

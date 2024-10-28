@@ -10,7 +10,7 @@ RSpec.describe 'FileParser' do
     context 'When a valid excel file is passed to parser' do
       it 'the file is successfully parsed' do
         init_count = Course.count
-        result = FileParser.new(valid_excel_file).parse
+        result = FileParser.new(valid_excel_file, 1).parse
         final_count = Course.count
         expect(result).to be_successful
         expect(init_count < final_count).to be true
@@ -19,7 +19,7 @@ RSpec.describe 'FileParser' do
 
     context 'When the excel file is invalid' do
       it 'returns an error' do
-        result = FileParser.new(invalid_excel_file).parse
+        result = FileParser.new(invalid_excel_file, 1).parse
 
         expect(result).not_to be_successful
         expect(result.errors).to include('Invalid file format')

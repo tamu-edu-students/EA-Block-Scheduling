@@ -15,8 +15,10 @@ Feature: Excel File Upload
     And I click "Create Excel file" on excel page
     Then I should see "Filemust be an Excel file"
 
-  Scenario: Redirect to view courses after upload is parsed
-    Given I am on the show excel file page
-    When I click the excel file link
-    Then I should see the table of added courses
-    And I should see "19" classes in a table
+  Scenario: User uploads an excel file
+    Given I am on the new excel file page
+    When I fill in the "Name" field with "Test Excel File"
+    And I attach the "File" field with "valid_excel_file_Spring_2025.xlsx"
+    And I click "Create Excel file" button
+    Then I should see "Courses added successfully."
+    And The active storage db should have a record of the file

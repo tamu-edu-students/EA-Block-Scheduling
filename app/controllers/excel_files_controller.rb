@@ -25,10 +25,10 @@ class ExcelFilesController < ApplicationController
   # POST /excel_files or /excel_files.json
   def create
     @excel_file = ExcelFile.new(excel_file_params)
+    flash[:notice] = "Courses added successfully." if FileParser.new(@excel_file.file, @excel_file.id).parse.successful?
 
     respond_to do |format|
       if @excel_file.save
-        flash[:notice] = "Courses added successfully." if FileParser.new(@excel_file.file).parse.successful?
         format.html { redirect_to @excel_file, notice: "Excel file was successfully uploaded and saved." }
         format.json { render :show, status: :created, location: @excel_file }
       else

@@ -1,4 +1,6 @@
 class CoursesController < ApplicationController
+  # before_action :authenticate_user!
+  # before_action :admin_only, only: [:upload, :new, :create, :edit, :update, :destroy]
   before_action :set_course, only: %i[ show edit update destroy ]
 
   # GET /courses or /courses.json
@@ -15,6 +17,16 @@ class CoursesController < ApplicationController
   # GET /courses/1/edit
   def edit
     @course = Course.find params[:id]
+  end
+
+  def upload
+    if params[:file].present?
+      uploads = Parser.new(params[:file]).parse
+      flash[:notice] = "Courses imported successfully" if uploads.successful?
+    else
+      flash[:alert] = "Failed to upload courses"
+    end
+    redirect_to courses_path
   end
 
   # POST /courses or /courses.json
@@ -41,13 +53,21 @@ class CoursesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_course
-      @course = Course.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def course_params
-      params.require(:course).permit(:term, :dept_code, :course_id, :sec_coreq_secs, :syn, :sec_name, :short_title, :im, :building, :room, :days, :start_time, :end_time, :fac_id, :faculty_name, :crs_capacity, :sec_cap, :student_count, :notes)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_course
+    @course = Course.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def course_params
+    params.require(:course).permit(:term, :dept_code, :course_id, :sec_coreq_secs, :syn, :sec_name, :short_title, :im, :building, :room, :days, :start_time, :end_time, :fac_id, :faculty_name, :crs_capacity, :sec_cap, :student_count, :notes)
+  end
+
+  # def admin_only
+  #   unless current_user.admin?
+  #     flash[:alert] = "User is not authorized to perform this action."
+  #     redirect_to courses_path
+  #   end
+  # end
 end
