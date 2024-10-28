@@ -9,7 +9,7 @@ class CoursesController < ApplicationController
   # GET /courses/1 or /courses/1.json
   def show
     @course = Course.find(params[:id])
-    @prerequisites = get_prerequisite_names(@course.sec_coreq_secs)
+    @prerequisites = @course.get_prerequisites
   end
 
   # GET /courses/1/edit
