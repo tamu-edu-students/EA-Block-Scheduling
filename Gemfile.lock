@@ -1,7 +1,6 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    ZenTest (4.12.2)
     actioncable (7.2.1.2)
       actionpack (= 7.2.1.2)
       activesupport (= 7.2.1.2)
@@ -442,7 +441,6 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  ZenTest
   activestorage (~> 7.2.1)
   bootsnap
   brakeman (= 6.2.2)
