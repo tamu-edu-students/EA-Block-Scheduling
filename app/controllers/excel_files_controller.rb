@@ -39,32 +39,6 @@ class ExcelFilesController < ApplicationController
     end
   end
 
-  def show_excel_data
-    id = params[:id]
-    @excel_file = ExcelFile.find(id)
-    @courses = Course.where(created_at: @excel_file.created_at.strftime("%Y-%m-%d"))
-  end
-
-  # def import_data(xlsx_path)
-  #   parse_excel(xlsx_path)
-  # end
-
-  # def create
-  #   @excel_file = ExcelFile.new(excel_file_params)
-
-  #   if @excel_file.save
-  #     if @excel_file.process_file
-  #       redirect_to @excel_file, notice: 'Excel file was successfully uploaded and processed.'
-  #     else
-  #       flash.now[:alert] = 'Error processing the file.'
-  #       render :new
-  #     end
-  #   else
-  #     flash.now[:alert] = @excel_file.errors.full_messages.join(', ')
-  #     render :new
-  #   end
-  # end
-
   # PATCH/PUT /excel_files/1 or /excel_files/1.json
   def update
     respond_to do |format|

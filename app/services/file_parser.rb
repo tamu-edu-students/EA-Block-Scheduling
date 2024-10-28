@@ -49,13 +49,8 @@ class FileParser
   end
 
   def get_start_end(time)
-    if time.nil?
-      start_t = ""
-      end_t = ""
-    else
-      start_t = time.split("-")[0].gsub(/[[:space:]]/, "")
-      end_t = time.split("-")[1].gsub(/[[:space:]]/, "")
-    end
+    start_t = time.split("-")[0].gsub(/[[:space:]]/, "") || ""
+    end_t = time.split("-")[1].gsub(/[[:space:]]/, "") || ""
     [start_t, end_t]
   end
 end
