@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  # showing classes to choose
+  resources :course_classes
+  resources :schedules, only: [:index, :show]
+  # shows all courses
+  get "/courses", to: "courses#index"
+  # shows courses to choose from
+  get "courses/selection", to: "courses#selection"
+  # shows available courses
+  post "courses/available", to: "courses#available"
   get "sessions/new"
   get "sessions/create"
   get "sessions/sso_new"
@@ -8,11 +17,6 @@ Rails.application.routes.draw do
   get "home/index"
   # Landing page (main page)
   get "/home", to: "home#index", as: "home"
-
-  # showing classes to choose
-  resources :course_classes, only: [:index]
-  resources :schedules, only: [:index, :show]
-  resources :courses
 
   get "upload/courses/:id", to: "excel_files#show_excel_data", as: :courses_by_upload_date
 
@@ -24,13 +28,17 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new", as: "login"
   post "/login", to: "sessions#create"
 
+
   # For SSO (if applicable)
   get "/sso_login", to: "sessions#sso_new", as: "sso_login"
   post "/sso_login", to: "sessions#sso_create"
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Set the root path
-  root "/"
+
 
   # Schedule generation route
   get "generate-schedule", to: "schedules#generate_schedule"

@@ -1,38 +1,48 @@
 require "test_helper"
 
 class CourseClassesControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
-    get course_classes_index_url
-    assert_response :success
+  setup do
+    @course_class = course_classes(:one)
   end
 
-  test "should get show" do
-    get course_classes_show_url
+  test "should get index" do
+    get course_classes_url
     assert_response :success
   end
 
   test "should get new" do
-    get course_classes_new_url
+    get new_course_class_url
     assert_response :success
   end
 
-  test "should get create" do
-    get course_classes_create_url
+  test "should create course_class" do
+    assert_difference("CourseClass.count") do
+      post course_classes_url, params: { course_class: { name: "New Course Class" } }
+    end
+
+    assert_redirected_to course_class_url(CourseClass.last)
+  end
+
+  test "should show course_class" do
+    get course_class_url(@course_class)
     assert_response :success
   end
 
   test "should get edit" do
-    get course_classes_edit_url
+    get edit_course_class_url(@course_class)
     assert_response :success
   end
 
-  test "should get update" do
-    get course_classes_update_url
-    assert_response :success
+  test "should update course_class" do
+    patch course_class_url(@course_class), params: { course_class: { name: "Updated Course Class" } }
+    assert_redirected_to course_class_url(@course_class)
   end
 
-  test "should get destroy" do
-    get course_classes_destroy_url
-    assert_response :success
+  test "should destroy course_class" do
+    assert_difference("CourseClass.count", -1) do
+      delete course_class_url(@course_class)
+    end
+
+    assert_redirected_to course_classes_url
   end
 end

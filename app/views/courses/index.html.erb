@@ -19,6 +19,7 @@
       <th>End Time</th>
       <th>Faculty Name</th>
       <th>Capacity</th>
+      <th>Prerequisites</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -37,6 +38,9 @@
         <td><%= course.end_time %></td>
         <td><%= course.faculty_name %></td>
         <td><%= course.crs_capacity %></td>
+        <td>
+          <%= get_prerequisite_names(course.prerequisites) %>
+        </td>
         <td>
           <%= link_to "Show", course_path(course) %>
           <%= link_to "Edit", edit_course_path(course) %>

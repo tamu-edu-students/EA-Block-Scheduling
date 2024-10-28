@@ -3,13 +3,13 @@ class CoursesController < ApplicationController
 
   # GET /courses or /courses.json
   def index
-    @courses = Course.all
+    @courses = Course.all.order(:sec_name)
   end
 
   # GET /courses/1 or /courses/1.json
   def show
-    id = params[:id]
-    @course = Course.find(id)
+    @course = Course.find(params[:id])
+    @prerequisites = get_prerequisite_names(@course.sec_coreq_secs)
   end
 
   # GET /courses/1/edit
@@ -40,6 +40,24 @@ class CoursesController < ApplicationController
     redirect_to courses_path
   end
 
+  # GET /courses/selection
+  def selection
+    @courses = Course.all
+  end
+
+  # POST /courses/available
+  def available
+    completed_courses = params[:completed_courses] || []
+    available_courses = Course.available_courses(completed_courses)
+    render json: available_courses.map { |course|
+      {
+        syn: course.syn,
+        sec_name: course.sec_name,
+        short_title: course.short_title
+      }
+    }
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_course
@@ -49,5 +67,18 @@ class CoursesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def course_params
       params.require(:course).permit(:term, :dept_code, :course_id, :sec_coreq_secs, :syn, :sec_name, :short_title, :im, :building, :room, :days, :start_time, :end_time, :fac_id, :faculty_name, :crs_capacity, :sec_cap, :student_count, :notes)
+    end
+
+    def get_prerequisite_names(sec_coreq_secs)
+      return [] if sec_coreq_secs.blank?
+
+      sec_coreq_secs.split(",").map do |prereq|
+        if prereq.match?(/^\d+$/) # if it's a syn number
+          course = Course.find_by(syn: prereq)
+          course ? course.sec_name.split("-")[0..1].join("-") : prereq
+        else
+          prereq.split("-")[0..1].join("-") # if it's already a course name
+        end
+      end.uniq
     end
 end

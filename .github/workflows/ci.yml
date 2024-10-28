@@ -91,3 +91,19 @@ jobs:
           name: screenshots
           path: ${{ github.workspace }}/tmp/screenshots
           if-no-files-found: ignore
+
+      - name: Check database config
+        run: cat config/database.yml
+
+      - name: Check for pending migrations
+        run: bundle exec rails db:migrate:status
+        env:
+          RAILS_ENV: test
+
+      - name: Reset test database
+        run: |
+          bundle exec rails db:drop RAILS_ENV=test
+          bundle exec rails db:create RAILS_ENV=test
+          bundle exec rails db:schema:load RAILS_ENV=test
+        env:
+          RAILS_ENV: test

@@ -1,6 +1,6 @@
 class Block < ApplicationRecord
     has_and_belongs_to_many :course_classes
-  
+
     def generate_block
       puts "Block #{id}:"
       course_classes.each do |course_class|
@@ -8,4 +8,4 @@ class Block < ApplicationRecord
       end
       puts "\n"
     end
-  end
+end
