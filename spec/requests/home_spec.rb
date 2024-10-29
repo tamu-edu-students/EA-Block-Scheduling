@@ -8,4 +8,3 @@ RSpec.describe "Homes", type: :request do
     end
   end
 end
-

@@ -21,4 +21,3 @@ Given("I have the following classes:") do |table|
       expect(course_class.days).to eq(expected[:days])
     end
   end
-
