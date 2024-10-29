@@ -5,8 +5,6 @@ class Course < ApplicationRecord
     allow_blank: true
   }
 
-  belongs_to :course_class, foreign_key: "course", primary_key: "course"
-
   def prerequisite_courses
     return [] if prerequisites.blank?
     Course.where(course: prerequisites.split(",").map(&:strip))
@@ -14,5 +12,11 @@ class Course < ApplicationRecord
 
   def prerequisites_met?(completed_courses)
     prerequisite_courses.all? { |prereq| completed_courses.include?(prereq.course) }
+  end
+
+  def get_prerequisites
+    return [] if prerequisites.blank?
+
+    prerequisites.split(",").map(&:strip)
   end
 end

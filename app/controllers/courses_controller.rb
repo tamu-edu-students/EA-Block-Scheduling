@@ -4,18 +4,11 @@ class CoursesController < ApplicationController
   # GET /courses or /courses.json
   def index
     @courses = Course.all.order(:sec_name)
-    @courses = Course.all.order(:sec_name)
   end
 
   # GET /courses/1 or /courses/1.json
   def show
-    @course = Course.find(params[:id])
     @prerequisites = @course.get_prerequisites
-  end
-
-  # GET /courses/1/edit
-  def edit
-    @course = Course.find params[:id]
   end
 
   # POST /courses or /courses.json
@@ -23,40 +16,27 @@ class CoursesController < ApplicationController
     @course = Course.create!(course_params)
     flash[:notice] = "#{@course.short_title} was successfully created."
     redirect_to courses_path
+  rescue ActiveRecord::RecordInvalid => e
+    flash[:alert] = e.message
+    render :new, status: :unprocessable_entity
   end
 
   # PATCH/PUT /courses/1 or /courses/1.json
   def update
-    @course = Course.find params[:id]
+    # Remove redundant find since we have before_action
     @course.update!(course_params)
     flash[:notice] = "#{@course.short_title} was successfully updated."
     redirect_to course_path(@course)
+  rescue ActiveRecord::RecordInvalid => e
+    flash[:alert] = e.message
+    render :edit, status: :unprocessable_entity
   end
 
   # DELETE /courses/1 or /courses/1.json
   def destroy
-    @course = Course.find(params[:id])
     @course.destroy
     flash[:notice] = "#{@course.short_title} was successfully deleted."
     redirect_to courses_path
-  end
-
-  # GET /courses/selection
-  def selection
-    @courses = Course.all
-  end
-
-  # POST /courses/available
-  def available
-    completed_courses = params[:completed_courses] || []
-    available_courses = Course.available_courses(completed_courses)
-    render json: available_courses.map { |course|
-      {
-        syn: course.syn,
-        sec_name: course.sec_name,
-        short_title: course.short_title
-      }
-    }
   end
 
   private
