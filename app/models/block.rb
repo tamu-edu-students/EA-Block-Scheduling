@@ -3,8 +3,8 @@ class Block < ApplicationRecord
 
     def generate_block
       puts "Block #{id}:"
-      course_classes.each do |course_class|
-        puts "#{course_class.course}: #{course_class.start_time.strftime('%I:%M %p')} - #{course_class.end_time.strftime('%I:%M %p')} on #{course_class.days.join(', ')}"
+      course.each do |course|
+        puts "#{course.course}: #{course.start_time.strftime('%I:%M %p')} - #{course.end_time.strftime('%I:%M %p')} on #{course.days.join(', ')}"
       end
       puts "\n"
     end
