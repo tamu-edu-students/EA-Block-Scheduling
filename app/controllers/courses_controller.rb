@@ -4,6 +4,7 @@ class CoursesController < ApplicationController
   # GET /courses or /courses.json
   def index
     @courses = Course.all.order(:sec_name)
+    @courses = Course.all.order(:sec_name)
   end
 
   # GET /courses/1 or /courses/1.json
@@ -38,6 +39,24 @@ class CoursesController < ApplicationController
     @course.destroy
     flash[:notice] = "#{@course.short_title} was successfully deleted."
     redirect_to courses_path
+  end
+
+  # GET /courses/selection
+  def selection
+    @courses = Course.all
+  end
+
+  # POST /courses/available
+  def available
+    completed_courses = params[:completed_courses] || []
+    available_courses = Course.available_courses(completed_courses)
+    render json: available_courses.map { |course|
+      {
+        syn: course.syn,
+        sec_name: course.sec_name,
+        short_title: course.short_title
+      }
+    }
   end
 
   # GET /courses/selection
