@@ -16,12 +16,12 @@ class ExcelFile < ApplicationRecord
         Roo::Spreadsheet.open(file.download, extension: :xlsx)
       end
 
-      header = spreadsheet.row(1)
-      (2..spreadsheet.last_row).each do |i|
-        row = Hash[[header, spreadsheet.row(i)].transpose]
-        # Process each row here
-        # puts row.inspect  # For demonstration; replace with actual processing logic
-      end
+      # header = spreadsheet.row(1)
+      # (2..spreadsheet.last_row).each do |i|
+      #   row = Hash[[header, spreadsheet.row(i)].transpose]
+      #   # Process each row here
+      #   # puts row.inspect  # For demonstration; replace with actual processing logic
+      # end
     rescue IOError => e
       Rails.logger.error "Error processing file: #{e.message}"
       false
