@@ -42,9 +42,9 @@
           <%= get_prerequisite_names(course.prerequisites) %>
         </td>
         <td>
-          <%= link_to "Show", course_path(course) %>
-          <%= link_to "Edit", edit_course_path(course) %>
-          <%= link_to "Delete", course_path(course), 
+          <%= link_to "Show", course_class_path(course) %>
+          <%= link_to "Edit", edit_course_class_path(course) %>
+          <%= link_to "Delete", course_class_path(course), 
               data: { 
                 turbo_method: :delete,
                 turbo_confirm: "Are you sure?"

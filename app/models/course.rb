@@ -5,7 +5,7 @@ class Course < ApplicationRecord
     allow_blank: true
   }
 
-  belongs_to :course_class, foreign_key: 'course', primary_key: 'course'
+  belongs_to :course_class, foreign_key: "course", primary_key: "course"
 
   def prerequisite_courses
     return [] if prerequisites.blank?
