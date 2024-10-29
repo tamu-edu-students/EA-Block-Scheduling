@@ -15,3 +15,4 @@ RSpec.describe "Authentications", type: :request do
     end
   end
 end
+
