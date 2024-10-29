@@ -19,6 +19,8 @@
       <th>End Time</th>
       <th>Faculty Name</th>
       <th>Capacity</th>
+      <th>Prerequisites</th>
+      <th>Prerequisites</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -38,9 +40,16 @@
         <td><%= course.faculty_name %></td>
         <td><%= course.crs_capacity %></td>
         <td>
-          <%= link_to "Show", course_path(course) %>
-          <%= link_to "Edit", edit_course_path(course) %>
-          <%= link_to "Delete", course_path(course), method: :delete, data: { confirm: "Are you sure?" } %>
+          <%= get_prerequisite_names(course.prerequisites) %>
+        </td>
+        <td>
+          <%= link_to "Show", course_class_path(course) %>
+          <%= link_to "Edit", edit_course_class_path(course) %>
+          <%= link_to "Delete", course_class_path(course), 
+              data: { 
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+              } %>
         </td>
       </tr>
     <% end %>
