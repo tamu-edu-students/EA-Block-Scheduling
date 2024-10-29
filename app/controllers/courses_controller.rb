@@ -72,13 +72,27 @@ class CoursesController < ApplicationController
     def get_prerequisite_names(sec_coreq_secs)
       return [] if sec_coreq_secs.blank?
 
-      sec_coreq_secs.split(",").map do |prereq|
-        if prereq.match?(/^\d+$/) # if it's a syn number
-          course = Course.find_by(syn: prereq)
-          course ? course.sec_name.split("-")[0..1].join("-") : prereq
-        else
-          prereq.split("-")[0..1].join("-") # if it's already a course name
-        end
-      end.uniq
+      sec_coreq_secs.split(",").map { |prereq| process_prerequisite(prereq) }.uniq
+    end
+
+    def process_prerequisite(prereq)
+      if syn_number?(prereq)
+        find_course_name(prereq) || prereq
+      else
+        format_course_name(prereq)
+      end
+    end
+
+    def syn_number?(prereq)
+      prereq.match?(/^\d+$/)
+    end
+
+    def find_course_name(prereq)
+      course = Course.find_by(syn: prereq)
+      course&.sec_name&.split("-")&.first(2)&.join("-")
+    end
+
+    def format_course_name(prereq)
+      prereq.split("-").first(2).join("-")
     end
 end

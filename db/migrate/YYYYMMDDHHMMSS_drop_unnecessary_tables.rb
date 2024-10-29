@@ -7,4 +7,4 @@ class DropUnnecessaryTables < ActiveRecord::Migration[7.2]
   def down
     raise ActiveRecord::IrreversibleMigration
   end
-end 
+end
