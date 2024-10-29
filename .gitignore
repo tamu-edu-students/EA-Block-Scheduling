@@ -34,3 +34,7 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 /coverage
+
+# Ignore test sqlite3 database
+/db/test.sqlite3
+/db/test.sqlite3-*
