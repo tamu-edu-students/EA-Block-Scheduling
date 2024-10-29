@@ -59,24 +59,6 @@ class CoursesController < ApplicationController
     }
   end
 
-  # GET /courses/selection
-  def selection
-    @courses = Course.all
-  end
-
-  # POST /courses/available
-  def available
-    completed_courses = params[:completed_courses] || []
-    available_courses = Course.available_courses(completed_courses)
-    render json: available_courses.map { |course|
-      {
-        syn: course.syn,
-        sec_name: course.sec_name,
-        short_title: course.short_title
-      }
-    }
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_course
