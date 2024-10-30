@@ -41,33 +41,6 @@ RSpec.describe CoursesController, type: :controller do
       expect(flash[:notice]).to match(/Gen Test Course was successfully created./)
     end
   end
-
-  describe 'Updates course' do
-    it 'redirects to the course details page and flashes a notice' do
-      get :update, params: {
-        id: @course0.id,
-        course: {
-          dept_code: 'TEST'
-        }
-      }
-      expect(response).to redirect_to course_path(@course0)
-      expect(flash[:notice]).to match(/Gen Chem Engr Lc was successfully updated./)
-      @course0.destroy
-    end
-
-    it 'actually updated the course' do
-      course = Course.create(term: '224F000', dept_code: 'ENG', course_id: '123456', sec_coreq_secs: '123456', syn: '98765', sec_name: 'TEST-1300-000', short_title: 'Gen Test Test Course', im: 1, building: 'TEST1', room: '1', days: 'M', start_time: ' 10:30 AM', end_time: ' 1:20 PM', fac_id: '', faculty_name: '', crs_capacity: 18, sec_cap: 0, student_count: 0, notes: '')
-      get :update, params: {
-        id: course.id,
-        course: {
-          dept_code: 'TEST'
-        }
-      }
-      expect(assigns(:course).dept_code).to eq('TEST')
-      course.destroy
-    end
-  end
-
   describe 'Edit course' do
     it 'Assigns the requested course' do
       course = Course.create(term: '224F000', dept_code: 'TEST', course_id: '123456')

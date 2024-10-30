@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  # showing classes to choose
+  resources :course_classes
+  resources :schedules, only: [:index, :show]
+  # shows all courses
+  get "/courses", to: "courses#index"
+  # shows courses to choose from
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
