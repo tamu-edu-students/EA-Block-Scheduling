@@ -31,8 +31,8 @@ RSpec.describe CoursesController, type: :controller do
 
   describe "POST #create" do
     context "with valid parameters" do
-      let(:valid_params) { 
-        { course: attributes_for(:course) } 
+      let(:valid_params) {
+        { course: attributes_for(:course) }
       }
 
       it "creates a new course" do
@@ -49,8 +49,8 @@ RSpec.describe CoursesController, type: :controller do
     end
 
     context "with invalid parameters" do
-      let(:invalid_params) { 
-        { course: attributes_for(:course, sec_name: '', short_title: '') } 
+      let(:invalid_params) {
+        { course: attributes_for(:course, sec_name: '', short_title: '') }
       }
 
       it "does not create a new course" do
@@ -72,8 +72,8 @@ RSpec.describe CoursesController, type: :controller do
     let(:course) { create(:course) }
 
     context "with valid parameters" do
-      let(:new_attributes) { 
-        { short_title: 'Updated Title' } 
+      let(:new_attributes) {
+        { short_title: 'Updated Title' }
       }
 
       it "updates the course" do
@@ -90,8 +90,8 @@ RSpec.describe CoursesController, type: :controller do
     end
 
     context "with invalid parameters" do
-      let(:invalid_attributes) { 
-        { sec_name: '', short_title: '' } 
+      let(:invalid_attributes) {
+        { sec_name: '', short_title: '' }
       }
 
       it "returns unprocessable entity status and renders edit" do

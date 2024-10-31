@@ -9,4 +9,4 @@ FactoryBot.define do
     end_time { '10:20 AM' }
     prerequisites { 'MATH-2412' }
   end
-end 
+end

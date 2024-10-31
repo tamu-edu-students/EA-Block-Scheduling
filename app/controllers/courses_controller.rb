@@ -5,28 +5,28 @@ class CoursesController < ApplicationController
   def index
     @courses = Course.all.order(:sec_name)
     @prerequisites = {}
-    
+
     @courses.each do |course|
       if course.prerequisites.present?
-        @prerequisites[course.sec_name] = course.prerequisites.split(', ').map(&:strip)
+        @prerequisites[course.sec_name] = course.prerequisites.split(", ").map(&:strip)
       end
     end
   end
 
   # GET /courses/1 or /courses/1.json
   def show
-    @prerequisites = @course.prerequisites&.split(', ')&.map(&:strip)
+    @prerequisites = @course.prerequisites&.split(", ")&.map(&:strip)
   end
 
   # POST /courses or /courses.json
   def create
     @course = Course.new(course_params)
-    
+
     if @course.save
       flash[:notice] = "#{@course.short_title} was successfully created."
       redirect_to courses_path
     else
-      flash.now[:alert] = @course.errors.full_messages.join(', ')
+      flash.now[:alert] = @course.errors.full_messages.join(", ")
       render :new, status: :unprocessable_entity
     end
   end
@@ -37,7 +37,7 @@ class CoursesController < ApplicationController
       flash[:notice] = "#{@course.short_title} was successfully updated."
       redirect_to course_path(@course)
     else
-      flash.now[:alert] = @course.errors.full_messages.join(', ')
+      flash.now[:alert] = @course.errors.full_messages.join(", ")
       render :edit, status: :unprocessable_entity
     end
   end
@@ -63,24 +63,24 @@ class CoursesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def course_params
       params.require(:course).permit(
-        :term, 
-        :dept_code, 
-        :course_id, 
-        :sec_coreq_secs, 
-        :syn, 
-        :sec_name, 
-        :short_title, 
-        :im, 
-        :building, 
-        :room, 
-        :days, 
-        :start_time, 
-        :end_time, 
-        :fac_id, 
-        :faculty_name, 
-        :crs_capacity, 
-        :sec_cap, 
-        :student_count, 
+        :term,
+        :dept_code,
+        :course_id,
+        :sec_coreq_secs,
+        :syn,
+        :sec_name,
+        :short_title,
+        :im,
+        :building,
+        :room,
+        :days,
+        :start_time,
+        :end_time,
+        :fac_id,
+        :faculty_name,
+        :crs_capacity,
+        :sec_cap,
+        :student_count,
         :notes,
         :prerequisites
       )
