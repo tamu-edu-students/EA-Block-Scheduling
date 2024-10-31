@@ -20,7 +20,7 @@ end
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
-# Prevent database truncation if the environment is production
+# Prevent database truncation if the environment is running in production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 # Uncomment the line below in case you have `--require rails_helper` in the `.rspec` file
 # that will avoid rails generators crashing because migrations haven't been run yet
@@ -57,6 +57,7 @@ RSpec.configure do |config|
   config.fixture_paths = [
     Rails.root.join('spec/fixtures')
   ]
+  config.include FactoryBot::Syntax::Methods
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -94,6 +95,8 @@ RSpec.configure do |config|
   end
   # Set host for URL helpers
   Rails.application.routes.default_url_options[:host] = 'test.host'
+  # Include Factory Bot syntax methods
+  config.include FactoryBot::Syntax::Methods
 end
 RSpec.configure do |config|
   # Start Database Cleaner before each test

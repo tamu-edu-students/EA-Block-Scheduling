@@ -23,6 +23,9 @@
   </head>
 
   <body>
+    <% flash.each do |name, msg| %>
+      <div class="<%= name %>"><%= msg %></div>
+    <% end %>
     <%= yield %>
     <!-- TAMU AUX JavaScript files -->
     <script src="https://aux.tamu.edu/v1.7.0/js/aux-accordion.js"></script>

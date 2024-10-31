@@ -4,39 +4,54 @@ class CoursesController < ApplicationController
   # GET /courses or /courses.json
   def index
     @courses = Course.all.order(:sec_name)
+    @prerequisites = {}
+    
+    @courses.each do |course|
+      if course.prerequisites.present?
+        @prerequisites[course.sec_name] = course.prerequisites.split(', ').map(&:strip)
+      end
+    end
   end
 
   # GET /courses/1 or /courses/1.json
   def show
-    @prerequisites = @course.get_prerequisites
+    @prerequisites = @course.prerequisites&.split(', ')&.map(&:strip)
   end
 
   # POST /courses or /courses.json
   def create
-    @course = Course.create!(course_params)
-    flash[:notice] = "#{@course.short_title} was successfully created."
-    redirect_to courses_path
-  rescue ActiveRecord::RecordInvalid => e
-    flash[:alert] = e.message
-    render :new, status: :unprocessable_entity
+    @course = Course.new(course_params)
+    
+    if @course.save
+      flash[:notice] = "#{@course.short_title} was successfully created."
+      redirect_to courses_path
+    else
+      flash.now[:alert] = @course.errors.full_messages.join(', ')
+      render :new, status: :unprocessable_entity
+    end
   end
 
   # PATCH/PUT /courses/1 or /courses/1.json
   def update
-    # Remove redundant find since we have before_action
-    @course.update!(course_params)
-    flash[:notice] = "#{@course.short_title} was successfully updated."
-    redirect_to course_path(@course)
-  rescue ActiveRecord::RecordInvalid => e
-    flash[:alert] = e.message
-    render :edit, status: :unprocessable_entity
+    if @course.update(course_params)
+      flash[:notice] = "#{@course.short_title} was successfully updated."
+      redirect_to course_path(@course)
+    else
+      flash.now[:alert] = @course.errors.full_messages.join(', ')
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   # DELETE /courses/1 or /courses/1.json
   def destroy
+    @course = Course.find(params[:id])
     @course.destroy
-    flash[:notice] = "#{@course.short_title} was successfully deleted."
+    flash[:notice] = "Course was successfully deleted"
     redirect_to courses_path
+  end
+
+  def new
+    @course = Course.new
   end
 
   private
@@ -47,33 +62,27 @@ class CoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def course_params
-      params.require(:course).permit(:term, :dept_code, :course_id, :sec_coreq_secs, :syn, :sec_name, :short_title, :im, :building, :room, :days, :start_time, :end_time, :fac_id, :faculty_name, :crs_capacity, :sec_cap, :student_count, :notes)
-    end
-
-    def get_prerequisite_names(sec_coreq_secs)
-      return [] if sec_coreq_secs.blank?
-
-      sec_coreq_secs.split(",").map { |prereq| process_prerequisite(prereq) }.uniq
-    end
-
-    def process_prerequisite(prereq)
-      if syn_number?(prereq)
-        find_course_name(prereq) || prereq
-      else
-        format_course_name(prereq)
-      end
-    end
-
-    def syn_number?(prereq)
-      prereq.match?(/^\d+$/)
-    end
-
-    def find_course_name(prereq)
-      course = Course.find_by(syn: prereq)
-      course&.sec_name&.split("-")&.first(2)&.join("-")
-    end
-
-    def format_course_name(prereq)
-      prereq.split("-").first(2).join("-")
+      params.require(:course).permit(
+        :term, 
+        :dept_code, 
+        :course_id, 
+        :sec_coreq_secs, 
+        :syn, 
+        :sec_name, 
+        :short_title, 
+        :im, 
+        :building, 
+        :room, 
+        :days, 
+        :start_time, 
+        :end_time, 
+        :fac_id, 
+        :faculty_name, 
+        :crs_capacity, 
+        :sec_cap, 
+        :student_count, 
+        :notes,
+        :prerequisites
+      )
     end
 end

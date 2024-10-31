@@ -1,25 +1,19 @@
-<p style="color: green"><%= notice %></p>
+<h1>COURSES</h1>
 
-<% content_for :title, "Courses" %>
-
-<h1>Courses</h1>
+<%= link_to "New Course", new_course_path, class: "new-course-button" %>
 
 <table>
   <thead>
     <tr>
       <th>Term</th>
-      <th>Dept Code</th>
-      <th>Course ID</th>
+      <th>Department</th>
       <th>Section Name</th>
-      <th>Short Title</th>
+      <th>Title</th>
+      <th>Days</th>
+      <th>Time</th>
       <th>Building</th>
       <th>Room</th>
-      <th>Days</th>
-      <th>Start Time</th>
-      <th>End Time</th>
-      <th>Faculty Name</th>
       <th>Capacity</th>
-      <th>Prerequisites</th>
       <th>Prerequisites</th>
       <th>Actions</th>
     </tr>
@@ -29,31 +23,22 @@
       <tr>
         <td><%= course.term %></td>
         <td><%= course.dept_code %></td>
-        <td><%= course.course_id %></td>
         <td><%= course.sec_name %></td>
         <td><%= course.short_title %></td>
+        <td><%= course.days %></td>
+        <td><%= "#{course.start_time} - #{course.end_time}" %></td>
         <td><%= course.building %></td>
         <td><%= course.room %></td>
-        <td><%= course.days %></td>
-        <td><%= course.start_time %></td>
-        <td><%= course.end_time %></td>
-        <td><%= course.faculty_name %></td>
         <td><%= course.crs_capacity %></td>
+        <td><%= course.prerequisites %></td>
         <td>
-          <%= get_prerequisite_names(course.prerequisites) %>
-        </td>
-        <td>
-          <%= link_to "Show", course_class_path(course) %>
-          <%= link_to "Edit", edit_course_class_path(course) %>
-          <%= link_to "Delete", course_class_path(course), 
-              data: { 
-                turbo_method: :delete,
-                turbo_confirm: "Are you sure?"
-              } %>
+          <%= link_to "Show", course_path(course), class: "show-button" %>
+          <%= link_to "Edit", edit_course_path(course), class: "edit-button" %>
+          <%= link_to "Delete", course_path(course), 
+              data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+              class: "delete-button" %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= link_to "New course", new_course_path %>

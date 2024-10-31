@@ -1,73 +1,121 @@
 require 'rails_helper'
 
 RSpec.describe CoursesController, type: :controller do
-  before(:all) do
-    Course.destroy_all
+  describe "GET #index" do
+    it "returns a successful response" do
+      get :index
+      expect(response).to be_successful
+    end
 
-    @course0 = Course.create(term: '224F000', dept_code: 'CHEM', course_id: '517302', sec_coreq_secs: '517302', syn: '93061', sec_name: 'CHEM-1309-001', short_title: 'Gen Chem Engr Lc', im: 1, building: 'HLC1', room: '2101', days: 'MW', start_time: '9:00 AM', end_time: '10:20 AM', fac_id: '', faculty_name: '', crs_capacity: 36, sec_cap: 0, student_count: 0, notes: '')
-    @course1 = Course.create(term: '224F000', dept_code: 'CHEM', course_id: '517302', sec_coreq_secs: '517519', syn: '92850', sec_name: 'CHEM-1109-005', short_title: 'Gen Chem Engr Lb', im: 2, building: 'HLC1', room: '2109.00', days: 'M', start_time: ' 10:30 AM', end_time: ' 1:20 PM', fac_id: '', faculty_name: '', crs_capacity: 18, sec_cap: 0, student_count: 0, notes: '')
-    @course2 = Course.create(term: '224F000', dept_code: 'CHEM', course_id: '517301', sec_coreq_secs: '517519', syn: '66857', sec_name: 'CHEM-1109-006', short_title: 'Gen Chem Engr Lb', im: 2, building: 'HLC1', room: '2109.00', days: 'W', start_time: ' 10:30 AM', end_time: ' 1:20 PM', fac_id: '', faculty_name: '', crs_capacity: 18, sec_cap: 0, student_count: 0, notes: '')
-  end
-
-  describe 'See all courses' do
-    it 'fetches all courses' do
-      get :index, params: {}
-      expect(assigns(:courses)).to include(@course0, @course1, @course2)
+    it "assigns @courses and @prerequisites" do
+      course = create(:course)
+      get :index
+      expect(assigns(:courses)).to eq([course])
+      expect(assigns(:prerequisites)).to include(course.sec_name => ['MATH-2412'])
     end
   end
 
-  describe 'Create course' do
-    it 'course with valid parameters' do
-      get :create, params: { course: { term: '224F000',
-                                       dept_code: 'TEST',
-                                       course_id: '123456',
-                                       sec_coreq_secs: '123456',
-                                       syn: '98765',
-                                       sec_name: 'TEST-1301-001',
-                                       short_title: 'Gen Test Course',
-                                       im: 1,
-                                       building: 'HLC1',
-                                       room: '2000',
-                                       days: 'MWF',
-                                       start_time: '9:00 AM',
-                                       end_time: '10:20 AM',
-                                       fac_id: '',
-                                       faculty_name: '',
-                                       crs_capacity: 36,
-                                       sec_cap: 0,
-                                       student_count: 0,
-                                       notes: '' } }
-      expect(response).to redirect_to courses_path
-      expect(flash[:notice]).to match(/Gen Test Course was successfully created./)
-    end
-  end
-  describe 'Edit course' do
-    it 'Assigns the requested course' do
-      course = Course.create(term: '224F000', dept_code: 'TEST', course_id: '123456')
-      get :edit, params: { id: course.id }
-      expect(assigns(:course)).to eq course
-    end
-  end
+  describe "GET #show" do
+    let(:course) { create(:course) }
 
-  describe 'Show course' do
-    it 'assigns the requested course as @course0' do
-      course = Course.create! term: '224F000', dept_code: 'TEST', course_id: '123456'
+    it "returns a successful response" do
       get :show, params: { id: course.id }
-      expect(assigns(:course)).to eq course
+      expect(response).to be_successful
+    end
+
+    it "assigns @prerequisites correctly" do
+      get :show, params: { id: course.id }
+      expect(assigns(:prerequisites)).to eq(['MATH-2412'])
     end
   end
 
-  describe 'Destroy course' do
-    it 'destroys the course' do
-      Course.destroy(@course0.id)
-      courses = Course.all
-      expect(courses).to include(@course1, @course2)
+  describe "POST #create" do
+    context "with valid parameters" do
+      let(:valid_params) { 
+        { course: attributes_for(:course) } 
+      }
+
+      it "creates a new course" do
+        expect {
+          post :create, params: valid_params
+        }.to change(Course, :count).by(1)
+      end
+
+      it "redirects to courses path with success message" do
+        post :create, params: valid_params
+        expect(response).to redirect_to(courses_path)
+        expect(flash[:notice]).to match(/successfully created/)
+      end
     end
 
-    it 'redirects to the courses list' do
-      course = Course.create!(term: '224F000', dept_code: 'TEST', course_id: '123456')
+    context "with invalid parameters" do
+      let(:invalid_params) { 
+        { course: attributes_for(:course, sec_name: '', short_title: '') } 
+      }
+
+      it "does not create a new course" do
+        expect {
+          post :create, params: invalid_params
+        }.not_to change(Course, :count)
+      end
+
+      it "returns unprocessable entity status and renders new" do
+        post :create, params: invalid_params
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to render_template(:new)
+        expect(flash[:alert]).to be_present
+      end
+    end
+  end
+
+  describe "PATCH #update" do
+    let(:course) { create(:course) }
+
+    context "with valid parameters" do
+      let(:new_attributes) { 
+        { short_title: 'Updated Title' } 
+      }
+
+      it "updates the course" do
+        patch :update, params: { id: course.id, course: new_attributes }
+        course.reload
+        expect(course.short_title).to eq('Updated Title')
+      end
+
+      it "redirects with success message" do
+        patch :update, params: { id: course.id, course: new_attributes }
+        expect(response).to redirect_to(course_path(course))
+        expect(flash[:notice]).to match(/successfully updated/)
+      end
+    end
+
+    context "with invalid parameters" do
+      let(:invalid_attributes) { 
+        { sec_name: '', short_title: '' } 
+      }
+
+      it "returns unprocessable entity status and renders edit" do
+        patch :update, params: { id: course.id, course: invalid_attributes }
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to render_template(:edit)
+        expect(flash[:alert]).to be_present
+      end
+    end
+  end
+
+  describe "DELETE #destroy" do
+    let!(:course) { create(:course) }
+
+    it "destroys the course" do
+      expect {
+        delete :destroy, params: { id: course.id }
+      }.to change(Course, :count).by(-1)
+    end
+
+    it "redirects with success message" do
       delete :destroy, params: { id: course.id }
-      expect(response).to redirect_to courses_path
+      expect(response).to redirect_to(courses_path)
+      expect(flash[:notice]).to match(/successfully deleted/)
     end
   end
 end
