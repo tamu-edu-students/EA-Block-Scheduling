@@ -13,3 +13,70 @@
  *= require_tree .
  *= require_self
  */
+ body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures the body takes at least the full viewport height */
+    margin: 0; /* Removes default margin */
+}
+
+header{
+    background-color: maroon; /* Maroon background color */
+    padding: 5px; /* Add some padding to the header/footer */
+}
+
+footer{
+    background-color: maroon; /* Maroon background color */
+    padding: 20px; /* Add some padding to the header/footer */
+    margin-top: auto;
+}
+
+.header-image {
+    display: block; /* Ensure images behave like block elements */
+    margin: 0; /* Reset margin */
+    max-width: 50px; /* Ensure images are responsive */
+}
+
+.footer-image{
+    display: block; /* Ensure images behave like block elements */
+    margin: 0; /* Reset margin */
+    max-width: 100px; /* Ensure images are responsive */
+}
+
+.header {
+    text-align: left; /* Align header content to the left */
+}
+
+.footer {
+    text-align: left; /* Align footer content to the left */
+    margin-top: auto;
+}
+
+  /* Styles for the maroon line */
+.maroon-line {
+    background-color: maroon; /* Set background color to maroon */
+    height: 5px; /* Height of the line */
+    width: 100%; /* Full width of the container */
+  }
+  
+  .header-logout {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background-color: #f0f0f0;
+}
+
+.logout-link {
+    font-size: 16px;
+    color: #090101; /* TAMU maroon color */
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.logout-link:hover {
+    background-color: #f0f0f0;
+    color: #080101;
+}
+
+  

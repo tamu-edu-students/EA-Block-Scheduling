@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title><%= content_for(:title) || "Ea Block Scheduling" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -15,9 +15,28 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-  </head>
+</head>
 
-  <body>
+<body>
+
+    <!-- Header -->
+    <header>
+        <%= image_tag 'TAMU Logo Header.png', alt: 'Header Image', class: 'header-image' %>
+        
+        <!-- Logout Link -->
+        <div class="header-logout">
+            <%= link_to "Logout", logout_path, method: :get, class: 'logout-link' %>
+        </div>
+    </header>
+
+    <%= render partial: 'shared/display_flash' if not flash.empty? %>
     <%= yield %>
-  </body>
+
+    <!-- Maroon line at the bottom -->
+
+    <!-- Footer -->
+    <footer>
+        <%= image_tag 'TAMU Logo Footer.png', alt: 'Footer Image', class: 'footer-image' %>
+    </footer>
+</body>
 </html>
