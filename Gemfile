@@ -31,6 +31,8 @@ group :test do
   gem "ZenTest"
 end
 
+gem "dotenv-rails", groups: [:development, :test]
+
 group :development, :test do
   gem "activestorage", "~> 7.2.1"
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
