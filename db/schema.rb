@@ -44,15 +44,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_25_061137) do
     t.integer "class_id", null: false
   end
 
-  create_table "course_classes", force: :cascade do |t|
-    t.string "course"
-    t.time "start_time"
-    t.time "end_time"
-    t.string "days"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "courses", force: :cascade do |t|
     t.string "term"
     t.text "dept_code"
