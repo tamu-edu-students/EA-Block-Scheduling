@@ -5,7 +5,7 @@ Link: https://ea-block-scheduler-4fecd886e389.herokuapp.com/generate-schedule
 
 
 ### 2. Sprint Goal
-By the end of this sprint, we will have a fully developed admin and user dashboards, controllers to allow users the ability to login using single sign on, 
+By the end of this sprint, we will have fully developed admin and user dashboards, controllers to allow users the ability to login using single sign on, 
 a completed page of available classes with their prerequisites, and a parser for excel documents. 
 
 
