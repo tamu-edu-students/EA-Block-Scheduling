@@ -16,7 +16,10 @@ gem "sqlite3", "~> 1.6.6"  # Use sqlite3 as the database for Active Record
 gem "stimulus-rails" # Hotwire"s modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "turbo-rails" # Hotwire"s SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "tzinfo-data", platforms: %i[ windows jruby ] # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-
+# omniauth for google login
+gem "omniauth"
+gem "omniauth-google-oauth2"
+gem "omniauth-rails_csrf_protection"
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
