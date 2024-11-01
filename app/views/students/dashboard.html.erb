@@ -1,0 +1,18 @@
+<h1>Howdy, <%= current_user.first_name %>!</h1>
+
+
+<div class="dashboard-container">
+  <div class="dashboard-block" onclick="window.location='<%=  %>'">
+    <h2>Available Classes</h2>
+  </div>
+  <div class="dashboard-block" onclick="window.location='<%=  %>'">
+    <h2>My Schedule</h2>
+  </div>
+  <div class="dashboard-block" onclick="window.location='<%=  %>'">
+    <h2>Build Schedule</h2>
+  </div>
+  <div class="dashboard-block" onclick="window.location='<%= user_path(current_user) %>'">
+    <h2>My Profile</h2>
+  </div>
+</div>
+

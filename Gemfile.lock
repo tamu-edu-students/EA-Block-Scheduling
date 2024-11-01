@@ -233,6 +233,9 @@ GEM
     omniauth-oauth2 (1.8.0)
       oauth2 (>= 1.4, < 3)
       omniauth (~> 2.0)
+    omniauth-rails_csrf_protection (1.0.2)
+      actionpack (>= 4.2)
+      omniauth (~> 2.0)
     parallel (1.26.3)
     parser (3.3.5.0)
       ast (~> 2.4.1)
@@ -414,6 +417,7 @@ GEM
     zeitwerk (2.7.1)
 
 PLATFORMS
+  arm64-darwin-20
   arm64-darwin-23
   x64-mingw-ucrt
   x86_64-linux
@@ -436,6 +440,7 @@ DEPENDENCIES
   omniauth
   omniauth-google-oauth2
   omniauth-microsoft_graph
+  omniauth-rails_csrf_protection
   puma (>= 5.0)
   rails (~> 7.2.1)
   rails-controller-testing
