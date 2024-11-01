@@ -9,5 +9,5 @@ Feature: Excel Parser
   Scenario: Parsing an Excel file and storing data in the database
     Given I upload the excel file "valid_excel_file_Spring_2025.xlsx"
     When The file is processed by the Excel parser
-    Then I should see the parsed data stored in the database
+    Then I should see receive a "successful" message
     And The count of courses in the database should have increased

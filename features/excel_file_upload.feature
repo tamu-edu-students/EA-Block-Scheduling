@@ -7,7 +7,6 @@ Feature: Excel File Upload
     Given I am on the new excel file page
     When I fill in "Name" with "Test Excel File"
     And I attach the file "test.xlsx" to "File"
-    
 
   Scenario: Reject invalid file type
     Given I am on the new excel file page

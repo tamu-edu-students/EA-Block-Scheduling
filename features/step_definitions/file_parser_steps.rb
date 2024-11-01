@@ -13,13 +13,14 @@ Given('I upload the excel file {string}') do |file|
 end
 
 When('The file is processed by the Excel parser') do
-  @parse_result = FileParser.new(@uploaded_file).parse
+  @parse_result = FileParser.new(@uploaded_file, ActiveStorage::Blob.last&.id).parse
 end
 
-Then('I should see the parsed data stored in the database') do
-  expect(@parse_result.success?).to be_truthy
+Then('I should see receive a {string} message') do |message|
+  expect(@parse_result.successful?).to be_truthy
 end
 
 And('The count of courses in the database should have increased') do
+  p Course.count
   expect(Course.count).to be > 0
 end
