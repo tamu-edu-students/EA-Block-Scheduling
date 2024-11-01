@@ -64,13 +64,8 @@ class FileParser
   def get_parsed_values(course, time)
     start_t = time.split("-")[0]
     end_t = time.split("-")[1]
-    if course.nil?
-      dept_code = ""
-      course_id = ""
-    else
-      dept_code = course[/(chem|math|phys|clen|engr)/i]
-      course_id = course[/\d{3,4}/]
-    end
+    dept_code = course[/(chem|math|phys|clen|engr)/i] || ""
+    course_id = course[/\d{3,4}/] || ""
     start_t.gsub(/[[:space:]]/, "") unless start_t.nil?
     end_t.gsub(/[[:space:]]/, "") unless end_t.nil?
     [start_t, end_t, dept_code, course_id]

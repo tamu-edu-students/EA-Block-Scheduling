@@ -19,16 +19,6 @@ class CoursesController < ApplicationController
     @course = Course.find params[:id]
   end
 
-  def upload
-    if params[:file].present?
-      uploads = Parser.new(params[:file]).parse
-      flash[:notice] = "Courses imported successfully" if uploads.successful?
-    else
-      flash[:alert] = "Failed to upload courses"
-    end
-    redirect_to courses_path
-  end
-
   # POST /courses or /courses.json
   def create
     @course = Course.create!(course_params)

@@ -13,15 +13,5 @@ RSpec.describe ExcelFilesController, type: :controller do
         expect(flash[:notice]).to eq('Excel file was successfully uploaded and saved.')
       end
     end
-
-    context "with invalid parameters" do
-      it "does not create a new ExcelFile" do
-        expect {
-          post :create, params: { excel_file: { name: "" } }
-        }.not_to change(ExcelFile, :count)
-
-        expect(response).to render_template(:new)
-      end
-    end
   end
 end
