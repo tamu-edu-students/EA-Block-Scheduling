@@ -31,6 +31,8 @@ group :test do
   gem "ZenTest"
 end
 
+gem "pg"
+
 gem "dotenv-rails", groups: [:development, :test]
 
 group :development, :test do
