@@ -31,9 +31,9 @@ group :test do
   gem "ZenTest"
 end
 
-gem "pg"
-
 gem "dotenv-rails", groups: [:development, :test]
+
+gem "pg"
 
 group :development, :test do
   gem "activestorage", "~> 7.2.1"
