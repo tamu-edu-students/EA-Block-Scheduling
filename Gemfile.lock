@@ -419,6 +419,11 @@ GEM
 PLATFORMS
   arm64-darwin-20
   ruby
+  arm64-darwin-23
+  x64-mingw-ucrt
+  x86_64-linux
+  x86_64-linux-gnu
+  x86_64-linux-musl
 
 DEPENDENCIES
   ZenTest
