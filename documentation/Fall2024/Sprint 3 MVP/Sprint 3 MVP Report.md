@@ -48,20 +48,20 @@ a completed page of available classes with their prerequisites, and a parser for
 - [ ] Add settings to configs
 
 #19 Store the spreadsheet data on the database
-- [] Create Database Schema
+- [ ] Create Database Schema
  
 #36 Set typical classes grouping on the web
-- [] Create Admin sets typical classes to generate draft blocks on the web page
+- [ ] Create Admin sets typical classes to generate draft blocks on the web page
  
 #39 Generate possible blocks
-- [] Develop blocks are generated automatically through algorithm
+- [ ] Develop blocks are generated automatically through algorithm
  
 #60 Display Class Blocks UI
-- [] Display Class Blocks
+- [ ] Display Class Blocks
 
 #11 Show basic schedule timetable UI
-- [] Create basic time table
-- [] Create Page
+- [ ] Create basic time table
+- [ ] Create Page
 
 ### 4. Use of BDD
 All stories have Cucumber feature(s) defined with several scenarios each, all Cucumber scenarios are passing and all steps are defined
