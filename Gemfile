@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby '3.3.4'
+ruby "3.3.4"
 
 gem "bootsnap", require: false # Reduces boot times through caching; required in config/boot.rb
 gem "csv"
