@@ -34,7 +34,7 @@ end
 gem "dotenv-rails", groups: [:development, :test]
 
 group :development, :test do
-  gem "activestorage", "~> 7.2.1"
+  gem "activestorage", "~> 7.2.2"
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", "6.2.2", require: false
   gem "capybara"
