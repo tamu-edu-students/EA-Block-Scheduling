@@ -7,4 +7,8 @@ class SchedulesController < ApplicationController
       { name: "Operating Systems", instructor: "Prof. Emily Johnson", course_code: "CS301" }
     ]
   end
+
+  def schedule_viewer
+    # TODO: Add logic
+  end
 end

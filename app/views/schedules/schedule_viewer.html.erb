@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://aux.tamu.edu/v1.7.0/styles/aux-styles.css">
+  <style>
+    /* Original table styles */
+    table {
+      width: 80%;
+      border-collapse: collapse;
+      margin: 0 auto 20px auto;
+    }
+    h1 {
+      margin: 20px 10%;
+    }
+    th {
+      background-color: #500000 !important;
+      color: #FFFFFF !important;
+    }
+    td {
+      padding: 0 0 0 16px !important;
+      font-size: 12px;
+    }
+    th, td {
+      width: 16.66%;
+    }
+
+    /* Wrapper around the table */
+    .timetable-wrapper {
+      position: relative;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Style for blocks spanning multiple cells */
+    .class-block {
+      position: absolute;
+      background-color: #732f2f;
+      color: #FFFFFF;
+      padding: 5px;
+      border-radius: 2px;
+      cursor: pointer;
+      text-align: center;
+      /* Adjust size and position */
+      width: 13.34%; /* Width of one column, adjust to span more */
+      height: 47px; /* Fixed height */
+    }
+
+    /* Modal styles */
+    .class-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .modal-content {
+      background-color: #ffffff;
+      margin: 15% auto;
+      padding: 20px;
+      width: 300px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Schedule Viewer</h1>
+
+  <div class="timetable-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Monday</th>
+          <th>Tuesday</th>
+          <th>Wednesday</th>
+          <th>Thursday</th>
+          <th>Friday</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% start_time = Time.parse("08:00 AM") %>
+        <% end_time = Time.parse("09:00 PM") %>
+
+        <% while start_time <= end_time %>
+          <tr>
+            <td class="time-slot"><%= start_time.strftime("%I:%M %p") %></td>
+            
+            <% ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"].each do |day| %>
+              <td></td>
+            <% end %>
+
+          </tr>
+          <% start_time += 15.minutes %>
+        <% end %>
+      </tbody>
+    </table>
+
+    <!-- Absolute-positioned class block, spanning Monday and Tuesday -->
+    <!-- Left = 10% + 13.34% * N -->
+    <!-- Top = 55 + 19 * N -->
+    <!-- Height = 19 * N -->
+    <div class="class-block" data-id="1" data-name="ENGR 102" data-details="Engineering Lab I - Room 1130.02" style="top: 55px; left: 23.34%; width: 13.34%; height: 76px">
+      ENGR 102
+    </div>
+
+    <div class="class-block" data-id="2" data-name="MATH 2412" data-details="PreCalculus - Room 2218" style="top: 207px; left: 36.68%; width: 13.34%; height: 57px">
+      MATH 2412
+    </div>
+
+  </div>
+
+  <!-- Single Modal for displaying class details dynamically -->
+  <div id="classModal" class="class-modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3 id="classTitle">Class Name</h3>
+      <p id="classDetails">Class details will be shown here.</p>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const modal = document.getElementById("classModal");
+      const classTitle = document.getElementById("classTitle");
+      const classDetails = document.getElementById("classDetails");
+      const closeBtn = document.querySelector(".close");
+
+      // Open the modal with data from the clicked class block
+      document.querySelectorAll(".class-block").forEach(block => {
+        block.addEventListener("click", function() {
+          // Get class details from the block's data attributes
+          classTitle.textContent = block.getAttribute("data-name");
+          classDetails.textContent = block.getAttribute("data-details").replace(/\\n/g, "<br>");
+
+          // Display the modal
+          modal.style.display = "block";
+        });
+      });
+
+      // Close the modal
+      closeBtn.onclick = function() {
+        modal.style.display = "none";
+      };
+
+      // Close modal if clicking outside of it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    });
+
+    // Close the modal function
+    function closeModal() {
+      document.getElementById("classModal").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
