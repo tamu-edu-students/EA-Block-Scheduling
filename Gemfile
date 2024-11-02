@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 gem "bootsnap", require: false # Reduces boot times through caching; required in config/boot.rb
 gem "csv"
-gem "pg"
+gem "pg" # PostgreSQL database adapter
 gem "importmap-rails" # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "jbuilder" # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "omniauth"
@@ -13,13 +13,14 @@ gem "rails", "~> 7.2.1" # Bundle edge Rails instead: gem "rails", github: "rails
 gem "roo"  # For parsing Excel files
 gem "simple_form"  # For easier form handling
 gem "sprockets-rails" # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "stimulus-rails" # Hotwire"s modest JavaScript framework [https://stimulus.hotwired.dev]
-gem "turbo-rails" # Hotwire"s SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "tzinfo-data", platforms: %i[ windows jruby ] # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem "stimulus-rails" # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
+gem "turbo-rails" # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
+gem "tzinfo-data", platforms: %i[windows jruby] # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 # omniauth for google login
 gem "omniauth"
 gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection"
+
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
@@ -34,7 +35,7 @@ end
 gem "dotenv-rails", groups: [:development, :test]
 
 group :development, :test do
-  gem "sqlite3", "~> 1.6.6"
+  gem "sqlite3", "~> 1.6.6" # Use SQLite for development and test environments
 end
 
 group :development, :test do
@@ -45,7 +46,7 @@ group :development, :test do
   gem "cucumber-rails", require: false
   gem "database_cleaner"
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+  gem "debug", platforms: %i[mri windows], require: "debug/prelude"
   gem "rails-controller-testing"
   # Setting Rspec to dev
   gem "rspec"
