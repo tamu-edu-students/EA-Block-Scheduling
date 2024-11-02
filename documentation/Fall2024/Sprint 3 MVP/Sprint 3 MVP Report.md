@@ -1,7 +1,7 @@
 # Sprint 3 MVP Report
 
 ### 1. Deployed App
-Link: https://ea-block-scheduler-4fecd886e389.herokuapp.com/generate-schedule 
+Link: [https://ea-block-scheduler-4fecd886e389.herokuapp.com/generate-schedule ](https://ea-block-scheduler-4fecd886e389.herokuapp.com/)
 
 
 ### 2. Sprint Goal
@@ -82,7 +82,7 @@ All Rubocop cops are enabled and report at most 1 style offense per file.
 > Run `rubocop` to see the result <br>
 
 ### 9. Use of Project Tracker
-**Taiga User Stories:** https://tree.taiga.io/project/aaronjones05-block-scheduler/taskboard/ecstatic-woodchuck
+**Taiga User Stories:** [https://tree.taiga.io/project/aaronjones05-block-scheduler/taskboard/ecstatic-woodchuck](https://tree.taiga.io/project/aaronjones05-block-scheduler/taskboard/hungry-hamster)
 
 ## 10. Presentation
 See the deployed app.
