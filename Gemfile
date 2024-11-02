@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 gem "bootsnap", require: false # Reduces boot times through caching; required in config/boot.rb
 gem "csv"
+gem "pg"
 gem "importmap-rails" # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "jbuilder" # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "omniauth"
@@ -31,10 +32,6 @@ group :test do
 end
 
 gem "dotenv-rails", groups: [:development, :test]
-
-group :production do
-  gem "pg"
-end
 
 group :development, :test do
   gem "sqlite3", "~> 1.6.6"
