@@ -12,7 +12,6 @@ gem "rails", "~> 7.2.1" # Bundle edge Rails instead: gem "rails", github: "rails
 gem "roo"  # For parsing Excel files
 gem "simple_form"  # For easier form handling
 gem "sprockets-rails" # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sqlite3", "~> 1.6.6"  # Use sqlite3 as the database for Active Record
 gem "stimulus-rails" # Hotwire"s modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "turbo-rails" # Hotwire"s SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "tzinfo-data", platforms: %i[ windows jruby ] # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -33,7 +32,13 @@ end
 
 gem "dotenv-rails", groups: [:development, :test]
 
-gem "pg", group: :production
+group :production do
+  gem "pg"
+end
+
+group :development, :test do
+  gem "sqlite3", "~> 1.6.6"
+end
 
 group :development, :test do
   gem "activestorage", "~> 7.2.1"
