@@ -1,8 +1,9 @@
 source "https://rubygems.org"
 
+ruby '3.3.2'  # Specify the Ruby version
+
 gem "bootsnap", require: false # Reduces boot times through caching; required in config/boot.rb
 gem "csv"
-gem "pg" # PostgreSQL database adapter
 gem "importmap-rails" # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "jbuilder" # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "omniauth"
@@ -20,6 +21,10 @@ gem "tzinfo-data", platforms: %i[windows jruby] # Windows does not include zonei
 gem "omniauth"
 gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection"
+
+group :production do
+  gem "pg" # PostgreSQL database adapter
+end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
