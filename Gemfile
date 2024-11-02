@@ -33,7 +33,7 @@ end
 
 gem "dotenv-rails", groups: [:development, :test]
 
-gem "pg"
+gem "pg", group: :production
 
 group :development, :test do
   gem "activestorage", "~> 7.2.1"
