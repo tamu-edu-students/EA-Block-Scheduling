@@ -11,6 +11,7 @@ RSpec.describe 'FileParser' do
     io: File.open(Rails.root.join('spec', 'fixtures', 'files', 'valid_excel_file_Spring_2025.xlsx')),
     filename: 'valid_excel_file_Spring_2025.xlsx',
     content_type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') }
+  let(:as_id) { blob.id }
 
   describe '#parse' do
     context 'When a valid excel file is passed to parser' do
