@@ -19,8 +19,8 @@ prerequisites = {
   'MATH-2414' => ['MATH-2413'],
   'MATH-2415' => ['MATH-2414'],
   'MATH-2420' => ['MATH-2415'],
-  'ENGR-216' => ['ENGR-102', 'MATH-2413'],
-  'ENGR-217' => ['ENGR-216', 'PHYS-2425', 'MATH-2414'],
+  'ENGR-216' => %w[ENGR-102 MATH-2413],
+  'ENGR-217' => %w[ENGR-216 PHYS-2425 MATH-2414],
   'CHEM-1312' => ['CHEM-1309'],
   'CHEM-1112' => ['CHEM-1309'],
   'PHYS-2425' => ['MATH-2413'],
@@ -113,7 +113,7 @@ courses = [
 
     { term: '224F000', dept_code: 'ENGR', course_id: '217', sec_coreq_secs: '', syn: '', sec_name: 'ENGR-217-575', short_title: '', im: nil, building: 'HLC4', room: '1130.02', days: 'WTh', start_time: '12:30 PM', end_time: '1:50 PM', fac_id: '', faculty_name: 'Shana Shaw', crs_capacity: 24, sec_cap: 24, student_count: 0, notes: '', as_id: 0 },
 
-    { term: '224F000', dept_code: 'ENGR', course_id: '217', sec_coreq_secs: '', syn: '', sec_name: 'ENGR-217-576', short_title: '', im: nil, building: 'HLC4', room: '1130.02', days: 'WTh', start_time: '12:30 PM', end_time: '5:50 PM', fac_id: '', faculty_name: 'Shana Shaw', crs_capacity: 24, sec_cap: 24, student_count: 0, notes: '', as_id: 0 },
+    { term: '224F000', dept_code: 'ENGR', course_id: '217', sec_coreq_secs: '', syn: '', sec_name: 'ENGR-217-576', short_title: '', im: nil, building: 'HLC4', room: '1130.02', days: 'WTh', start_time: '12:30 PM', end_time: '5:50 PM', fac_id: '', faculty_name: 'Shana Shaw', crs_capacity: 24, sec_cap: 24, student_count: 0, notes: '', as_id: 0 }
 ]
 
 puts "Found #{courses.length} courses to create"
