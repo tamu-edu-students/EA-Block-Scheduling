@@ -43,7 +43,7 @@ class FileParser
     when ActiveStorage::Blob
       @file_name = file.filename.to_s
     when ExcelFile
-      @file_name = file.name
+      @file_name = file.file.filename.to_s
     else
       @file_name = File.basename(file.to_s)
     end
@@ -56,7 +56,8 @@ class FileParser
       data = []
       t = @term || ""
       xlsx.each_with_index do |row, row_index|
-        next if row_index == 0 || row[0].to_s.nil?
+        next if row.empty? || row.nil?
+        next if row_index == 0 || row[0].nil?
         start_t, end_t, dept_code, course_id = get_parsed_values(row[0].to_s, row[7].to_s)
         data << { term: t, dept_code: dept_code, course_id: course_id, course: row[0], syn: row[1], instructor: row[2],
                   location: row[3], room: row[4], days: row[6], start_time: start_t, end_time: end_t, as_id: @as_id }
