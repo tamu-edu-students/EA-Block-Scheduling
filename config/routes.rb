@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   resources :courses do
     collection { post :upload, as: :course_upload }
   end
+  get "course_uploads/:as_id", to: "courses#show_by_upload", as: :courses_by_upload
 
   # Defines the root path route ("/")
   # root "posts#index"

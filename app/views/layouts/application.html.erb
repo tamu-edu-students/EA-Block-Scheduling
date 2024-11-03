@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= content_for(:title) || "Ea Block Scheduling" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html lang="en">
+<head>
+  <title><%= content_for(:title) || "Ea Block Scheduling" %></title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="mobile-web-app-capable" content="yes">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= yield :head %>
+  <%= yield :head %>
 
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <link rel="stylesheet" href="https://aux.tamu.edu/v1.7.0/styles/aux-styles.css">
-    <link rel="stylesheet" href="https://aux.tamu.edu/v1.7.0/styles/aux-styles.min.css">
-    <%= javascript_importmap_tags %>
-  </head>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icon.png" type="image/png">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icon.png">
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <link rel="stylesheet" href="https://aux.tamu.edu/v1.7.0/styles/aux-styles.css">
+  <link rel="stylesheet" href="https://aux.tamu.edu/v1.7.0/styles/aux-styles.min.css">
+  <%= javascript_importmap_tags %>
+</head>
 
-  <body>
-    <%= yield %>
-    <script src="https://aux.tamu.edu/v1.7.0/js/aux-accordion.js"></script>
-    <script src="https://aux.tamu.edu/v1.7.0/js/aux-in-page-navigation.js"></script>
-    <script src="https://aux.tamu.edu/v1.7.0/js/aux-main-nav.js"></script>
-    <script src="https://aux.tamu.edu/v1.7.0/js/aux-mobile-nav.js"></script>
-    <script src="https://aux.tamu.edu/v1.7.0/js/jquery-3.7.1.min.js"></script>
-  </body>
+<body>
+<%= yield %>
+<script src="https://aux.tamu.edu/v1.7.0/js/aux-accordion.js"></script>
+<script src="https://aux.tamu.edu/v1.7.0/js/aux-in-page-navigation.js"></script>
+<script src="https://aux.tamu.edu/v1.7.0/js/aux-main-nav.js"></script>
+<!-- <script src="https://aux.tamu.edu/v1.7.0/js/aux-mobile-nav.js"></script> -->
+<script src="https://aux.tamu.edu/v1.7.0/js/jquery-3.7.1.min.js"></script>
+</body>
 </html>

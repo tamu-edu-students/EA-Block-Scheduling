@@ -2,8 +2,9 @@ require_relative "../services/file_parser"
 
 class ExcelFilesController < ApplicationController
   include Rails.application.routes.url_helpers
+  include ExcelFilesHelper
   before_action :set_excel_file, only: %i[ show edit update destroy ]
-  # has_one_attached :file
+
   # GET /excel_files or /excel_files.json
   def index
     @excel_files = ExcelFile.all
@@ -25,16 +26,20 @@ class ExcelFilesController < ApplicationController
   # POST /excel_files or /excel_files.json
   def create
     @excel_file = ExcelFile.new(excel_file_params)
-    flash[:notice] = "Courses added successfully." if FileParser.new(@excel_file.file, @excel_file.id).parse.successful?
-
-    respond_to do |format|
-      if @excel_file.save
-        format.html { redirect_to @excel_file, notice: "Excel file was successfully uploaded and saved." }
-        format.json { render :show, status: :created, location: @excel_file }
-      else
-        flash[:notice] = "Courses not added to database."
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @excel_file.errors, status: :unprocessable_entity }
+    if @excel_file.file.nil?
+      flash[:notice] = "No file attached."
+      redirect_to new_excel_file_path
+    else
+      respond_to do |format|
+        if @excel_file.save
+          format.html { redirect_to @excel_file, notice: "Excel file was successfully uploaded and saved." }
+          format.json { render :show, status: :created, location: @excel_file }
+        else
+          flash[:notice] = "Courses not added to database."
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @excel_file.errors, status: :unprocessable_entity }
+        end
+        add_courses_to_database(@excel_file, @excel_file.id)
       end
     end
   end
@@ -63,13 +68,14 @@ class ExcelFilesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_excel_file
-      @excel_file = ExcelFile.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def excel_file_params
-      params.require(:excel_file).permit(:name, :file)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_excel_file
+    @excel_file = ExcelFile.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def excel_file_params
+    params.require(:excel_file).permit(:name, :file)
+  end
 end

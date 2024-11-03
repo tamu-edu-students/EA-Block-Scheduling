@@ -10,29 +10,49 @@ class FileParser
   attr_reader :file_name, :term, :file, :as_id, :result
   Result = Struct.new(:successful?, :errors)
 
-  def initialize(file, as_id)
+  def initialize(file, id)
     @result = Result.new(false, nil)
-    @as_id = as_id
-    @file = file
-    if file.respond_to?(:blob)
-      # @file = file.blob
-      @file_name = file.blob.filename.to_s
+    if file.is_a?(ExcelFile)
+      @file = ActiveStorage::Blob.find_by(id: id)
     else
-      # @file = File.read(file)
-      @file_name = File.basename(file.path)
+      @file = file
     end
+    @as_id = id
+    set_file_name(file)
     @term = generate_term
   end
 
   def parse
+    if @file.nil?
+      return Result.new(false, nil)
+    end
+    if @file.is_a?(ActiveStorage::Blob)
+      Tempfile.create([@file_name, "xlsx"]) do |temp_file|
+        temp_file.binmode
+        temp_file.write(@file.download)
+        temp_file.rewind
+        parse_xlsx(temp_file.path)
+      end
+    else
+      parse_xlsx(@file.path)
+    end
+  end
+
+  def set_file_name(file)
+    case file
+    when ActiveStorage::Blob
+      @file_name = file.filename.to_s
+    when ExcelFile
+      @file_name = file.name
+    else
+      @file_name = File.basename(file.to_s)
+    end
+  end
+
+  def parse_xlsx(file_path)
     @as_id = 1 if @as_id.nil?
-    # if file.respond_to?(:blob)
-    #   stream = StringIO.new(@file.download)
-    # else
-    #   stream = @file
-    # end
     begin
-      xlsx = Roo::Spreadsheet.open(@file.path)
+      xlsx = Roo::Spreadsheet.open(file_path, extension: :xlsx)
       data = []
       t = @term || ""
       xlsx.each_with_index do |row, row_index|
@@ -76,7 +96,7 @@ class FileParser
       Course.where(term: d[:term], dept_code: d[:dept_code], course_id: d[:course_id], sec_coreq_secs: "",
                    syn: d[:syn], sec_name: d[:course], short_title: "", im: "", building: d[:building],
                    room: d[:room], days: d[:days], start_time: d[:start_time], end_time: d[:end_time],
-                   crs_capacity: nil, sec_cap: nil, student_count: 0, notes: "").first_or_create
+                   crs_capacity: nil, sec_cap: nil, student_count: 0, notes: "", as_id: d[:as_id]).first_or_create
     end
   end
 end

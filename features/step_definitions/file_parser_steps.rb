@@ -13,7 +13,7 @@ Given('I upload the excel file {string}') do |file|
 end
 
 When('The file is processed by the Excel parser') do
-  @parse_result = FileParser.new(@uploaded_file, ActiveStorage::Blob.last&.id).parse
+  @parse_result = FileParser.new(@uploaded_file, ActiveStorage::Blob.order(created_at: :desc).first&.id).parse
 end
 
 Then('I should see receive a {string} message') do |message|

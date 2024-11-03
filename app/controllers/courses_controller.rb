@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  include CoursesHelper
   # before_action :authenticate_user!
   # before_action :admin_only, only: [:upload, :new, :create, :edit, :update, :destroy]
   before_action :set_course, only: %i[ show edit update destroy ]
@@ -42,6 +43,13 @@ class CoursesController < ApplicationController
     redirect_to courses_path
   end
 
+  # show recently uploaded courses
+  def show_by_upload
+    as_id = params[:as_id]
+    validate_courses(as_id)
+    @courses = Course.where(as_id: as_id)
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -51,7 +59,7 @@ class CoursesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def course_params
-    params.require(:course).permit(:term, :dept_code, :course_id, :sec_coreq_secs, :syn, :sec_name, :short_title, :im, :building, :room, :days, :start_time, :end_time, :fac_id, :faculty_name, :crs_capacity, :sec_cap, :student_count, :notes)
+    params.require(:course).permit(:term, :dept_code, :course_id, :sec_coreq_secs, :syn, :sec_name, :short_title, :im, :building, :room, :days, :start_time, :end_time, :fac_id, :faculty_name, :crs_capacity, :sec_cap, :student_count, :notes, :as_id)
   end
 
   # def admin_only
