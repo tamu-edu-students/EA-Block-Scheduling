@@ -26,21 +26,16 @@ class ExcelFilesController < ApplicationController
   # POST /excel_files or /excel_files.json
   def create
     @excel_file = ExcelFile.new(excel_file_params)
-    if @excel_file.file.nil?
-      flash[:notice] = "No file attached."
-      redirect_to new_excel_file_path
-    else
-      respond_to do |format|
-        if @excel_file.save
-          format.html { redirect_to @excel_file, notice: "Excel file was successfully uploaded and saved." }
-          format.json { render :show, status: :created, location: @excel_file }
-        else
-          flash[:notice] = "Courses not added to database."
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @excel_file.errors, status: :unprocessable_entity }
-        end
-        add_courses_to_database(@excel_file, @excel_file.id)
+    respond_to do |format|
+      if @excel_file.save
+        format.html { redirect_to @excel_file, notice: "Excel file was successfully uploaded and saved." }
+        format.json { render :show, status: :created, location: @excel_file }
+      else
+        flash[:notice] = "Courses not added to database."
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @excel_file.errors, status: :unprocessable_entity }
       end
+      add_courses_to_database(@excel_file, @excel_file.id)
     end
   end
 

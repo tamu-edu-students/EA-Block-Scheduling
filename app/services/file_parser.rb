@@ -66,8 +66,6 @@ class FileParser
     rescue Exception => e
       if File.extname(@file_name) != ".xlsx"
         @result = Result.new(false, "Invalid file format")
-      else
-        @result = Result.new(false, e)
       end
     end
   end
