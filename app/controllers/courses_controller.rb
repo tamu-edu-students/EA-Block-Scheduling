@@ -6,41 +6,55 @@ class CoursesController < ApplicationController
 
   # GET /courses or /courses.json
   def index
-    @courses = Course.all
+    @courses = Course.all.order(:sec_name)
+    @prerequisites = {}
+
+    @courses.each do |course|
+      if course.prerequisites.present?
+        @prerequisites[course.sec_name] = course.prerequisites.split(", ").map(&:strip)
+      end
+    end
   end
 
   # GET /courses/1 or /courses/1.json
   def show
-    id = params[:id]
-    @course = Course.find(id)
-  end
-
-  # GET /courses/1/edit
-  def edit
-    @course = Course.find params[:id]
+    @prerequisites = @course.prerequisites&.split(", ")&.map(&:strip)
   end
 
   # POST /courses or /courses.json
   def create
-    @course = Course.create!(course_params)
-    flash[:notice] = "#{@course.short_title} was successfully created."
-    redirect_to courses_path
+    @course = Course.new(course_params)
+
+    if @course.save
+      flash[:notice] = "#{@course.short_title} was successfully created."
+      redirect_to courses_path
+    else
+      flash.now[:alert] = @course.errors.full_messages.join(", ")
+      render :new, status: :unprocessable_entity
+    end
   end
 
   # PATCH/PUT /courses/1 or /courses/1.json
   def update
-    @course = Course.find params[:id]
-    @course.update!(course_params)
-    flash[:notice] = "#{@course.short_title} was successfully updated."
-    redirect_to course_path(@course)
+    if @course.update(course_params)
+      flash[:notice] = "#{@course.short_title} was successfully updated."
+      redirect_to course_path(@course)
+    else
+      flash.now[:alert] = @course.errors.full_messages.join(", ")
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   # DELETE /courses/1 or /courses/1.json
   def destroy
     @course = Course.find(params[:id])
     @course.destroy
-    flash[:notice] = "#{@course.short_title} was successfully deleted."
+    flash[:notice] = "Course was successfully deleted"
     redirect_to courses_path
+  end
+
+  def new
+    @course = Course.new
   end
 
   # show recently uploaded courses
@@ -57,10 +71,32 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
-  def course_params
-    params.require(:course).permit(:term, :dept_code, :course_id, :sec_coreq_secs, :syn, :sec_name, :short_title, :im, :building, :room, :days, :start_time, :end_time, :fac_id, :faculty_name, :crs_capacity, :sec_cap, :student_count, :notes, :as_id)
-  end
+    # Only allow a list of trusted parameters through.
+    def course_params
+      params.require(:course).permit(
+        :term,
+        :dept_code,
+        :course_id,
+        :sec_coreq_secs,
+        :syn,
+        :sec_name,
+        :short_title,
+        :im,
+        :building,
+        :room,
+        :days,
+        :start_time,
+        :end_time,
+        :fac_id,
+        :faculty_name,
+        :crs_capacity,
+        :sec_cap,
+        :student_count,
+        :notes,
+        :prerequisites,
+        :as_id
+      )
+    end
 
   # def admin_only
   #   unless current_user.admin?

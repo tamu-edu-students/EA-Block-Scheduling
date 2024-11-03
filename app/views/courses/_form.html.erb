@@ -107,6 +107,11 @@
   </div>
 
   <div>
+    <%= form.label :prerequisites %>
+    <%= form.text_field :prerequisites, placeholder: "e.g., MATH-2413, PHYS-2425" %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

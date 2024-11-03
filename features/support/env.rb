@@ -23,6 +23,7 @@ end
 # files.
 
 require 'cucumber/rails'
+require 'capybara/cucumber'
 
 # frozen_string_literal: true
 

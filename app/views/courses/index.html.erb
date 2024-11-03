@@ -1,16 +1,44 @@
-<p style="color: green"><%= notice %></p>
+<h1>COURSES</h1>
 
-<% content_for :title, "Courses" %>
+<%= link_to "New Course", new_course_path, class: "new-course-button" %>
 
-<h1>Courses</h1>
-
-<div id="courses">
-  <% @courses.each do |course| %>
-    <%= render course %>
-    <p>
-      <%= link_to "Show this course", course %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New course", new_course_path %>
+<table>
+  <thead>
+    <tr>
+      <th>Term</th>
+      <th>Department</th>
+      <th>Section Name</th>
+      <th>Title</th>
+      <th>Days</th>
+      <th>Time</th>
+      <th>Building</th>
+      <th>Room</th>
+      <th>Capacity</th>
+      <th>Prerequisites</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.term %></td>
+        <td><%= course.dept_code %></td>
+        <td><%= course.sec_name %></td>
+        <td><%= course.short_title %></td>
+        <td><%= course.days %></td>
+        <td><%= "#{course.start_time} - #{course.end_time}" %></td>
+        <td><%= course.building %></td>
+        <td><%= course.room %></td>
+        <td><%= course.crs_capacity %></td>
+        <td><%= course.prerequisites %></td>
+        <td>
+          <%= link_to "Show", course_path(course), class: "show-button" %>
+          <%= link_to "Edit", edit_course_path(course), class: "edit-button" %>
+          <%= link_to "Delete", course_path(course), 
+              data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+              class: "delete-button" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

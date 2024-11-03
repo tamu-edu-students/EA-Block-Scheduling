@@ -147,7 +147,7 @@ RSpec.describe ExcelFilesController, type: :controller do
 
         it "assigns all excel files to @excel_files" do
           get :index
-          expect(assigns(:excel_files)).to match_array([@file1, @file2])
+          expect(assigns(:excel_files)).to match_array([ @file1, @file2 ])
         end
 
         it "renders the index template" do

@@ -7,6 +7,29 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+puts "\nClearing existing courses..."
+Course.destroy_all
+
+puts "\nStarting to seed courses..."
+
+# Course prerequisites
+prerequisites = {
+  'MATH-2413' => ['MATH-2412'],
+  'MATH-2414' => ['MATH-2413'],
+  'MATH-2415' => ['MATH-2414'],
+  'MATH-2420' => ['MATH-2415'],
+  'ENGR-216' => ['ENGR-102', 'MATH-2413'],
+  'ENGR-217' => ['ENGR-216', 'PHYS-2425', 'MATH-2414'],
+  'CHEM-1312' => ['CHEM-1309'],
+  'CHEM-1112' => ['CHEM-1309'],
+  'PHYS-2425' => ['MATH-2413'],
+  'PHYS-2426' => ['PHYS-2425']
+}
+
+puts "Prerequisites defined: #{prerequisites.keys.join(', ')}"
+
+# All courses
 courses = [
     { term: '224F000', dept_code: 'CHEM', course_id: '517302', sec_coreq_secs: '517302', syn: '93061', sec_name: 'CHEM-1309-001', short_title: 'Gen Chem Engr Lc', im: 1, building: 'HLC1', room: '2101', days: 'MW', start_time: '9:00 AM', end_time: '10:20 AM', fac_id: '', faculty_name: '', crs_capacity: 36, sec_cap: 0, student_count: 0, notes: '', as_id: 0 },
 
@@ -93,28 +116,25 @@ courses = [
     { term: '224F000', dept_code: 'ENGR', course_id: '217', sec_coreq_secs: '', syn: '', sec_name: 'ENGR-217-576', short_title: '', im: nil, building: 'HLC4', room: '1130.02', days: 'WTh', start_time: '12:30 PM', end_time: '5:50 PM', fac_id: '', faculty_name: 'Shana Shaw', crs_capacity: 24, sec_cap: 24, student_count: 0, notes: '', as_id: 0 },
 ]
 
-courses.each do |course|
-    Course.create(course) unless Course.where(course).first
-  # Course.where(
-  #     term: course[:term],
-  #     dept_code: course[:dept_code],
-  #     course_id: course[:course_id],
-  #     sec_coreq_secs: course[:sec_coreq_secs],
-  #     syn: course[:syn],
-  #     sec_name: course[:sec_name],
-  #     short_title: course[:short_title],
-  #     im: course[:im],
-  #     building: course[:building],
-  #     room: course[:room],
-  #     days: course[:days],
-  #     start_time: course[:start_time],
-  #     end_time: course[:end_time],
-  #     fac_id: course[:fac_id],
-  #     faculty_name: course[:faculty_name],
-  #     crs_capacity: course[:crs_capacity],
-  #     sec_cap: course[:sec_cap],
-  #     student_count: course[:student_count],
-  #     notes: course[:notes],
-  #    , as_id: course[:as_id]
-  # ).first_or_create()
+puts "Found #{courses.length} courses to create"
+
+def extract_base_code(sec_name)
+  standardized = sec_name.gsub(' ', '-')
+  parts = standardized.split('-')
+  "#{parts[0]}-#{parts[1]}"
 end
+
+# Create courses with prerequisites
+courses.each do |course_data|
+  base_code = extract_base_code(course_data[:sec_name])
+  prereq_string = if prerequisites.key?(base_code)
+    prerequisites[base_code].map(&:strip).join(', ')
+  else
+    nil
+  end
+
+  Course.create!(course_data.merge(prerequisites: prereq_string))
+end
+
+puts "\nSeeding completed!"
+puts "Total courses created: #{Course.count}"
