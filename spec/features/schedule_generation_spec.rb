@@ -3,8 +3,12 @@
 require 'rails_helper'
 
 RSpec.feature "Schedule Generation", type: :feature do
+  let(:admin_user) { create(:admin_user) }
+  before do
+    sign_in admin_user
+  end
   scenario "User views the course list and generates a schedule" do
-    visit generate_schedule_path
+    visit generate_schedules_path
 
     # Verify that the table of courses is displayed
     expect(page).to have_content("Selected Courses")

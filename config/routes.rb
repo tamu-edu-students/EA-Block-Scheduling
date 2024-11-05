@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :courses
   resources :schedules, only: [:index, :show] do
     collection do
-      get "generate_schedule", to: "schedules#generate_schedule"
+      get "generate_schedule", to: "schedules#generate_schedule", as: :generate
     end
   end
 

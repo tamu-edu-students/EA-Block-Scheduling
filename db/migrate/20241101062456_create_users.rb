@@ -4,7 +4,6 @@ class CreateUsers < ActiveRecord::Migration[7.2]  # or the version you are using
       t.string :email
       t.string :first_name
       t.string :last_name
-      t.string :role
       t.string :uid
       t.string :provider
 

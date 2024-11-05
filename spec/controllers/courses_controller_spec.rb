@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe CoursesController, type: :controller do
+  let(:admin_user) { create(:admin_user) }
+
   describe "GET #index" do
     it "returns a successful response" do
       get :index
