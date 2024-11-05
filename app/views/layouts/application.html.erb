@@ -1,34 +1,46 @@
 <!DOCTYPE html>
 <html>
   <head>
+<head>
     <title><%= content_for(:title) || "Ea Block Scheduling" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= yield :head %>
-
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <link rel="stylesheet" href="https://aux.tamu.edu/v1.7.0/styles/aux-styles.css">
-    <link rel="stylesheet" href="https://aux.tamu.edu/v1.7.0/styles/aux-styles.min.css">
     <%= javascript_importmap_tags %>
-    <!-- TAMU AUX stylesheets -->
-    <link rel="stylesheet" href="https://aux.tamu.edu/v1.7.0/styles/aux-styles.css">
-    <link rel="stylesheet" href="https://aux.tamu.edu/v1.7.0/styles/aux-styles.min.css">
   </head>
+</head>
 
   <body>
+
+    <header>
+  <%= image_tag 'TAMU Logo Header.png', alt: 'Header Image', class: 'header-image' %>
+
+  <!-- Back to Dashboard Button -->
+<div class="header-navigation">
+  <% if current_user %>
+    <% dashboard_path = current_user.admin? ? admin_dashboard_path : students_dashboard_path %>
+    <%= link_to "Back to Dashboard", dashboard_path, class: 'dashboard-button' %>
+  <% end %>
+</div>
+
+
+  <!-- Logout Link -->
+  <div class="header-logout">
+    <%= link_to "Logout", logout_session_path, method: :get, class: 'logout-link' %>
+  </div>
+</header>
+
+
+    <%= render partial: 'shared/display_flash' if not flash.empty? %>
     <%= yield %>
-    <!-- TAMU AUX JavaScript files -->
-    <script src="https://aux.tamu.edu/v1.7.0/js/aux-accordion.js"></script>
-    <script src="https://aux.tamu.edu/v1.7.0/js/aux-in-page-navigation.js"></script>
-    <script src="https://aux.tamu.edu/v1.7.0/js/aux-main-nav.js"></script>
-    <script src="https://aux.tamu.edu/v1.7.0/js/aux-mobile-nav.js"></script>
-    <script src="https://aux.tamu.edu/v1.7.0/js/jquery-3.7.1.min.js"></script>
   </body>
+
+    <!-- Maroon line at the bottom -->
+
+    <!-- Footer -->
+    <footer>
+        <%= image_tag 'TAMU Logo Footer.png', alt: 'Footer Image', class: 'footer-image' %>
+    </footer>
+</body>
 </html>

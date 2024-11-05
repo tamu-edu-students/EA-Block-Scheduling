@@ -8,6 +8,11 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+puts "\nClearing existing courses..."
+Course.destroy_all
+
+puts "\nStarting to seed courses..."
+
 # Course prerequisites
 prerequisites = {
   'MATH-2413' => ['MATH-2412'],
@@ -21,6 +26,8 @@ prerequisites = {
   'PHYS-2425' => ['MATH-2413'],
   'PHYS-2426' => ['PHYS-2425']
 }
+
+puts "Prerequisites defined: #{prerequisites.keys.join(', ')}"
 
 # All courses
 courses = [
@@ -109,30 +116,25 @@ courses = [
     { term: '224F000', dept_code: 'ENGR', course_id: '217', sec_coreq_secs: '', syn: '', sec_name: 'ENGR-217-576', short_title: '', im: nil, building: 'HLC4', room: '1130.02', days: 'WTh', start_time: '12:30 PM', end_time: '5:50 PM', fac_id: '', faculty_name: 'Shana Shaw', crs_capacity: 24, sec_cap: 24, student_count: 0, notes: '' }
 ]
 
+puts "Found #{courses.length} courses to create"
 
-def find_course_by_name(courses, course_name)
-  courses.find do |c|
-    c[:sec_name].start_with?(course_name) ||
-    c[:sec_name].split('-')[0..1].join('-') == course_name
-  end
+def extract_base_code(sec_name)
+  standardized = sec_name.gsub(' ', '-')
+  parts = standardized.split('-')
+  "#{parts[0]}-#{parts[1]}"
 end
 
-# Update courses with prerequisite information
-courses.each do |course|
-  course_name = course[:sec_name].split('-')[0..1].join('-')
-  if prerequisites.key?(course_name)
-    prereq_courses = prerequisites[course_name].map { |prereq_name| find_course_by_name(courses, prereq_name) }.compact
-    course[:prerequisites] = prereq_courses.map { |c| c[:sec_name] }.join(',') if prereq_courses.any?
-  end
-end
-
-# Create or update courses
-courses.each do |course|
-  existing_course = Course.find_by(sec_name: course[:sec_name])
-  if existing_course
-    existing_course.assign_attributes(course)
-    existing_course.save! if existing_course.changed?
+# Create courses with prerequisites
+courses.each do |course_data|
+  base_code = extract_base_code(course_data[:sec_name])
+  prereq_string = if prerequisites.key?(base_code)
+    prerequisites[base_code].map(&:strip).join(', ')
   else
-    Course.create!(course)
+    nil
   end
+
+  Course.create!(course_data.merge(prerequisites: prereq_string))
 end
+
+puts "\nSeeding completed!"
+puts "Total courses created: #{Course.count}"
