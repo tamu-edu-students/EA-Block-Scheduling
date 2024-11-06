@@ -1,9 +1,8 @@
 Feature: Generate Course Schedules
 
-  Background:
-    Given I am on the "Generate Schedule" page
-
   Scenario: Display list of selected courses
+    Given I am logged in as a test user
+    And I am on the "Generate Schedule" page
     When I visit the "Generate Schedule" page
     Then I should see the "Selected Courses" title
     And I should see a table with course codes, names, and instructors
@@ -14,7 +13,8 @@ Feature: Generate Course Schedules
       | CS301       | Operating Systems               | Prof. Emily Johnson |
 
   Scenario: Generate schedule
-    Given I visit the "Generate Schedule" page
+    Given I am logged in as a test user
+    And I visit the "Generate Schedule" page
     Then I should see the "Generate Schedule" button
     When I click the "Generate Schedule" button
     Then I should see "2 schedules generated" in the schedule banner

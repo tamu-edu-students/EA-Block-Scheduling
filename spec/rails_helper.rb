@@ -29,6 +29,8 @@ require 'rspec/rails'
 require 'database_cleaner'
 
 # Add additional requires below this line. Rails is not loaded until this point!
+Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -113,3 +115,17 @@ RSpec.configure do |config|
     DatabaseCleaner.clean    # Clean the database after each test
   end
 end
+
+OmniAuth.config.test_mode = true
+Capybara.default_driver = :rack_test
+
+
+OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new(
+  provider: 'google_oauth2',
+  uid: '123456',
+  info: {
+    email: 'testuser@example.com',
+    first_name: 'Test',
+    last_name: 'User'
+  }
+)
