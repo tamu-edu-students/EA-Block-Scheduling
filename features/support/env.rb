@@ -24,7 +24,8 @@ end
 
 require 'cucumber/rails'
 require 'capybara/cucumber'
-
+require 'omniauth'
+require 'selenium-webdriver'
 # frozen_string_literal: true
 
 # Capybara defaults to CSS3 selectors rather than XPath.
@@ -75,4 +76,28 @@ end
 # Possible values are :truncation and :transaction
 # The :transaction strategy is faster, but might give you threading problems.
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
+# features/support/env.rb
+Before do
+  # Mock the OmniAuth Google OAuth2 response
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
+    provider: 'google_oauth2',
+    uid: '12345',
+    role: 'admin',
+    info: { email: 'testuser@example.com', name: 'Test User' }
+  })
+end
+
+After do
+  OmniAuth.config.test_mode = false
+end
+
 Cucumber::Rails::Database.javascript_strategy = :truncation
+# Capybara.register_driver :selenium_chrome do |app|
+#   options = Selenium::WebDriver::Chrome::Options.new
+#   options.add_argument('--headless') # if you want headless testing
+#   options.add_argument('--disable-gpu')
+#   options.add_argument('--no-sandbox')
+#   Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+# end
+Capybara.javascript_driver = :selenium_chrome
