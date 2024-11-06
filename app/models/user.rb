@@ -4,11 +4,11 @@ class User < ApplicationRecord
   has_many :roles, through: :user_roles
 
   def admin?
-    role == "admin"
+    self.roles.include?(Role.find_by(name: "admin"))
   end
 
-  # Method to check if the user is a student
-  def student?
-    role == "student"
+  def add_role(role_name)
+    role = Role.find_or_create_by(name: role_name)
+    user_roles.create(role_id: role.id)
   end
 end

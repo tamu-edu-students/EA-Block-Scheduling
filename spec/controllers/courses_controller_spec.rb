@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CoursesController, type: :controller do
-  let(:admin_user) { create(:admin_user) }
+  include_context('omniauth_sign_in')
 
   describe "GET #index" do
     it "returns a successful response" do

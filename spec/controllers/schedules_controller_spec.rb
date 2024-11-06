@@ -3,6 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe SchedulesController, type: :controller do
+  include_context('omniauth_sign_in')
   describe "GET #generate_schedule" do
     it "returns a successful response" do
       get :generate_schedule
