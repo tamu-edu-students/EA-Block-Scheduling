@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe ExcelFile, type: :model do
-
   it "is valid with a name and attached Excel file" do
     excel_file = ExcelFile.new(name: "Test File")
     excel_file.file.attach(io: File.open(Rails.root.join('spec', 'fixtures', 'files', 'test.xlsx')), filename: 'test.xlsx', content_type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
