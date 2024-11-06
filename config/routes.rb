@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # PWA routes
+  # get "/login", to: "sessions#new", as: :login
+  get "/login", to: redirect("/auth/google_oauth2"), as: :login
+
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   get "/auth/failure", to: "sessions#failure"  # Optional, for handling failed authentication
@@ -16,7 +19,7 @@ Rails.application.routes.draw do
   resources :courses
   resources :schedules, only: [:index, :show] do
     collection do
-      get "generate_schedule", to: "schedules#generate_schedule", as: :generate
+      get "generate_schedule", to: "schedules#generate_schedule", as: :generate_schedule
     end
   end
 

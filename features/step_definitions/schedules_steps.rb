@@ -2,11 +2,11 @@
 include Rails.application.routes.url_helpers
 
 Given('I am on the {string} page') do |page_name|
-  visit generate_schedule_path
+  visit generate_schedule_schedules_path
 end
 
 When('I visit the {string} page') do |page_name|
-  visit generate_schedule_path
+  visit generate_schedule_schedules_path
 end
 
 Then('I should see the {string} title') do |title|

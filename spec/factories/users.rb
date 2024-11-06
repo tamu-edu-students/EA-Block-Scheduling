@@ -1,13 +1,11 @@
+# spec/factories/users.rb
 FactoryBot.define do
-  factory :admin_user, class: User do
-    email { Faker::Internet.email }
-    first_name { Faker::Name.first_name }
-    last_name { Faker::Name.last_name }
-    uid { Faker::Internet.uuid }
+  factory :user do
+    email { "user@example.com" }
+    role { "student" }  # Default role
+  end
 
-    after(:create) do |user|
-      user.add_role(:admin)
-    end
+  factory :admin, parent: :user do
+    role { "admin" }  # Admin user has the role 'admin'
   end
 end
-

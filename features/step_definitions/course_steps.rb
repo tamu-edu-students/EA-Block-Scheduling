@@ -1,5 +1,6 @@
 # Basic setup steps
-Given("there is a course {string} in the system") do |title|
+
+When("there is a course {string} in the system") do |title|
   @course = Course.create!(
     term: '224F000',
     dept_code: 'MATH',

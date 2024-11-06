@@ -3,7 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe SchedulesController, type: :controller do
-  include_context('omniauth_sign_in')
+  let(:user) { User.create!(email: "test@example.com", first_name: "Test", last_name: "User", uid: "123456789", provider: "google_oauth2") }
+  before do
+    # Simulate logged-in user by setting session[:user_id]
+    session[:user_id] = user.id
+  end
   describe "GET #generate_schedule" do
     it "returns a successful response" do
       get :generate_schedule
