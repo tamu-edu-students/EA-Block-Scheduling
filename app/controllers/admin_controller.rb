@@ -5,5 +5,8 @@ class AdminController < ApplicationController
     # dashboard logic here
   end
 
+  def index
+  end
+
   private
 end

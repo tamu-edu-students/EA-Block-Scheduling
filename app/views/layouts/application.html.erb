@@ -13,38 +13,10 @@
 </head>
 
 <body>
-<header>
-  <%#= image_tag 'TAMU Logo Header.png', alt: 'Header Image', class: 'header-image' %>
-
-  <!-- Back to Dashboard Button -->
-  <div>
-    <% if current_user %>
-      <%# dashboard_path = current_user.admin? ? admin_dashboard_path : students_dashboard_path %>
-      <%#= link_to "Back to Dashboard", dashboard_path, class: 'dashboard-button' %>
-      <%= render 'layouts/navbar' %>
-    <% end %>
-  </div>
-
-
-  <!-- Logout Link -->
-  <% if current_user %>
-    <div>
-      <%= link_to "Logout", logout_session_path, method: :get, class: 'logout-link' %>
-    </div>
-  <% end %>
-</header>
-
-
+<%= render 'layouts/navbar' %>
 <%= render partial: 'shared/display_flash' unless flash.empty? %>
+
 <%= yield %>
-
-
-<!-- Maroon line at the bottom -->
-
-<!-- Footer -->
-<footer>
-  <%= image_tag 'TAMU Logo Footer.png', alt: 'Footer Image', class: 'footer-image' %>
-</footer>
 
 <script src="https://aux.tamu.edu/@latest/js/aux-accordion.js"></script>
 <script src="https://aux.tamu.edu/@latest/js/aux-in-page-navigation.js"></script>
@@ -53,4 +25,5 @@
 <script src="https://aux.tamu.edu/@latest/js/jquery-3.7.1.min.js"></script>
 
 </body>
+<%= render 'layouts/footer' %>
 </html>
