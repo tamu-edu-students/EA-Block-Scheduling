@@ -9,7 +9,8 @@ end
 
 When('The system processes the file with add_courses_to_database') do
   extend ExcelFilesHelper
-  add_courses_to_database(@blob, @file_id)
+  results = add_courses_to_database(@blob, @file_id)
+  p results.errors
 end
 
 Then('The courses should be added to the database') do

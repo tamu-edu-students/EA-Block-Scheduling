@@ -21,7 +21,7 @@ end
 When("I click course button {string} for section {string}") do |button, section|
   if button == "New Course"
     click_link button
-  elsif ["Show", "Edit", "Delete"].include?(button)
+  elsif %w[Show Edit Delete].include?(button)
     within(:xpath, "//tr[.//td[contains(text(), '#{section}')]]") do
       click_link button
     end

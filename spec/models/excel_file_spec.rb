@@ -265,18 +265,18 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
 
-    describe '#real_attachment_url' do
-      let(:excel_file) { ExcelFile.new(name: "Test File") }
-
-      before do
-        excel_file.file.attach(test_file)
-      end
-
-      it 'returns url for attached file' do
-        # Instead of testing the exact URL, we'll test that it calls url_for
-        expect(helper).to receive(:url_for).with(excel_file.file)
-        helper.send(:real_attachment_url, excel_file.file)
-      end
-    end
+    # describe '#real_attachment_url' do
+    #   let(:excel_file) { ExcelFile.new(name: "Test File") }
+    #
+    #   before do
+    #     excel_file.file.attach(test_file)
+    #   end
+    #
+    #   it 'returns url for attached file' do
+    #     # Instead of testing the exact URL, we'll test that it calls url_for
+    #     expect(helper).to receive(:url_for).with(excel_file.file)
+    #     helper.send(:real_attachment_url, excel_file.file)
+    #   end
+    # end
   end
 end

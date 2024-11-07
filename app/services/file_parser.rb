@@ -14,6 +14,8 @@ class FileParser
     @result = Result.new(false, nil)
     if file.is_a?(ExcelFile)
       @file = ActiveStorage::Blob.find_by(id: id)
+    elsif file.is_a?(ActiveStorage::Blob)
+      @file = ActiveStorage::Blob.find_by(id: id)
     else
       @file = file
     end
@@ -24,7 +26,7 @@ class FileParser
 
   def parse
     if @file.nil?
-      return Result.new(false, nil)
+      return Result.new(false, "No file attachment found")
     end
     if @file.is_a?(ActiveStorage::Blob)
       Tempfile.create([@file_name, "xlsx"]) do |temp_file|
@@ -64,7 +66,7 @@ class FileParser
       end
       add_courses(data)
       @result = Result.new(true, nil)
-    rescue Exception => e
+    rescue Exception
       if File.extname(@file_name) != ".xlsx"
         @result = Result.new(false, "Invalid file format")
       end
@@ -72,11 +74,21 @@ class FileParser
   end
 
   def generate_term
-    re = @file_name.match(/(?<year>\d{4})[_\s]+(?<sem>spring|fall)|(?<sem>spring|fall)[_\s]+(?<year>\d{4})/i)
+    re = @file_name.match(/(?<year>\d{4})[_\s]+(?<sem>spring|fall)|(?<sem2>spring|fall)[_\s]+(?<year2>\d{4})/i)
     if re.nil?
       nil
     else
-      "2#{re[:year][2, 2]}#{re[:sem][0, 1]}000"
+      if re[:year].nil? && !re[:year2].nil?
+        year = re[:year2][2, 2]
+      elsif !re[:year].nil?
+        year = re[:year][2, 2]
+      end
+      if re[:sem].nil? && !re[:sem2].nil?
+        sem = re[:sem2][0, 1]
+      elsif !re[:sem].nil?
+        sem = re[:sem][0, 1]
+      end
+      "2#{year}#{sem}000"
     end
   end
 

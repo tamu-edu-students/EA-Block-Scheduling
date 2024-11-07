@@ -66,8 +66,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_01_062456) do
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "as_id"
     t.string "prerequisites"
+    t.integer "as_id"
   end
 
   create_table "excel_files", force: :cascade do |t|

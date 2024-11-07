@@ -14,5 +14,6 @@ Feature: Course manipulation
     | 225S000 | phys_102 | MW   | 5:30 PM    | 6:20 PM  | 12           |  6      | 0             | 2     |
 
     Scenario: show courses by active storage id
-      Given I am on the courses page to see courses with an active storage id of 1
+      Given I am logged in as a test user
+      And I am on the courses page to see courses with an active storage id of 1
       Then I should see "224F000" in the table
