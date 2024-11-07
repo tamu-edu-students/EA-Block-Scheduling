@@ -78,16 +78,8 @@ class FileParser
     if re.nil?
       nil
     else
-      if re[:year].nil? && !re[:year2].nil?
-        year = re[:year2][2, 2]
-      elsif !re[:year].nil?
-        year = re[:year][2, 2]
-      end
-      if re[:sem].nil? && !re[:sem2].nil?
-        sem = re[:sem2][0, 1]
-      elsif !re[:sem].nil?
-        sem = re[:sem][0, 1]
-      end
+      year = re[:year].nil? ? re[:year2][2, 2] : re[:year][2, 2]
+      sem = re[:sem].nil? ? re[:sem2][2, 2] : re[:sem][2, 2]
       "2#{year}#{sem}000"
     end
   end
