@@ -29,6 +29,11 @@ end
 
 # Controller specs
 RSpec.describe ExcelFilesController, type: :controller do
+  let(:user) { User.create!(email: "test@example.com", first_name: "Test", last_name: "User", uid: "123456789", provider: "google_oauth2") }
+  before do
+    # Simulate logged-in user by setting session[:user_id]
+    session[:user_id] = user.id
+  end
   let(:valid_attributes) do
     {
       name: "Test File",
