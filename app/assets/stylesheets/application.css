@@ -25,9 +25,15 @@
     padding: 10px;
 }
 
- html, body {
-    height: 100%; /* Ensure full height */
-    margin: 0; /* Remove default margin */
+html {
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    min-height: 100%; /* Ensure full height */
+    margin: 0px; /* Remove default margin */
 }
 
 /*body {*/

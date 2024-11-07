@@ -15,7 +15,9 @@
 <body>
 <%= render 'layouts/navbar' %>
 <%= render partial: 'shared/display_flash' unless flash.empty? %>
-
+<% if @current_user.admin? %>
+  <%= render 'layouts/user_dashboard' %>
+<% end %>
 <%= yield %>
 
 <script src="https://aux.tamu.edu/@latest/js/aux-accordion.js"></script>

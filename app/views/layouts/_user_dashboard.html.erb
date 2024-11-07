@@ -58,6 +58,28 @@
           </div>
         </div>
       </div>
+    <% else %>
+      <div class="slab-group" style="display: flex; width: 100%;">
+        <div class="slab-option">
+          <div class="slab-heading" style="padding: 10px;">
+            <div class="heading-group">
+              <h2>Available Classes</h2>
+            </div>
+            <span class="divider-hash gray-300 divider--mini"></span>
+            <%= link_to "Show", courses_path, class: "btn btn--primary" %>
+          </div>
+        </div>
+
+        <div class="slab-option">
+          <div class="slab-heading" style="padding: 10px;">
+            <div class="heading-group">
+              <h2>My Profile</h2>
+            </div>
+            <span class="divider-hash gray-300 divider--mini"></span>
+            <%= link_to "Show", users_path, class: "btn btn--primary" %>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
 </section>
