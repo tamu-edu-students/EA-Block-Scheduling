@@ -7,7 +7,7 @@ class User < ApplicationRecord
     self.roles.include?(Role.find_by(name: "admin"))
   end
 
-  def add_role(role_name)
+  def add_role_to_user(role_name)
     role = Role.find_or_create_by(name: role_name)
     user_roles.create(role_id: role.id)
   end

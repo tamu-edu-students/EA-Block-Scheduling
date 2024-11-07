@@ -1,46 +1,56 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
 <head>
-    <title><%= content_for(:title) || "Ea Block Scheduling" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="apple-touch-icon" href="/icon.png">
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+  <title><%= content_for(:title) || "Ea Block Scheduling" %></title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="icon" type="image/png" href="../assets/">
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <link rel="icon" href="/TAM-MaroonBox.png" sizes="64x64">
+  <link rel="stylesheet" href="https://aux.tamu.edu/@latest/styles/aux-styles.css">
+  <link rel="stylesheet" href="https://aux.tamu.edu/@latest/styles/aux-styles.min.css">
+  <%= javascript_importmap_tags %>
 </head>
 
-  <body>
-
-    <header>
-  <%= image_tag 'TAMU Logo Header.png', alt: 'Header Image', class: 'header-image' %>
+<body>
+<header>
+  <%#= image_tag 'TAMU Logo Header.png', alt: 'Header Image', class: 'header-image' %>
 
   <!-- Back to Dashboard Button -->
-<div class="header-navigation">
-  <% if current_user %>
-    <% dashboard_path = current_user.admin? ? admin_dashboard_path : students_dashboard_path %>
-    <%= link_to "Back to Dashboard", dashboard_path, class: 'dashboard-button' %>
-  <% end %>
-</div>
+  <div>
+    <% if current_user %>
+      <%# dashboard_path = current_user.admin? ? admin_dashboard_path : students_dashboard_path %>
+      <%#= link_to "Back to Dashboard", dashboard_path, class: 'dashboard-button' %>
+      <%= render 'layouts/navbar' %>
+    <% end %>
+  </div>
 
 
   <!-- Logout Link -->
-  <div class="header-logout">
-    <%= link_to "Logout", logout_session_path, method: :get, class: 'logout-link' %>
-  </div>
+  <% if current_user %>
+    <div>
+      <%= link_to "Logout", logout_session_path, method: :get, class: 'logout-link' %>
+    </div>
+  <% end %>
 </header>
 
 
-    <%= render partial: 'shared/display_flash' if not flash.empty? %>
-    <%= yield %>
-  </body>
+<%= render partial: 'shared/display_flash' unless flash.empty? %>
+<%= yield %>
 
-    <!-- Maroon line at the bottom -->
 
-    <!-- Footer -->
-    <footer>
-        <%= image_tag 'TAMU Logo Footer.png', alt: 'Footer Image', class: 'footer-image' %>
-    </footer>
+<!-- Maroon line at the bottom -->
+
+<!-- Footer -->
+<footer>
+  <%= image_tag 'TAMU Logo Footer.png', alt: 'Footer Image', class: 'footer-image' %>
+</footer>
+
+<script src="https://aux.tamu.edu/@latest/js/aux-accordion.js"></script>
+<script src="https://aux.tamu.edu/@latest/js/aux-in-page-navigation.js"></script>
+<script src="https://aux.tamu.edu/@latest/js/aux-main-nav.js"></script>
+<!-- <script src="https://aux.tamu.edu/@latest/js/aux-mobile-nav.js"></script>  -->
+<script src="https://aux.tamu.edu/@latest/js/jquery-3.7.1.min.js"></script>
+
 </body>
 </html>

@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_admin?
-    current_user.role == "admin"
+    current_user.admin?
   end
 
   def require_login

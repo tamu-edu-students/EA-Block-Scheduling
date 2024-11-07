@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
     if @user.valid?
       session[:user_id] = @user.id
       # Redirect based on user role
-      if @user.role == "admin"
+      if @user.admin?
         redirect_to admin_dashboard_path, notice: "Welcome, Admin!"
       else
         redirect_to students_dashboard_path, notice: "Welcome, Student!"

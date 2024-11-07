@@ -32,6 +32,8 @@ Rails.application.routes.draw do
       get "/logout", to: "sessions#logout", as: "logout"
     end
   end
+  resources :user_roles
+  resources :roles
 
   # Excel file routes
   resources :excel_files

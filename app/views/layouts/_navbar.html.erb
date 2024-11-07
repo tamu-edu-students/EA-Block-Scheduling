@@ -1,0 +1,170 @@
+<header id="navbar" class="main-header site-header--alt show-for-medium">
+  <nav class="utility-nav utility-nav--department">
+    <div class="utility-nav__container">
+      <div class="site-header__back">
+        <a href="#">
+          <svg><use href="#aux_arrow-up-right"></use></svg>
+          Texas A&amp;M University
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="site-header__identity">
+    <div class="site-title">
+      <a>Engineering Academies</a>
+    </div>
+    <div class="identity">
+      <a href="#">
+        <div class="identity__logo">
+          <img alt="Texas A&amp;M University logo"
+               src="https://aux.tamu.edu/logos/boxTAM.svg" />
+        </div>
+        <div class="identity__wordmark">
+          <span class="wordmark__small">Texas A&amp;M University</span>
+          <span class="wordmark__large">Engineering Academies</span>
+        </div>
+      </a>
+    </div>
+  </div>
+  <nav class="site-header__nav">
+    <ol class="menu">
+      <!-- *************************************************************************************************************************************** -->
+      <li style="padding: 5px;"><%= link_to  %><a class="menu-item" href="/app/assets/config">Home</a></li>
+      <li style="padding: 5px;"><a class="menu-item" href="schedules">Scheduler</a></li>
+      <li style="padding: 5px;"><a class="menu-item" href="courses">Courses</a></li>
+      <li style="padding: 5px;"><a class="menu-item" href="fileupload">File Upload</a></li>
+      <!-- *************************************************************************************************************************************** -->
+    </ol>
+  </nav>
+</header>
+
+<header class="mobile-header site-header--alt show-for-small-only" id="mobile-navbar">
+  <div class="site-header__back">
+    <a href="https://www.tamu.edu/">
+      <svg><use href="#aux_arrow-up-right"></use></svg>
+      Texas A&amp;M University
+    </a>
+  </div>
+  <div class="mobile-header__identity mobile-header__identity--text">
+    <div class="identity">
+      <div class="identity__text">
+        <a class="superheader" href="#">Engineering Academies</a>
+        <span class="site-title">Block Schedule Viewer</span>
+      </div>
+      <div class="identity__logo">
+        <img alt="Texas A&amp;M University logo" src="https://aux.tamu.edu/logos/boxTAM.svg" />
+      </div>
+    </div>
+  </div>
+  <div class="mobile-toggle">
+    <button class="mobile-toggle__menu mobile-nav__menu"
+            aria-expanded="false"
+            aria-pressed="false"
+            data-mobilemenu="menu-mobile">
+      Menu
+      <div class="menu__icon"><span></span></div>
+    </button>
+    <button class="mobile-toggle__quicklinks-search">
+      Search
+      <svg>
+        <use href="#aux_search"></use>
+      </svg>
+    </button>
+  </div>
+  <div class="nav-overlay" style="display: none;">
+    <div class="mobile-nav" style="display: none;">
+      <div class="mobile-nav__top">
+        <button aria-controls="menu-mobile"
+                aria-expanded="false"
+                aria-pressed="false"
+                class="close"
+                data-mobile="menu-mobile"
+                title="close mobile menu">
+          Close
+        </button>
+      </div>
+      <div class="mobile-nav__primary">
+        <a class="mobile-nav__item" href="#">Nav Item 1</a>
+        <a class="mobile-nav__item" href="#">Nav Item 2</a>
+        <a class="mobile-nav__item" href="#">Nav Item 3</a>
+        <button aria-controls="strat-mobile"
+                aria-expanded="false"
+                aria-pressed="false"
+                class="mobile-nav__item"
+                data-megamenu="dropdownNavItem-mobile">
+          <!-------------------------------------------------------------------------------------------------------------------------------------->
+
+          <svg>
+            <use href="#aux_angle-right"></use>
+          </svg>
+        </button>
+        <a class="mobile-nav__item" href="#">Nav Item 5</a>
+      </div>
+      <div class="mobile-nav__quicklinks">
+        <svg class="user">
+          <use href="#aux_bolt"></use>
+        </svg>
+        <button class="persona__button"
+                aria-controls="strat-mobile"
+                aria-expanded="false"
+                aria-pressed="false"
+                data-megamenu="quicklinks-mobile">
+          <!-------------------------------------------------------------------------------------------------------------------------------------->
+          <svg>
+            <use href="#aux_angle-right"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-------------------------------------------------------------------------------------------------------------------------------------->
+    <div aria-controls="dropdownNavItem-mobile"
+         aria-expanded="false"
+         aria-pressed="false"
+         class="mobile-nav__panel"
+         data-megamenu="dropdownNavItem-mobile"
+         id="dropdownNavItem-mobile"
+         style="display: none;">
+      <div class="mobile-nav__top">
+        <button class="back">Back to Main Menu</button>
+        <button class="close">Close</button>
+      </div>
+      <div class="mobile-nav__content">
+        <div class="panel__links">
+          <div class="panel__link-item">
+            <a href="#" class="link--cta">Block Schedule Viewer</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-------------------------------------------------------------------------------------------------------------------------------------->
+    <div aria-controls="quicklinks-mobile"
+         aria-expanded="false"
+         aria-pressed="false"
+         class="mobile-nav__panel"
+         data-megamenu="quicklinks-mobile"
+         id="quicklinks-mobile"
+         style="display: none;">
+      <div class="mobile-nav__top">
+        <button class="back">Back to Main Menu</button>
+        <button class="close">Close</button>
+      </div>
+      <div class="mobile-nav__content">
+        <div class="panel__links">
+          <div class="panel__link-item">
+            <a class="menu-item" href="/app/assets/config" Match="aMatch.All">Home</a>
+          </div>
+          <div class="panel__link-item">
+            <a class="menu-item" href="schedules">Scheduler</a>
+          </div>
+          <div class="panel__link-item">
+            <a class="menu-item" href="courses">Courses</a>
+          </div>
+          <div class="panel__link-item">
+            <a class="menu-item" href="settings">Profile</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
