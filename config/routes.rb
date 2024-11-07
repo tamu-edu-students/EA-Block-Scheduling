@@ -35,4 +35,16 @@ Rails.application.routes.draw do
 
   # Excel file routes
   resources :excel_files
+  root "excel_files#index"
+
+  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
+  # Can be used by load balancers and uptime monitors to verify that the app is live.
+
+  resources :courses do
+    collection { post :upload, as: :course_upload }
+  end
+  get "course_uploads/:as_id", to: "courses#show_by_upload", as: :courses_by_upload
+
+  # Defines the root path route ("/")
+  # root "posts#index"
 end
