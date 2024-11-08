@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get "/auth/google_oauth2/callback", to: "sessions#omniauth"
   get "admin/dashboard", to: "admin#dashboard", as: :admin_dashboard
   get "dashboard", to: "students#dashboard", as: :students_dashboard
-  get 'schedule_viewer', to: 'schedules#schedule_viewer'
+  get "schedule_viewer", to: "schedules#schedule_viewer"
 
   # Course and schedule routes
   resources :courses

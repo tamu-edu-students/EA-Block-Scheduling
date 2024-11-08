@@ -31,6 +31,5 @@ RSpec.describe "schedule_viewer.html.erb", type: :view do
     end
 
     # TODO: Add setup for specific class block data and test for presence
-
   end
 end
