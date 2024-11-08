@@ -7,5 +7,4 @@ class SchedulesController < ApplicationController
       { name: "Operating Systems", instructor: "Prof. Emily Johnson", course_code: "CS301" }
     ]
   end
-
 end
