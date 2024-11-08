@@ -8,7 +8,4 @@ class SchedulesController < ApplicationController
     ]
   end
 
-  def schedule_viewer
-    # TODO: Add logic
-  end
 end
