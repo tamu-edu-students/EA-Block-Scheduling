@@ -2,75 +2,7 @@
 <html>
 <head>
   <link rel="stylesheet" href="https://aux.tamu.edu/v1.7.0/styles/aux-styles.css">
-  <style>
-    /* Original table styles */
-    table {
-      width: 80%;
-      border-collapse: collapse;
-      margin: 0 auto 20px auto;
-    }
-    h1 {
-      margin: 20px 10%;
-    }
-    th {
-      background-color: #500000 !important;
-      color: #FFFFFF !important;
-    }
-    td {
-      padding: 0 0 0 16px !important;
-      font-size: 12px;
-    }
-    th, td {
-      width: 16.66%;
-    }
-
-    /* Wrapper around the table */
-    .timetable-wrapper {
-      position: relative;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    /* Style for blocks spanning multiple cells */
-    .class-block {
-      position: absolute;
-      background-color: #732f2f;
-      color: #FFFFFF;
-      padding: 5px;
-      border-radius: 2px;
-      cursor: pointer;
-      text-align: center;
-      /* Adjust size and position */
-      width: 13.34%; /* Width of one column, adjust to span more */
-      height: 47px; /* Fixed height */
-    }
-
-    /* Modal styles */
-    .class-modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-    .modal-content {
-      background-color: #ffffff;
-      margin: 15% auto;
-      padding: 20px;
-      width: 300px;
-      border-radius: 8px;
-      text-align: center;
-    }
-    .close {
-      color: #aaaaaa;
-      float: right;
-      font-size: 20px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-  </style>
+  <%= stylesheet_link_tag 'schedule_viewer', media: 'all' %>
 </head>
 <body>
 
@@ -129,43 +61,8 @@
     </div>
   </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const modal = document.getElementById("classModal");
-      const classTitle = document.getElementById("classTitle");
-      const classDetails = document.getElementById("classDetails");
-      const closeBtn = document.querySelector(".close");
+  <%= javascript_include_tag 'schedule_viewer' %>
 
-      // Open the modal with data from the clicked class block
-      document.querySelectorAll(".class-block").forEach(block => {
-        block.addEventListener("click", function() {
-          // Get class details from the block's data attributes
-          classTitle.textContent = block.getAttribute("data-name");
-          classDetails.textContent = block.getAttribute("data-details").replace(/\\n/g, "<br>");
-
-          // Display the modal
-          modal.style.display = "block";
-        });
-      });
-
-      // Close the modal
-      closeBtn.onclick = function() {
-        modal.style.display = "none";
-      };
-
-      // Close modal if clicking outside of it
-      window.onclick = function(event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      };
-    });
-
-    // Close the modal function
-    function closeModal() {
-      document.getElementById("classModal").style.display = "none";
-    }
-  </script>
 
 </body>
 </html>
