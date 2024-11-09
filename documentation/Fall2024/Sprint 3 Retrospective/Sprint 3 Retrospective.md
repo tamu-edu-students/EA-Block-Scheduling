@@ -31,7 +31,7 @@ Finished User Stories:<br>
 7. Set Block generating conditions on web
 8. Display Class Blocks
 9. Display Class Details
-10. Upload spreadsheet
+10. Store data of spreadsheet on database
     - Add styling to the page
             
 **6. Sprint Backlog Items and Status**
