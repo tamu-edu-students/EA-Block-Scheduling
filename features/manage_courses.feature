@@ -4,12 +4,14 @@ Feature: Manage Courses
   So that I can maintain the course catalog
 
   Scenario: View course listing
-    Given there is a course "Calculus I" in the system
+    Given I am logged in as a test user
+    And there is a course "Calculus I" in the system
     When I visit the courses page
     Then I should see course title "Calculus I"
 
   Scenario: Create a new course
-    When I visit the courses page
+    Given I am logged in as a test user
+    And I visit the courses page
     And I click course button "New Course"
     And I fill in course field "Term" with "224F000"
     And I fill in course field "Dept code" with "PHYS"
@@ -23,7 +25,8 @@ Feature: Manage Courses
     And I should see course title "Physics I"
 
   Scenario: Delete a course
-    Given there is a course "Calculus I" in the system
+    Given I am logged in as a test user
+    And there is a course "Calculus I" in the system
     When I visit the courses page
     And I click course button "Delete" for section "MATH-2413-008"
     Then I should not see course title "Calculus I" with section "MATH-2413-008"

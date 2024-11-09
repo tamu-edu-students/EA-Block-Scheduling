@@ -1,7 +1,8 @@
 # Sprint 3 MVP Report
 
 ### 1. Deployed App
-Link: https://ea-block-scheduler-4fecd886e389.herokuapp.com/generate-schedule 
+
+Link: [https://ea-block-scheduler-4fecd886e389.herokuapp.com/generate-schedule ](https://ea-block-scheduler-4fecd886e389.herokuapp.com/)
 
 
 ### 2. Sprint Goal
@@ -10,37 +11,61 @@ a completed page of available classes with their prerequisites, and a parser for
 
 
 ### 3. Sprint Backlog
-#17 Upload service for classes spreadsheet
-- [x] Create page for uploading class spreadsheet to data 
-- [x] Create parsing service for backend data persistence 
 
-#47 Integrate Code Climate with repo
-- [x] Add necessary config settings to application 
+#34 Add SSO Capability
+- [x] Basic setup with third party
 
-#33 Add tokens for logging in 
-- [x] Add session logic for logged-in users 
-
-#20 Retrieve data from database
-- [ ] Create session model, controller, and helper 
-  - Partially completed
-- [ ] Create user model, controller, and helper
-  - Partially completed
-- [x] Create class model, controller, and helper 
-- [ ] Create block_schedule model, controller, and helper 
-
-#34 Add SSO capability 
-- [x] Set up with third party 
-- [ ] Add settings to configs 
+#33 Add tokens for logging in
+- [x] Add session logic for logged-in users
 
 #35 Connect login page to student dashboard 
 - [x] Add authorization elements to dashboard controller components 
 
-#47 Integrate code climate to the repo
-- [x] Integrating code climate to the repo
+#78 Sprint documentation
+- [x] Sprint 3 documentation
 
-#48 Creating a database schema 
-- [x] Help design database schema
-- [x] Add models to the application accordingly
+#17 Upload service for classes spreadsheet
+- [x] Create page for uploading class spreadsheet to data 
+- [x] Create parsing service for backend data persistence 
+
+#19 Store the spreadsheet data on the database
+- [x] Add styling to the upload excel page
+
+#75 Create session and user table
+- [x] Create session and user table
+
+#37 Set block generating conditions on the web
+- [x] Block generating conditions are made
+
+#61 Display Class Details UI
+- [x] Display Class Details: 2 hours (Chengyan Tsai)
+
+### 3. Sprint Backlog
+
+#38 application makes possible blocks with conditions
+- [ ] Develop algorithm to apply block generating conditions for typical blocks made by admin
+ 
+#40 user pick rest of classes
+- [ ] Create pop up alerts the user that “scheduled blocks are limited!”
+ 
+#34 Add SSO Capability
+- [ ] Add settings to configs
+
+#19 Store the spreadsheet data on the database
+- [ ] Create Database Schema
+ 
+#36 Set typical classes grouping on the web
+- [ ] Create Admin sets typical classes to generate draft blocks on the web page
+ 
+#39 Generate possible blocks
+- [ ] Develop blocks are generated automatically through algorithm
+ 
+#60 Display Class Blocks UI
+- [ ] Display Class Blocks
+
+#11 Show basic schedule timetable UI
+- [ ] Create basic time table
+- [ ] Create Page
 
 
 ### 4. Use of BDD
@@ -62,7 +87,9 @@ All Rubocop cops are enabled and report at most 1 style offense per file.
 > Run `rubocop` to see the result <br>
 
 ### 9. Use of Project Tracker
-**Taiga User Stories:** https://tree.taiga.io/project/aaronjones05-block-scheduler/taskboard/ecstatic-woodchuck
+
+**Taiga User Stories:** [https://tree.taiga.io/project/aaronjones05-block-scheduler/taskboard/ecstatic-woodchuck](https://tree.taiga.io/project/aaronjones05-block-scheduler/taskboard/hungry-hamster)
+
 
 ## 10. Presentation
 See the deployed app.

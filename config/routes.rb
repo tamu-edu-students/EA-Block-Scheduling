@@ -1,26 +1,51 @@
 Rails.application.routes.draw do
-  # showing classes to choose
-  resources :courses
-  resources :schedules, only: [:index, :show]
-  # shows all courses
-  get "/courses", to: "courses#index"
-  # shows courses to choose from
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  root "welcome#index", to: "welcome#index", as: "welcome"
+
+  # Health check route
   get "up" => "rails/health#show", as: :rails_health_check
-  # Render dynamic PWA files from app/views/pwa/*
+
+  # PWA routes
+  # get "/login", to: "sessions#new", as: :login
+  get "/login", to: redirect("/auth/google_oauth2"), as: :login
+
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+  get "/auth/failure", to: "sessions#failure"  # Optional, for handling failed authentication
+  get "/auth/google_oauth2/callback", to: "sessions#omniauth"
+  get "admin/dashboard", to: "admin#dashboard", as: :admin_dashboard
+  get "dashboard", to: "students#dashboard", as: :students_dashboard
+  get "schedule_viewer", to: "schedules#schedule_viewer"
 
-  get "sessions/new"
-  get "sessions/create"
-  get "sessions/sso_new"
-  get "sessions/sso_create"
-  get "users/new"
-  get "users/create"
-  get "home/index"
-  get "generate-schedule", to: "schedules#generate_schedule"
+  # Course and schedule routes
   resources :courses
+  resources :schedules, only: [:index, :show] do
+    collection do
+      get "generate_schedule", to: "schedules#generate_schedule", as: :generate_schedule
+    end
+  end
+
+  # User and session routes
+  resources :users, only: [:new, :create, :show]
+  resource :session, only: [:new, :create, :destroy] do
+    collection do
+      get "sso_new"
+      get "sso_create"
+      get "/logout", to: "sessions#logout", as: "logout"
+    end
+  end
+
+  # Excel file routes
   resources :excel_files
   root "excel_files#index"
+
+  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
+  # Can be used by load balancers and uptime monitors to verify that the app is live.
+
+  resources :courses do
+    collection { post :upload, as: :course_upload }
+  end
+  get "course_uploads/:as_id", to: "courses#show_by_upload", as: :courses_by_upload
+
+  # Defines the root path route ("/")
+  # root "posts#index"
 end

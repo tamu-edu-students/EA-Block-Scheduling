@@ -1,5 +1,6 @@
 # Basic setup steps
-Given("there is a course {string} in the system") do |title|
+
+When("there is a course {string} in the system") do |title|
   @course = Course.create!(
     term: '224F000',
     dept_code: 'MATH',
@@ -20,7 +21,7 @@ end
 When("I click course button {string} for section {string}") do |button, section|
   if button == "New Course"
     click_link button
-  elsif ["Show", "Edit", "Delete"].include?(button)
+  elsif %w[Show Edit Delete].include?(button)
     within(:xpath, "//tr[.//td[contains(text(), '#{section}')]]") do
       click_link button
     end
