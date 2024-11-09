@@ -9,7 +9,7 @@ Deployed App: https://ea-block-scheduler-4fecd886e389.herokuapp.com/
 2. Dates of the Sprint
 25 Oct 2024 to 08 Nov 2024
 3. Information about Team and Member Contributions
-![alt text](Member Contribution.png)
+![alt text](MemberContribution.png)
  
 5. Sprint Goal
 By the end of this sprint, we will have fully developed admin and user dashboards, controllers to allow users the ability to login using single sign on, a completed page of available classes with their prerequisites, and a parser for excel documents. 
