@@ -62,14 +62,16 @@ Code Quality:
 Reviewing progress with Shana (client)
 Online meeting
 Nov 08
--Demo of :-
+1. Demo of :-
+   
      •	SSO login capability 
      •	Profile page
      •	Student login page
      •	Course Viewer page
--Review block generation algorithm and get feedback
--Added a feature to save the data of courses completed by the students through google form
--Clarified that if the course is not available and student opts for its ACC will be sending out mail to them, application doesn’t need to handle this part.
+   
+3. Review block generation algorithm and get feedback
+4. Added a feature to save the data of courses completed by the students through google form
+5. Clarified that if the course is not available and student opts for its ACC will be sending out mail to them, application doesn’t need to handle this part.
 12. BDD & TDD
 Cucumber scenarios and rspec examples have covered all features developed in this iteration.
 
