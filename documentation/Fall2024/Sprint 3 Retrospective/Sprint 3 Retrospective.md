@@ -1,14 +1,11 @@
 Sprint 3 Retrospective
 1. Deployed App
-
 Taiga (project page): https://tree.taiga.io/project/aaronjones05-block-scheduler/wiki/home
-
 Github Repo: https://github.com/tamu-edu-students/EA-Block-Scheduling
-
 Deployed App: https://ea-block-scheduler-4fecd886e389.herokuapp.com/
 2. Dates of the Sprint
 25 Oct 2024 to 08 Nov 2024
-3. Information about Team and Member Contributions
+4. Information about Team and Member Contributions
 ![alt text](MemberContribution.png)
  
 5. Sprint Goal
