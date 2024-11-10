@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://aux.tamu.edu/v1.7.0/styles/aux-styles.css">
+  <%= stylesheet_link_tag 'schedule_viewer', media: 'all' %>
+</head>
+<body>
+
+  <h1>Schedule Viewer</h1>
+
+  <div class="timetable-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Monday</th>
+          <th>Tuesday</th>
+          <th>Wednesday</th>
+          <th>Thursday</th>
+          <th>Friday</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% start_time = Time.parse("08:00 AM") %>
+        <% end_time = Time.parse("09:00 PM") %>
+
+        <% while start_time <= end_time %>
+          <tr>
+            <td class="time-slot"><%= start_time.strftime("%I:%M %p") %></td>
+            
+            <% ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"].each do |day| %>
+              <td></td>
+            <% end %>
+
+          </tr>
+          <% start_time += 15.minutes %>
+        <% end %>
+      </tbody>
+    </table>
+
+    <!-- Absolute-positioned class block, spanning Monday and Tuesday -->
+    <!-- Left = 10% + 13.34% * N -->
+    <!-- Top = 55 + 19 * N -->
+    <!-- Height = 19 * N -->
+    <div class="class-block" data-id="1" data-name="ENGR 102" data-details="Engineering Lab I - Room 1130.02" style="top: 55px; left: 23.34%; width: 13.34%; height: 76px">
+      ENGR 102
+    </div>
+
+    <div class="class-block" data-id="2" data-name="MATH 2412" data-details="PreCalculus - Room 2218" style="top: 207px; left: 36.68%; width: 13.34%; height: 57px">
+      MATH 2412
+    </div>
+
+  </div>
+
+  <!-- Single Modal for displaying class details dynamically -->
+  <div id="classModal" class="class-modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3 id="classTitle">Class Name</h3>
+      <p id="classDetails">Class details will be shown here.</p>
+    </div>
+  </div>
+
+  <%= javascript_include_tag 'schedule_viewer' %>
+
+
+</body>
+</html>
