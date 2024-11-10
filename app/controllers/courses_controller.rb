@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  include CoursesHelper
   before_action :set_course, only: %i[ show edit update destroy ]
 
   # GET /courses or /courses.json
@@ -54,6 +55,13 @@ class CoursesController < ApplicationController
     @course = Course.new
   end
 
+  # show recently uploaded courses
+  def show_by_upload
+    as_id = params[:as_id]
+    validate_courses(as_id)
+    @courses = Course.where(as_id: as_id)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_course
@@ -82,7 +90,8 @@ class CoursesController < ApplicationController
         :sec_cap,
         :student_count,
         :notes,
-        :prerequisites
+        :prerequisites,
+        :as_id
       )
     end
 end

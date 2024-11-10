@@ -20,6 +20,7 @@ gem "tzinfo-data", platforms: %i[windows jruby] # Windows does not include zonei
 gem "omniauth"
 gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection"
+gem "devise"
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]

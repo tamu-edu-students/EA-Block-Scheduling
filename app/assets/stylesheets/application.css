@@ -32,8 +32,7 @@ html {
 }
 
 body {
-    min-height: 100%; /* Ensure full height */
-    margin: 0px; /* Remove default margin */
+    min-height: 90%; /* Ensure full height */
 }
 
 /*body {*/

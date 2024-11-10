@@ -1,0 +1,20 @@
+<section class="section-wrap">
+  <div class="linked-card-group">
+    <div class="section-intro">
+      <div class="section-intro__container">
+        <div class="section-intro__content">
+          <div class="heading-group">
+            <h1>Howdy, <%= @current_user.first_name %>!</h1>
+          </div>
+          <p class="section-intro__description">
+          </p>
+        </div>
+      </div>
+    </div>
+    <% if @current_user.admin? %>
+      <%= render 'layouts/admin_index' %>
+    <% else %>
+      <%= render 'layouts/user_index' %>
+    <% end %>
+  </div>
+</section>

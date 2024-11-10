@@ -3,7 +3,7 @@
 <head>
   <title><%= content_for(:title) || "Ea Block Scheduling" %></title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
   <link rel="icon" type="image/png" href="../assets/">
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <link rel="icon" href="/TAM-MaroonBox.png" sizes="64x64">
@@ -15,9 +15,7 @@
 <body>
 <%= render 'layouts/navbar' %>
 <%= render partial: 'shared/display_flash' unless flash.empty? %>
-<% if @current_user.admin? %>
-  <%= render 'layouts/user_dashboard' %>
-<% end %>
+
 <%= yield %>
 
 <script src="https://aux.tamu.edu/@latest/js/aux-accordion.js"></script>

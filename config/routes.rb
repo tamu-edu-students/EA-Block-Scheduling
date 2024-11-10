@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root "welcome#index", to: "welcome#index", as: "welcome"
-
+  get "index", to: "pages#index", as: "pages"
   # Health check route
   get "up" => "rails/health#show", as: :rails_health_check
 
@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   end
   resources :user_roles
   resources :roles
+  get "course_uploads/:as_id", to: "courses#show_by_upload", as: :courses_by_upload
 
   # Excel file routes
   resources :excel_files

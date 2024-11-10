@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-  skip_before_action :require_login, only: [:omniauth]
+  # skip_before_action :require_login, only: [:omniauth]
+  skip_before_action :require_login, only: [:new, :create]
 
   def logout
     reset_session
@@ -18,14 +19,14 @@ class SessionsController < ApplicationController
 
     if @user.valid?
       session[:user_id] = @user.id
-      # Redirect based on user role
-      if @user.admin?
-        redirect_to admin_dashboard_path, notice: "Welcome, Admin!"
-      else
-        redirect_to students_dashboard_path, notice: "Welcome, Student!"
-      end
+      redirect_to pages_path, notice: "Welcome, #{@user.first_name}!"
     else
       redirect_to welcome_path, alert: "Login failed."
     end
+  end
+
+  def create
+    state = State.create!(token: generate_state_token, data: { user_id: current_user.id })
+    redirect_to provider.auth_code.authorize_url(state: state.token)
   end
 end
