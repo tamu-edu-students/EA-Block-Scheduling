@@ -65,36 +65,36 @@ class CoursesController < ApplicationController
   end
 
   # Gets the course code from the sec_name (e.g. MATH-2414 from MATH-2414-007)
-  def extract_base_code(sec_name)
-    standardized = sec_name.gsub(' ', '-')
-    parts = standardized.split('-')
-    "#{parts[0]}-#{parts[1]}"
-  end
+  # def extract_base_code(sec_name)
+  #   standardized = sec_name.gsub(' ', '-')
+  #   parts = standardized.split('-')
+  #   "#{parts[0]}-#{parts[1]}"
+  # end
 
   private
 
   # Define prereqs and coreqs for listed courses for populating columns during creation
-  def corequisites
-    {
-      'ENGR 102' => %w[MATH-2412 MATH-2413],
-      'ENGR 216' => ['PHYS 2425'],
-      'ENGR 217' => ['PHYS 2426']
-    }
-  end
-  def prerequisites
-    {
-      'MATH-2413' => ['MATH-2412'],
-      'MATH-2414' => ['MATH-2413'],
-      'MATH-2415' => ['MATH-2414'],
-      'MATH-2420' => ['MATH-2415'],
-      'ENGR-216' => %w[ENGR-102 MATH-2413],
-      'ENGR-217' => %w[ENGR-216 PHYS-2425 MATH-2414],
-      'CHEM-1312' => ['CHEM-1309'],
-      'CHEM-1112' => ['CHEM-1309'],
-      'PHYS-2425' => ['MATH-2413'],
-      'PHYS-2426' => %w[MATH-2414 PHYS-2425]
-    }
-  end
+  # def corequisites
+  #   {
+  #     'ENGR 102' => %w[MATH-2412 MATH-2413],
+  #     'ENGR 216' => ['PHYS 2425'],
+  #     'ENGR 217' => ['PHYS 2426']
+  #   }
+  # end
+  # def prerequisites
+  #   {
+  #     'MATH-2413' => ['MATH-2412'],
+  #     'MATH-2414' => ['MATH-2413'],
+  #     'MATH-2415' => ['MATH-2414'],
+  #     'MATH-2420' => ['MATH-2415'],
+  #     'ENGR-216' => %w[ENGR-102 MATH-2413],
+  #     'ENGR-217' => %w[ENGR-216 PHYS-2425 MATH-2414],
+  #     'CHEM-1312' => ['CHEM-1309'],
+  #     'CHEM-1112' => ['CHEM-1309'],
+  #     'PHYS-2425' => ['MATH-2413'],
+  #     'PHYS-2426' => %w[MATH-2414 PHYS-2425]
+  #   }
+  # end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_course
