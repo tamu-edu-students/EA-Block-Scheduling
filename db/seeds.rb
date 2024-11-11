@@ -34,6 +34,7 @@ corequisites = {
 }
 
 puts "Prerequisites defined: #{prerequisites.keys.join(', ')}"
+puts "Corequisites defined: #{corequisites.keys.join(', ')}"
 
 # All courses
 courses = [
@@ -138,8 +139,13 @@ courses.each do |course_data|
   else
     nil
   end
+  coreq_string = if corequisites.key?(base_code)
+    corequisites[base_code].map(&:strip).join(', ')
+  else
+    nil
+  end
 
-  Course.create!(course_data.merge(prerequisites: prereq_string))
+  Course.create!(course_data.merge(prerequisites: prereq_string, corequisites: coreq_string))
 end
 
 puts "\nSeeding completed!"

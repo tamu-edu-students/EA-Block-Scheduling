@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_01_062456) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_11_201457) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -68,6 +68,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_01_062456) do
     t.datetime "updated_at", null: false
     t.string "prerequisites"
     t.integer "as_id"
+    t.string "corequisites"
+    t.string "category"
   end
 
   create_table "excel_files", force: :cascade do |t|
