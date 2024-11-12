@@ -125,10 +125,18 @@ courses = [
 
 puts "Found #{courses.length} courses to create"
 
+# Gets the course code from the sec_name (e.g. MATH-2414 from MATH-2414-007)
 def extract_base_code(sec_name)
   standardized = sec_name.gsub(' ', '-')
   parts = standardized.split('-')
   "#{parts[0]}-#{parts[1]}"
+end
+
+# Get type of course from sec_name using extract_base_code (e.g. MATH from MATH-2414-007)
+def extract_type(sec_name)
+  base_code = extract_base_code(sec_name)
+  parts = base_code.split('-')
+  parts[0]
 end
 
 # Create courses with prerequisites
