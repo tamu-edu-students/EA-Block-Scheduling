@@ -139,6 +139,14 @@ def extract_type(sec_name)
   parts[0]
 end
 
+categories = {
+  'MATH' => 'Math',
+  'PHYS' => 'Science',
+  'CHEM' => 'Science',
+  'ENGR' => 'Engineering',
+  'CLEN' => 'Intro'
+}
+
 # Create courses with prerequisites
 courses.each do |course_data|
   base_code = extract_base_code(course_data[:sec_name])
@@ -153,7 +161,14 @@ courses.each do |course_data|
     nil
   end
 
-  Course.create!(course_data.merge(prerequisites: prereq_string, corequisites: coreq_string))
+  type = extract_type(course_data[:sec_name])
+  category_string = if categories.key?(type)
+    categories[type].strip
+  else
+    nil
+  end
+
+  Course.create!(course_data.merge(prerequisites: prereq_string, corequisites: coreq_string, category: category_string))
 end
 
 puts "\nSeeding completed!"
