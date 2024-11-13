@@ -1,0 +1,42 @@
+<!-- This file is app/views/courses/show_by_upload.html.erb -->
+<% if @courses.nil? || @courses.count == 0 %>
+  <h3>No courses found</h3>
+  <p>Try going back, deleting the excel file from the list, and upload a new file.</p>
+  <%= link_to "Back", excel_files_path, :class => "btn btn--primary"%>
+<% else %>
+  <h2>Courses for term: <%= @courses.last[:term] || "" %></h2>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Term</th>
+      <th>Course</th>
+      <th>Days</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course[:term] %></td>
+        <td><%= course[:sec_name] %></td>
+        <td><%= course[:days] %></td>
+        <td><%= course[:start_time] %></td>
+        <td><%= course[:end_time] %></td>
+        <td>
+          <div class="action-group">
+            <svg>
+              <use href="https://aux.tamu.edu/icons/aux-prod-icons/pencil.svg"></use>
+            </svg>
+            <svg>
+              <use href="https://aux.tamu.edu/icons/aux-prod-icons/circle-outline-xmark.svg"></use>
+            </svg>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>

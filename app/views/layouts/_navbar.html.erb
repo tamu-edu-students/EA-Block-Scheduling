@@ -2,10 +2,10 @@
   <nav class="utility-nav utility-nav--department">
     <div class="utility-nav__container">
       <div class="site-header__back">
-        <a href="#">
+        <%= link_to pages_path do %>
           <svg><use href="#aux_arrow-up-right"></use></svg>
           Texas A&amp;M University
-        </a>
+        <% end %>
       </div>
 <!--      <div class="utility-nav__right"><%#= link_to "Logout", destroy_user_session_path, class: "btn" %></div>-->
     </div>
