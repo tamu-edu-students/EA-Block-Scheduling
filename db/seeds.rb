@@ -27,7 +27,14 @@ prerequisites = {
   'PHYS-2426' => ['PHYS-2425']
 }
 
+corequisites = {
+  'ENGR 102' => %w[MATH-2412 MATH-2413],
+  'ENGR 216' => ['PHYS 2425'],
+  'ENGR 217' => ['PHYS 2426']
+}
+
 puts "Prerequisites defined: #{prerequisites.keys.join(', ')}"
+puts "Corequisites defined: #{corequisites.keys.join(', ')}"
 
 # All courses
 courses = [
@@ -118,11 +125,27 @@ courses = [
 
 puts "Found #{courses.length} courses to create"
 
+# Gets the course code from the sec_name (e.g. MATH-2414 from MATH-2414-007)
 def extract_base_code(sec_name)
   standardized = sec_name.gsub(' ', '-')
   parts = standardized.split('-')
   "#{parts[0]}-#{parts[1]}"
 end
+
+# Get type of course from sec_name using extract_base_code (e.g. MATH from MATH-2414-007)
+def extract_type(sec_name)
+  base_code = extract_base_code(sec_name)
+  parts = base_code.split('-')
+  parts[0]
+end
+
+categories = {
+  'MATH' => 'Math',
+  'PHYS' => 'Science',
+  'CHEM' => 'Science',
+  'ENGR' => 'Engineering',
+  'CLEN' => 'Intro'
+}
 
 # Create courses with prerequisites
 courses.each do |course_data|
@@ -132,8 +155,20 @@ courses.each do |course_data|
   else
     nil
   end
+  coreq_string = if corequisites.key?(base_code)
+    corequisites[base_code].map(&:strip).join(', ')
+  else
+    nil
+  end
 
-  Course.create!(course_data.merge(prerequisites: prereq_string))
+  type = extract_type(course_data[:sec_name])
+  category_string = if categories.key?(type)
+    categories[type].strip
+  else
+    nil
+  end
+
+  Course.create!(course_data.merge(prerequisites: prereq_string, corequisites: coreq_string, category: category_string))
 end
 
 puts "\nSeeding completed!"
