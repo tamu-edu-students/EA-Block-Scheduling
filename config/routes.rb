@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get "/auth/google_oauth2/callback", to: "sessions#omniauth"
   get "admin/dashboard", to: "admin#dashboard", as: :admin_dashboard
   get "dashboard", to: "students#dashboard", as: :students_dashboard
+  get "schedule_viewer", to: "schedules#schedule_viewer"
 
   # Course and schedule routes
   resources :courses
@@ -38,4 +39,15 @@ Rails.application.routes.draw do
 
   # Excel file routes
   resources :excel_files
+
+  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
+  # Can be used by load balancers and uptime monitors to verify that the app is live.
+
+  resources :courses do
+    collection { post :upload, as: :course_upload }
+  end
+  get "course_uploads/:as_id", to: "courses#show_by_upload", as: :courses_by_upload
+
+  # Defines the root path route ("/")
+  # root "posts#index"
 end

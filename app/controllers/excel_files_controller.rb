@@ -4,7 +4,7 @@ class ExcelFilesController < ApplicationController
   include Rails.application.routes.url_helpers
   include ExcelFilesHelper
   before_action :set_excel_file, only: %i[ show edit update destroy ]
-  # has_one_attached :file
+
   # GET /excel_files or /excel_files.json
   def index
     @excel_files = ExcelFile.all
@@ -63,13 +63,14 @@ class ExcelFilesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_excel_file
-      @excel_file = ExcelFile.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def excel_file_params
-      params.require(:excel_file).permit(:name, :file)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_excel_file
+    @excel_file = ExcelFile.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def excel_file_params
+    params.require(:excel_file).permit(:name, :file)
+  end
 end
