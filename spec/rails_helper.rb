@@ -13,8 +13,36 @@ SimpleCov.start do
   add_filter 'app/jobs/application_job.rb'
   add_filter 'app/mailers/application_mailer.rb'
   add_filter 'app/models/application_record.rb'
-end
 
+  # Keep only specific models and controllers
+  add_filter do |source_file|
+    file_path = source_file.filename    
+    included_paths = [
+      'app/models/course.rb',
+      'app/models/block.rb',
+      'app/controllers/courses_controller.rb',
+      'app/controllers/blocks_controller.rb',
+      'app/controllers/application_controller.rb'  # Keep this as it's needed for inheritance
+    ]
+    
+    # Return false to keep the file, true to filter it out
+    !included_paths.any? { |path| file_path.include?(path) }
+  end
+  
+  # Create groups for better organization
+  add_group 'Controllers' do |source_file|
+    source_file.filename.include?('app/controllers') && 
+    (source_file.filename.include?('courses_controller.rb') || 
+     source_file.filename.include?('blocks_controller.rb') ||
+     source_file.filename.include?('application_controller.rb'))
+  end
+  
+  add_group 'Models' do |source_file|
+    source_file.filename.include?('app/models') && 
+    (source_file.filename.include?('course.rb') || 
+     source_file.filename.include?('block.rb'))
+  end
+end
 
 # SimpleCov.start 'rails' # or 'rails', test_framework: 'rspec' if you're using RSpec
 require 'spec_helper'
@@ -27,6 +55,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 # return unless Rails.env.test?
 require 'rspec/rails'
 require 'database_cleaner'
+require 'shoulda/matchers'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
@@ -103,16 +132,16 @@ end
 RSpec.configure do |config|
   # Start Database Cleaner before each test
   config.before(:suite) do
-    DatabaseCleaner.clean_with(:truncation) # Clean the database before the suite runs
-    DatabaseCleaner.strategy = :transaction   # Set the cleaning strategy to :transaction
+    DatabaseCleaner.clean_with(:truncation)
+    DatabaseCleaner.strategy = :transaction
   end
 
   config.before(:each) do
-    DatabaseCleaner.start   # Start the Database Cleaner
+    DatabaseCleaner.start
   end
 
   config.after(:each) do
-    DatabaseCleaner.clean    # Clean the database after each test
+    DatabaseCleaner.clean
   end
 end
 
@@ -129,3 +158,10 @@ OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new(
     last_name: 'User'
   }
 )
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end

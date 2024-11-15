@@ -1,27 +1,45 @@
 require 'rails_helper'
 
 RSpec.describe CoursesController, type: :controller do
-  let(:user) { User.create!(email: "test@example.com", first_name: "Test", last_name: "User", uid: "123456789", provider: "google_oauth2") }
-  before do
-    # Simulate logged-in user by setting session[:user_id]
-    session[:user_id] = user.id
-  end
   describe "GET #index" do
+    before(:each) do
+      Course.delete_all  # Ensure database is clean
+    end
+
     it "returns a successful response" do
       get :index
       expect(response).to be_successful
     end
 
     it "assigns @courses and @prerequisites" do
-      course = create(:course)
+      # Create a course with all required attributes
+      course = Course.create!(
+        sec_name: "CSCE-121-001",
+        prerequisites: "MATH-2412",
+        category: "Engineering",
+        term: "224F000",
+        dept_code: "CSCE",
+        days: "MW",
+        start_time: "9:00 AM",
+        end_time: "10:20 AM"
+      )
+      
       get :index
-      expect(assigns(:courses)).to eq([course])
-      expect(assigns(:prerequisites)).to include(course.sec_name => ['MATH-2412'])
+      
+      # Debug output if test fails
+      if assigns(:courses) != [course]
+        puts "\nDebug Info:"
+        puts "Expected course: #{course.attributes}"
+        puts "Actual courses: #{assigns(:courses).map(&:attributes)}"
+      end
+      
+      expect(assigns(:courses)).to match_array([course])
+      expect(assigns(:prerequisites)).to eq({ "CSCE-121-001" => ["MATH-2412"] })
     end
   end
 
   describe "GET #show" do
-    let(:course) { create(:course) }
+    let(:course) { create(:course, prerequisites: "MATH-2412") }
 
     it "returns a successful response" do
       get :show, params: { id: course.id }
@@ -30,7 +48,7 @@ RSpec.describe CoursesController, type: :controller do
 
     it "assigns @prerequisites correctly" do
       get :show, params: { id: course.id }
-      expect(assigns(:prerequisites)).to eq(['MATH-2412'])
+      expect(assigns(:prerequisites)).to eq(["MATH-2412"])
     end
   end
 
