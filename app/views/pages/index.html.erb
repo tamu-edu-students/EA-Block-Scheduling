@@ -4,17 +4,23 @@
       <div class="section-intro__container">
         <div class="section-intro__content">
           <div class="heading-group">
-            <h1>Howdy, <%= @current_user.first_name %>!</h1>
+            <% if @current_user %>
+              <h1>Howdy, <%= @current_user.first_name %>!</h1>
+              <p class="section-intro__description"></p>
+              <% if @current_user.admin? %>
+                <%= render 'layouts/admin_index' %>
+              <% else %>
+                <%= render 'layouts/user_index' %>
+              <% end %>
+            <% else %>
+              <h1>Please login to view available blocks</h1>
+              <p>
+                <%= button_to "Login with Google", "/auth/google_oauth2", data: { turbo: "false" } %>
+              </p>
+            <% end %>
           </div>
-          <p class="section-intro__description">
-          </p>
         </div>
       </div>
     </div>
-    <% if @current_user.admin? %>
-      <%= render 'layouts/admin_index' %>
-    <% else %>
-      <%= render 'layouts/user_index' %>
-    <% end %>
   </div>
 </section>

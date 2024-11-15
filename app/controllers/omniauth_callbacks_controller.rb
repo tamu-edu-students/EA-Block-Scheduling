@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# /app/controllers/omniauth_callbacks_controller.rb
 
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def provider

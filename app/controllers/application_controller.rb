@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
   # before_action :require_login
-  helper_method :current_user
+  helper_method :current_user, :logged_in?
 
 
   private
@@ -11,13 +11,13 @@ class ApplicationController < ActionController::Base
     # if @current _user is undefined or falsy, evaluate the RHS
     #   RHS := look up user by id only if user id is in the session hash
     # question: what happens if session has user_id but DB does not?
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find(id: session[:user_id]) if session[:user_id]
   end
 
   def logged_in?
     # current_user returns @current_user,
     #   which is not nil (truthy) only if session[:user_id] is a valid user id
-    current_user
+    !!current_user
   end
 
   def check_admin?

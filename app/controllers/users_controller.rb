@@ -1,5 +1,6 @@
 # Should only be accessible to admin users
 class UsersController < ApplicationController
+  include AdminConstraint
   before_action :authenticate_user!
   before_action :authorize_admin, only: [:index, :destroy]
   def index

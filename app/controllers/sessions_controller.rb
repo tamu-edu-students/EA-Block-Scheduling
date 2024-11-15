@@ -1,10 +1,10 @@
 class SessionsController < ApplicationController
   # skip_before_action :require_login, only: [:omniauth]
-  skip_before_action :require_login, only: [:new, :create]
+  # skip_before_action :require_login, only: [:new, :create]
 
   def logout
     reset_session
-    redirect_to welcome_path, notice: "You are logged out."
+    redirect_to pages_path, notice: "You are logged out."
   end
 
   # GET /auth/google_oauth2/callback
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to pages_path, notice: "Welcome, #{@user.first_name}!"
     else
-      redirect_to welcome_path, alert: "Login failed."
+      redirect_to pages_path, alert: "Login failed."
     end
   end
 

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root "welcome#index", to: "welcome#index", as: "welcome"
-  get "index", to: "pages#index", as: "pages"
+  # root "welcome#index", to: "welcome#index", as: "welcome"
+  root "pages#index", to: "pages#index", as: "pages"
   # Health check route
   get "up" => "rails/health#show", as: :rails_health_check
 
@@ -30,12 +30,11 @@ Rails.application.routes.draw do
     collection do
       get "sso_new"
       get "sso_create"
-      get "/logout", to: "sessions#logout", as: "logout"
+      get "/logout", to: "sessions#logout", as: :logout
     end
   end
   resources :user_roles
   resources :roles
-  get "course_uploads/:as_id", to: "courses#show_by_upload", as: :courses_by_upload
 
   # Excel file routes
   resources :excel_files
