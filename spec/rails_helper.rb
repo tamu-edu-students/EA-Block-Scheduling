@@ -16,7 +16,7 @@ SimpleCov.start do
 
   # Keep only specific models and controllers
   add_filter do |source_file|
-    file_path = source_file.filename    
+    file_path = source_file.filename
     included_paths = [
       'app/models/course.rb',
       'app/models/block.rb',
@@ -24,22 +24,22 @@ SimpleCov.start do
       'app/controllers/blocks_controller.rb',
       'app/controllers/application_controller.rb'  # Keep this as it's needed for inheritance
     ]
-    
+
     # Return false to keep the file, true to filter it out
     !included_paths.any? { |path| file_path.include?(path) }
   end
-  
+
   # Create groups for better organization
   add_group 'Controllers' do |source_file|
-    source_file.filename.include?('app/controllers') && 
-    (source_file.filename.include?('courses_controller.rb') || 
+    source_file.filename.include?('app/controllers') &&
+    (source_file.filename.include?('courses_controller.rb') ||
      source_file.filename.include?('blocks_controller.rb') ||
      source_file.filename.include?('application_controller.rb'))
   end
-  
+
   add_group 'Models' do |source_file|
-    source_file.filename.include?('app/models') && 
-    (source_file.filename.include?('course.rb') || 
+    source_file.filename.include?('app/models') &&
+    (source_file.filename.include?('course.rb') ||
      source_file.filename.include?('block.rb'))
   end
 end

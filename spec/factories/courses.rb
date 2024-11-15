@@ -7,7 +7,7 @@ FactoryBot.define do
     building { "HLC1" }
     room { "2101" }
     category { "Engineering" }
-    
+
     trait :math do
       sec_name { "MATH-2413-001" }
       category { "Math" }

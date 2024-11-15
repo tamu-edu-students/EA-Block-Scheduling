@@ -23,16 +23,16 @@ RSpec.describe CoursesController, type: :controller do
         start_time: "9:00 AM",
         end_time: "10:20 AM"
       )
-      
+
       get :index
-      
+
       # Debug output if test fails
       if assigns(:courses) != [course]
         puts "\nDebug Info:"
         puts "Expected course: #{course.attributes}"
         puts "Actual courses: #{assigns(:courses).map(&:attributes)}"
       end
-      
+
       expect(assigns(:courses)).to match_array([course])
       expect(assigns(:prerequisites)).to eq({ "CSCE-121-001" => ["MATH-2412"] })
     end

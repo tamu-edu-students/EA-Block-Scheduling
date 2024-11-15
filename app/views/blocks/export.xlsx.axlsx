@@ -3,24 +3,24 @@ wb = xlsx_package.workbook
 wb.add_worksheet(name: "Course Blocks") do |sheet|
   # Add title row with styling
   title_style = wb.styles.add_style(
-    bg_color: "333333", 
+    bg_color: "333333",
     fg_color: "FFFFFF",
     b: true,
     alignment: { horizontal: :center }
   )
-  
+
   # Define time format style - only show time
   time_style = wb.styles.add_style(
     format_code: "hh:mm"  # Simple hour:minute format
   )
-  
+
   sheet.add_row [
     "Block #",
-    "Course Name", 
-    "Section", 
-    "Days", 
-    "Start Time", 
-    "End Time", 
+    "Course Name",
+    "Section",
+    "Days",
+    "Start Time",
+    "End Time",
     "Course Type",
     "Prerequisites",
     "Corequisites"
@@ -28,27 +28,27 @@ wb.add_worksheet(name: "Course Blocks") do |sheet|
 
   # Course type mapping
   course_types = {
-    'MATH' => 'Math',
-    'PHYS' => 'Science',
-    'CHEM' => 'Science',
-    'ENGR' => 'Engineering',
-    'CLEN' => 'Intro'
+    "MATH" => "Math",
+    "PHYS" => "Science",
+    "CHEM" => "Science",
+    "ENGR" => "Engineering",
+    "CLEN" => "Intro"
   }
 
   @blocks.each_with_index do |block, block_index|
     block.courses.each do |course|
       # Split course name and number
-      dept_code = course.sec_name.split('-')[0]
-      course_num = course.sec_name.split('-')[1]
-      
+      dept_code = course.sec_name.split("-")[0]
+      course_num = course.sec_name.split("-")[1]
+
       # Extract only the time portion from TimeWithZone objects
       start_time = course.start_time.strftime("%H:%M")
       end_time = course.end_time.strftime("%H:%M")
-      
+
       # Handle prerequisites as a string
       prerequisites = course.prerequisites.presence || "None"
       corequisites = course.corequisites.presence || "None"
-    
+
       sheet.add_row [
         block_index + 1,
         dept_code,
@@ -56,13 +56,13 @@ wb.add_worksheet(name: "Course Blocks") do |sheet|
         course.days,
         start_time,
         end_time,
-        course_types[dept_code] || 'Other',
+        course_types[dept_code] || "Other",
         prerequisites,
         corequisites
       ], style: [nil, nil, nil, nil, time_style, time_style, nil, nil, nil]
     end
   end
-  
+
   # Auto-fit columns - added width for prerequisites column
   sheet.column_widths 10, 15, 10, 15, 15, 15, 15, 25, 25
-end 
+end
