@@ -23,36 +23,17 @@ class Block
 
   def self.generate_blocks(courses)
     valid_blocks = []
+    return valid_blocks if courses.blank?
 
-    # Get unique courses (only one section per course)
     all_courses = Course.all.to_a
     unique_courses = all_courses.uniq { |course| course.base_course_code }
 
     Rails.logger.info "Found #{all_courses.length} total courses"
     Rails.logger.info "Found #{unique_courses.length} unique base courses"
 
+    # Simplified combination check
     unique_courses.combination(4).each do |course_combo|
-      # Create a new block with these courses
-      block = new(course_combo)  # Use the constructor we defined above
-
-      # Skip if any prerequisites are in the combo
-      base_codes = block.courses.map(&:base_course_code)
-
-      valid = true
-      block.courses.each do |course|
-        prereqs = course.get_prerequisites
-        if prereqs.any? { |prereq| base_codes.include?(prereq) }
-          valid = false
-          break
-        end
-      end
-
-      next unless valid
-
-      if block.valid?
-        valid_blocks << block
-        Rails.logger.info "Found valid block #{valid_blocks.length}: #{block.courses.map(&:sec_name).join(', ')}" if valid_blocks.length % 10 == 0
-      end
+      add_valid_block(valid_blocks, course_combo)
     end
 
     Rails.logger.info "Generation complete. Found #{valid_blocks.length} valid blocks."
@@ -60,6 +41,14 @@ class Block
   end
 
   private
+
+  def self.add_valid_block(valid_blocks, course_combo)
+    block = new(course_combo)
+    if block.valid?
+      valid_blocks << block
+      Rails.logger.info "Found valid block #{valid_blocks.length}: #{block.courses.map(&:sec_name).join(', ')}" if valid_blocks.length % 10 == 0
+    end
+  end
 
   def no_time_conflicts
     return unless courses.any?
@@ -96,28 +85,20 @@ class Block
   end
 
   def parse_to_individual_days(days_string)
+    return [] unless days_string.present?
     days = []
 
-    # Monday
-    days << "M" if days_string.include?("M")
-
-    # Tuesday (being careful about T vs Th)
-    if days_string == "TTh"
-      days << "T"
-    elsif days_string == "T"
-      days << "T"
-    end
-
-    # Wednesday
-    days << "W" if days_string.include?("W")
-
-    # Thursday
-    days << "Th" if days_string.include?("Th")
-
-    # Friday
-    days << "F" if days_string.include?("F")
-
+    # Simplified day checks
+    add_days_to_array(days, days_string)
     days
+  end
+
+  def add_days_to_array(days, days_string)
+    days << "M" if days_string.include?("M")
+    days << "T" if days_string == "TTh" || days_string == "T"
+    days << "W" if days_string.include?("W")
+    days << "Th" if days_string.include?("Th")
+    days << "F" if days_string.include?("F")
   end
 
   def has_required_category
@@ -154,16 +135,20 @@ class Block
 
   def no_duplicate_course_numbers
     return unless courses.present?
-
-    course_numbers = courses.map do |course|
-      next unless course.is_a?(Course)
-      parts = course.sec_name.split(/[-\s]/)
-      first_two_parts = parts.take(2)
-      first_two_parts.join("-")
-    end.compact
+    course_numbers = get_course_numbers
 
     if course_numbers.uniq.length != course_numbers.length
       errors.add(:base, "Cannot have multiple sections of the same course")
     end
+  end
+
+  private
+
+  def get_course_numbers
+    courses.map do |course|
+      next unless course.is_a?(Course)
+      parts = course.sec_name.split(/[-\s]/)
+      parts.take(2).join("-")
+    end.compact
   end
 end
