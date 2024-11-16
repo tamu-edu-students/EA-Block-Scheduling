@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     # if @current _user is undefined or falsy, evaluate the RHS
     #   RHS := look up user by id only if user id is in the session hash
     # question: what happens if session has user_id but DB does not?
-    @current_user ||= User.find(id: session[:user_id]) if session[:user_id]
+    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
   def logged_in?
@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   def require_login
     # redirect to the welcome page unless user is logged in
     unless logged_in?
-      redirect_to welcome_path, alert: "You must be logged in to access this section."
+      redirect_to pages_path, alert: "You must be logged in to access this section."
     end
   end
 end

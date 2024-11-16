@@ -2,23 +2,25 @@
 class UsersController < ApplicationController
   include AdminConstraint
   before_action :authenticate_user!
-  before_action :authorize_admin, only: [:index, :destroy]
+  # before_action :authorize_admin, only: [:index, :destroy]
   def index
-    @users = User.all
+    if current_user.admin?
+      @users = User.all
+    else
+      @users = User.where(id: current_user.id)
+    end
   end
 
   def destroy
-    @user.destroy
+    @user.destroy if current_user.admin?
   end
   def show
     @current_user = set_user
   end
 
   private
-  def authorize_admin
-    unless current_user.admin?
-      redirect_to root_path, alert: "Unauthorized access"
-    end
+  def current_user_admin?
+    current_user.roles.any? { |role| role.name == "admin" }
   end
 
   def set_user
