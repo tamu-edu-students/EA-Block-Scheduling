@@ -48,13 +48,4 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-
-  resources :blocks do
-    collection do
-      post :generate
-      get :preview
-      post :save
-      get :export
-    end
-  end
 end
