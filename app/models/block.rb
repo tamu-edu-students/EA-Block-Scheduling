@@ -94,11 +94,22 @@ class Block
   end
 
   def add_days_to_array(days, days_string)
-    days << "M" if days_string.include?("M")
-    days << "T" if days_string == "TTh" || days_string == "T"
-    days << "W" if days_string.include?("W")
-    days << "Th" if days_string.include?("Th")
-    days << "F" if days_string.include?("F")
+    return unless days_string.present?
+
+    day_patterns = {
+      "M" => "M",
+      "W" => "W",
+      "Th" => "Th",
+      "F" => "F"
+    }
+
+    # Handle T/TTh separately since it has special logic
+    days << "T" if days_string.match?(/^(T|TTh)$/)
+
+    # Handle other days
+    day_patterns.each do |pattern, day|
+      days << day if days_string.include?(pattern)
+    end
   end
 
   def has_required_category
