@@ -1,5 +1,11 @@
 <h1>COURSES</h1>
 
+<% if flash[:error] %>
+  <div class="alert alert-danger">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+
 <%= link_to "New Course", new_course_path, class: "new-course-button" %>
 
 <table>

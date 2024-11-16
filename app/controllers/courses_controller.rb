@@ -7,7 +7,14 @@ class CoursesController < ApplicationController
 
   # GET /courses or /courses.json
   def index
-    @courses = Course.all.order(:sec_name)
+    if params[:as_id]
+      @courses = Course.where(active_storage_id: params[:as_id])
+      if @courses.empty?
+        flash.now[:error] = "Courses not found: #{params[:as_id]}"
+      end
+    else
+      @courses = Course.all
+    end
     @prerequisites = {}
 
     @courses.each do |course|

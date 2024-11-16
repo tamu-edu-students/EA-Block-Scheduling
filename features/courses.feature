@@ -17,3 +17,4 @@ Feature: Course manipulation
       Given I am logged in as a test user
       And I am on the courses page to see courses with an active storage id of 1
       Then I should see "224F000" in the table
+

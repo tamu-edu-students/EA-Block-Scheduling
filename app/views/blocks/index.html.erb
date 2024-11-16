@@ -12,10 +12,6 @@
                 class: "btn btn--primary" %>
   </div>
 
-  <% if notice %>
-    <div class="notice"><%= notice %></div>
-  <% end %>
-
   <div class="blocks-container">
     <% if @blocks&.any? %>
       <% @blocks.each_with_index do |block, index| %>
