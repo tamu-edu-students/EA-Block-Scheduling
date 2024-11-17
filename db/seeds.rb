@@ -13,6 +13,32 @@ Course.destroy_all
 
 puts "\nStarting to seed courses..."
 
+<<<<<<< HEAD
+=======
+# Course prerequisites
+prerequisites = {
+  'MATH-2413' => ['MATH-2412'],
+  'MATH-2414' => ['MATH-2413'],
+  'MATH-2415' => ['MATH-2414'],
+  'MATH-2420' => ['MATH-2415'],
+  'ENGR-216' => %w[ENGR-102 MATH-2413],
+  'ENGR-217' => %w[ENGR-216 PHYS-2425 MATH-2414],
+  'CHEM-1312' => ['CHEM-1309'],
+  'CHEM-1112' => ['CHEM-1309'],
+  'PHYS-2425' => ['MATH-2413'],
+  'PHYS-2426' => ['PHYS-2425']
+}
+
+corequisites = {
+  'ENGR 102' => %w[MATH-2412 MATH-2413],
+  'ENGR 216' => ['PHYS 2425'],
+  'ENGR 217' => ['PHYS 2426']
+}
+
+puts "Prerequisites defined: #{prerequisites.keys.join(', ')}"
+puts "Corequisites defined: #{corequisites.keys.join(', ')}"
+
+>>>>>>> db83cae4 (Initial commit)
 # All courses
 courses = [
     { term: '224F000', dept_code: 'CHEM', course_id: '517302', sec_coreq_secs: '517302', syn: '93061', sec_name: 'CHEM-1309-001', short_title: 'Gen Chem Engr Lc', im: 1, building: 'HLC1', room: '2101', days: 'MW', start_time: '9:00 AM', end_time: '10:20 AM', fac_id: '', faculty_name: '', crs_capacity: 36, sec_cap: 0, student_count: 0, notes: '', as_id: 0 },

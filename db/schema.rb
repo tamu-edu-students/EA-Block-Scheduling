@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_13_202649) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_11_201457) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,18 +39,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_13_202649) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "blocks", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "blocks_courses", id: false, force: :cascade do |t|
+  create_table "blocks_classes", id: false, force: :cascade do |t|
     t.integer "block_id", null: false
-    t.integer "course_id", null: false
-    t.index ["block_id", "course_id"], name: "index_blocks_courses_on_block_id_and_course_id"
-    t.index ["block_id"], name: "index_blocks_courses_on_block_id"
-    t.index ["course_id", "block_id"], name: "index_blocks_courses_on_course_id_and_block_id"
-    t.index ["course_id"], name: "index_blocks_courses_on_course_id"
+    t.integer "class_id", null: false
   end
 
   create_table "courses", force: :cascade do |t|

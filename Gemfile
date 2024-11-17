@@ -54,3 +54,37 @@ end
 group :development do
   gem "web-console" # Use console on exceptions pages
 end
+<<<<<<< HEAD
+=======
+
+group :test do
+  gem "simplecov", require: false
+  gem "selenium-webdriver"
+  gem "ZenTest"
+end
+
+gem "dotenv-rails", groups: [:development, :test]
+
+group :development, :test do
+  gem "sqlite3", "~> 2.2.0" # Use SQLite for development and test environments
+end
+
+group :development, :test do
+  gem "activestorage", "~> 7.2.1"
+  # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
+  gem "brakeman", "6.2.2", require: false
+  gem "capybara"
+  gem "cucumber-rails", require: false
+  gem "database_cleaner"
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "debug", platforms: %i[mri windows], require: "debug/prelude"
+  gem "rails-controller-testing"
+  # Setting Rspec to dev
+  gem "rspec"
+  gem "rspec-rails"
+  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
+  gem "rubocop-rails-omakase", require: false
+  gem "webdrivers"
+  gem "factory_bot_rails"
+end
+>>>>>>> db83cae4 (Initial commit)
