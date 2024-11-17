@@ -28,9 +28,9 @@ prerequisites = {
 }
 
 corequisites = {
-  'ENGR-102' => %w[MATH-2412 MATH-2413],
-  'ENGR-216' => ['PHYS-2425'],
-  'ENGR-217' => ['PHYS-2426']
+  'ENGR 102' => %w[MATH-2412 MATH-2413],
+  'ENGR 216' => ['PHYS 2425'],
+  'ENGR 217' => ['PHYS 2426']
 }
 
 puts "Prerequisites defined: #{prerequisites.keys.join(', ')}"
