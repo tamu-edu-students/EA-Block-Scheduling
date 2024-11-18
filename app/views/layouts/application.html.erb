@@ -13,48 +13,22 @@
   <link rel="icon" href="/icon.png" type="image/png">
   <link rel="icon" href="/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/icon.png">
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <link rel="stylesheet" href="https://aux.tamu.edu/v1.7.0/styles/aux-styles.css">
   <link rel="stylesheet" href="https://aux.tamu.edu/v1.7.0/styles/aux-styles.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
 </head>
 
 <body>
-
-<header>
-  <%= image_tag 'TAMU Logo Header.png', alt: 'Header Image', class: 'header-image' %>
-
-  <!-- Back to Dashboard Button -->
-  <div class="header-navigation">
-    <% if current_user %>
-      <% dashboard_path = current_user.admin? ? admin_dashboard_path : students_dashboard_path %>
-      <%= link_to "Back to Dashboard", dashboard_path, class: 'dashboard-button' %>
-    <% end %>
-  </div>
-
-
-  <!-- Logout Link -->
-  <div class="header-logout">
-    <%= link_to "Logout", logout_session_path, method: :get, class: 'logout-link' %>
-  </div>
-</header>
-
-
+<%= render 'layouts/navbar' %>
 <%= render partial: 'shared/display_flash' unless flash.empty? %>
 <%= yield %>
+<%= render 'layouts/footer' %>
 <script src="https://aux.tamu.edu/v1.7.0/js/aux-accordion.js"></script>
 <script src="https://aux.tamu.edu/v1.7.0/js/aux-in-page-navigation.js"></script>
 <script src="https://aux.tamu.edu/v1.7.0/js/aux-main-nav.js"></script>
 <!-- <script src="https://aux.tamu.edu/v1.7.0/js/aux-mobile-nav.js"></script> -->
 <script src="https://aux.tamu.edu/v1.7.0/js/jquery-3.7.1.min.js"></script>
 </body>
-
-<!-- Maroon line at the bottom -->
-
-<!-- Footer -->
-<footer>
-  <%= image_tag 'TAMU Logo Footer.png', alt: 'Footer Image', class: 'footer-image' %>
-</footer>
-
 </html>

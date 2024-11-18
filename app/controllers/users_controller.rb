@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include AdminConstraint
 
   def index
     @users = User.all
@@ -16,7 +17,7 @@ class UsersController < ApplicationController
     @user = User.find params[:id]
     @user.update!(user_params)
     flash[:notice] = "#{@user.email} was successfully updated."
-    redirect_to users_path
+    redirect_to user_path
   end
 
   private
