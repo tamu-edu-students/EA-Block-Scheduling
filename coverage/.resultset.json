@@ -225,7 +225,7 @@
           null,
           null,
           null,
-          55,
+          62,
           null,
           null,
           1,
@@ -450,6 +450,56 @@
           null
         ]
       },
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/users_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          2,
+          2,
+          null,
+          null,
+          1,
+          2,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/concerns/admin_constraint.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          7,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
       "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/welcome_controller.rb": {
         "lines": [
           1,
@@ -511,7 +561,7 @@
         ]
       }
     },
-    "timestamp": 1731880575
+    "timestamp": 1731896296
   },
   "Cucumber Features": {
     "coverage": {
@@ -674,7 +724,7 @@
           null,
           null,
           null,
-          94,
+          92,
           null,
           null,
           1,
@@ -1010,8 +1060,29 @@
       "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/users_controller.rb": {
         "lines": [
           1,
+          null,
+          1,
+          0,
+          null,
           1,
           1,
+          1,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          1,
+          0,
           null,
           null
         ]
@@ -1046,6 +1117,6 @@
         }
       }
     },
-    "timestamp": 1731880602
+    "timestamp": 1731893462
   }
 }

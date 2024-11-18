@@ -1,0 +1,92 @@
+<header id="navbar" class="main-header site-header--alt show-for-medium">
+  <!--  <nav class="utility-nav utility-nav--department">-->
+  <!--    <div class="utility-nav__container">-->
+  <!--      <div class="site-header__back">-->
+  <%#= link_to welcome_path do %>
+  <!--          Texas A&amp;M University-->
+  <%# end %>
+  <!--      </div>-->
+  <%#= link_to "Back to Dashboard", welcome_path, class: 'btn btn--primary-alt' %>
+  <%# if current_user %>
+  <!--        <div class="utility-nav__right"><%##= link_to "Logout", destroy_user_session_path, class: "btn" %></div>-->
+  <!--        <div class="utility-nav__right"></div>-->
+  <%# end %>
+  <!--    </div>-->
+  <!--  </nav>-->
+
+  <div class="site-header__identity">
+    <div class="identity">
+      <%= link_to welcome_path do %>
+        <div class="identity__logo">
+          <%= image_tag "/boxTAM.svg", alt: "Texas A&M University logo" %>
+        </div>
+        <div class="identity__wordmark">
+          <span class="wordmark__small">Texas A&amp;M University</span>
+          <span class="wordmark__large">Engineering Academies</span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <nav class="site-header__nav">
+    <ol class="menu">
+      <li class="menu-item"><%= link_to "View Users", users_path %></li>
+      <li class="menu-item"><%= link_to "Admin settings", admin_dashboard_path %></li>
+
+      <li class="menu-item menu-item--dropdown">
+        <button
+          class="dropdown-toggle"
+          type="button"
+          id="sample-dropdown"
+          data-toggle="dropdown"
+          aria-expanded="false"
+          aria-pressed="false"
+        >
+          Course Maintenance
+        </button>
+        <div id="sample-dropdown-menu" class="dropdown" style="display:none">
+          <ul class="dropdown-items" aria-label="">
+            <li><%= link_to "View courses", courses_path %></li>
+            <li><%= link_to "Upload Spreadsheet", course_upload_courses_path %></li>
+          </ul>
+        </div>
+      </li>
+      <div class="d-flex">
+        <li class="menu-item"><%= link_to "Logout", logout_session_path, method: :get %></li>
+      </div>
+    </ol>
+  </nav>
+</header>
+
+<header class="mobile-header site-header--alt show-for-small-only" id="mobile-navbar">
+  <div class="site-header__back">
+    <%= link_to "Texas A&M University", welcome_path %>
+  </div>
+  <div class="mobile-header__identity">
+    <div class="identity">
+      <a href="#">
+        <div class="identity__logo">
+          <img
+            alt="Texas A&amp;M University logo"
+            src="https://aux.tamu.edu/logos/boxTAM.svg"
+            />
+        </div>
+        <div class="identity__wordmark">
+          <span class="wordmark__small">Texas A&amp;M University</span>
+          <span class="wordmark__large">Engineering Academies</span>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="mobile-toggle">
+    <button class="mobile-toggle__menu mobile-nav__menu" aria-expanded="false" aria-pressed="false" data-mobilemenu="menu-mobile">
+      Menu
+      <div class="menu__icon"><span></span></div>
+    </button>
+    <button class="mobile-toggle__quicklinks-search">
+      Search
+      <svg>
+        <use href="#aux_search"></use>
+      </svg>
+    </button>
+  </div>
+</header>
