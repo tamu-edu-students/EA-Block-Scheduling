@@ -55,4 +55,11 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
   gem "webdrivers"
   gem "factory_bot_rails"
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+  gem "shoulda-matchers"
+  gem "database_cleaner"
 end
+
+gem "caxlsx"
+gem "caxlsx_rails"
