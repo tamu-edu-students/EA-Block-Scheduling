@@ -13,29 +13,6 @@ Course.destroy_all
 
 puts "\nStarting to seed courses..."
 
-# Course prerequisites
-prerequisites = {
-  'MATH-2413' => ['MATH-2412'],
-  'MATH-2414' => ['MATH-2413'],
-  'MATH-2415' => ['MATH-2414'],
-  'MATH-2420' => ['MATH-2415'],
-  'ENGR-216' => %w[ENGR-102 MATH-2413],
-  'ENGR-217' => %w[ENGR-216 PHYS-2425 MATH-2414],
-  'CHEM-1312' => ['CHEM-1309'],
-  'CHEM-1112' => ['CHEM-1309'],
-  'PHYS-2425' => ['MATH-2413'],
-  'PHYS-2426' => ['PHYS-2425']
-}
-
-corequisites = {
-  'ENGR 102' => %w[MATH-2412 MATH-2413],
-  'ENGR 216' => ['PHYS 2425'],
-  'ENGR 217' => ['PHYS 2426']
-}
-
-puts "Prerequisites defined: #{prerequisites.keys.join(', ')}"
-puts "Corequisites defined: #{corequisites.keys.join(', ')}"
-
 # All courses
 courses = [
     { term: '224F000', dept_code: 'CHEM', course_id: '517302', sec_coreq_secs: '517302', syn: '93061', sec_name: 'CHEM-1309-001', short_title: 'Gen Chem Engr Lc', im: 1, building: 'HLC1', room: '2101', days: 'MW', start_time: '9:00 AM', end_time: '10:20 AM', fac_id: '', faculty_name: '', crs_capacity: 36, sec_cap: 0, student_count: 0, notes: '', as_id: 0 },
@@ -125,50 +102,10 @@ courses = [
 
 puts "Found #{courses.length} courses to create"
 
-# Gets the course code from the sec_name (e.g. MATH-2414 from MATH-2414-007)
-def extract_base_code(sec_name)
-  standardized = sec_name.gsub(' ', '-')
-  parts = standardized.split('-')
-  "#{parts[0]}-#{parts[1]}"
-end
-
-# Get type of course from sec_name using extract_base_code (e.g. MATH from MATH-2414-007)
-def extract_type(sec_name)
-  base_code = extract_base_code(sec_name)
-  parts = base_code.split('-')
-  parts[0]
-end
-
-categories = {
-  'MATH' => 'Math',
-  'PHYS' => 'Science',
-  'CHEM' => 'Science',
-  'ENGR' => 'Engineering',
-  'CLEN' => 'Intro'
-}
-
-# Create courses with prerequisites
+# Create courses
 courses.each do |course_data|
-  base_code = extract_base_code(course_data[:sec_name])
-  prereq_string = if prerequisites.key?(base_code)
-    prerequisites[base_code].map(&:strip).join(', ')
-  else
-    nil
-  end
-  coreq_string = if corequisites.key?(base_code)
-    corequisites[base_code].map(&:strip).join(', ')
-  else
-    nil
-  end
-
-  type = extract_type(course_data[:sec_name])
-  category_string = if categories.key?(type)
-    categories[type].strip
-  else
-    nil
-  end
-
-  Course.create!(course_data.merge(prerequisites: prereq_string, corequisites: coreq_string, category: category_string))
+  Course.create!(course_data)
+  puts "Seeded: #{course_data[:sec_name]}"
 end
 
 puts "\nSeeding completed!"
