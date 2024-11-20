@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root "welcome#index", to: "welcome#index", as: "welcome"
+  get "welcome#index", to: "welcome#index", as: "welcome"
+  root "pages#index", to: "pages#index", as: "pages"
 
   # Health check route
   get "up" => "rails/health#show", as: :rails_health_check

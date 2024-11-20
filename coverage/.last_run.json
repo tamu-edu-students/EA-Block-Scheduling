@@ -5,6 +5,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "line": 85.89
 =======
     "line": 95.08
@@ -21,5 +22,8 @@
 =======
     "line": 86.1
 >>>>>>> 766d4d60 (Standardize UI to match TAMU regs)
+=======
+    "line": 100.0
+>>>>>>> 36ae08ce (Add roles, pages, user_roles, & page_role_accesses)
   }
 }
