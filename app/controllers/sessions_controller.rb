@@ -6,6 +6,10 @@ class SessionsController < ApplicationController
     redirect_to welcome_path, notice: "You are logged out."
   end
 
+  def failure
+    redirect_to welcome_path
+  end
+
   # GET /auth/google_oauth2/callback
   def omniauth
     auth = request.env["omniauth.auth"]
