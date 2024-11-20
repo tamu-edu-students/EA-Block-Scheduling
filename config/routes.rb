@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get "admin/dashboard", to: "admin#dashboard", as: :admin_dashboard
   get "dashboard", to: "students#dashboard", as: :students_dashboard
   get "schedule_viewer", to: "schedules#schedule_viewer"
+  get "profile", to: "users#profile", as: :user_profile_view
 
   # Course and schedule routes
   resources :courses

@@ -1,4 +1,17 @@
-<h1>Welcome!</h1>
-<p>
-  <%= button_to "Login with Google", "/auth/google_oauth2", class: "btn btn--primary", data: { turbo: "false" } %>
-</p>
+<div role="banner">
+  <div class="hero hero--home">
+    <div class="hero__image">
+      <%= image_tag '/Aggie_Park_Exterior_AS_015.jpg' %>
+    </div>
+    <div class="hero__container">
+      <h1>
+        <span class="superhead">Howdy from </span>
+        Texas A&M University
+      </h1>
+      <div class="hero__content">
+        <%= button_to "Login with Google", "/auth/google_oauth2", class: "btn btn--primary", data: { turbo: "false" } %>
+      </div>
+    </div>
+  </div>
+</div>
+

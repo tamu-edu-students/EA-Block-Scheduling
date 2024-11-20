@@ -27,12 +27,9 @@
         <td><%= course[:end_time] %></td>
         <td>
           <div class="action-group">
-            <svg>
-              <use href="https://aux.tamu.edu/icons/aux-prod-icons/pencil.svg"></use>
-            </svg>
-            <svg>
-              <use href="https://aux.tamu.edu/icons/aux-prod-icons/circle-outline-xmark.svg"></use>
-            </svg>
+            <%= link_to "", edit_course_path(course), class: "bi bi-pencil" %>
+            <%= link_to "", course_path(course), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                class: "bi bi-trash"%>
           </div>
         </td>
       </tr>

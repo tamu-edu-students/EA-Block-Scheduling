@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CoursesController, type: :controller do
-  let(:user) { User.create!(email: "test@example.com", first_name: "Test", last_name: "User", uid: "123456789", provider: "google_oauth2") }
+  let(:user) { User.create!(email: "test@example.com", first_name: "Test", last_name: "User", role: "admin", uid: "123456789", provider: "google_oauth2") }
   before do
     # Simulate logged-in user by setting session[:user_id]
     session[:user_id] = user.id
