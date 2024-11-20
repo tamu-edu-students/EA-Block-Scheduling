@@ -1,7 +1,5 @@
 class CoursesController < ApplicationController
   include CoursesHelper
-  # before_action :authenticate_user!
-  # before_action :admin_only, only: [:upload, :new, :create, :edit, :update, :destroy]
   before_action :set_course, only: %i[ show edit update destroy ]
 
   # GET /courses or /courses.json
