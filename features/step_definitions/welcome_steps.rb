@@ -1,9 +1,35 @@
+Given("I am logged in as an admin user") do
+  # Mock OmniAuth credentials for admin user
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
+    provider: 'google_oauth2',
+    uid: '12345',
+    info: {
+      email: 'admin@example.com',
+      name: 'Admin User'
+    }
+  })
+
+  # Create an admin user in the database
+  User.create!(
+    email: 'admin@example.com',
+    first_name: 'Admin',
+    last_name: 'User',
+    role: 'admin',  # Ensure the role is set to admin
+    uid: '12345',
+    provider: 'google_oauth2'
+  )
+
+  # Simulate the login process
+  visit '/auth/google_oauth2/callback'
+end
+
 When("I visit the welcome page") do
   visit welcome_path
 end
 
 Then("I should be redirected to the admin dashboard") do
-  expect("/admin" + current_path).to eq(admin_dashboard_path)
+  expect(current_path).to eq(admin_dashboard_path)
 end
 
 Then("I should see the notice {string}") do |message|
