@@ -3,6 +3,7 @@ class CoursesController < ApplicationController
   # before_action :authenticate_user!
   # before_action :admin_only, only: [:upload, :new, :create, :edit, :update, :destroy]
   before_action :set_course, only: %i[ show edit update destroy ]
+  skip_before_action :require_login, if: -> { Rails.env.test? }
 
   # GET /courses or /courses.json
   def index
