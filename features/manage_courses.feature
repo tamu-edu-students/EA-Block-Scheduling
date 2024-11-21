@@ -26,6 +26,7 @@ Feature: Manage Courses
 
   Scenario: Delete a course
     Given I am logged in as a test user
+    And I visit the courses page
     And there is a course "Calculus I" in the system
     When I visit the courses page
     And I click course button "Delete" for section "MATH-2413-008"
