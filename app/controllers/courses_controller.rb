@@ -24,35 +24,11 @@ class CoursesController < ApplicationController
 
   # POST /courses or /courses.json
   def create
-    # Get prereq, coreq, and category data for course
-    base_code = extract_base_code(params[:course][:sec_name])
-    prereq_string = if prerequisites.key?(base_code)
-      prerequisites[base_code].map(&:strip).join(", ")
-    else
-      nil
-    end
-    coreq_string = if corequisites.key?(base_code)
-      corequisites[base_code].map(&:strip).join(", ")
-    else
-      nil
-    end
-
-    type = extract_type(params[:course][:sec_name])
-    category_string = if categories.key?(type)
-      categories[type].strip
-    else
-      nil
-    end
-
-    # Merge fields into params
-    course_data = course_params.merge(
-      prerequisites: prereq_string,
-      corequisites: coreq_string,
-      category: category_string
-    )
-
+    # Prepare course data with prerequisites, corequisites, and category
+    course_data = updated_course_data(course_params)
+  
     @course = Course.new(course_data)
-
+  
     if @course.save
       flash[:notice] = "#{@course.short_title} was successfully created."
       redirect_to courses_path
@@ -60,6 +36,27 @@ class CoursesController < ApplicationController
       flash.now[:alert] = @course.errors.full_messages.join(", ")
       render :new, status: :unprocessable_entity
     end
+  end
+
+  # Helpers for create
+  def updated_course_data(course_params)
+    base_code = extract_base_code(course_params[:sec_name])
+    type = extract_type(course_params[:sec_name])
+
+    course_params.merge(
+      prerequisites: fetch_prerequisites(base_code),
+      corequisites: fetch_corequisites(base_code),
+      category: fetch_category(type)
+    )
+  end
+  def fetch_prerequisites(base_code)
+    prerequisites.key?(base_code) ? prerequisites[base_code].map(&:strip).join(', ') : nil
+  end
+  def fetch_corequisites(base_code)
+    corequisites.key?(base_code) ? corequisites[base_code].map(&:strip).join(', ') : nil
+  end
+  def fetch_category(type)
+    categories.key?(type) ? categories[type].strip : nil
   end
 
   # PATCH/PUT /courses/1 or /courses/1.json
