@@ -48,7 +48,7 @@ end
 Then("the course {string} should be in category {string}") do |course_code, category|
     course = Course.find_by(sec_name: course_code)
     expect(course.category).to eq(category)
-end  
+end
 
 # Then("the course {string} should have no prerequisites") do |sec_name|
 #     course = Course.find_by(sec_name: sec_name)
@@ -79,4 +79,3 @@ Then("the course {string} should be in no category") do |sec_name|
     course = Course.find_by(sec_name: sec_name)
     expect(course.category).to be_nil
 end
-  
