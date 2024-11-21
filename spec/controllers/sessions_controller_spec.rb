@@ -14,7 +14,7 @@ RSpec.describe SessionsController, type: :controller do
       end
 
       it "redirects to the welcome page" do
-        expect(response).to redirect_to(welcome_path)
+        expect(response).to redirect_to(pages_path)
       end
 
       it "sets a notice message" do
@@ -53,7 +53,7 @@ RSpec.describe SessionsController, type: :controller do
 
       it "redirects to the admin dashboard for an admin user" do
         expect(response).to redirect_to(admin_dashboard_path)
-        expect(flash[:notice]).to eq("Welcome, Admin!")
+        expect(page).to have_text("Howdy")
       end
     end
 
@@ -65,12 +65,53 @@ RSpec.describe SessionsController, type: :controller do
         get :omniauth
       end
 
-      it "redirects to the welcome page" do
-        expect(response).to redirect_to(welcome_path)
+      it "redirects to the home page" do
+        expect(response).to redirect_to(pages_path)
       end
 
       it "sets an alert message" do
-        expect(flash[:alert]).to eq("Login failed.")
+        expect(page).to have_text("Please sign in to access services")
+      end
+    end
+  end
+
+  let(:admin_user) { create(:admin) }  # Use the :admin factory for an admin user
+  let(:student_user) { create(:user, role: 'student') }  # Use :user factory with the role 'student'
+
+  describe "GET #admin_dashboard" do
+    context "when the user is logged in as an admin" do
+      before do
+        session[:user_id] = admin_user.id  # Simulate logged-in admin user
+        get :dashboard  # Perform GET request to the dashboard
+      end
+
+      it "returns a successful response" do
+        expect(response).to have_http_status(:success)
+      end
+    end
+
+    context "when the user is logged in as a student" do
+      before do
+        session[:user_id] = student_user.id  # Simulate logged-in student user
+        get :dashboard  # Perform GET request to the dashboard
+      end
+
+      it "returns a successful response" do
+        expect(response).to have_http_status(:success)
+      end
+    end
+
+    context "when the user is not logged in" do
+      before do
+        get :dashboard  # Perform GET request without a logged-in user
+      end
+
+      it "redirects to the welcome page" do
+        expect(response).to redirect_to(pages_path)
+      end
+
+      it "sets an alert message" do
+        expect(flash[:alert]).to eq("You must be logged in to access this section.")
       end
     end
   end

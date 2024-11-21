@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get "welcome#index", to: "welcome#index", as: "welcome"
   root "pages#index", to: "pages#index", as: "pages"
 
   # Health check route
