@@ -26,9 +26,9 @@ class CoursesController < ApplicationController
   def create
     # Prepare course data with prerequisites, corequisites, and category
     course_data = updated_course_data(course_params)
-  
+
     @course = Course.new(course_data)
-  
+
     if @course.save
       flash[:notice] = "#{@course.short_title} was successfully created."
       redirect_to courses_path
@@ -50,10 +50,10 @@ class CoursesController < ApplicationController
     )
   end
   def fetch_prerequisites(base_code)
-    prerequisites.key?(base_code) ? prerequisites[base_code].map(&:strip).join(', ') : nil
+    prerequisites.key?(base_code) ? prerequisites[base_code].map(&:strip).join(", ") : nil
   end
   def fetch_corequisites(base_code)
-    corequisites.key?(base_code) ? corequisites[base_code].map(&:strip).join(', ') : nil
+    corequisites.key?(base_code) ? corequisites[base_code].map(&:strip).join(", ") : nil
   end
   def fetch_category(type)
     categories.key?(type) ? categories[type].strip : nil
