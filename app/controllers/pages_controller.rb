@@ -2,19 +2,16 @@
 
 class PagesController < ApplicationController
   include ApplicationHelper
-  before_action :check_user_status!
+
 
   def index
+    @logged_in = check_user_status!
   end
 
   private
   def check_user_status!
     unless user_signed_in?
-      redirect_to welcome_path, notice: "You must be logged in to access this section."
+      false
     end
-  end
-
-  def pages_params
-    params.require(:page).permit(:url_path)
   end
 end
