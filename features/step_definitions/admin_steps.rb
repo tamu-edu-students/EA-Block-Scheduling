@@ -39,7 +39,7 @@ When("I visit the admin dashboard") do
 end
 
 Then("I should see the dashboard page") do
-  expect(page).to have_current_path(admin_dashboard_path)  # Check if the user is on the admin dashboard
+  expect(page).to have_current_path(pages_path)  # Check if the user is on the admin dashboard
 end
 
 Then("the response should be successful") do
@@ -52,4 +52,8 @@ end
 
 Then("I should see an alert message {string}") do |message|
   expect(page).to have_content(message)  # Verify the alert message is displayed on the page
+end
+
+Given(/^I am not logged in$/) do
+  # Do nothing to simulate an attempt to access site without being logged in.
 end

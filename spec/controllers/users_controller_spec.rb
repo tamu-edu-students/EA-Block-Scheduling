@@ -13,6 +13,30 @@ RSpec.describe UsersController, type: :controller do
     session[:user_id] = user0.id
   end
 
+  describe 'GET #profile' do
+    let(:user) { User.create!(email: "test.mctest@example.com", first_name: "Test", last_name: "User", role: "admin", uid: "123456789", provider: "google_oauth2") }
+
+    before do
+      # Simulate a logged-in user
+      allow(controller).to receive(:current_user).and_return(user)
+    end
+
+    it 'assigns the current user to @user' do
+      get :profile
+      expect(assigns(:user)).to eq(user)
+    end
+
+    it 'renders the profile template' do
+      get :profile
+      expect(response).to render_template(:profile)
+    end
+
+    it 'responds successfully with HTTP 200' do
+      get :profile
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
   describe "GET #index" do
     let(:admin_user) { create(:user, role: "admin") }
     let(:regular_user) { create(:user) }
@@ -28,8 +52,8 @@ RSpec.describe UsersController, type: :controller do
       before { session[:user_id] = regular_user.id }
       it "returns message and redirects to root path" do
         get :index
-        expect(response).to redirect_to(welcome_path)
-        expect(flash[:alert]).to eq("You are not authorized to perform this action.")
+        expect(response).to redirect_to(pages_path)
+        expect(flash[:alert]).to eq("You don't have access to this page.")
       end
     end
   end

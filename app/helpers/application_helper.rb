@@ -21,14 +21,6 @@ module ApplicationHelper
     # Code to get the actual attachment URL for non-test environments
   end
 
-  def get_prerequisite_names(prerequisites)
-    return "None" if prerequisites.blank?
-
-    prerequisites.split(",").map do |prereq|
-      prereq.strip
-    end.uniq.join(", ")
-  end
-
   def current_user_admin?
     current_user&.admin?
   end

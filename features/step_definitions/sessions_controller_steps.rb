@@ -2,8 +2,8 @@ When("I log out") do
   visit logout_session_path
 end
 
-Then("I should be redirected to the welcome page") do
-  expect(current_path).to eq(welcome_path)
+Then("I should be redirected to the home page") do
+  expect(current_path).to eq(pages_path)
 end
 
 Given("OmniAuth is configured with valid credentials for an admin") do
@@ -61,4 +61,16 @@ end
 
 Then("I should be redirected to admin dashboard") do
   expect(current_path).to eq(admin_dashboard_path)
+end
+
+And(/^I should see the notice "([^"]*)"$/) do |arg|
+  expect(page).to have_content(arg)
+end
+
+Then(/^I should be redirected to the students dashboard$/) do
+  expect(page).to have_current_path(students_dashboard_path)
+end
+
+And(/^I should see a link with the text "([^"]*)"$/) do |arg|
+  expect(page).to have_link(arg)
 end
