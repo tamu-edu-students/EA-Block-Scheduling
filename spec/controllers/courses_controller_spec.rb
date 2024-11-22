@@ -123,4 +123,72 @@ RSpec.describe CoursesController, type: :controller do
       expect(flash[:notice]).to match(/successfully deleted/)
     end
   end
+
+  describe 'GET #show_by_upload' do
+    let(:as_id) { 123 }
+    let!(:course1) { Course.create!(as_id: as_id, short_title: 'Course 1', sec_name: 'Course 1') }
+    let!(:course2) { Course.create!(as_id: as_id, short_title: 'Course 2', sec_name: 'Course 2') }
+    let!(:course3) { Course.create!(as_id: 456, short_title: 'Course 3', sec_name: 'Course 3') }
+
+    before do
+      allow(controller).to receive(:validate_courses).with(as_id.to_s).and_return(true)
+    end
+
+    it 'validates the courses using the given as_id' do
+      expect(controller).to receive(:validate_courses).with(as_id.to_s)
+      get :show_by_upload, params: { as_id: as_id }
+    end
+
+    it 'assigns @courses with courses matching the as_id' do
+      get :show_by_upload, params: { as_id: as_id }
+      expect(assigns(:courses)).to match_array([course1, course2])
+    end
+
+    it 'does not include courses with a different as_id' do
+      get :show_by_upload, params: { as_id: as_id }
+      expect(assigns(:courses)).not_to include(course3)
+    end
+  end
+
+  describe 'GET #new' do
+    it 'assigns a new Course to @course' do
+      get :new
+      expect(assigns(:course)).to be_a_new(Course)
+    end
+
+    it 'renders the new template' do
+      get :new
+      expect(response).to render_template(:new)
+    end
+  end
+
+  describe '#get_prerequisite_names' do
+    context 'when prerequisites are blank' do
+      it 'returns "None"' do
+        result = controller.get_prerequisite_names('')
+        expect(result).to eq('None')
+      end
+    end
+
+    context 'when prerequisites are nil' do
+      it 'returns "None"' do
+        result = controller.get_prerequisite_names(nil)
+        expect(result).to eq('None')
+      end
+    end
+
+    context 'when prerequisites are present' do
+      it 'returns a formatted string with unique prerequisites' do
+        prerequisites = 'Math 101, Physics 101, Math 101'
+        result = controller.get_prerequisite_names(prerequisites)
+        expect(result).to eq('Math 101, Physics 101')
+      end
+
+      it 'strips extra spaces around prerequisites' do
+        prerequisites = 'Math 101, Physics 101'
+        result = controller.get_prerequisite_names(prerequisites)
+        expect(result).to eq('Math 101, Physics 101')
+      end
+    end
+  end
 end

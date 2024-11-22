@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   get "/auth/failure", to: "sessions#failure"  # Optional, for handling failed authentication
-  get "/auth/google_oauth2/callback", to: "sessions#omniauth"
+  get "/auth/google_oauth2/callback", to: "sessions#omniauth", as: :omniauth_callback
   get "admin/dashboard", to: "admin#dashboard", as: :admin_dashboard
   get "dashboard", to: "students#dashboard", as: :students_dashboard
   get "schedule_viewer", to: "schedules#schedule_viewer"

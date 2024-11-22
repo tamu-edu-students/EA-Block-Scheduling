@@ -17,8 +17,8 @@
       <ol class="menu">
         <% if current_user_admin? %>
           <li class="menu-item"><%= link_to "View Users", users_path %></li>
-          <li class="menu-item"><%= link_to "Admin settings", admin_dashboard_path %></li>
-          <li class="menu-item"><%= link_to "View courses", courses_path %></li>
+          <li class="menu-item"><%= link_to "Admin Settings", admin_dashboard_path %></li>
+          <li class="menu-item"><%= link_to "View Courses", courses_path %></li>
           <li class="menu-item"><%= link_to "Upload Spreadsheet", new_excel_file_path %></li>
         <% else %>
           <li class="menu-item"><%= link_to "View Courses", generate_schedule_schedules_path %></li>

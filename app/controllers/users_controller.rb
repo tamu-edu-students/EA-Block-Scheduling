@@ -1,29 +1,18 @@
 class UsersController < ApplicationController
   include ApplicationHelper
+  before_action :require_admin, only: [:index, :show, :edit, :update]
 
   def index
-    if current_user.admin?
-      @users = User.all
-    else
-      not_admin
-    end
+    @users = User.all
   end
 
   def show
-    if current_user_admin?
-      user_id = params[:id]
-      @user = User.find(user_id)
-    else
-      not_admin
-    end
+    user_id = params[:id]
+    @user = User.find(user_id)
   end
 
   def edit
-    if current_user_admin?
-      @user = User.find(params[:id])
-    else
-      not_admin
-    end
+    @user = User.find(params[:id])
   end
 
   def profile
@@ -31,20 +20,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user_admin?
-      @user = User.find params[:id]
-      @user.update!(user_params)
-      flash[:notice] = "#{@user.email} was successfully updated."
-      redirect_to user_path
-    else
-      not_admin
-    end
+    @user = User.find params[:id]
+    @user.update!(user_params)
+    flash[:notice] = "#{@user.email} was successfully updated."
+    redirect_to user_path
   end
 
   private
-  def not_admin
-    redirect_to welcome_path, alert: "You are not authorized to perform this action."
-  end
+
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :role, :uid, :provider)
   end

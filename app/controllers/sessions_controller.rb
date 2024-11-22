@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action only: [:omniauth]
+  include ApplicationHelper
 
   def logout
     reset_session
@@ -23,13 +24,13 @@ class SessionsController < ApplicationController
     if @user.valid?
       session[:user_id] = @user.id
       # Redirect based on user role
-      if @user.role == "admin"
+      if current_user_admin?
         redirect_to admin_dashboard_path
       else
         redirect_to students_dashboard_path
       end
     else
-      redirect_to welcome_path, alert: "Login failed."
+      redirect_to pages_path, alert: "Login failed."
     end
   end
 end

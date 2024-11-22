@@ -16,6 +16,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/1 or /courses/1.json
   def show
+    @course = Course.find(params[:id])
     @prerequisites = @course.prerequisites&.split(", ")&.map(&:strip)
   end
 
@@ -86,6 +87,7 @@ class CoursesController < ApplicationController
     @courses = Course.where(as_id: as_id)
   end
 
+<<<<<<< HEAD
   # Gets the course code from the sec_name (e.g. MATH-2414 from MATH-2414-007)
   def extract_base_code(sec_name)
     standardized = sec_name.gsub(" ", "-")
@@ -136,6 +138,9 @@ class CoursesController < ApplicationController
     }
   end
 
+=======
+  private
+>>>>>>> 74df15c9 (Add tests to improve coverage)
   # Use callbacks to share common setup or constraints between actions.
   def set_course
     @course = Course.find(params[:id])
@@ -167,11 +172,4 @@ class CoursesController < ApplicationController
         :as_id
       )
     end
-
-  # def admin_only
-  #   unless current_user.admin?
-  #     flash[:alert] = "User is not authorized to perform this action."
-  #     redirect_to courses_path
-  #   end
-  # end
 end
