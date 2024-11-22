@@ -28,7 +28,7 @@
           <tr>
             <td class="time-slot"><%= start_time.strftime("%I:%M %p") %></td>
             
-            <% ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"].each do |day| %>
+            <% %w[Monday Tuesday Wednesday Thursday Friday].each do |day| %>
               <td></td>
             <% end %>
 

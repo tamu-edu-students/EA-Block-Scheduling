@@ -1,7 +1,7 @@
 
 When("I visit the user's profile page") do
   # Visit the profile page of the logged-in user
-  visit user_path(User.find_by(email: 'testuser@example.com'))  # Or use the email directly to find the user
+  visit user_profile_view_path(User.find_by(email: 'testuser@example.com'))  # Or use the email directly to find the user
 end
 
 Then("I should see the user's details") do

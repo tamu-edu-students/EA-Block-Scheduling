@@ -1,7 +1,7 @@
 class Course < ApplicationRecord
   validates :prerequisites, format: {
     with: /\A(?:|(?:[A-Z]{2,4}(?:[ -])\d{3,4}(?:-(?:\d{1,3}))?(?:,\s*[A-Z]{2,4}(?:[ -])\d{3,4}(?:-(?:\d{1,3}))?)*?))\z/,
-    message: "must be a comma-separated list of course codes"
+    message: "must be a comma-separated list of course codes (e.g., 'MATH-2413' or 'MATH 2413' or 'MATH-2413-001')"
   }, allow_nil: true
 
   validates :sec_name, presence: true
@@ -12,10 +12,7 @@ class Course < ApplicationRecord
   end
 
   def base_course_code
-    # Standardize format first (replace spaces with hyphens)
-    standardized = sec_name.gsub(" ", "-")
-    parts = standardized.split("-")
-    "#{parts[0]}-#{parts[1]}"
+    sec_name.split("-")[0..1].join("-")
   end
 
   def prerequisite_courses
