@@ -1,6 +1,7 @@
 # Sprint 3 MVP Report
 
 ### 1. Deployed App
+
 Link: [https://ea-block-scheduler-4fecd886e389.herokuapp.com/generate-schedule ](https://ea-block-scheduler-4fecd886e389.herokuapp.com/)
 
 
@@ -8,15 +9,18 @@ Link: [https://ea-block-scheduler-4fecd886e389.herokuapp.com/generate-schedule ]
 By the end of this sprint, we will have fully developed admin and user dashboards, controllers to allow users the ability to login using single sign on, 
 a completed page of available classes with their prerequisites, and a parser for excel documents. 
 
+
+### 3. Sprint Backlog
+
 #34 Add SSO Capability
 - [x] Basic setup with third party
 
 #33 Add tokens for logging in
 - [x] Add session logic for logged-in users
- 
-#35 Connect login page to student dashboard
-- [x] Add authorization elements to dashboard controller components
- 
+
+#35 Connect login page to student dashboard 
+- [x] Add authorization elements to dashboard controller components 
+
 #78 Sprint documentation
 - [x] Sprint 3 documentation
 
@@ -63,6 +67,7 @@ a completed page of available classes with their prerequisites, and a parser for
 - [ ] Create basic time table
 - [ ] Create Page
 
+
 ### 4. Use of BDD
 All stories have Cucumber feature(s) defined with several scenarios each, all Cucumber scenarios are passing and all steps are defined
 
@@ -82,7 +87,9 @@ All Rubocop cops are enabled and report at most 1 style offense per file.
 > Run `rubocop` to see the result <br>
 
 ### 9. Use of Project Tracker
+
 **Taiga User Stories:** [https://tree.taiga.io/project/aaronjones05-block-scheduler/taskboard/ecstatic-woodchuck](https://tree.taiga.io/project/aaronjones05-block-scheduler/taskboard/hungry-hamster)
+
 
 ## 10. Presentation
 See the deployed app.
