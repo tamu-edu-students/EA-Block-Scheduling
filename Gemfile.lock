@@ -155,6 +155,7 @@ GEM
       json
       logger
 <<<<<<< HEAD
+<<<<<<< HEAD
     faraday-net_http (3.4.0)
       net-http (>= 0.5.0)
     ffi (1.17.0-arm64-darwin)
@@ -162,6 +163,10 @@ GEM
     faraday-net_http (3.3.0)
       net-http
 >>>>>>> db83cae4 (Initial commit)
+=======
+    faraday-net_http (3.4.0)
+      net-http (>= 0.5.0)
+>>>>>>> df765eef (Fixed Brakeman warning)
     ffi (1.17.0-x64-mingw-ucrt)
     ffi (1.17.0-x86_64-linux-gnu)
     globalid (1.2.1)
