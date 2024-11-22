@@ -16,4 +16,4 @@ Feature: Admin Dashboard Access
     Given I am not logged in
     When I visit the admin dashboard
     Then I should be redirected to students dashboard
-    And I should see an alert message "You must be logged in to access this section."
+    And I should see an alert message "You don't have access to this page."

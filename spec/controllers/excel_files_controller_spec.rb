@@ -19,4 +19,38 @@ RSpec.describe ExcelFilesController, type: :controller do
       end
     end
   end
+
+  describe 'POST #create' do
+    context 'when the ExcelFile fails to save' do
+      before do
+        # Simulate a scenario where the ExcelFile is invalid
+        allow_any_instance_of(ExcelFile).to receive(:save).and_return(false)
+        allow_any_instance_of(ExcelFile).to receive(:errors).and_return({ name: ["can't be blank"] })
+      end
+
+      it 'does not save the ExcelFile' do
+        expect do
+          post :create, params: { excel_file: { name: '' } }
+        end.not_to change(ExcelFile, :count)
+      end
+
+      it 'sets a flash notice indicating failure' do
+        post :create, params: { excel_file: { name: '' } }
+        expect(flash[:notice]).to eq("Courses not added to database.")
+      end
+
+      it 're-renders the new template with unprocessable entity status' do
+        post :create, params: { excel_file: { name: '' } }
+        expect(response).to render_template(:new)
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+
+      it 'returns errors in JSON format when requested' do
+        post :create, params: { excel_file: { name: '' } }, format: :json
+        expect(response.content_type).to eq('application/json; charset=utf-8')
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(JSON.parse(response.body)).to include("name" => ["can't be blank"])
+      end
+    end
+  end
 end

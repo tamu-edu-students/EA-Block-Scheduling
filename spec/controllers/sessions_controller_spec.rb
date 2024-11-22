@@ -1,35 +1,13 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe SessionsController, type: :controller do
-  describe "POST #logout" do
-    context "when the user logs out" do
-      before do
-        allow(controller).to receive(:current_user).and_return(build_stubbed(:user))
-        session[:user_id] = 1  # Simulate a logged-in user
-        post :logout
-      end
-
-      it "resets the session" do
-        expect(session[:user_id]).to be_nil
-      end
-
-      it "redirects to the welcome page" do
-        expect(response).to redirect_to(welcome_path)
-      end
-
-      it "sets a notice message" do
-        expect(flash[:notice]).to eq("You are logged out.")
-      end
-    end
-  end
-
   describe "GET #omniauth" do
     let(:auth_hash) do
       {
-        "provider" => "google_oauth2",
         "uid" => "12345",
+        "provider" => "google",
         "info" => {
-          "email" => "user@example.com",
+          "email" => "test@example.com",
           "name" => "John Doe"
         }
       }
@@ -39,39 +17,83 @@ RSpec.describe SessionsController, type: :controller do
       request.env["omniauth.auth"] = auth_hash
     end
 
-    context "when the user is valid" do
-      before do
-        allow(User).to receive(:find_or_create_by).and_return(
-          build_stubbed(:user, role: "admin", id: 1)
+    context "when the user is valid and is an admin" do
+      let!(:user) do
+        User.create(
+          uid: "12345",
+          provider: "google",
+          email: "test@example.com",
+          first_name: "John",
+          last_name: "Doe",
+          role: "admin"
         )
+      end
+
+      it "creates a session and redirects to admin dashboard" do
         get :omniauth
-      end
 
-      it "sets the session user_id" do
-        expect(session[:user_id]).to eq(1)
-      end
-
-      it "redirects to the admin dashboard for an admin user" do
+        expect(session[:user_id]).to eq(user.id)
         expect(response).to redirect_to(admin_dashboard_path)
-        expect(flash[:notice]).to eq("Welcome, Admin!")
+      end
+    end
+
+    context "when the user is valid and is not an admin" do
+      let!(:user) do
+        User.create(
+          uid: "12345",
+          provider: "google",
+          email: "test@example.com",
+          first_name: "John",
+          last_name: "Doe",
+          role: "student"
+        )
+      end
+
+      it "creates a session and redirects to students dashboard" do
+        get :omniauth
+
+        expect(session[:user_id]).to eq(user.id)
+        expect(response).to redirect_to(students_dashboard_path)
       end
     end
 
     context "when the user is invalid" do
       before do
-        invalid_user = build_stubbed(:user)
-        allow(invalid_user).to receive(:valid?).and_return(false)
-        allow(User).to receive(:find_or_create_by).and_return(invalid_user)
+        allow_any_instance_of(User).to receive(:valid?).and_return(false)
+      end
+
+      it "does not create a session and redirects to pages path with an alert" do
         get :omniauth
-      end
 
-      it "redirects to the welcome page" do
-        expect(response).to redirect_to(welcome_path)
-      end
-
-      it "sets an alert message" do
+        expect(session[:user_id]).to be_nil
+        expect(response).to redirect_to(pages_path)
         expect(flash[:alert]).to eq("Login failed.")
       end
+    end
+  end
+
+  describe 'GET #logout' do
+    before do
+      # Simulate a logged-in user
+      session[:user_id] = 1
+    end
+
+    it 'resets the session' do
+      get :logout
+      expect(session[:user_id]).to be_nil
+    end
+
+    it 'redirects to the pages path with a notice' do
+      get :logout
+      expect(response).to redirect_to(pages_path)
+      expect(flash[:notice]).to eq("You are logged out.")
+    end
+  end
+
+  describe 'GET #failure' do
+    it 'redirects to the pages path' do
+      get :failure
+      expect(response).to redirect_to(pages_path)
     end
   end
 end
