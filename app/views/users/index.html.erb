@@ -21,9 +21,13 @@
     <td><%= user.uid %></td>
     <td><%= user.provider %></td>
     <td>
+      <div>
       <%= link_to edit_user_path(user.id) do %>
-        <i class="bi bi-pencil"></i></td>
+        <i class="bi bi-pencil"></i>
       <% end %>
+        <%= link_to  %>
+      </div>
+    </td>
   </tr>
   <% end %>
   </tbody>

@@ -1,13 +1,13 @@
 {
   "RSpec": {
     "coverage": {
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/helpers/admin_helper.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/helpers/admin_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/helpers/application_helper.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/helpers/application_helper.rb": {
         "lines": [
           1,
           1,
@@ -42,7 +42,7 @@
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/helpers/courses_helper.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/helpers/courses_helper.rb": {
         "lines": [
           1,
           1,
@@ -109,7 +109,7 @@
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/helpers/excel_files_helper.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/helpers/excel_files_helper.rb": {
         "lines": [
           1,
           1,
@@ -119,7 +119,7 @@
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/controllers/admin_controller.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/admin_controller.rb": {
         "lines": [
           null,
           1,
@@ -133,7 +133,7 @@
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/controllers/application_controller.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/application_controller.rb": {
         "lines": [
           1,
           1,
@@ -154,7 +154,7 @@
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/controllers/courses_controller.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/courses_controller.rb": {
         "lines": [
           1,
           1,
@@ -280,7 +280,7 @@
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/controllers/excel_files_controller.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/excel_files_controller.rb": {
         "lines": [
           1,
           null,
@@ -360,7 +360,7 @@
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/services/file_parser.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/services/file_parser.rb": {
         "lines": [
           null,
           null,
@@ -419,19 +419,19 @@
           4,
           null,
           4,
-          3,
-          3,
-          3,
-          87,
-          87,
-          68,
-          68,
+          2,
+          2,
+          2,
+          44,
+          44,
+          38,
+          38,
           null,
           null,
-          3,
-          3,
+          2,
+          2,
           null,
-          1,
+          2,
           1,
           null,
           null,
@@ -449,18 +449,18 @@
           null,
           null,
           1,
-          68,
-          68,
-          68,
-          68,
-          68,
-          68,
-          68,
+          38,
+          38,
+          38,
+          38,
+          38,
+          38,
+          38,
           null,
           null,
           1,
-          3,
-          68,
+          2,
+          38,
           null,
           null,
           null,
@@ -469,7 +469,7 @@
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/controllers/pages_controller.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/pages_controller.rb": {
         "lines": [
           null,
           null,
@@ -487,7 +487,7 @@
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/controllers/schedules_controller.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/schedules_controller.rb": {
         "lines": [
           1,
           1,
@@ -501,7 +501,7 @@
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/controllers/sessions_controller.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           1,
@@ -541,7 +541,7 @@
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/controllers/users_controller.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/users_controller.rb": {
         "lines": [
           1,
           1,
@@ -579,7 +579,7 @@
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/controllers/students_controller.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/students_controller.rb": {
         "lines": [
           1,
           1,
@@ -588,11 +588,11 @@
         ]
       }
     },
-    "timestamp": 1732294190
+    "timestamp": 1732375830
   },
   "Cucumber Features": {
     "coverage": {
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/services/file_parser.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/services/file_parser.rb": {
         "lines": [
           null,
           null,
@@ -701,7 +701,7 @@
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/controllers/sessions_controller.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           1,
@@ -741,7 +741,7 @@
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/controllers/application_controller.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/application_controller.rb": {
         "lines": [
           1,
           1,
@@ -762,7 +762,7 @@
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/helpers/application_helper.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/helpers/application_helper.rb": {
         "lines": [
           1,
           1,
@@ -797,13 +797,13 @@
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/helpers/admin_helper.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/helpers/admin_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/helpers/courses_helper.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/helpers/courses_helper.rb": {
         "lines": [
           1,
           1,
@@ -870,7 +870,7 @@
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/helpers/excel_files_helper.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/helpers/excel_files_helper.rb": {
         "lines": [
           1,
           1,
@@ -880,7 +880,7 @@
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/controllers/students_controller.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/students_controller.rb": {
         "lines": [
           1,
           1,
@@ -888,7 +888,7 @@
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/controllers/admin_controller.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/admin_controller.rb": {
         "lines": [
           null,
           1,
@@ -902,7 +902,7 @@
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/controllers/pages_controller.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/pages_controller.rb": {
         "lines": [
           null,
           null,
@@ -920,7 +920,7 @@
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/controllers/courses_controller.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/courses_controller.rb": {
         "lines": [
           1,
           1,
@@ -1046,7 +1046,7 @@
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/controllers/excel_files_controller.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/excel_files_controller.rb": {
         "lines": [
           1,
           null,
@@ -1126,7 +1126,7 @@
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/controllers/schedules_controller.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/schedules_controller.rb": {
         "lines": [
           1,
           1,
@@ -1140,7 +1140,7 @@
           null
         ]
       },
-      "/mnt/c/Users/Chengyan Tsai/Desktop/CSCE606/EA-Block-Scheduling/app/controllers/users_controller.rb": {
+      "D:/GradSchool/TAMU/CSCE_606/Project/EA-Block-Scheduling/app/controllers/users_controller.rb": {
         "lines": [
           1,
           1,
@@ -1179,6 +1179,6 @@
         ]
       }
     },
-    "timestamp": 1732294202
+    "timestamp": 1732375849
   }
 }
