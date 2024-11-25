@@ -58,6 +58,12 @@ GOOGLE_CLIENT_SECRET=your_client_secret
   ```bash
   $heroku config:set VARIABLE_NAME=value
 
+### Tests
+- **Run rspec and cucumber tests**  
+  ```bash
+  $bundle exec rspec
+  $bundle exec cucumber
+
 ### The Issue
 Professor Shana Shaw has requested an application that would automate the process of creating block schedules for academy students to pick from when enrollment is in process. There are many classes that are often taken together, and often, classes that should be taken together have conflicting meeting times. This requires Professor Shaw to manually create a list of classes that can be taken together without conflict.
 
