@@ -47,8 +47,8 @@ Follow these steps to deploy your application to Heroku.
 ### Create a .env File for Local Development
 
 If running locally, create a .env file in the root of your project and add the following environment variables for SSO:
-GOOGLE_CLIENT_ID=your_client_id <br>
-GOOGLE_CLIENT_SECRET=your_client_secret
+GOOGLE_CLIENT_ID=668153806127-b3n784bjqa1jh2tdnd346jis9jt9rpka.apps.googleusercontent.com <br>
+GOOGLE_CLIENT_SECRET=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
 
 ### Notes
 
@@ -62,6 +62,13 @@ GOOGLE_CLIENT_SECRET=your_client_secret
   ```bash
   $bundle exec rspec
   $bundle exec cucumber
+
+### To view admin dashboard
+- **You can assign admin role to a user while running the app in local to see the admin dashboard.**
+  ```bash
+  $rails console
+  #user = User.find_by(email: 'user@example.com')
+  #user.update(role: 'admin')
 
 ### The Issue
 Professor Shana Shaw has requested an application that would automate the process of creating block schedules for academy students to pick from when enrollment is in process. There are many classes that are often taken together, and often, classes that should be taken together have conflicting meeting times. This requires Professor Shaw to manually create a list of classes that can be taken together without conflict.
