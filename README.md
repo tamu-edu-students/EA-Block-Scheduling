@@ -11,6 +11,59 @@ This project provides a software solution to generate possible block schedules f
 
 The intended users of this solution are EA staff and students.
 
+### Get Started
+- **Ruby**: Version `3.3.4` (use a version manager like `rbenv` or `rvm` for easier setup)
+- **Rails**: Version specified in `Gemfile.lock`
+
+### Setup Instructions
+
+1. **Clone the Repository**  
+   Open a terminal and run:
+   ```bash
+   $git clone https://github.com/tamu-edu-students/EA-Block-Scheduling.git
+   $cd EA-Block-Scheduling 
+
+### Install Ruby and Dependencies
+
+1. **Install Ruby Version 3.3.4 Using rbenv**  
+   Ensure `rbenv` is installed on your system. Then, run the following commands to install and set the required Ruby version:
+
+   ```bash
+   $rbenv install 3.3.4
+   $rbenv local 3.3.4
+   $bundle install
+
+### Deploying to Heroku
+
+Follow these steps to deploy your application to Heroku.
+
+1. **Login to Heroku**  
+   Make sure you have the Heroku CLI installed. Log in to your Heroku account:
+   ```bash
+   $heroku login
+   $heroku create your-app-name
+   $git push heroku main
+   $heroku run rails db:migrate #Run the database migrations on the Heroku server
+
+### Create a .env File for Local Development
+
+If running locally, create a .env file in the root of your project and add the following environment variables for SSO:
+GOOGLE_CLIENT_ID=your_client_id <br>
+GOOGLE_CLIENT_SECRET=your_client_secret
+
+### Notes
+
+- **Set Environment Variables**  
+  Make sure any required environment variables are set on Heroku using:
+  ```bash
+  $heroku config:set VARIABLE_NAME=value
+
+### Tests
+- **Run rspec and cucumber tests**  
+  ```bash
+  $bundle exec rspec
+  $bundle exec cucumber
+
 ### The Issue
 Professor Shana Shaw has requested an application that would automate the process of creating block schedules for academy students to pick from when enrollment is in process. There are many classes that are often taken together, and often, classes that should be taken together have conflicting meeting times. This requires Professor Shaw to manually create a list of classes that can be taken together without conflict.
 
