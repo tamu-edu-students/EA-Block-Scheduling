@@ -84,6 +84,11 @@ Before each semester's enrollment period opens, a partner college sends a list o
 
 ## Features
 + **Automatic Block Generation:** Generates non-overlapping block schedules for math, science, and engineering sections.
+     1. Instruction to test Block generator(it is not deployed main)
+     - git checkout Blockgen-Re
+     - rails server
+     - http://localhost:3000/blocks
+
 + **Prerequisite Management:** Ensures that all class prerequisites are considered when generating schedules.
 + **Support for Multiple Sections:** Accounts for multiple sections of the same class, balancing their timing and order.
 + **Spreadsheet and Visual Output:** Provides the output as a downloadable spreadsheet and a visual display for easier review and sharing.
