@@ -90,3 +90,12 @@ Before each semester's enrollment period opens, a partner college sends a list o
 + **Data Handling:** ActiveRecord (for database operations in Rails)
 + **Spreadsheet Output:** Ruby Gems like axlsx or rubyXL (for generating Excel files)
 + **Deployment:** Heroku (for deployment and hosting)
+
+## Contact
++ **Aaron Jones:** aaron.h.jones@tamu.edu
++ **Adithi Srinath:** adithis_197@tamu.edu
++ **Chengyan Tsai:** crescentmax@tamu.edu
++ **Junhyuk Lee:** xodn348@tamu.edu
++ **Mahima Kardam Bhatt:** mahima19@tamu.edu
++ **Ryann Lu:** lu.ryann.2n@tamu.edu
++ **William-David Vanderpuye:** wilv10@tamu.edu
