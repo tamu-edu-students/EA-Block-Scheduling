@@ -2,8 +2,7 @@
 ## Important Links
 + Deployed App: https://ea-block-scheduler-4fecd886e389.herokuapp.com/
 + Code Climate: https://codeclimate.com/github/tamu-edu-students/EA-Block-Scheduling
-+ Sprint 2 MVP Report: https://github.com/tamu-edu-students/EA-Block-Scheduling/blob/main/documentation/Sprint%202%20MVP/Sprint%202%20MVP%20Report.md
-+ Sprint 3 MVP Report: https://github.com/tamu-edu-students/EA-Block-Scheduling/blob/main/documentation/Fall2024/Sprint%203%20MVP/Sprint%203%20MVP%20Report.md
++ Sprint 4 MVP Report: https://github.com/tamu-edu-students/EA-Block-Scheduling/blob/main/documentation/Fall2024/Sprint%204%20MVP/Sprint%204%20MVP%20Report.pdf
 + Team Working Agreements: https://github.com/tamu-edu-students/EA-Block-Scheduling/blob/main/documentation/Team%20Working%20Agreement.md
 
 ## Overview
@@ -90,3 +89,12 @@ Before each semester's enrollment period opens, a partner college sends a list o
 + **Data Handling:** ActiveRecord (for database operations in Rails)
 + **Spreadsheet Output:** Ruby Gems like axlsx or rubyXL (for generating Excel files)
 + **Deployment:** Heroku (for deployment and hosting)
+
+## Contact
++ **Aaron Jones:** aaron.h.jones@tamu.edu
++ **Adithi Srinath:** adithis_197@tamu.edu
++ **Chengyan Tsai:** crescentmax@tamu.edu
++ **Junhyuk Lee:** xodn348@tamu.edu
++ **Mahima Kardam Bhatt:** mahima19@tamu.edu
++ **Ryann Lu:** lu.ryann.2n@tamu.edu
++ **William-David Vanderpuye:** wilv10@tamu.edu
