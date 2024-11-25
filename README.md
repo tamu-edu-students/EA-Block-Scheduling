@@ -2,8 +2,7 @@
 ## Important Links
 + Deployed App: https://ea-block-scheduler-4fecd886e389.herokuapp.com/
 + Code Climate: https://codeclimate.com/github/tamu-edu-students/EA-Block-Scheduling
-+ Sprint 2 MVP Report: https://github.com/tamu-edu-students/EA-Block-Scheduling/blob/main/documentation/Sprint%202%20MVP/Sprint%202%20MVP%20Report.md
-+ Sprint 3 MVP Report: https://github.com/tamu-edu-students/EA-Block-Scheduling/blob/main/documentation/Fall2024/Sprint%203%20MVP/Sprint%203%20MVP%20Report.md
++ Sprint 4 MVP Report: https://github.com/tamu-edu-students/EA-Block-Scheduling/blob/main/documentation/Fall2024/Sprint%204%20MVP/Sprint%204%20MVP%20Report.pdf
 + Team Working Agreements: https://github.com/tamu-edu-students/EA-Block-Scheduling/blob/main/documentation/Team%20Working%20Agreement.md
 
 ## Overview
