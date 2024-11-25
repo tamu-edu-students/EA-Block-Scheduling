@@ -21,9 +21,13 @@ end
 When("I click course button {string} for section {string}") do |button, section|
   if button == "New Course"
     click_link button
-  elsif %w[Show Edit Delete].include?(button)
+  elsif %w[Edit Delete].include?(button)
     within(:xpath, "//tr[.//td[contains(text(), '#{section}')]]") do
-      click_link button
+      if button == "Delete"
+        click_link "", class: "bi bi-trash"
+      else
+        click_link "", class: "bi bi-pencil"
+      end
     end
   else
     click_button button
@@ -39,12 +43,10 @@ When('I click course button {string}') do |button_text|
   case button_text
   when "New Course"
     click_link button_text, class: "new-course-button"
-  when "Show"
-    click_link button_text, class: "show-button"
   when "Edit"
-    click_link button_text, class: "edit-button"
+    click_link button_text, class: "bi bi-pencil"
   when "Delete"
-    click_link button_text, class: "delete-button"
+    click_link button_text, class: "bi bi-trash"
   else
     click_button button_text  # Fallback for actual buttons like "Create Course"
   end

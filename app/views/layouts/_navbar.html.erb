@@ -1,0 +1,68 @@
+<header id="navbar" class="main-header site-header--alt show-for-medium">
+  <div class="site-header__identity">
+    <div class="identity">
+      <%= link_to pages_path do %>
+        <div class="identity__logo">
+          <%= image_tag "/boxTAM.svg", alt: "Texas A&M University logo" %>
+        </div>
+        <div class="identity__wordmark">
+          <span class="wordmark__small">Texas A&amp;M University</span>
+          <span class="wordmark__large">Engineering Academies</span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <% if user_signed_in? %>
+    <nav class="site-header__nav">
+      <ol class="menu">
+        <% if current_user_admin? %>
+          <li class="menu-item"><%= link_to "View Users", users_path %></li>
+          <li class="menu-item"><%= link_to "Admin Settings", admin_dashboard_path %></li>
+          <li class="menu-item"><%= link_to "View Courses", courses_path %></li>
+          <li class="menu-item"><%= link_to "Upload Spreadsheet", new_excel_file_path %></li>
+        <% else %>
+          <li class="menu-item"><%= link_to "View Courses", generate_schedule_schedules_path %></li>
+          <li class="menu-item"><%= link_to "My Schedule", "#" %></li>
+        <% end %>
+        <li class="menu-item"><%= link_to "Profile", user_profile_view_path %></li>
+        <div class="d-flex">
+          <li class="menu-item"><%= link_to "Logout", logout_session_path, method: :get %></li>
+        </div>
+      </ol>
+    </nav>
+  <% end %>
+</header>
+
+<header class="mobile-header site-header--alt show-for-small-only" id="mobile-navbar">
+  <div class="site-header__back">
+    <%= link_to "Texas A&M University", pages_path %>
+  </div>
+  <div class="mobile-header__identity">
+    <div class="identity">
+      <a href="#">
+        <div class="identity__logo">
+          <img
+            alt="Texas A&amp;M University logo"
+            src="https://aux.tamu.edu/logos/boxTAM.svg"
+            />
+        </div>
+        <div class="identity__wordmark">
+          <span class="wordmark__small">Texas A&amp;M University</span>
+          <span class="wordmark__large">Engineering Academies</span>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="mobile-toggle">
+    <button class="mobile-toggle__menu mobile-nav__menu" aria-expanded="false" aria-pressed="false" data-mobilemenu="menu-mobile">
+      Menu
+      <div class="menu__icon"><span></span></div>
+    </button>
+    <button class="mobile-toggle__quicklinks-search">
+      Search
+      <svg>
+        <use href="#aux_search"></use>
+      </svg>
+    </button>
+  </div>
+</header>
