@@ -13,7 +13,7 @@
       <img src="./assets/0.13.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-11-25T21:04:28-06:00">2024-11-25T21:04:28-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-11-26T13:32:00-06:00">2024-11-26T13:32:00-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -29,7 +29,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         9.27
+         9.22
        </span>
     </span> hits/line
     )
@@ -42,8 +42,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>260</b> relevant lines,
-    <span class="green"><b>260</b> lines covered</span> and
+    <b>262</b> relevant lines,
+    <span class="green"><b>262</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -76,7 +76,7 @@
             <td class="cell--number">9</td>
             <td class="cell--number">9</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">20.78</td>
+            <td class="cell--number">21.00</td>
             
           </tr>
         
@@ -138,11 +138,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#1c17b0dfc15b3aa0c8c32b95ee49ee7e471a0c23" class="src_link" title="app/controllers/users_controller.rb">app/controllers/users_controller.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">40</td>
-            <td class="cell--number">23</td>
-            <td class="cell--number">23</td>
+            <td class="cell--number">42</td>
+            <td class="cell--number">25</td>
+            <td class="cell--number">25</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">2.70</td>
+            <td class="cell--number">2.64</td>
             
           </tr>
         
@@ -220,7 +220,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         5.66
+         5.63
        </span>
     </span> hits/line
     )
@@ -233,8 +233,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>154</b> relevant lines,
-    <span class="green"><b>154</b> lines covered</span> and
+    <b>156</b> relevant lines,
+    <span class="green"><b>156</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -267,7 +267,7 @@
             <td class="cell--number">9</td>
             <td class="cell--number">9</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">20.78</td>
+            <td class="cell--number">21.00</td>
             
           </tr>
         
@@ -329,11 +329,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#1c17b0dfc15b3aa0c8c32b95ee49ee7e471a0c23" class="src_link" title="app/controllers/users_controller.rb">app/controllers/users_controller.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">40</td>
-            <td class="cell--number">23</td>
-            <td class="cell--number">23</td>
+            <td class="cell--number">42</td>
+            <td class="cell--number">25</td>
+            <td class="cell--number">25</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">2.70</td>
+            <td class="cell--number">2.64</td>
             
           </tr>
         
@@ -931,9 +931,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="160" data-linenumber="9">
+          <li class="covered" data-hits="162" data-linenumber="9">
             
-              <span class="hits">160</span>
+              <span class="hits">162</span>
             
 
             
@@ -4056,8 +4056,8 @@
     
 
     <div class="t-line-summary">
-      <b>23</b> relevant lines.
-      <span class="green"><b>23</b> lines covered</span> and
+      <b>25</b> relevant lines.
+      <span class="green"><b>25</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -4490,12 +4490,36 @@
 
             
 
-            <code class="ruby">    params.require(:user).permit(:email, :first_name, :last_name, :uid, :provider, :role)</code>
+            <code class="ruby">    permitted_params = [:email, :first_name, :last_name]</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="39">
+          <li class="covered" data-hits="2" data-linenumber="39">
+            
+              <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">    permitted_params += [:uid, :provider, :role] if current_user.admin?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="40">
+            
+              <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">    params.require(:user).permit(*permitted_params)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="41">
             
 
             
@@ -4505,7 +4529,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="40">
+          <li class="never" data-hits="" data-linenumber="42">
             
 
             
