@@ -40,6 +40,7 @@ gem "dotenv-rails", groups: [:development, :test]
 
 group :development, :test do
   gem "sqlite3", "~> 2.2.0" # Use SQLite for development and test environments
+  gem 'shoulda-matchers'
 end
 
 group :development, :test do

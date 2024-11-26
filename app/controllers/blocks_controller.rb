@@ -3,7 +3,8 @@ class BlocksController < ApplicationController
   skip_before_action :require_admin, if: -> { Rails.env.test? }
 
   def index
-    @generated_blocks = defined?(@@generated_blocks) ? @@generated_blocks : []
+    @blocks = defined?(@@generated_blocks) ? @@generated_blocks : []
+    @generated_blocks = @blocks  # Keep this for backward compatibility if needed
     render :index
   end
 
