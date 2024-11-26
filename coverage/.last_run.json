@@ -1,9 +1,13 @@
 {
   "result": {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "line": 85.89
 =======
     "line": 95.08
 >>>>>>> a8deb840 (added cucumber feature for new create function)
+=======
+    "line": 89.84
+>>>>>>> 18803a9f (Fix)
   }
 }
