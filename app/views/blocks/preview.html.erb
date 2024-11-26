@@ -1,0 +1,24 @@
+<h1>PREVIEW GENERATED BLOCKS</h1>
+
+<div class="preview-actions">
+  <%= button_to "Save These Blocks", save_blocks_path, class: "save-button" %>
+  <%= link_to "Generate New Ones", generate_blocks_path, class: "generate-button", data: { turbo_method: :post } %>
+  <%= link_to "Back to Current Blocks", blocks_path, class: "back-button" %>
+</div>
+
+<% if @generated_blocks&.any? %>
+  <p>Total blocks generated: <%= @generated_blocks.count %></p>
+  
+  <div class="blocks-container">
+    <% @generated_blocks.each_with_index do |block, index| %>
+      <div class="block">
+        <h3>Block <%= index + 1 %></h3>
+        <% block.courses.each do |course| %>
+          <p><%= course.sec_name %></p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>No blocks to preview.</p>
+<% end %> 
