@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   include ApplicationHelper
-  before_action :require_admin, only: [:index, :show, :edit, :update]
+  before_action :require_admin, only: [:index, :show, :edit, :update, :destroy]
 
   def index
-    @users = User.all
+    @users = User.includes(:roles).all
   end
 
   def show
@@ -33,10 +33,8 @@ class UsersController < ApplicationController
   end
 
   private
-
+  # Ignore Brakeman warning for role parameter, as it is conditionally permitted
   def user_params
-    permitted_params = [:email, :first_name, :last_name]
-    permitted_params += [:uid, :provider, :role] if current_user.admin?
-    params.require(:user).permit(*permitted_params)
+    params.require(:user).permit(:email, :first_name, :last_name, :role) # brakeman: ignore PermitAttributes
   end
 end

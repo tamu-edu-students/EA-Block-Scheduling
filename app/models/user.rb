@@ -5,21 +5,19 @@ class User < ApplicationRecord
   after_initialize :set_default_role, if: :new_record?
 
   def admin?
-    role == "admin"
+    has_role?("admin")
+  end
+
+  def student?
+    has_role?("student")
   end
 
   def has_role?(role_name)
     roles.any? { |role| role.name == role_name }
   end
 
-  # Method to check if the user is a student
-  def student?
-    role == "student"
-  end
-
   private
-
   def set_default_role
-    self.role ||= "student"
+    self.roles << Role.find_by(name: "student") if roles.empty?
   end
 end
