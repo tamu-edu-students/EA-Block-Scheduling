@@ -45,9 +45,11 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_20_014555) do
   end
 
   create_table "blocks_courses", id: false, force: :cascade do |t|
-    t.integer "block_id"
-    t.integer "course_id"
+    t.integer "block_id", null: false
+    t.integer "course_id", null: false
+    t.index ["block_id", "course_id"], name: "index_blocks_courses_on_block_id_and_course_id"
     t.index ["block_id"], name: "index_blocks_courses_on_block_id"
+    t.index ["course_id", "block_id"], name: "index_blocks_courses_on_course_id_and_block_id"
     t.index ["course_id"], name: "index_blocks_courses_on_course_id"
   end
 

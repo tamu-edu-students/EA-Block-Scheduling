@@ -57,4 +57,7 @@ Rails.application.routes.draw do
       get :export
     end
   end
+
+  # Add this line for user profile
+  get 'user/profile', to: 'users#profile', as: :user_profile_view
 end

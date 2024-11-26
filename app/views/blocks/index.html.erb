@@ -17,23 +17,19 @@
   <% end %>
 
   <div class="blocks-container">
-    <% if @blocks&.any? %>
-      <% @blocks.each_with_index do |block, index| %>
+    <% if @generated_blocks&.any? %>
+      <% @generated_blocks.each_with_index do |block, index| %>
         <div class="block">
           <h3>Block <%= index + 1 %></h3>
           <ul>
-            <% if block.respond_to?(:courses) %>
-              <% block.courses.each do |course| %>
-                <li>
-                  <strong><%= course.sec_name %></strong>
-                  <div class="course-details">
-                    <%= course.days %> 
-                    <%= course.start_time %> - <%= course.end_time %>
-                  </div>
-                </li>
-              <% end %>
-            <% else %>
-              <li>Error: Block doesn't have courses method</li>
+            <% block.courses.each do |course| %>
+              <li>
+                <strong><%= course.sec_name %></strong>
+                <div class="course-details">
+                  <%= course.days %> 
+                  <%= course.start_time %> - <%= course.end_time %>
+                </div>
+              </li>
             <% end %>
           </ul>
         </div>
