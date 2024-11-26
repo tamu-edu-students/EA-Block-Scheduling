@@ -1,0 +1,30 @@
+<h2>Users</h2>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Email</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Role</th>
+    <th>UID</th>
+    <th>Provider</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+  <tr>
+    <td><%= user.email %></td>
+    <td><%= user.first_name %></td>
+    <td><%= user.last_name %></td>
+    <td><%= user.role %></td>
+    <td><%= user.uid %></td>
+    <td><%= user.provider %></td>
+    <td>
+      <%= link_to edit_user_path(user.id) do %>
+        <i class="bi bi-pencil"></i></td>
+      <% end %>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
