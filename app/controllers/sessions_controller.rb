@@ -1,9 +1,14 @@
 class SessionsController < ApplicationController
-  skip_before_action :require_login, only: [:omniauth]
+  skip_before_action only: [:omniauth]
+  include ApplicationHelper
 
   def logout
     reset_session
-    redirect_to welcome_path, notice: "You are logged out."
+    redirect_to pages_path, notice: "You are logged out."
+  end
+
+  def failure
+    redirect_to pages_path
   end
 
   # GET /auth/google_oauth2/callback
@@ -19,13 +24,13 @@ class SessionsController < ApplicationController
     if @user.valid?
       session[:user_id] = @user.id
       # Redirect based on user role
-      if @user.role == "admin"
-        redirect_to admin_dashboard_path, notice: "Welcome, Admin!"
+      if current_user_admin?
+        redirect_to admin_dashboard_path
       else
-        redirect_to students_dashboard_path, notice: "Welcome, Student!"
+        redirect_to students_dashboard_path
       end
     else
-      redirect_to welcome_path, alert: "Login failed."
+      redirect_to pages_path, alert: "Login failed."
     end
   end
 end

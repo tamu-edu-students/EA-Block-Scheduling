@@ -26,17 +26,16 @@
         <td><%= course.sec_name %></td>
         <td><%= course.short_title %></td>
         <td><%= course.days %></td>
-        <td><%= "#{course.start_time} - #{course.end_time}" %></td>
+        <td><%= "#{course.start_time.strftime("%I:%M %p")} - #{course.end_time.strftime("%I:%M %p")}" %></td>
         <td><%= course.building %></td>
         <td><%= course.room %></td>
         <td><%= course.crs_capacity %></td>
         <td><%= course.prerequisites %></td>
         <td>
-          <%= link_to "Show", course_path(course), class: "show-button" %>
-          <%= link_to "Edit", edit_course_path(course), class: "edit-button" %>
-          <%= link_to "Delete", course_path(course), 
+          <%= link_to "", edit_course_path(course), class: "bi bi-pencil" %>
+          <%= link_to "", course_path(course),
               data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-              class: "delete-button" %>
+              class: "bi bi-trash" %>
         </td>
       </tr>
     <% end %>
