@@ -1,17 +1,6 @@
-<h2>Editing <%= @user.email %></h2>
-<%= form_tag user_path(@user), :method => :put do %>
-  <%= label :user, :email, "Email", :class => 'col-form-label' %>
-  <%= text_field :user, :email, :class => 'form-control' %>
+<% content_for :title, "Editing User" %>
+<h1>Editing user</h1>
 
-  <%= label :user, :first_name, "First Name", :class => 'col-form-label' %>
-  <%= text_field :user, :first_name, :class => 'form-control' %>
+<%= render "form", user: @user %>
+<br>
 
-  <%= label :user, :last_name, "Last Name", :class => 'col-form-label' %>
-  <%= text_field :user, :last_name, :class => 'form-control' %>
-
-  <%= label :user, :role, "User Role", :class => 'col-form-label' %>
-  <%= select :user, :role, %w[admin user], {}, { :class => 'form-control' } %>
-  <br />
-  <%= submit_tag "Update User", :class => 'btn btn--primary-alt' %>
-  <%= link_to "Cancel", users_path, :class => 'btn btn--primary-alt' %>
-<% end %>

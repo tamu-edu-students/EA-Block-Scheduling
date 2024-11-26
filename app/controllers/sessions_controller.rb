@@ -24,11 +24,7 @@ class SessionsController < ApplicationController
     if @user.valid?
       session[:user_id] = @user.id
       # Redirect based on user role
-      if current_user_admin?
-        redirect_to admin_dashboard_path
-      else
-        redirect_to students_dashboard_path
-      end
+      redirect_to dashboard_path
     else
       redirect_to pages_path, alert: "Login failed."
     end

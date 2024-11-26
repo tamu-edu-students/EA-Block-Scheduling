@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root "pages#index", to: "pages#index", as: "pages"
+  get "dashboard", to: "pages#dashboard", as: "dashboard"
+  get "admin_settings", to: "pages#admin_settings", as: "admin_settings"
 
   # Health check route
   get "up" => "rails/health#show", as: :rails_health_check
@@ -12,8 +14,7 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   get "/auth/failure", to: "sessions#failure"  # Optional, for handling failed authentication
   get "/auth/google_oauth2/callback", to: "sessions#omniauth", as: :omniauth_callback
-  get "admin/dashboard", to: "admin#dashboard", as: :admin_dashboard
-  get "dashboard", to: "students#dashboard", as: :students_dashboard
+
   get "schedule_viewer", to: "schedules#schedule_viewer"
   get "profile", to: "users#profile", as: :user_profile_view
 

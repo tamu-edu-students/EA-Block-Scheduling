@@ -21,21 +21,20 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find params[:id]
-    @user.update!(user_params)
-    flash[:notice] = "#{@user.email} was successfully updated."
-    redirect_to user_path
+    if @user.update(user_params)
+      redirect_to @user, notice: "#{@user.email} was successfully updated."
+    end
   end
 
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    flash[:notice] = "#{@user.email} was successfully deleted."
-    redirect_to users_path
+    redirect_to users_path, notice: "#{@user.email} was successfully deleted."
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :uid, :provider)
+    params.require(:user).permit(:email, :first_name, :last_name, :uid, :provider, :role)
   end
 end

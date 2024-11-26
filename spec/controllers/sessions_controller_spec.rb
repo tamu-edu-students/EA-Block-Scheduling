@@ -33,7 +33,7 @@ RSpec.describe SessionsController, type: :controller do
         get :omniauth
 
         expect(session[:user_id]).to eq(user.id)
-        expect(response).to redirect_to(admin_dashboard_path)
+        expect(response).to redirect_to(dashboard_path)
       end
     end
 
@@ -53,7 +53,7 @@ RSpec.describe SessionsController, type: :controller do
         get :omniauth
 
         expect(session[:user_id]).to eq(user.id)
-        expect(response).to redirect_to(students_dashboard_path)
+        expect(response).to redirect_to(dashboard_path)
       end
     end
 

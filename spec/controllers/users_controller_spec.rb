@@ -92,4 +92,32 @@ RSpec.describe UsersController, type: :controller do
       expect(assigns(:user)).to eq(user0)
     end
   end
+
+  describe "DELETE #destroy" do
+    let!(:user) { create(:user, email: "test99@example.com") } # Create a test user
+
+    it "deletes the user" do
+      expect {
+        delete :destroy, params: { id: user.id }
+      }.to change(User, :count).by(-1) # Ensure the user is deleted
+    end
+
+    it "sets a flash notice" do
+      delete :destroy, params: { id: user.id }
+      expect(flash[:notice]).to eq("test99@example.com was successfully deleted.") # Verify the flash message
+    end
+
+    it "redirects to the users index" do
+      delete :destroy, params: { id: user.id }
+      expect(response).to redirect_to(users_path) # Ensure redirection to the index
+    end
+
+    context "when the user is not found" do
+      it "raises an ActiveRecord::RecordNotFound error" do
+        expect {
+          delete :destroy, params: { id: 9999 } # Non-existent user ID
+        }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+  end
 end
