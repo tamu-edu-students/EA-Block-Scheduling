@@ -92,14 +92,14 @@ class CoursesController < ApplicationController
     @courses = Course.where(as_id: as_id)
   end
 
-  # Gets the course code from the sec_name (e.g. MATH-2414 from MATH-2414-007) - NOT COVERED
+  # Gets the course code from the sec_name (e.g. MATH-2414 from MATH-2414-007)
   def extract_base_code(sec_name)
     standardized = sec_name.gsub(' ', '-')
     parts = standardized.split('-')
     "#{parts[0]}-#{parts[1]}"
   end
 
-  # Get type of course from sec_name using extract_base_code (e.g. MATH from MATH-2414-007) - NOT COVERED
+  # Get type of course from sec_name using extract_base_code (e.g. MATH from MATH-2414-007)
   def extract_type(sec_name)
     base_code = extract_base_code(sec_name)
     parts = base_code.split('-')
@@ -108,12 +108,12 @@ class CoursesController < ApplicationController
 
   private
 
-  # Define prereqs and coreqs for listed courses for populating columns during creation - NOT COVERED
+  # Define prereqs and coreqs for listed courses for populating columns during creation
   def corequisites
     {
-      'ENGR 102' => %w[MATH-2412 MATH-2413],
-      'ENGR 216' => ['PHYS 2425'],
-      'ENGR 217' => ['PHYS 2426']
+      'ENGR-102' => %w[MATH-2412 MATH-2413],
+      'ENGR-216' => ['PHYS-2425'],
+      'ENGR-217' => ['PHYS-2426']
     }
   end
   def prerequisites
@@ -131,7 +131,7 @@ class CoursesController < ApplicationController
     }
   end
 
-  # Define categories of courses based on class code - NOT COVERED
+  # Define categories of courses based on class code
   def categories
     {
       'MATH' => 'Math',
