@@ -15,6 +15,7 @@
       <th>Room</th>
       <th>Capacity</th>
       <th>Prerequisites</th>
+      <th>Corequisites</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -31,6 +32,7 @@
         <td><%= course.room %></td>
         <td><%= course.crs_capacity %></td>
         <td><%= course.prerequisites %></td>
+        <td><%= course.corequisites %></td>
         <td>
           <%= link_to "", edit_course_path(course), class: "bi bi-pencil" %>
           <%= link_to "", course_path(course),

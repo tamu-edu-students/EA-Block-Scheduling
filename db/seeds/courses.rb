@@ -98,7 +98,7 @@ ActiveRecord::Base.transaction do
     'CLEN' => 'Intro'
   }
 
-  # Create courses with prerequisites
+  # Create courses with prerequisites and corequisites
   courses.each do |course_data|
     base_code = extract_base_code(course_data[:sec_name])
     prereq_string = prerequisites.key?(base_code) ? prerequisites[base_code].map(&:strip).join(', ') : nil

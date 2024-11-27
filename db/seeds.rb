@@ -150,25 +150,19 @@ categories = {
 # Create courses with prerequisites
 courses.each do |course_data|
   base_code = extract_base_code(course_data[:sec_name])
-  prereq_string = if prerequisites.key?(base_code)
-    prerequisites[base_code].map(&:strip).join(', ')
-  else
-    nil
-  end
-  coreq_string = if corequisites.key?(base_code)
-    corequisites[base_code].map(&:strip).join(', ')
-  else
-    nil
-  end
-
+  prereq_string = prerequisites.key?(base_code) ? prerequisites[base_code].map(&:strip).join(', ') : nil
+  coreq_string = corequisites.key?(base_code) ? corequisites[base_code].join(', ') : nil
   type = extract_type(course_data[:sec_name])
-  category_string = if categories.key?(type)
-    categories[type].strip
-  else
-    nil
-  end
-
-  Course.create!(course_data.merge(prerequisites: prereq_string, corequisites: coreq_string, category: category_string))
+  category_string = categories.key?(type) ? categories[type].strip : nil
+  
+  course = Course.find_or_create_by!(sec_name: course_data[:sec_name])
+  course.update!(
+    course_data.merge(
+      prerequisites: prereq_string,
+      corequisites: coreq_string,
+      category: category_string
+    )
+  )
 end
 
 puts "\nSeeding completed!"
