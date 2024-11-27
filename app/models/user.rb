@@ -2,7 +2,6 @@ class User < ApplicationRecord
   has_many :user_roles
   has_many :roles, through: :user_roles
   validates :email, presence: true
-  after_initialize :set_default_role, if: :new_record?
 
   def admin?
     has_role?("admin")
