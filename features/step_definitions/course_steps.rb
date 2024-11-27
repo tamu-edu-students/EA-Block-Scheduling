@@ -40,6 +40,21 @@ When("I fill in course field {string} with {string}") do |field, value|
 end
 
 When('I click course button {string}') do |button_text|
+  if button_text == "Create Course"
+    sec_name = find_field('course_sec_name').value
+    base_code = sec_name.split('-')[0..1].join('-')
+    
+    puts "\nDEBUG Course Creation:"
+    puts "  Section name: #{sec_name}"
+    puts "  Base code: #{base_code}"
+    puts "  Found prerequisites: #{@prerequisites[base_code]}"
+    
+    # Set prerequisites in the form
+    if @prerequisites[base_code]
+      fill_in 'course[prerequisites]', with: @prerequisites[base_code]
+    end
+  end
+  
   case button_text
   when "New Course"
     click_link button_text, class: "new-course-button"
@@ -48,7 +63,7 @@ When('I click course button {string}') do |button_text|
   when "Delete"
     click_link button_text, class: "bi bi-trash"
   else
-    click_button button_text  # Fallback for actual buttons like "Create Course"
+    click_button button_text
   end
 end
 

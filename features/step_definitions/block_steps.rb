@@ -35,6 +35,7 @@ Then('I should be redirected to blocks page') do
 end
 
 Then('I should see preview controls') do
+  expect(page).to have_content('PREVIEW GENERATED BLOCKS')
   expect(page).to have_button('Save These Blocks')
   expect(page).to have_link('Generate New Ones')
   expect(page).to have_link('Back to Current Blocks')

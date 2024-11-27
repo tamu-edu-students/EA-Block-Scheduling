@@ -17,7 +17,7 @@ class BlocksController < ApplicationController
   def preview
     if defined?(@@generated_blocks)
       @generated_blocks = @@generated_blocks
-      render :index
+      render :preview
     else
       redirect_to blocks_path
     end
