@@ -11,28 +11,32 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
+  <div class="field">
+    <%= form.label :email %>
     <%= form.text_field :email %>
   </div>
 
-  <div>
-    <%= form.label :first_name, style: "display: block" %>
+  <div class="field">
+    <%= form.label :first_name %>
     <%= form.text_field :first_name %>
   </div>
 
-  <div>
-    <%= form.label :last_name, style: "display: block" %>
+  <div class="field">
+    <%= form.label :last_name %>
     <%= form.text_field :last_name %>
   </div>
 
-  <div>
-    <%= form.label :role, style: "display: block" %>
-    <%= form.collection_select :role, [%w[Admin admin], %w[Student student]], :last, :first %>
+  <div class="field">
+    <%= form.label :role_ids, "Roles" %>
+    <%= form.collection_check_boxes :role_ids, @roles, :id, :name do |b| %>
+      <div style="display: inline; padding: 10px;">
+        <%= b.check_box %> <%= b.text %>
+      </div>
+    <% end %>
   </div>
 
   <div class="action-container edit-actions">
-    <%= form.button "Update", type: :submit, class: "btn btn--primary" %>
+    <%= form.button "Update", type: :update, class: "btn btn--primary" %>
     <%= link_to "Cancel", users_path, :class => "btn btn--primary-alt" %>
   </div>
 <% end %>

@@ -12,7 +12,12 @@
     <%= user.last_name %>
   </p>
   <p>
-    <strong>Role:</strong>
-    <%= user.role %>
+    <strong>Role(s):</strong>
+    <tr>
+    <% user.roles.each do |r| %>
+      <td><%= r.name %></td>
+    <% end %>
+    </tr>
+
   </p>
 </div>
