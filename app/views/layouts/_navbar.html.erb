@@ -18,6 +18,7 @@
         <% if current_user_admin? %>
           <li class="menu-item"><%= link_to "View Users", users_path %></li>
           <li class="menu-item"><%= link_to "Admin Settings", admin_settings_path %></li>
+          <li class="menu-item"><%= link_to "Blocks", blocks_path %></li>
           <li class="menu-item"><%= link_to "View Courses", courses_path %></li>
           <li class="menu-item"><%= link_to "Upload Spreadsheet", new_excel_file_path %></li>
         <% else %>
