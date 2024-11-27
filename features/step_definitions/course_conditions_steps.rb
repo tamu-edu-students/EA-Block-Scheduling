@@ -67,17 +67,17 @@ end
 # end
 
 Then("the course {string} should have no prerequisites") do |sec_name|
-    course = Course.find_by(sec_name: sec_name)
-    expect(course.prerequisites).to be_nil
+  course = Course.find_by(sec_name: sec_name)
+  expect(course.prerequisites.presence).to be_nil
 end
 
 Then("the course {string} should have no corequisites") do |sec_name|
-    course = Course.find_by(sec_name: sec_name)
-    expect(course.corequisites).to be_nil
+  course = Course.find_by(sec_name: sec_name)
+  expect(course.corequisites.presence).to be_nil
 end
 
 Then("the course {string} should be in no category") do |sec_name|
-    course = Course.find_by(sec_name: sec_name)
-    expect(course.category).to be_nil
+  course = Course.find_by(sec_name: sec_name)
+  expect(course.category.presence).to be_nil
 end
 

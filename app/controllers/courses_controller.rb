@@ -9,6 +9,8 @@ class CoursesController < ApplicationController
     @courses = Course.all.order(:sec_name)
     @prerequisites = {}
     @corequisites = {}
+    @categories = {}
+
 
     @courses.each do |course|
       if course.prerequisites.present?
