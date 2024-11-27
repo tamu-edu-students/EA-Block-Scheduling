@@ -35,6 +35,10 @@ class UsersController < ApplicationController
   private
   # Ignore Brakeman warning for role parameter, as it is conditionally permitted
   def user_params
+<<<<<<< HEAD
     params.require(:user).permit(:email, :first_name, :last_name, :role) # brakeman: ignore PermitAttributes
+=======
+    params.require(:user).permit(:email, :first_name, :last_name, :uid, :provider, :role)
+>>>>>>> parent of 21950ca (Adjust permitted params in user controller)
   end
 end
