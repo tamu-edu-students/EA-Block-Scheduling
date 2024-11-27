@@ -16,6 +16,7 @@
       <th>Capacity</th>
       <th>Prerequisites</th>
       <th>Corequisites</th>
+      <th>Category</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -33,6 +34,7 @@
         <td><%= course.crs_capacity %></td>
         <td><%= course.prerequisites %></td>
         <td><%= course.corequisites %></td>
+        <td><%= course.category %></td>
         <td>
           <%= link_to "", edit_course_path(course), class: "bi bi-pencil" %>
           <%= link_to "", course_path(course),

@@ -7,9 +7,6 @@ class CoursesController < ApplicationController
   # GET /courses or /courses.json
   def index
     @courses = Course.all.order(:sec_name)
-    puts "\nDEBUG Courses:"
-    puts "  Total courses: #{@courses.count}"
-    puts "  Sample course: #{@courses.first.inspect}"
     @prerequisites = {}
     @corequisites = {}
 

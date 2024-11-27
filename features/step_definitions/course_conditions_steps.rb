@@ -9,15 +9,14 @@ Given("the following corequisites exist:") do |table|
     @corequisites = table.hashes.each_with_object({}) do |row, hash|
         hash[row['course_code']] = row['corequisite_courses']
     end
-    
-    puts "\nDEBUG Corequisites Setup:"
-    puts "  @corequisites: #{@corequisites.inspect}"
 end
 
 Given("the following categories exist:") do |table|
     @categories = table.hashes.each_with_object({}) do |row, hash|
         hash[row['type']] = row['category_name']
     end
+    puts "\nDEBUG Categories Setup:"
+    puts "  Categories hash: #{@categories.inspect}"
 end
 
 Then("the course {string} should have prerequisites {string}") do |course_code, prerequisites|
@@ -43,9 +42,13 @@ end
 #     expect(course.category).to eq(category)
 # end
 
-Then("the course {string} should be in category {string}") do |course_code, category|
-    course = Course.find_by(sec_name: course_code)
-    expect(course.category).to eq(category)
+Then("the course {string} should be in category {string}") do |sec_name, expected_category|
+  course = Course.find_by(sec_name: sec_name)
+  puts "\nDEBUG Category Check:"
+  puts "  Course: #{sec_name}"
+  puts "  Expected category: #{expected_category}"
+  puts "  Actual category: #{course.category}"
+  expect(course.category).to eq(expected_category)
 end
 
 # Then("the course {string} should have no prerequisites") do |sec_name|

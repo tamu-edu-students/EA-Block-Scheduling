@@ -15,10 +15,10 @@ Feature: Create Courses with Prerequisites, Corequisites, and Category
       | ENGR-216      | PHYS-2425                 |
       | ENGR-217      | PHYS-2426                 |
     And the following categories exist:
-      | prefix        | category       |
-      | MATH          | Math           |
-      | PHYS          | Science        |
-      | ENGR          | Engineering    |
+      | type  | category_name |
+      | MATH  | Math          |
+      | PHYS  | Science       |
+      | ENGR  | Engineering   |
     And I am logged in as a test user
     And I visit the courses page
 

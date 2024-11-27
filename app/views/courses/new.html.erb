@@ -48,6 +48,11 @@
     <%= form.text_field :corequisites, placeholder: "e.g., PHYS-2426" %>
   </div>
 
+  <div>
+    <%= form.label :category %>
+    <%= form.text_field :category %>
+  </div>
+
   <%= form.submit "Create Course" %>
 <% end %>
 

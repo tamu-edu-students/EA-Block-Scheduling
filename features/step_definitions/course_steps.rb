@@ -2,6 +2,7 @@
 Before do
   @prerequisites = {}
   @corequisites = {}
+  @categories = {}
 end
 
 When("there is a course {string} in the system") do |title|
@@ -47,11 +48,18 @@ When('I click course button {string}') do |button_text|
   if button_text == "Create Course"
     sec_name = find_field('course_sec_name').value
     base_code = sec_name.split('-')[0..1].join('-')
+    dept_code = sec_name.split('-')[0]
     
     puts "\nDEBUG Course Creation:"
     puts "  Section name: #{sec_name}"
-    puts "  Base code: #{base_code}"
-    puts "  Available corequisites: #{@corequisites.inspect}"
+    puts "  Department: #{dept_code}"
+    puts "  Available categories: #{@categories.inspect}"
+    
+    # Debug available fields
+    puts "\nDEBUG Available Fields:"
+    all('input, select, textarea').each do |field|
+      puts "  Field: #{field['name']} (id: #{field['id']}, type: #{field['type']})"
+    end
     
     # Set prerequisites in the form
     if @prerequisites && @prerequisites[base_code]
@@ -60,8 +68,13 @@ When('I click course button {string}') do |button_text|
 
     # Set corequisites in the form
     if @corequisites && @corequisites[base_code]
-      puts "  Setting corequisites to: #{@corequisites[base_code]}"
       fill_in 'Corequisites', with: @corequisites[base_code]
+    end
+
+    # Set category based on department code
+    if @categories && @categories[dept_code]
+      puts "  Setting category to: #{@categories[dept_code]}"
+      fill_in 'course[category]', with: @categories[dept_code]
     end
   end
   
