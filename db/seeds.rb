@@ -154,7 +154,7 @@ courses.each do |course_data|
   coreq_string = corequisites.key?(base_code) ? corequisites[base_code].join(', ') : nil
   type = extract_type(course_data[:sec_name])
   category_string = categories.key?(type) ? categories[type].strip : nil
-  
+
   course = Course.find_or_create_by!(sec_name: course_data[:sec_name])
   course.update!(
     course_data.merge(

@@ -4,11 +4,11 @@ class SessionsController < ApplicationController
 
   def logout
     reset_session
-    redirect_to pages_path, notice: "You are logged out."
+    redirect_to root_path, notice: "You are logged out."
   end
 
   def failure
-    redirect_to pages_path
+    redirect_to root_path
   end
 
   # GET /auth/google_oauth2/callback
@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
         redirect_to students_dashboard_path
       end
     else
-      redirect_to pages_path, alert: "Login failed."
+      redirect_to root_path, alert: "Login failed."
     end
   end
 end

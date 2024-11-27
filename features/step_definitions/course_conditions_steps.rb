@@ -92,4 +92,3 @@ Then("the course type should be {string}") do |expected_type|
   type = CoursesHelper.extract_type(course.sec_name)
   expect(type).to eq(expected_type)
 end
-

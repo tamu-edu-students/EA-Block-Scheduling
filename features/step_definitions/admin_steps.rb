@@ -39,7 +39,7 @@ When("I visit the admin dashboard") do
 end
 
 Then("I should see the dashboard page") do
-  expect(page).to have_current_path(pages_path)  # Check if the user is on the admin dashboard
+  expect(page).to have_current_path(root_path + "dashboard")  # Check if the user is on the admin dashboard
 end
 
 Then("the response should be successful") do
@@ -47,7 +47,7 @@ Then("the response should be successful") do
 end
 
 Then("I should be redirected to students dashboard") do
-  expect(current_path + "dashboard").to eq(students_dashboard_path)
+  expect(current_path).to eq(students_dashboard_path)
 end
 
 Then("I should see an alert message {string}") do |message|
