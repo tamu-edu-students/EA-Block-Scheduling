@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-  root "pages#index", to: "pages#index", as: "pages"
+  root "pages#index", to: "pages#index", as: "root"
   get "dashboard", to: "pages#dashboard", as: "dashboard"
   get "admin_settings", to: "pages#admin_settings", as: "admin_settings"
-=======
-  root "pages#index", to: "pages#index", as: :root
->>>>>>> origin/Blockgen-Re
 
   # Health check route
   get "up" => "rails/health#show", as: :rails_health_check
@@ -29,7 +25,7 @@ Rails.application.routes.draw do
   end
 
   # User and session routes
-  resources :users, only: [:new, :create, :show, :index, :edit, :update]
+  resources :users
   resource :session, only: [:new, :create, :destroy] do
     collection do
       get "sso_new"
@@ -49,12 +45,9 @@ Rails.application.routes.draw do
   end
   get "course_uploads/:as_id", to: "courses#show_by_upload", as: :courses_by_upload
 
-<<<<<<< HEAD
-=======
   # Defines the root path route ("/")
   # root "posts#index"
 
->>>>>>> origin/Blockgen-Re
   resources :blocks do
     collection do
       post :generate
@@ -63,9 +56,6 @@ Rails.application.routes.draw do
       get :export
     end
   end
-<<<<<<< HEAD
-=======
   # Add this line for user profile
   get "user/profile", to: "users#profile", as: :user_profile_view
->>>>>>> origin/Blockgen-Re
 end

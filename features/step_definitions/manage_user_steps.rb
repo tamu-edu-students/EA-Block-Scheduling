@@ -86,10 +86,6 @@ When('I fill in the last name field with {string}') do |string|
   fill_in 'Last name', with: string
 end
 
-When('I select {string} as the role') do |string|
-  select string, from: 'Role'
-end
-
 Then('I should see the user with first name {string}') do |string|
   expect(page).to have_content(string)
 end
@@ -100,4 +96,65 @@ end
 
 Then('I should see the user with role {string}') do |string|
   expect(page).to have_content(string)
+end
+
+When('I check the {string} role checkbox') do |role_name|
+  check "user_role_ids_#{Role.find_by(name: role_name).id}"
+end
+
+When('I uncheck the {string} role checkbox') do |role_name|
+  uncheck "user_role_ids_#{Role.find_by(name: role_name).id}"
+end
+
+Then('the user should have the {string} role') do |role_name|
+  expect(@user.reload.roles).to include(Role.find_by(name: role_name))
+end
+
+Then('the user should not have the {string} role') do |role_name|
+  expect(@user.reload.roles).not_to include(Role.find_by(name: role_name))
+end
+
+Given('a user exists without the {string} role') do |role_name|
+  @user = create(:user)
+  expect(@user.roles).not_to include(Role.find_by(name: role_name))
+end
+
+Given('a user exists with the {string} role') do |role_name|
+  @user = create(:user, roles: [Role.find_by(name: role_name)])
+end
+
+Given('a user exists without the {string} and {string} roles') do |role_name1, role_name2|
+  @user = create(:user)
+  expect(@user.roles).not_to include(Role.find_by(name: role_name1))
+  expect(@user.roles).not_to include(Role.find_by(name: role_name2))
+end
+
+Given('a user exists with the {string} and {string} roles') do |role_name1, role_name2|
+  @user = create(:user, roles: [Role.find_by(name: role_name1), Role.find_by(name: role_name2)])
+end
+
+Then('the user should have the {string} and {string} roles') do |role_name1, role_name2|
+  @user.reload
+  expect(@user.roles).to include(Role.find_by(name: role_name1))
+  expect(@user.roles).to include(Role.find_by(name: role_name2))
+end
+
+Then('the user should not have the {string} and {string} roles') do |role_name1, role_name2|
+  @user.reload
+  expect(@user.roles).not_to include(Role.find_by(name: role_name1))
+  expect(@user.roles).not_to include(Role.find_by(name: role_name2))
+end
+
+When('I navigate to the edit user page') do
+  visit edit_user_path(@user)
+end
+
+When('I check the {string} and {string} role checkboxes') do |role_name1, role_name2|
+  check "user_role_ids_#{Role.find_by(name: role_name1).id}"
+  check "user_role_ids_#{Role.find_by(name: role_name2).id}"
+end
+
+When('I uncheck the {string} and {string} role checkboxes') do |role_name1, role_name2|
+  uncheck "user_role_ids_#{Role.find_by(name: role_name1).id}"
+  uncheck "user_role_ids_#{Role.find_by(name: role_name2).id}"
 end
