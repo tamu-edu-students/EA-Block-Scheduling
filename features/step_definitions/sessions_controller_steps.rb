@@ -136,3 +136,4 @@ end
 Given(/^I am not logged in$/) do
   # Do nothing to simulate an attempt to access site without being logged in.
 end
+
