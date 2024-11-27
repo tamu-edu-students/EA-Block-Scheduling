@@ -5,20 +5,20 @@ Feature: Create Courses with Prerequisites, Corequisites, and Category
 
   Background:
     Given the following prerequisites exist:
-      | course_code   | prerequisite_courses               |
-      | MATH-2413     | MATH-2412                          |
-      | ENGR-217      | ENGR-216, PHYS-2425, MATH-2414     |
-      | PHYS-2426     | MATH-2414, PHYS-2425               |
+      | course_code | prerequisite_courses            |
+      | MATH-2413   | MATH-2412                      |
+      | ENGR-217    | ENGR-216, PHYS-2425, MATH-2414 |
+      | PHYS-2426   | MATH-2414, PHYS-2425          |
     And the following corequisites exist:
-      | course_code   | corequisite_courses       |
-      | ENGR-102      | MATH-2412, MATH-2413      |
-      | ENGR-216      | PHYS-2425                 |
-      | ENGR-217      | PHYS-2426                 |
+      | course_code | corequisite_courses     |
+      | ENGR-102    | MATH-2412, MATH-2413    |
+      | ENGR-216    | PHYS-2425               |
+      | ENGR-217    | PHYS-2426               |
     And the following categories exist:
-      | type  | category_name |
-      | MATH  | Math          |
-      | PHYS  | Science       |
-      | ENGR  | Engineering   |
+      | type | category_name |
+      | MATH | Math         |
+      | PHYS | Science      |
+      | ENGR | Engineering  |
     And I am logged in as a test user
     And I visit the courses page
 

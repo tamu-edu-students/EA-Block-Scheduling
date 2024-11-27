@@ -81,3 +81,15 @@ Then("the course {string} should be in no category") do |sec_name|
   expect(course.category.presence).to be_nil
 end
 
+Then("the course base code should be {string}") do |expected_code|
+  course = Course.last
+  base_code = CoursesHelper.extract_base_code(course.sec_name)
+  expect(base_code).to eq(expected_code)
+end
+
+Then("the course type should be {string}") do |expected_type|
+  course = Course.last
+  type = CoursesHelper.extract_type(course.sec_name)
+  expect(type).to eq(expected_type)
+end
+
