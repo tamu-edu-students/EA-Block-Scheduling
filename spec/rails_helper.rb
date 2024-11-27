@@ -116,6 +116,13 @@ RSpec.configure do |config|
   end
 end
 
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
+
 OmniAuth.config.test_mode = true
 Capybara.default_driver = :rack_test
 

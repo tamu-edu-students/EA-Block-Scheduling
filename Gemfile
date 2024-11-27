@@ -28,6 +28,7 @@ end
 
 group :test do
   gem "simplecov", require: false
+  gem "shoulda-matchers"
   gem "selenium-webdriver"
   gem "ZenTest"
 end
