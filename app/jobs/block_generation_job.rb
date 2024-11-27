@@ -1,4 +1,3 @@
-# /app/jobs/block_generation_job.rb
 class BlockGenerationJob < ApplicationJob
   queue_as :default
 

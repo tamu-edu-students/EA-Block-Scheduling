@@ -66,7 +66,7 @@ RSpec.describe SessionsController, type: :controller do
         get :omniauth
 
         expect(session[:user_id]).to be_nil
-        expect(response).to redirect_to(pages_path)
+        expect(response).to redirect_to(root_path)
         expect(flash[:alert]).to eq("Login failed.")
       end
     end
@@ -85,7 +85,7 @@ RSpec.describe SessionsController, type: :controller do
 
     it 'redirects to the pages path with a notice' do
       get :logout
-      expect(response).to redirect_to(pages_path)
+      expect(response).to redirect_to(root_path)
       expect(flash[:notice]).to eq("You are logged out.")
     end
   end
@@ -93,7 +93,7 @@ RSpec.describe SessionsController, type: :controller do
   describe 'GET #failure' do
     it 'redirects to the pages path' do
       get :failure
-      expect(response).to redirect_to(pages_path)
+      expect(response).to redirect_to(root_path)
     end
   end
 end

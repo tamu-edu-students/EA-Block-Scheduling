@@ -38,6 +38,21 @@
     <%= form.text_field :end_time %>
   </div>
 
+  <div>
+    <%= form.label :prerequisites %>
+    <%= form.text_field :prerequisites, placeholder: "e.g., MATH-2413, PHYS-2425" %>
+  </div>
+
+  <div>
+    <%= form.label :corequisites %>
+    <%= form.text_field :corequisites, placeholder: "e.g., PHYS-2426" %>
+  </div>
+
+  <div>
+    <%= form.label :category %>
+    <%= form.text_field :category %>
+  </div>
+
   <%= form.submit "Create Course" %>
 <% end %>
 

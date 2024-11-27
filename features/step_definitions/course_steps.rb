@@ -1,4 +1,9 @@
 # Basic setup steps
+Before do
+  @prerequisites = {}
+  @corequisites = {}
+  @categories = {}
+end
 
 When("there is a course {string} in the system") do |title|
   @course = Course.create!(
@@ -40,6 +45,39 @@ When("I fill in course field {string} with {string}") do |field, value|
 end
 
 When('I click course button {string}') do |button_text|
+  if button_text == "Create Course"
+    sec_name = find_field('course_sec_name').value
+    base_code = sec_name.split('-')[0..1].join('-')
+    dept_code = sec_name.split('-')[0]
+
+    puts "\nDEBUG Course Creation:"
+    puts "  Section name: #{sec_name}"
+    puts "  Department: #{dept_code}"
+    puts "  Available categories: #{@categories.inspect}"
+
+    # Debug available fields
+    puts "\nDEBUG Available Fields:"
+    all('input, select, textarea').each do |field|
+      puts "  Field: #{field['name']} (id: #{field['id']}, type: #{field['type']})"
+    end
+
+    # Set prerequisites in the form
+    if @prerequisites && @prerequisites[base_code]
+      fill_in 'Prerequisites', with: @prerequisites[base_code]
+    end
+
+    # Set corequisites in the form
+    if @corequisites && @corequisites[base_code]
+      fill_in 'Corequisites', with: @corequisites[base_code]
+    end
+
+    # Set category based on department code
+    if @categories && @categories[dept_code]
+      puts "  Setting category to: #{@categories[dept_code]}"
+      fill_in 'course[category]', with: @categories[dept_code]
+    end
+  end
+
   case button_text
   when "New Course"
     click_link button_text, class: "new-course-button"
@@ -48,7 +86,7 @@ When('I click course button {string}') do |button_text|
   when "Delete"
     click_link button_text, class: "bi bi-trash"
   else
-    click_button button_text  # Fallback for actual buttons like "Create Course"
+    click_button button_text
   end
 end
 

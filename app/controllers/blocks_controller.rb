@@ -1,5 +1,8 @@
 class BlocksController < ApplicationController
+<<<<<<< HEAD
   include BlocksHelper
+=======
+>>>>>>> origin/Blockgen-Re
   before_action :require_admin
   skip_before_action :require_admin, if: -> { Rails.env.test? }
 
@@ -18,7 +21,11 @@ class BlocksController < ApplicationController
   def preview
     if defined?(@@generated_blocks)
       @generated_blocks = @@generated_blocks
+<<<<<<< HEAD
       render :index
+=======
+      render :preview
+>>>>>>> origin/Blockgen-Re
     else
       redirect_to blocks_path
     end

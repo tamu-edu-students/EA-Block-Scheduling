@@ -4,7 +4,11 @@
     <% block.courses.each do |course| %>
       <li>
         <strong><%= course.sec_name %></strong><br>
+<<<<<<< HEAD
         <%= course.days %>
+=======
+        <%= course.days %> 
+>>>>>>> origin/Blockgen-Re
         <%= course.start_time.strftime("%I:%M %p") %>-<%= course.end_time.strftime("%I:%M %p") %>
       </li>
     <% end %>

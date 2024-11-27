@@ -45,8 +45,8 @@ RSpec.describe BlocksController, type: :controller do
       it "returns xlsx file" do
         get :export, format: :xlsx
         expect(response.content_type).to eq(
-                                           'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-                                         )
+          'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        )
         expect(response.headers['Content-Disposition']).to include('export.xlsx')
       end
     end
@@ -59,8 +59,8 @@ RSpec.describe BlocksController, type: :controller do
       it "returns xlsx file" do
         get :export, format: :xlsx
         expect(response.content_type).to eq(
-                                           'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-                                         )
+          'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        )
         expect(response.headers['Content-Disposition']).to include('export.xlsx')
       end
 

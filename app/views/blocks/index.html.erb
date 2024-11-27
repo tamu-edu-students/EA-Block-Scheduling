@@ -2,6 +2,7 @@
   <h1>COURSE BLOCKS</h1>
 
   <div class="action-buttons">
+<<<<<<< HEAD
     <%= button_to "GENERATE NEW BLOCKS",
                   generate_blocks_path,
                   method: :post,
@@ -9,6 +10,15 @@
 
     <%= link_to "EXPORT TO EXCEL",
                 export_blocks_path(format: :xlsx),
+=======
+    <%= button_to "GENERATE NEW BLOCKS", 
+                  generate_blocks_path, 
+                  method: :post,
+                  class: "btn btn--primary" %>
+                  
+    <%= link_to "EXPORT TO EXCEL", 
+                export_blocks_path(format: :xlsx), 
+>>>>>>> origin/Blockgen-Re
                 class: "btn btn--primary" %>
   </div>
 
@@ -26,7 +36,11 @@
               <li>
                 <strong><%= course.sec_name %></strong>
                 <div class="course-details">
+<<<<<<< HEAD
                   <%= course.days %>
+=======
+                  <%= course.days %> 
+>>>>>>> origin/Blockgen-Re
                   <%= course.start_time %> - <%= course.end_time %>
                 </div>
               </li>
@@ -38,4 +52,8 @@
       <p>No blocks available to display</p>
     <% end %>
   </div>
+<<<<<<< HEAD
 </div>
+=======
+</div>
+>>>>>>> origin/Blockgen-Re
