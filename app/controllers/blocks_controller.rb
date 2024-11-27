@@ -1,4 +1,5 @@
 class BlocksController < ApplicationController
+  include BlocksHelper
   before_action :require_admin
   skip_before_action :require_admin, if: -> { Rails.env.test? }
 

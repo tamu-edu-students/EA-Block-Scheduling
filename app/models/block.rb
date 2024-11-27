@@ -113,7 +113,7 @@ class Block
   end
 
   def has_required_category
-    required_categories = ["Science", "Math", "Engineering"]
+    required_categories = %w[Science Math Engineering]
 
     # Check each required category
     required_categories.each do |category|

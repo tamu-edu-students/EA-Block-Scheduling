@@ -21,6 +21,11 @@ gem "omniauth"
 gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection"
 
+# Excel generation gems
+gem 'caxlsx'
+gem 'caxlsx_rails'
+
+
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
