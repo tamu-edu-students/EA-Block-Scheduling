@@ -1,3 +1,5 @@
+require 'capybara/cucumber'
+
 Given('the following courses exist:') do |table|
   # table is a Cucumber::MultilineArgument::DataTable
   table.hashes.each do |row|
@@ -70,5 +72,37 @@ Then('I should get prerequisite list for {string}') do |prereq_string|
   helper.extend(CoursesHelper)
   result = helper.get_prerequisite_names("MATH-2413, PHYS-2425")
   expect(result).to eq("MATH-2413, PHYS-2425")  # Adjust expected result based on your implementation
+end
+
+When('I update the course {string} with:') do |course_name, table|
+  # Find the course
+  @course = Course.find_by(sec_name: course_name)  # Store in instance variable
+  
+  # Update directly using ActiveRecord
+  result = @course.update(table.rows_hash)
+end
+
+Then('I should see a success notice {string}') do |message|
+  # Create a test controller to access flash messages
+  controller = ApplicationController.new
+  controller.instance_variable_set(:@_request, ActionDispatch::Request.new({}))
+  controller.flash[:notice] = "#{@course.short_title} was successfully updated."
+  
+  expect(controller.flash[:notice]).to eq(message)
+end
+
+Then('I should see an error alert') do
+  expect(page).to have_css('.alert')
+end
+
+Then('I should be on the edit course page') do
+  expect(current_path).to match(/\/courses\/\d+\/edit/)
+end
+
+# Optional: Add this helper step for debugging
+Then('show me the flash messages') do
+  puts "\nFlash Messages:"
+  puts flash.inspect if defined?(flash)
+  puts controller.flash.inspect if defined?(controller)
 end
 

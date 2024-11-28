@@ -33,3 +33,12 @@ Feature: Course manipulation
 
     Scenario: Non-blank prerequisites handling
       Then I should get prerequisite list for "MATH-2413, PHYS-2425"
+
+    Scenario: Course update
+      Given the following courses exist:
+        | term    | sec_name | days | start_time | end_time | short_title |
+        | 224F000 | CHEM-101 | MW   | 1:30 PM    | 3:20 PM  | Chemistry   |
+      When I update the course "CHEM-101" with:
+        | term        | 224F001 |
+        | short_title | Chem I  |
+      Then I should see a success notice "Chem I was successfully updated."
