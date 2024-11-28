@@ -3,7 +3,7 @@ When("I log out") do
 end
 
 Then("I should be redirected to the home page") do
-  expect(current_path).to eq(pages_path)
+  expect(current_path).to eq(root_path)
 end
 
 Given("OmniAuth is configured with valid credentials for an admin") do

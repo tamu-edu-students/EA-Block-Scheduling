@@ -3,20 +3,20 @@
 <div id="user-details">
   <p>
     <strong>Email:</strong>
-    <%= user.email %>
+    <%= @user.email %>
   </p>
 
   <p>
     <strong>First name:</strong>
-    <%= user.first_name %>
+    <%= @user.first_name %>
   </p>
 
   <p>
     <strong>Last name:</strong>
-    <%= user.last_name %>
+    <%= @user.last_name %>
   </p>
 </div>
 <div>
   <%= link_to "Cancel", users_path %>
-  <%= button_to "Remove user", @user, method: :delete %>
+  <%= button_to "Remove user", user_path(@user), method: :delete %>
 </div>

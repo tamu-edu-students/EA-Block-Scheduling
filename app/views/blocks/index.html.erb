@@ -1,0 +1,41 @@
+<div class="container">
+  <h1>COURSE BLOCKS</h1>
+
+  <div class="action-buttons">
+    <%= button_to "GENERATE NEW BLOCKS", 
+                  generate_blocks_path, 
+                  method: :post,
+                  class: "btn btn--primary" %>
+                  
+    <%= link_to "EXPORT TO EXCEL", 
+                export_blocks_path(format: :xlsx), 
+                class: "btn btn--primary" %>
+  </div>
+
+  <% if notice %>
+    <div class="notice"><%= notice %></div>
+  <% end %>
+
+  <div class="blocks-container">
+    <% if @generated_blocks&.any? %>
+      <% @generated_blocks.each_with_index do |block, index| %>
+        <div class="block">
+          <h3>Block <%= index + 1 %></h3>
+          <ul>
+            <% block.courses.each do |course| %>
+              <li>
+                <strong><%= course.sec_name %></strong>
+                <div class="course-details">
+                  <%= course.days %> 
+                  <%= course.start_time %> - <%= course.end_time %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No blocks available to display</p>
+    <% end %>
+  </div>
+</div>

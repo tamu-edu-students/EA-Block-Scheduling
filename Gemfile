@@ -21,6 +21,10 @@ gem "omniauth"
 gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection"
 
+# Excel generation gems
+gem "caxlsx"
+gem "caxlsx_rails"
+
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
@@ -36,6 +40,7 @@ gem "dotenv-rails", groups: [:development, :test]
 
 group :development, :test do
   gem "sqlite3", "~> 2.2.0" # Use SQLite for development and test environments
+  gem "shoulda-matchers"
 end
 
 group :development, :test do

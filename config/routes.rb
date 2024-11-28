@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  root "pages#index", to: "pages#index", as: "pages"
+  root "pages#index", to: "pages#index", as: :root
 
   # Health check route
   get "up" => "rails/health#show", as: :rails_health_check
 
   # PWA routes
   # get "/login", to: "sessions#new", as: :login
-  get "/login", to: redirect("/auth/google_oauth2"), as: :login
+  get "/login", to: redirect("/auth/google_oauth2/callback"), as: :login
 
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
@@ -15,8 +15,6 @@ Rails.application.routes.draw do
   get "admin/dashboard", to: "admin#dashboard", as: :admin_dashboard
   get "dashboard", to: "students#dashboard", as: :students_dashboard
   get "schedule_viewer", to: "schedules#schedule_viewer"
-  get "profile", to: "users#profile", as: :user_profile_view
-
   # Course and schedule routes
   resources :courses
   resources :schedules, only: [:index, :show] do
@@ -26,7 +24,8 @@ Rails.application.routes.draw do
   end
 
   # User and session routes
-  resources :users
+  # User and session routes
+  resources :users, only: [:new, :create, :show, :index, :edit, :update, :destroy]
   resource :session, only: [:new, :create, :destroy] do
     collection do
       get "sso_new"
@@ -48,4 +47,15 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  resources :blocks do
+    collection do
+      post :generate
+      get :preview
+      post :save
+      get :export
+    end
+  end
+  # Add this line for user profile
+  get "user/profile", to: "users#profile", as: :user_profile_view
 end

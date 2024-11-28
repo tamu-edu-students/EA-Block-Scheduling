@@ -1,4 +1,9 @@
 <%= form_with(model: course) do |form| %>
+  <% Rails.logger.debug "\n========== DEBUG Form Fields ==========" %>
+  <% Rails.logger.debug page.body %>
+  <% puts page.html %>
+  <% Rails.logger.debug "=====================================" %>
+
   <% if course.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
@@ -109,6 +114,16 @@
   <div>
     <%= form.label :prerequisites %>
     <%= form.text_field :prerequisites, placeholder: "e.g., MATH-2413, PHYS-2425" %>
+  </div>
+
+  <div>
+    <%= form.label :corequisites %>
+    <%= form.text_field :corequisites %>
+  </div>
+
+  <div>
+    <%= form.label :category %>
+    <%= form.text_field :category %>
   </div>
 
   <div>
