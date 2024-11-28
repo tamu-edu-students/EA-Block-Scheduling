@@ -1,15 +1,15 @@
 Feature: Admin Dashboard Access
 
-  Scenario: Admin user accesses the dashboard
+  Scenario: Admin user accesses the admin dashboard
     Given I am logged in as an admin
     When I visit the admin dashboard
-    Then I should see the dashboard page
+    Then I should see the admin dashboard page
     And the response should be successful
 
-  Scenario: Student user accesses the dashboard
+  Scenario: Student user accesses the student dashboard
     Given I am logged in as a student
-    When I visit the admin dashboard
-    Then I should see the dashboard page
+    When I visit the student dashboard
+    Then I should see the student dashboard page
     And the response should be successful
 
   Scenario: User is not logged in and tries to access the dashboard

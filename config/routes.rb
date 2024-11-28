@@ -24,7 +24,8 @@ Rails.application.routes.draw do
   end
 
   # User and session routes
-  resources :users, only: [:new, :create, :show, :index, :edit, :update]
+  # User and session routes
+  resources :users, only: [:new, :create, :show, :index, :edit, :update, :destroy]
   resource :session, only: [:new, :create, :destroy] do
     collection do
       get "sso_new"

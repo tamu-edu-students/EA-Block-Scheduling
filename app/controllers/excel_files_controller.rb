@@ -4,6 +4,7 @@ class ExcelFilesController < ApplicationController
   include Rails.application.routes.url_helpers
   include ExcelFilesHelper
   before_action :set_excel_file, only: %i[ show edit update destroy ]
+  rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
 
   # GET /excel_files or /excel_files.json
   def index
@@ -12,6 +13,7 @@ class ExcelFilesController < ApplicationController
 
   # GET /excel_files/1 or /excel_files/1.json
   def show
+    @attachment_url = helpers.attachment_url(@excel_file.file)
   end
 
   # GET /excel_files/new
@@ -72,5 +74,13 @@ class ExcelFilesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def excel_file_params
     params.require(:excel_file).permit(:name, :file)
+  end
+
+  # Handle RecordNotFound exception
+  def handle_record_not_found
+    respond_to do |format|
+      format.html { redirect_to excel_files_path, alert: "Excel file not found." }
+      format.json { render json: { error: "Excel file not found." }, status: :not_found }
+    end
   end
 end

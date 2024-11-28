@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   include ApplicationHelper
-  before_action :require_admin, only: [:index, :show, :edit, :update]
+  before_action :require_admin, only: [:index, :show, :edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -26,9 +26,17 @@ class UsersController < ApplicationController
     redirect_to user_path
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to users_path, notice: 'User was successfully deleted.'
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :uid, :provider)
+    permitted = [:email, :first_name, :last_name, :uid, :provider]
+    permitted << :role if current_user.admin?
+    params.require(:user).permit(permitted)
   end
 end

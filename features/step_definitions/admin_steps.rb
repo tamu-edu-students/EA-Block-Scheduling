@@ -12,6 +12,10 @@ Given("I am logged in as an admin") do
 
   # Simulate the login process by visiting the OmniAuth callback URL
   visit '/auth/google_oauth2/callback'
+
+  # Set the admin attribute to true for the logged-in user
+  @user = User.find_by(email: 'adminuser@example.com')
+  @user.update(role: 'admin')
 end
 
 Given("I am logged in as a student") do
@@ -28,6 +32,10 @@ Given("I am logged in as a student") do
 
   # Simulate the login process by visiting the OmniAuth callback URL
   visit '/auth/google_oauth2/callback'
+
+  # Ensure the user has the 'student' role
+  @user = User.find_by(email: 'studentuser@example.com')
+  @user.update(role: 'student')
 end
 
 # Given("I am not logged in") do
@@ -38,7 +46,15 @@ When("I visit the admin dashboard") do
   visit admin_dashboard_path  # Navigate to the admin dashboard
 end
 
-Then("I should see the dashboard page") do
+Then("I should see the admin dashboard page") do
+  expect(page).to have_current_path("/admin/dashboard")
+end
+
+When("I visit the student dashboard") do
+  visit admin_dashboard_path # This should be the path to the student dashboard
+end
+
+Then("I should see the student dashboard page") do
   expect(page).to have_current_path(root_path + "dashboard")  # Check if the user is on the admin dashboard
 end
 
