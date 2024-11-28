@@ -1,6 +1,6 @@
 class BlocksController < ApplicationController
-  before_action :require_admin
-  skip_before_action :require_admin, if: -> { Rails.env.test? }
+  #before_action :require_admin
+  #skip_before_action :require_admin, if: -> { Rails.env.test? }
 
   def index
     @blocks = defined?(@@generated_blocks) ? @@generated_blocks : []
