@@ -18,14 +18,14 @@ end
 Then('I should get an error for invalid course {string}') do |course_id|
   helper = Object.new
   helper.extend(CoursesHelper)
-  
+
   # Mock the flash method
   def helper.flash
     @flash ||= {}
-  end  
+  end
   # Call the method
   result = helper.validate_courses(course_id)
-  
+
   # Verify expectations
   expect(result).to eq("Courses not found: 0")
   expect(helper.flash[:error]).to eq("Courses not found: 0")
@@ -52,15 +52,15 @@ end
 Then('I should see correct course mappings') do
   helper = Object.new
   helper.extend(CoursesHelper)
-  
+
   # Test corequisites
   expect(helper.corequisites["ENGR-102"]).to eq(%w[MATH-2412 MATH-2413])
   expect(helper.corequisites["ENGR-216"]).to eq(["PHYS-2425"])
-  
+
   # Test prerequisites
   expect(helper.prerequisites["MATH-2413"]).to eq(["MATH-2412"])
   expect(helper.prerequisites["PHYS-2425"]).to eq(["MATH-2413"])
-  
+
   # Test categories
   expect(helper.categories["MATH"]).to eq("Math")
   expect(helper.categories["PHYS"]).to eq("Science")
@@ -77,7 +77,7 @@ end
 When('I update the course {string} with:') do |course_name, table|
   # Find the course
   @course = Course.find_by(sec_name: course_name)  # Store in instance variable
-  
+
   # Update directly using ActiveRecord
   result = @course.update(table.rows_hash)
 end
@@ -87,7 +87,7 @@ Then('I should see a success notice {string}') do |message|
   controller = ApplicationController.new
   controller.instance_variable_set(:@_request, ActionDispatch::Request.new({}))
   controller.flash[:notice] = "#{@course.short_title} was successfully updated."
-  
+
   expect(controller.flash[:notice]).to eq(message)
 end
 
@@ -105,4 +105,3 @@ Then('show me the flash messages') do
   puts flash.inspect if defined?(flash)
   puts controller.flash.inspect if defined?(controller)
 end
-
