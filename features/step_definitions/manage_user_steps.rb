@@ -115,8 +115,7 @@ Then('the user should not have the {string} role') do |role_name|
 end
 
 Given('a user exists without the {string} role') do |role_name|
-  @user = create(:user)
-  expect(@user.roles).not_to include(Role.find_by(name: role_name))
+  @user = create(:user, roles: Role.where.not(name: role_name))
 end
 
 Given('a user exists with the {string} role') do |role_name|
@@ -124,9 +123,11 @@ Given('a user exists with the {string} role') do |role_name|
 end
 
 Given('a user exists without the {string} and {string} roles') do |role_name1, role_name2|
-  @user = create(:user)
-  expect(@user.roles).not_to include(Role.find_by(name: role_name1))
-  expect(@user.roles).not_to include(Role.find_by(name: role_name2))
+  @user = create(:user, roles: Role.where.not(name: [role_name1, role_name2]))
+end
+
+Given('a user exists with the {string} and {string} roles') do |role_name1, role_name2|
+  @user = create(:user, roles: [Role.find_by(name: role_name1), Role.find_by(name: role_name2)])
 end
 
 Given('a user exists with the {string} and {string} roles') do |role_name1, role_name2|
@@ -149,12 +150,39 @@ When('I navigate to the edit user page') do
   visit edit_user_path(@user)
 end
 
-When('I check the {string} and {string} role checkboxes') do |role_name1, role_name2|
-  check "user_role_ids_#{Role.find_by(name: role_name1).id}"
-  check "user_role_ids_#{Role.find_by(name: role_name2).id}"
+When('I check the "{string}" role checkbox') do |role_name|
+  role = Role.find_by(name: role_name)
+  raise "Role #{role_name} not found" unless role
+
+  check "user_role_ids_#{role.id}"
 end
 
-When('I uncheck the {string} and {string} role checkboxes') do |role_name1, role_name2|
-  uncheck "user_role_ids_#{Role.find_by(name: role_name1).id}"
-  uncheck "user_role_ids_#{Role.find_by(name: role_name2).id}"
+Given("I am on the edit user page") do
+  visit edit_user_path(@user)
 end
+
+When("I fill in {string} with {string}") do |field, value|
+  fill_in field, with: value
+end
+
+When("I check {string} role") do |role_name|
+  check role_name
+end
+
+When("I click {string}") do |button_text|
+  click_button button_text
+end
+
+Then("I should see {string}") do |text|
+  expect(page).to have_content(text)
+end
+
+Then("I should see {string} in the roles list") do |role_name|
+  within(".roles-list") do
+    expect(page).to have_content(role_name)
+  end
+end
+
+Then("I should be on the users index page") do
+  expect(current_path).to eq(users_path)
+end 
