@@ -15,8 +15,6 @@ Given("the following categories exist:") do |table|
     @categories = table.hashes.each_with_object({}) do |row, hash|
         hash[row['type']] = row['category_name']
     end
-    puts "\nDEBUG Categories Setup:"
-    puts "  Categories hash: #{@categories.inspect}"
 end
 
 Then("the course {string} should have prerequisites {string}") do |course_code, prerequisites|
@@ -44,10 +42,6 @@ end
 
 Then("the course {string} should be in category {string}") do |sec_name, expected_category|
   course = Course.find_by(sec_name: sec_name)
-  puts "\nDEBUG Category Check:"
-  puts "  Course: #{sec_name}"
-  puts "  Expected category: #{expected_category}"
-  puts "  Actual category: #{course.category}"
   expect(course.category).to eq(expected_category)
 end
 

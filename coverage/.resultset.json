@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1126/EA-Block-Scheduling/app/controllers/application_controller.rb": {
+      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1127_alldone2/EA-Block-Scheduling/app/controllers/application_controller.rb": {
         "lines": [
           1,
           1,
@@ -11,19 +11,19 @@
           1,
           null,
           1,
-          30,
+          43,
           null,
           null,
           null,
           1,
-          4,
-          1,
+          9,
+          2,
           null,
           null,
           null
         ]
       },
-      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1126/EA-Block-Scheduling/app/controllers/blocks_controller.rb": {
+      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1127_alldone2/EA-Block-Scheduling/app/controllers/blocks_controller.rb": {
         "lines": [
           1,
           1,
@@ -64,7 +64,7 @@
           null
         ]
       },
-      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1126/EA-Block-Scheduling/app/controllers/courses_controller.rb": {
+      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1127_alldone2/EA-Block-Scheduling/app/controllers/courses_controller.rb": {
         "lines": [
           1,
           1,
@@ -214,7 +214,7 @@
         ]
       }
     },
-    "timestamp": 1732687535
+    "timestamp": 1732817066
   },
   "Cucumber Features": {
     "coverage": {
@@ -344,21 +344,21 @@
           null,
           null,
           1,
-          23,
-          23,
-          19,
-          19,
-          19,
-          19,
+          27,
+          27,
+          24,
+          24,
+          24,
+          24,
           null,
           null,
-          23,
-          23,
+          27,
+          27,
           null,
-          23,
+          27,
           1,
           null,
-          22,
+          26,
           null,
           null,
           0,
@@ -377,13 +377,13 @@
           1,
           null,
           1,
-          155,
+          198,
           null,
           null,
           null,
           1,
-          4,
-          3,
+          12,
+          2,
           null,
           null,
           null
@@ -415,11 +415,11 @@
           null,
           null,
           1,
-          71,
+          87,
           null,
           null,
           1,
-          56,
+          68,
           null,
           null
         ]
@@ -733,14 +733,16 @@
           1,
           1,
           1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
           null,
           null,
           1,
           0,
-          null,
-          null,
-          null,
-          1,
           null,
           null,
           null,
@@ -795,12 +797,20 @@
           null,
           null,
           1,
-          0,
+          1,
           null,
           null,
           null,
           1,
           1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          2,
+          1,
+          null,
           null,
           null
         ]
@@ -844,16 +854,12 @@
           1,
           null,
           1,
-          0,
+          2,
           null,
           null,
           1,
-          0,
-          0,
-          null,
-          null,
-          1,
-          0,
+          3,
+          3,
           null,
           null,
           1,
@@ -861,21 +867,33 @@
           null,
           null,
           1,
-          0,
-          0,
-          0,
-          0,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
           null,
           null,
           1,
           null,
           1,
-          0,
+          1,
+          1,
+          1,
           null,
           null
         ]
       }
     },
-    "timestamp": 1732754824
+    "timestamp": 1732817407
   }
 }
