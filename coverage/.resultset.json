@@ -218,7 +218,7 @@
   },
   "Cucumber Features": {
     "coverage": {
-      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1126/EA-Block-Scheduling/app/services/file_parser.rb": {
+      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1127_alldone2/EA-Block-Scheduling/app/services/file_parser.rb": {
         "lines": [
           null,
           null,
@@ -327,7 +327,7 @@
           null
         ]
       },
-      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1126/EA-Block-Scheduling/app/controllers/sessions_controller.rb": {
+      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1127_alldone2/EA-Block-Scheduling/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           1,
@@ -344,30 +344,30 @@
           null,
           null,
           1,
-          20,
-          20,
-          18,
-          18,
-          18,
-          18,
-          null,
-          null,
-          20,
-          20,
-          null,
-          20,
-          1,
-          null,
+          23,
+          23,
+          19,
+          19,
+          19,
           19,
           null,
           null,
+          23,
+          23,
+          null,
+          23,
+          1,
+          null,
+          22,
+          null,
+          null,
           0,
           null,
           null,
           null
         ]
       },
-      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1126/EA-Block-Scheduling/app/controllers/application_controller.rb": {
+      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1127_alldone2/EA-Block-Scheduling/app/controllers/application_controller.rb": {
         "lines": [
           1,
           1,
@@ -377,7 +377,7 @@
           1,
           null,
           1,
-          135,
+          155,
           null,
           null,
           null,
@@ -389,7 +389,7 @@
           null
         ]
       },
-      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1126/EA-Block-Scheduling/app/helpers/application_helper.rb": {
+      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1127_alldone2/EA-Block-Scheduling/app/helpers/application_helper.rb": {
         "lines": [
           1,
           1,
@@ -415,85 +415,85 @@
           null,
           null,
           1,
-          65,
+          71,
           null,
           null,
           1,
-          45,
+          56,
           null,
           null
         ]
       },
-      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1126/EA-Block-Scheduling/app/helpers/admin_helper.rb": {
+      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1127_alldone2/EA-Block-Scheduling/app/helpers/admin_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1126/EA-Block-Scheduling/app/helpers/blocks_helper.rb": {
+      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1127_alldone2/EA-Block-Scheduling/app/helpers/blocks_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1126/EA-Block-Scheduling/app/helpers/courses_helper.rb": {
+      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1127_alldone2/EA-Block-Scheduling/app/helpers/courses_helper.rb": {
         "lines": [
           1,
           1,
+          2,
+          2,
           1,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          0,
-          0,
-          null,
-          null,
           null,
           null,
           1,
-          0,
-          0,
-          0,
-          null,
-          null,
+          2,
           null,
           1,
-          0,
-          0,
-          0,
-          null,
-          null,
-          null,
-          1,
-          null,
-          0,
+          2,
           null,
           null,
           null,
           null,
           1,
-          null,
-          0,
-          null,
-          null,
-          null,
+          2,
+          2,
+          2,
           null,
           null,
           null,
+          1,
+          1,
+          1,
+          1,
           null,
           null,
           null,
+          1,
+          null,
+          2,
           null,
           null,
           null,
           null,
           1,
           null,
-          0,
+          2,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          3,
           null,
           null,
           null,
@@ -503,7 +503,7 @@
           null
         ]
       },
-      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1126/EA-Block-Scheduling/app/helpers/excel_files_helper.rb": {
+      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1127_alldone2/EA-Block-Scheduling/app/helpers/excel_files_helper.rb": {
         "lines": [
           1,
           1,
@@ -513,7 +513,7 @@
           null
         ]
       },
-      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1126/EA-Block-Scheduling/app/controllers/students_controller.rb": {
+      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1127_alldone2/EA-Block-Scheduling/app/controllers/students_controller.rb": {
         "lines": [
           1,
           1,
@@ -521,7 +521,7 @@
           null
         ]
       },
-      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1126/EA-Block-Scheduling/app/controllers/admin_controller.rb": {
+      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1127_alldone2/EA-Block-Scheduling/app/controllers/admin_controller.rb": {
         "lines": [
           null,
           1,
@@ -535,7 +535,7 @@
           null
         ]
       },
-      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1126/EA-Block-Scheduling/app/controllers/blocks_controller.rb": {
+      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1127_alldone2/EA-Block-Scheduling/app/controllers/blocks_controller.rb": {
         "lines": [
           1,
           1,
@@ -576,7 +576,7 @@
           null
         ]
       },
-      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1126/EA-Block-Scheduling/app/controllers/courses_controller.rb": {
+      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1127_alldone2/EA-Block-Scheduling/app/controllers/courses_controller.rb": {
         "lines": [
           1,
           1,
@@ -725,7 +725,7 @@
           null
         ]
       },
-      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1126/EA-Block-Scheduling/app/controllers/excel_files_controller.rb": {
+      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1127_alldone2/EA-Block-Scheduling/app/controllers/excel_files_controller.rb": {
         "lines": [
           1,
           null,
@@ -805,7 +805,7 @@
           null
         ]
       },
-      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1126/EA-Block-Scheduling/app/controllers/schedules_controller.rb": {
+      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1127_alldone2/EA-Block-Scheduling/app/controllers/schedules_controller.rb": {
         "lines": [
           1,
           1,
@@ -819,7 +819,25 @@
           null
         ]
       },
-      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1126/EA-Block-Scheduling/app/controllers/users_controller.rb": {
+      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1127_alldone2/EA-Block-Scheduling/app/controllers/pages_controller.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          2,
+          null,
+          null,
+          1,
+          1,
+          2,
+          null,
+          null
+        ]
+      },
+      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1127_alldone2/EA-Block-Scheduling/app/controllers/users_controller.rb": {
         "lines": [
           1,
           1,
@@ -856,27 +874,8 @@
           null,
           null
         ]
-      },
-      "/Users/junhyuklee/Desktop/1. TAMU/0. Texas A&M/0. Material/4. Project/CSE_SW Eng/main/1126/EA-Block-Scheduling/app/controllers/pages_controller.rb": {
-        "lines": [
-          null,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {}
       }
     },
-    "timestamp": 1732688279
+    "timestamp": 1732753144
   }
 }

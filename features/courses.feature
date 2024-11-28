@@ -17,3 +17,19 @@ Feature: Course manipulation
       Given I am logged in as a test user
       And I am on the courses page to see courses with an active storage id of 1
       Then I should see "224F000" in the table
+
+    Scenario: Invalid course validation
+      Then I should get an error for invalid course "INVALID-101"
+
+    Scenario: Blank prerequisites handling
+      Then I should get "None" for blank prerequisites
+
+    Scenario: Course code extraction
+      Then the base code for "MATH-2414-007" should be "MATH-2414"
+      And the type for "MATH-2414-007" should be "MATH"
+
+    Scenario: Course mappings verification
+      Then I should see correct course mappings
+
+    Scenario: Non-blank prerequisites handling
+      Then I should get prerequisite list for "MATH-2413, PHYS-2425"
