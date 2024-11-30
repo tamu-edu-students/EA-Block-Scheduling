@@ -24,8 +24,10 @@ end
 
 require 'cucumber/rails'
 require 'capybara/cucumber'
+require 'capybara/rails'
 require 'omniauth'
 require 'selenium-webdriver'
+require 'rspec/expectations'
 # frozen_string_literal: true
 
 # Capybara defaults to CSS3 selectors rather than XPath.
@@ -101,3 +103,6 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 #   Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 # end
 Capybara.javascript_driver = :selenium_chrome
+
+World(Capybara::DSL)
+World(RSpec::Matchers)

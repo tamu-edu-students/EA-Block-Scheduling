@@ -50,17 +50,6 @@ When('I click course button {string}') do |button_text|
     base_code = sec_name.split('-')[0..1].join('-')
     dept_code = sec_name.split('-')[0]
 
-    puts "\nDEBUG Course Creation:"
-    puts "  Section name: #{sec_name}"
-    puts "  Department: #{dept_code}"
-    puts "  Available categories: #{@categories.inspect}"
-
-    # Debug available fields
-    puts "\nDEBUG Available Fields:"
-    all('input, select, textarea').each do |field|
-      puts "  Field: #{field['name']} (id: #{field['id']}, type: #{field['type']})"
-    end
-
     # Set prerequisites in the form
     if @prerequisites && @prerequisites[base_code]
       fill_in 'Prerequisites', with: @prerequisites[base_code]
@@ -73,7 +62,6 @@ When('I click course button {string}') do |button_text|
 
     # Set category based on department code
     if @categories && @categories[dept_code]
-      puts "  Setting category to: #{@categories[dept_code]}"
       fill_in 'course[category]', with: @categories[dept_code]
     end
   end
