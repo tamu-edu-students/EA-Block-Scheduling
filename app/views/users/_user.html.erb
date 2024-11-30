@@ -13,11 +13,12 @@
   </p>
   <p>
     <strong>Role(s):</strong>
-    <tr>
-    <% user.roles.each do |r| %>
-      <td><%= r.name %></td>
-    <% end %>
-    </tr>
-
   </p>
+  <table>
+    <tr>
+      <% user.roles.each do |r| %>
+        <td><%= r.name %></td>
+      <% end %>
+    </tr>
+  </table>
 </div>

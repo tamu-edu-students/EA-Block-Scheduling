@@ -1,9 +1,4 @@
 <%= form_with(model: course) do |form| %>
-  <% Rails.logger.debug "\n========== DEBUG Form Fields ==========" %>
-  <% Rails.logger.debug page.body %>
-  <% puts page.html %>
-  <% Rails.logger.debug "=====================================" %>
-
   <% if course.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
@@ -16,117 +11,118 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="field">
     <%= form.label :term, style: "display: block" %>
     <%= form.text_field :term %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :dept_code, style: "display: block" %>
     <%= form.text_area :dept_code %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :course_id, style: "display: block" %>
     <%= form.text_field :course_id %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :sec_coreq_secs, style: "display: block" %>
     <%= form.text_field :sec_coreq_secs %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :syn, style: "display: block" %>
     <%= form.text_field :syn %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :sec_name, style: "display: block" %>
     <%= form.text_field :sec_name %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :short_title, style: "display: block" %>
     <%= form.text_field :short_title %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :im, style: "display: block" %>
     <%= form.number_field :im %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :building, style: "display: block" %>
     <%= form.text_field :building %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :room, style: "display: block" %>
     <%= form.text_field :room %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :days, style: "display: block" %>
     <%= form.text_field :days %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :start_time, style: "display: block" %>
     <%= form.time_field :start_time %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :end_time, style: "display: block" %>
     <%= form.time_field :end_time %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :fac_id, style: "display: block" %>
     <%= form.text_field :fac_id %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :faculty_name, style: "display: block" %>
     <%= form.text_field :faculty_name %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :crs_capacity, style: "display: block" %>
     <%= form.number_field :crs_capacity %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :sec_cap, style: "display: block" %>
     <%= form.number_field :sec_cap %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :student_count, style: "display: block" %>
     <%= form.number_field :student_count %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :notes, style: "display: block" %>
     <%= form.text_field :notes %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :prerequisites %>
     <%= form.text_field :prerequisites, placeholder: "e.g., MATH-2413, PHYS-2425" %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :corequisites %>
     <%= form.text_field :corequisites %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :category %>
     <%= form.text_field :category %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="action-container edit-actions">
+    <%= form.button "Update", type: :update, class: "btn btn--primary" %>
+    <%= link_to "Cancel", courses_path, :class => "btn btn--primary-alt" %>
   </div>
 <% end %>

@@ -25,10 +25,9 @@
           <li class="menu-item"><%= link_to "View Courses", generate_schedule_schedules_path %></li>
           <li class="menu-item"><%= link_to "My Schedule", "#" %></li>
         <% end %>
+        <li class="menu-item"><%= link_to "Blocks", blocks_path %></li>
         <li class="menu-item"><%= link_to "Profile", user_profile_view_path %></li>
-        <div class="d-flex">
-          <li class="menu-item"><%= link_to "Logout", logout_session_path, method: :get %></li>
-        </div>
+        <li class="menu-item"><%= link_to "Logout", logout_session_path, method: :get %></li>
       </ol>
     </nav>
   <% end %>

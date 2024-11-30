@@ -3,15 +3,9 @@
     <div class="footer__compliance">
       <ul class="compliance__list">
         <li>
-          © <span id="current-year"></span>
-          Texas A&amp;M University
+          © <%= Date.current.year %> Texas A&amp;M University
         </li>
       </ul>
     </div>
   </div>
 </footer>
-<script>
-    const currentYear = new Date().getFullYear().toString();
-    const yearElement = document.getElementById("current-year");
-    yearElement.textContent = currentYear;
-</script>
