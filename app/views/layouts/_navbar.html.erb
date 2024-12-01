@@ -18,12 +18,12 @@
         <% if current_user_admin? %>
           <li class="menu-item"><%= link_to "View Users", users_path %></li>
           <li class="menu-item"><%= link_to "Admin Settings", admin_settings_path %></li>
-          <li class="menu-item"><%= link_to "Blocks", blocks_path %></li>
+<!--          <li class="menu-item"><%#= link_to "Blocks", blocks_path %></li>-->
           <li class="menu-item"><%= link_to "View Courses", courses_path %></li>
           <li class="menu-item"><%= link_to "Upload Spreadsheet", new_excel_file_path %></li>
         <% else %>
+          <li class="menu-item"><%= link_to "My Schedule", schedule_viewer_path %></li>
           <li class="menu-item"><%= link_to "View Courses", generate_schedule_schedules_path %></li>
-          <li class="menu-item"><%= link_to "My Schedule", "#" %></li>
         <% end %>
         <li class="menu-item"><%= link_to "Blocks", blocks_path %></li>
         <li class="menu-item"><%= link_to "Profile", user_profile_view_path %></li>

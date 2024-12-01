@@ -17,7 +17,11 @@
     <td><%= user.email %></td>
     <td><%= user.first_name %></td>
     <td><%= user.last_name %></td>
-    <td><%= user.role %></td>
+    <td>
+      <% unless user.roles.empty? %>
+      <%= user.roles.map { |r| %Q(#{r.name})}.join(", ") %>
+      <% end %>
+    </td>
     <td><%= user.uid %></td>
     <td><%= user.provider %></td>
     <td>

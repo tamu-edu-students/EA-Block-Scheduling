@@ -23,8 +23,8 @@
         <td><%= course[:term] %></td>
         <td><%= course[:sec_name] %></td>
         <td><%= course[:days] %></td>
-        <td><%= course[:start_time] %></td>
-        <td><%= course[:end_time] %></td>
+        <td><%= course[:start_time].strftime("%I:%M %p") %></td>
+        <td><%= course[:end_time].strftime("%I:%M %p") %></td>
         <td>
           <div class="action-group">
             <%= link_to "", edit_course_path(course), class: "bi bi-pencil" %>
