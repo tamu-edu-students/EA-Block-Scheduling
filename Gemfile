@@ -46,7 +46,7 @@ end
 group :development, :test do
   gem "activestorage", "~> 7.2.1"
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem "brakeman", "6.2.2", require: false
+  gem "brakeman", "7.0.0", require: false
   gem "capybara"
   gem "cucumber-rails", require: false
   gem "database_cleaner"
