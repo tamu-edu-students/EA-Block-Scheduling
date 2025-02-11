@@ -1,4 +1,12 @@
 # Engineering Academy Block Schedule Generator
+## Sprint 1 MVP
+Deployed app: https://ea-block-scheduling-68f7266eed53.herokuapp.com/                                                                                                         
+Code Climate: We were unable to do that since it was asking us to pay for the code climate https://github.com/marketplace/code-climate
+
+![image (1)](https://github.com/user-attachments/assets/b4cc6f2b-11d7-4fe9-9534-ed4cc812fdf0)
+
+## Team Work Agreement (TWA)
+https://github.com/patibas-tamu/EA-Block-Scheduling/blob/main/documentation/Spring2025/Team_Working_Agreement.txt
 ## Important Links
 + Deployed App: https://ea-block-scheduler-4fecd886e389.herokuapp.com/
 + Code Climate: https://codeclimate.com/github/tamu-edu-students/EA-Block-Scheduling
