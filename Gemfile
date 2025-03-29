@@ -9,7 +9,7 @@ gem "importmap-rails" # Use JavaScript with ESM import maps [https://github.com/
 gem "jbuilder" # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "omniauth-microsoft_graph"
 gem "puma", ">= 5.0" # Use the Puma web server [https://github.com/puma/puma]
-gem "rails", "~> 7.2.1" # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+gem "rails", "~> 8.0.0" # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "roo"  # For parsing Excel files
 gem "simple_form"  # For easier form handling
 gem "sprockets-rails" # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
@@ -44,7 +44,7 @@ group :development, :test do
 end
 
 group :development, :test do
-  gem "activestorage", "~> 7.2.1"
+  gem "activestorage", "~> 8.0.0"
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", "6.2.2", require: false
   gem "capybara"
